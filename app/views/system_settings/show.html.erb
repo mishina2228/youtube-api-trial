@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Api key:</strong>
+  <%= @system_setting.api_key %>
+</p>
+
+<%= link_to 'Edit', edit_system_setting_path(@system_setting) %> |
+<%= link_to 'Back', system_settings_path %>

@@ -1,0 +1,13 @@
+<% {notice: notice, alert: alert}.each do |key, val| %>
+  <div class="<%= key %>">
+    <% if val.is_a?(Array) %>
+      <ul>
+        <% val.each do |elem| %>
+          <li><%= elem %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <%= val %>
+    <% end %>
+  </div>
+<% end %>

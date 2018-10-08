@@ -1,0 +1,29 @@
+<%= render partial: 'partials/locale' %>
+
+<div class="container">
+  <div class="row text-center bg-primary header">
+    <div class="col-md-2 col-xs-4">
+      <%= link_to t('text.top.top_page'), root_path %>
+    </div>
+    <% if current_user.try(:admin?) %>
+      <div class="col-md-2 col-xs-4">
+        <%= link_to SystemSetting.model_name.human, system_settings_path %>
+      </div>
+    <% end %>
+    <div class="col-md-2 col-xs-4">
+      <%= link_to Channel.model_name.human, channels_path %>
+    </div>
+    <% if user_signed_in? %>
+      <div class="col-md-3 col-xs-4">
+        <%= current_user.email %>
+      </div>
+      <div class="col-md-3 col-xs-4">
+        <%= link_to t('text.devise.sign_out'), destroy_user_session_path, method: :delete %>
+      </div>
+    <% else %>
+      <div class="col-md-3 col-xs-4">
+        <%= link_to t('text.devise.sign_in'), new_user_session_path %>
+      </div>
+    <% end %>
+  </div>
+</div>
