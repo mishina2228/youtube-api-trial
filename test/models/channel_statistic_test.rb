@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ChannelStatusTest < ActiveSupport::TestCase
+class ChannelStatisticTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

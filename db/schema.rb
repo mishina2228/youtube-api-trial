@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_08_063854) do
+ActiveRecord::Schema.define(version: 2018_10_11_130905) do
 
-  create_table "channel_statuses", force: :cascade do |t|
+  create_table "channel_statistics", force: :cascade do |t|
     t.integer "channel_id", null: false
     t.integer "view_count", default: 0, null: false
     t.integer "subscriber_count", default: 0, null: false
     t.integer "video_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["channel_id"], name: "index_channel_statuses_on_channel_id"
+    t.index ["channel_id"], name: "index_channel_statistics_on_channel_id"
   end
 
   create_table "channels", force: :cascade do |t|

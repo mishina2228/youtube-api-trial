@@ -1,4 +1,4 @@
-class ChannelStatus < ApplicationRecord
+class ChannelStatistic < ApplicationRecord
   belongs_to :channel
 
   validates :view_count, numericality: {only_integer: true}
