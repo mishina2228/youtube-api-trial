@@ -1,8 +1,6 @@
 <%= form_with(model: system_setting, local: true) do |form| %>
   <% if system_setting.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(system_setting.errors.count, "error") %> prohibited this system_setting from being saved:</h2>
-
       <ul>
       <% system_setting.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,12 +9,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :api_key %>
-    <%= form.text_field :api_key %>
-  </div>
+  <div class="container">
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-4 col-sm-2">
+          <%= form.label :api_key %>
+        </div>
+        <div class="col-xs-8 col-sm-10">
+          <%= form.text_field :api_key, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="actions">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

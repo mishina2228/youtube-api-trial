@@ -1,0 +1,8 @@
+---
+ja:
+  text:
+    devise:
+      sign_in: ログイン
+      sign_out: ログアウト
+    top:
+      top_page: TOPページ

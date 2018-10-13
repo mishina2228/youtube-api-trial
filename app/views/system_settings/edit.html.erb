@@ -1,6 +1,8 @@
-<h1>Editing System Setting</h1>
+<h1>
+  <%= t('helpers.title.edit', model: SystemSetting.model_name.human) %>
+</h1>
+
+<%= link_to t('helpers.link.show'), {controller: controller.controller_name, action: :show},
+            class: 'btn btn-info', role: :button %>
 
 <%= render 'form', system_setting: @system_setting %>
-
-<%= link_to 'Show', @system_setting %> |
-<%= link_to 'Back', system_settings_path %>

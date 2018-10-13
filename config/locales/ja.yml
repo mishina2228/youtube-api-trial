@@ -3,7 +3,7 @@ ja:
   activerecord:
     models:
       channel: チャンネル
-      channel_status: チャンネルステータス
+      channel_statistic: チャンネル統計
       system_setting: システム設定
     attributes:
       channel:
@@ -11,7 +11,8 @@ ja:
         title: チャンネル名
         description: 説明
         published_at: 登録日
-      channel_status:
+        thumbnail_url: サムネイルURL
+      channel_statistic:
         channel_id: チャンネルID
         view_count: 視聴回数
         subscriver_count: 登録者数
@@ -156,12 +157,33 @@ ja:
         one: "%{model}にエラーが発生しました"
         other: "%{model}に%{count}個のエラーが発生しました"
   helpers:
+    link:
+      back: 戻る
+      delete: 削除
+      edit: 編集
+      new: 新規作成
+      show: 閲覧
+    notice:
+      continuously_create: 続けて作成します
+      create: 正常に作成されました
+      delete: 正常に削除されました
+      delete_confirm: 削除してよろしいですか?
+      loading: 読み込み中...
+      require_data: "%{model}のデータを登録してください"
+      update: 正常に更新されました
     select:
       prompt: 選択してください
     submit:
       create: 登録する
       submit: 保存する
       update: 更新する
+    title:
+      edit: "%{model}編集"
+      list: "%{models}一覧"
+      load_csv: "%{models}読込"
+      new: "%{model}新規作成"
+      search: "%{models}検索結果"
+      show: "%{model}閲覧"
   number:
     currency:
       format:
@@ -215,12 +237,6 @@ ja:
       last_word_connector: 、
       two_words_connector: 、
       words_connector: 、
-  text:
-    devise:
-      sign_in: ログイン
-      sign_out: ログアウト
-    top:
-      top_page: TOPページ
   time:
     am: 午前
     formats:

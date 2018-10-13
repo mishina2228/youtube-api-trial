@@ -3,7 +3,7 @@ en:
   activerecord:
     models:
       channel: Channel
-      channel_status: Channel Status
+      channel_statistic: Channel Status
       system_setting: System Setting
     attributes:
       channel:
@@ -11,7 +11,8 @@ en:
         title: Title
         description: Description
         published_at: Published at
-      channel_status:
+        thumbnail_url: Thumbnail URL
+      channel_statistic:
         channel_id: Channel ID
         view_count: View Count
         subscriber_count: Subscriber count
@@ -162,12 +163,33 @@ en:
         one: 1 error prohibited this %{model} from being saved
         other: "%{count} errors prohibited this %{model} from being saved"
   helpers:
+    link:
+      back: Back
+      delete: Delete
+      edit: Edit
+      new: New
+      show: Show
+    notice:
+      continuously_create: Continue to create
+      create: Created successfully
+      delete: Deleted successfully
+      delete_confirm: Are you sure you want to delete it?
+      loading: loading...
+      require_data: "Please register the data of %{model}"
+      update: Updated successfully
     select:
       prompt: Please select
     submit:
       create: Create %{model}
       submit: Save %{model}
       update: Update %{model}
+    title:
+      edit: "Editing %{model}"
+      list: "Listing %{models}"
+      load_csv: "Load %{models}"
+      new: "New %{model}"
+      search: "Search Results of %{models}"
+      show: "Show %{model}"
   number:
     currency:
       format:
@@ -223,12 +245,6 @@ en:
       last_word_connector: ", and "
       two_words_connector: " and "
       words_connector: ", "
-  text:
-    devise:
-      sign_in: Log in
-      sign_out: Log out
-    top:
-      top_page: TOP Page
   time:
     am: am
     formats:

@@ -1,0 +1,16 @@
+<%= link_to t('helpers.link.back'), {controller: controller.controller_name, action: :index},
+            class: 'btn btn-info', role: :button %>
+<% case controller.action_name %>
+<% when 'edit' %>
+  <%= link_to t('helpers.link.show'), {controller: controller.controller_name, action: :show},
+              class: 'btn btn-info', role: :button %>
+  <%= link_to t('helpers.link.delete'), {controller: controller.controller_name, action: :destroy}, method: :delete,
+              data: {confirm: t('helpers.notice.delete_confirm')},
+              class: 'btn btn-danger', role: :button %>
+<% when 'show' %>
+  <%= link_to t('helpers.link.edit'), {controller: controller.controller_name, action: :edit},
+              class: 'btn btn-info', role: :button %>
+  <%= link_to t('helpers.link.delete'), {controller: controller.controller_name, action: :destroy}, method: :delete,
+              data: {confirm: t('helpers.notice.delete_confirm')},
+              class: 'btn btn-danger', role: :button %>
+<% end %>

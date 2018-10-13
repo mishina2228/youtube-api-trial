@@ -1,5 +1,7 @@
-<h1>New Channel</h1>
+<h1>
+  <%= t('helpers.title.new', model: Channel.model_name.human) %>
+</h1>
+
+<%= render partial: 'partials/action' %>
 
 <%= render 'form', channel: @channel %>
-
-<%= link_to 'Back', channels_path %>

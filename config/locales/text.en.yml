@@ -1,0 +1,8 @@
+---
+en:
+  text:
+    devise:
+      sign_in: Log in
+      sign_out: Log out
+    top:
+      top_page: TOP Page

@@ -1,9 +1,17 @@
-<p id="notice"><%= notice %></p>
+<h1>
+  <%= t('helpers.title.show', model: SystemSetting.model_name.human) %>
+</h1>
 
-<p>
-  <strong>Api key:</strong>
-  <%= @system_setting.api_key %>
-</p>
+<%= link_to t('helpers.link.edit'), {controller: controller.controller_name, action: :edit},
+            class: 'btn btn-info', role: :button %>
 
-<%= link_to 'Edit', edit_system_setting_path(@system_setting) %> |
-<%= link_to 'Back', system_settings_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <%= SystemSetting.human_attribute_name :api_key %>
+    </div>
+    <div class="col-xs-8 col-sm-10">
+      <%= @system_setting.api_key %>
+    </div>
+  </div>
+</div>

@@ -1,30 +1,55 @@
-<p id="notice"><%= notice %></p>
+<h1>
+  <%= t('helpers.title.show', model: Channel.model_name.human) %>
+</h1>
 
-<p>
-  <strong>Channel:</strong>
-  <%= @channel.channel_id %>
-</p>
+<%= render partial: 'partials/action' %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @channel.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= simple_format(@channel.description) %>
-</p>
-
-<p>
-  <strong>Thumbnail url:</strong>
-  <%= @channel.thumbnail_url %>
-  <%= image_tag(@channel.thumbnail_url) if @channel.thumbnail_url.present? %>
-</p>
-
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <%= Channel.human_attribute_name :title %>
+    </div>
+    <div class="col-xs-8 col-sm-10">
+      <%= link_to image_tag(@channel.thumbnail_url),
+                  @channel.url if @channel.thumbnail_url.present? %>
+      <%= link_to print_link(@channel.title, @channel.url, '(チャンネル名未取得)') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <%= Channel.human_attribute_name :channel_id %>
+    </div>
+    <div class="col-xs-8 col-sm-10">
+      <%= @channel.channel_id %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <%= Channel.human_attribute_name :description %>
+    </div>
+    <div class="col-xs-8 col-sm-10">
+      <%= simple_format(@channel.description) %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <%= Channel.human_attribute_name :thumbnail_url %>
+    </div>
+    <div class="col-xs-8 col-sm-10">
+      <%= @channel.thumbnail_url %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <%= Channel.human_attribute_name :published_at %>
+    </div>
+    <div class="col-xs-8 col-sm-10">
+      <%= l(@channel.published_at) %>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Snippet', update_snippet_channel_path(@channel), method: :put %>
 <br>
 <%= link_to 'Statistics', build_statistics_channel_path(@channel), method: :put %>
 <br>
-<%= link_to 'Edit', edit_channel_path(@channel) %> |
-<%= link_to 'Back', channels_path %>
