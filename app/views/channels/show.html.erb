@@ -12,13 +12,19 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @channel.description %>
+  <%= simple_format(@channel.description) %>
 </p>
 
 <p>
   <strong>Thumbnail url:</strong>
   <%= @channel.thumbnail_url %>
+  <%= image_tag(@channel.thumbnail_url) if @channel.thumbnail_url.present? %>
 </p>
 
+
+<%= link_to 'Snippet', update_snippet_channel_path(@channel), method: :put %>
+<br>
+<%= link_to 'Statistics', build_statistics_channel_path(@channel), method: :put %>
+<br>
 <%= link_to 'Edit', edit_channel_path(@channel) %> |
 <%= link_to 'Back', channels_path %>

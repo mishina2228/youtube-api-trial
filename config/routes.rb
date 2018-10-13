@@ -4,7 +4,11 @@ Rails.application.routes.draw do
     devise_for :users
 
     resources :system_settings, except: :destroy
-    resources :channel_statuses
-    resources :channels
+    resources :channels do
+      member do
+        put :build_statistics
+        put :update_snippet
+      end
+    end
   end
 end

@@ -1,5 +1,6 @@
 class ChannelsController < ApplicationController
-  before_action :set_channel, only: [:show, :edit, :update, :destroy]
+  before_action :set_channel,
+                only: [:show, :edit, :update, :destroy, :build_statistics, :update_snippet]
 
   def index
     @channels = Channel.all
@@ -46,6 +47,30 @@ class ChannelsController < ApplicationController
     respond_to do |format|
       format.html {redirect_to channels_url, notice: 'Channel was successfully destroyed.'}
       format.json {head :no_content}
+    end
+  end
+
+  def build_statistics
+    res = @channel.build_statistics
+    if res.status_ok?
+      redirect_to @channel, notice: 'うまくいった'
+    else
+      message = []
+      message << 'しっぱいです'
+      message << res.error_message
+      redirect_to channels_url, alert: message
+    end
+  end
+
+  def update_snippet
+    res = @channel.update_snippet
+    if res.status_ok?
+      redirect_to @channel, notice: 'うまくいった'
+    else
+      message = []
+      message << 'しっぱいです'
+      message << res.error_message
+      redirect_to channels_url, alert: message
     end
   end
 
