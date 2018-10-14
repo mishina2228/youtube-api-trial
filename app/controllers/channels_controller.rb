@@ -21,7 +21,7 @@ class ChannelsController < ApplicationController
 
     respond_to do |format|
       if @channel.save
-        format.html {redirect_to @channel, notice: 'Channel was successfully created.'}
+        format.html {redirect_to @channel, notice: t('helpers.notice.create')}
         format.json {render :show, status: :created, location: @channel}
       else
         format.html {render :new}
@@ -33,7 +33,7 @@ class ChannelsController < ApplicationController
   def update
     respond_to do |format|
       if @channel.update(channel_params)
-        format.html {redirect_to @channel, notice: 'Channel was successfully updated.'}
+        format.html {redirect_to @channel, notice: t('helpers.notice.update')}
         format.json {render :show, status: :ok, location: @channel}
       else
         format.html {render :edit}
@@ -45,31 +45,29 @@ class ChannelsController < ApplicationController
   def destroy
     @channel.destroy
     respond_to do |format|
-      format.html {redirect_to channels_url, notice: 'Channel was successfully destroyed.'}
+      format.html {redirect_to channels_url, notice: t('helpers.notice.delete')}
       format.json {head :no_content}
     end
   end
 
   def build_statistics
-    res = @channel.build_statistics
-    if res.status_ok?
-      redirect_to @channel, notice: 'うまくいった'
+    if @channel.build_statistics
+      redirect_to @channel, notice: t('text.channel.build_statistics.success')
     else
       message = []
-      message << 'しっぱいです'
-      message << res.error_message
+      message << t('text.channel.build_statistics.error')
+      message << @channel.errors
       redirect_to channels_url, alert: message
     end
   end
 
   def update_snippet
-    res = @channel.update_snippet
-    if res.status_ok?
-      redirect_to @channel, notice: 'うまくいった'
+    if @channel.update_snippet
+      redirect_to @channel, notice: t('text.channel.update_snippet.success')
     else
       message = []
-      message << 'しっぱいです'
-      message << res.error_message
+      message << t('text.channel.update_snippet.error')
+      message << @channel.errors
       redirect_to channels_url, alert: message
     end
   end

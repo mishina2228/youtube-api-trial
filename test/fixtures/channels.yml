@@ -1,13 +1,8 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+チャンネル1:
+  channel_id: channel_id1
+  title: Channel1
+  description: description1
+  thumbnail_url: https://example.com/thumbnail/1
 
-one:
-  channel_id: MyString
-  title: MyString
-  description: MyString
-  thumbnail_url: MyString
-
-two:
-  channel_id: MyString
-  title: MyString
-  description: MyString
-  thumbnail_url: MyString
+チャンネル2:
+  channel_id: channel_id2

@@ -28,7 +28,7 @@ class SystemSettingsController < ApplicationController
 
     respond_to do |format|
       if @system_setting.save
-        format.html {redirect_to @system_setting, notice: 'System setting was successfully created.'}
+        format.html {redirect_to @system_setting, notice: t('helpers.notice.create')}
         format.json {render :show, status: :created, location: @system_setting}
       else
         format.html {render :new}
@@ -40,7 +40,7 @@ class SystemSettingsController < ApplicationController
   def update
     respond_to do |format|
       if @system_setting.update(system_setting_params)
-        format.html {redirect_to @system_setting, notice: 'System setting was successfully updated.'}
+        format.html {redirect_to @system_setting, notice: t('helpers.notice.update')}
         format.json {render :show, status: :ok, location: @system_setting}
       else
         format.html {render :edit}

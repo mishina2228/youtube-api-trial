@@ -16,40 +16,28 @@ class Youtube::Service
   end
 
   def statistics(channel_id)
-    status, res, error_message = get_channel(:statistics, channel_id)
-    statics = res.items.first.try(:statistics)
-    Youtube::ServiceResponse.new(status, statics, error_message)
+    status, res, error = get_channel(:statistics, channel_id)
+    statics = res.items.first.try(:statistics) if error.blank?
+    Youtube::ServiceResponse.new(status, statics, error)
   end
 
   def snippet(channel_id)
-    status, res, error_message = get_channel(:snippet, channel_id)
-    snippet = res.items.first.try(:snippet)
-    Youtube::ServiceResponse.new(status, snippet, error_message)
+    status, res, error = get_channel(:snippet, channel_id)
+    snippet = res.items.first.try(:snippet) if error.blank?
+    Youtube::ServiceResponse.new(status, snippet, error)
   end
 
   def get_channel(part, channel_id)
     status = nil
     response = nil
-    error_message = nil
+    error = nil
     begin
       response = service.list_channels(part, id: channel_id)
       status = response.page_info.total_results.zero? ? Statuses::BLANK : Statuses::OK
     rescue Google::Apis::ClientError => e
-      response = JSON.parse(e.body).with_indifferent_access
-      status = error_status(response[:error][:errors][0][:reason])
-      error_message = e.message
+      status = Statuses::ERROR
+      error = e
     end
-    [status, response, error_message]
-  end
-
-  def error_status(error_reason)
-    case error_reason
-    when 'dailyLimitExceededUnreg'
-      Statuses::UNREGISTERED
-    when 'keyInvalid'
-      Statuses::KEY_INVALID
-    when 'unknownPart'
-      Statuses::UNKNOWN_PART
-    end
+    [status, response, error]
   end
 end

@@ -14,8 +14,8 @@ ja:
         thumbnail_url: サムネイルURL
       channel_statistic:
         channel_id: チャンネルID
-        view_count: 視聴回数
-        subscriver_count: 登録者数
+        view_count: 総視聴回数
+        subscriber_count: 登録者数
         video_count: 動画数
       system_setting:
         api_key: APIキー

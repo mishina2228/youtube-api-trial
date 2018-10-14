@@ -1,13 +1,11 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  channel_id: MyString
+チャンネル統計1:
+  channel_id: channel_id1
   view_count: 1
   subscriber_count: 1
   video_count: 1
 
-two:
-  channel_id: MyString
+チャンネル統計2:
+  channel_id: channel_id2
   view_count: 1
   subscriber_count: 1
   video_count: 1

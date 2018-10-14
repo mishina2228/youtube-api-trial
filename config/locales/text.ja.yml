@@ -1,6 +1,16 @@
 ---
 ja:
   text:
+    channel:
+      build_statistics:
+        success: チャンネル統計の取得に成功しました
+        error: チャンネル統計の取得に失敗しました
+      thumbnail: サムネイル
+      title:
+        missing: (チャンネル名未取得)
+      update_snippet:
+        success: チャンネル情報の取得に成功しました
+        error: チャンネル情報の取得に失敗しました
     devise:
       sign_in: ログイン
       sign_out: ログアウト

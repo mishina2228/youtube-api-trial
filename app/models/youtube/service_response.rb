@@ -1,10 +1,10 @@
 class Youtube::ServiceResponse
-  attr_accessor :status, :response, :error_message
+  attr_accessor :status, :response, :error
 
-  def initialize(status, response, error_message)
+  def initialize(status, response, error)
     self.status = status
     self.response = response
-    self.error_message = error_message
+    self.error = error
   end
 
   def status_name
@@ -13,5 +13,13 @@ class Youtube::ServiceResponse
 
   def status_ok?
     status == Statuses::OK
+  end
+
+  def status_blank?
+    status == Statuses::BLANK
+  end
+
+  def status_error?
+    status == Statuses::ERROR
   end
 end

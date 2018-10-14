@@ -1,6 +1,16 @@
 ---
 en:
   text:
+    channel:
+      build_statistics:
+        success: Acquiring channel statistics were succeeded.
+        error: Acquiring channel statistics were failed.
+      thumbnail: Thumbnail
+      title:
+        missing: (Title not acquired)
+      update_snippet:
+        success: Acquiring a channel info was succeeded.
+        error: Acquiring a channel info was failed.
     devise:
       sign_in: Log in
       sign_out: Log out

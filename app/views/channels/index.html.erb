@@ -5,18 +5,24 @@
 <table class='table table-bordered table-hover table-striped'>
   <thead>
   <tr>
+    <th><%= t('text.channel.thumbnail') %></th>
     <th><%= Channel.human_attribute_name :title %></th>
-    <th><%= Channel.human_attribute_name :title %></th>
-    <th><%= Channel.human_attribute_name :description %></th>
+    <th><%= Channel.human_attribute_name :published_at %></th>
+    <th><%= ChannelStatistic.human_attribute_name :subscriber_count %></th>
+    <th><%= ChannelStatistic.human_attribute_name :video_count %></th>
+    <th><%= ChannelStatistic.human_attribute_name :view_count %></th>
   </tr>
   </thead>
 
   <tbody>
   <% @channels.each do |c| %>
     <tr>
-      <td></td>
-      <td><%= print_link(c.title, channel_path(c), '(チャンネル名未取得)') %></td>
-      <td><%= truncate(c.description, length: 50) %></td>
+      <td><%= image_tag(c.thumbnail_url) if c.thumbnail_url.present? %></td>
+      <td><%= print_link(c.title, channel_path(c), t('text.channel.title.missing')) %></td>
+      <td><%= print_datetime(c.published_at) %></td>
+      <td><%= print_number(c.latest_subscriber_count) %></td>
+      <td><%= print_number(c.latest_video_count) %></td>
+      <td><%= print_number(c.latest_view_count) %></td>
     </tr>
   <% end %>
   </tbody>
@@ -25,4 +31,3 @@
 <br>
 
 <%= link_to t('helpers.link.new'), new_channel_path %>
-

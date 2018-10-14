@@ -12,7 +12,7 @@
     <div class="col-xs-8 col-sm-10">
       <%= link_to image_tag(@channel.thumbnail_url),
                   @channel.url if @channel.thumbnail_url.present? %>
-      <%= link_to print_link(@channel.title, @channel.url, '(チャンネル名未取得)') %>
+      <%= print_link(@channel.title, @channel.url, '(チャンネル名未取得)') %>
     </div>
   </div>
   <div class="row">
@@ -44,7 +44,7 @@
       <%= Channel.human_attribute_name :published_at %>
     </div>
     <div class="col-xs-8 col-sm-10">
-      <%= l(@channel.published_at) %>
+      <%= print_datetime(@channel.published_at) %>
     </div>
   </div>
 </div>
