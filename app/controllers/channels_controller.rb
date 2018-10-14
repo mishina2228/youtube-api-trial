@@ -1,6 +1,7 @@
 class ChannelsController < ApplicationController
-  before_action :set_channel,
-                only: [:show, :edit, :update, :destroy, :build_statistics, :update_snippet]
+  before_action :set_channel, only: [
+    :show, :edit, :update, :destroy, :build_statistics, :update_snippet
+  ]
 
   def index
     @channels = Channel.all
@@ -56,8 +57,8 @@ class ChannelsController < ApplicationController
     else
       message = []
       message << t('text.channel.build_statistics.error')
-      message << @channel.errors
-      redirect_to channels_url, alert: message
+      message << @channel.errors.full_messages
+      redirect_to channels_url, alert: message.flatten
     end
   end
 
@@ -67,8 +68,8 @@ class ChannelsController < ApplicationController
     else
       message = []
       message << t('text.channel.update_snippet.error')
-      message << @channel.errors
-      redirect_to channels_url, alert: message
+      message << @channel.errors.full_messages
+      redirect_to channels_url, alert: message.flatten
     end
   end
 
