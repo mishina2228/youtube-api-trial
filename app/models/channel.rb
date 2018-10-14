@@ -1,8 +1,9 @@
 class Channel < ApplicationRecord
-  has_many :channel_statistics, -> {order(:created_at)},
+  has_many :channel_statistics, -> {order('created_at DESC')},
            dependent: :destroy, inverse_of: :channel
 
-  validates :channel_id, presence: true, uniqueness: true
+  validates :channel_id, presence: {message: proc {I18n.t('text.channel.channel_id.invalid')}}
+  validates :channel_id, uniqueness: true
   validates :thumbnail_url, format: URI.regexp(%w(http https)), allow_blank: true
 
   def url
@@ -11,7 +12,7 @@ class Channel < ApplicationRecord
 
   def build_statistics
     res = youtube_service.statistics(channel_id)
-    return false if error_message(res, :channel_statistics)
+    return false if error_message(res)
 
     statistics = res.response
     channel_statistics.build(channel_statistics_params(statistics)).save
@@ -19,7 +20,7 @@ class Channel < ApplicationRecord
 
   def update_snippet
     res = youtube_service.snippet(channel_id)
-    return false if error_message(res, :snippet)
+    return false if error_message(res)
 
     snippet = res.response
     update(snippet_params(snippet))
@@ -35,17 +36,14 @@ class Channel < ApplicationRecord
   end
 
   def channel_id=(val)
-    uri = URI.parse(val).path.split('/').last if val.present?
-    super(uri)
-  rescue URI::InvalidURIError
-    super(nil)
+    super(parse_channel_id(val))
   end
 
-  def error_message(res, key)
+  def error_message(res, key = :base)
     return false if res.status_ok?
 
     if res.status_blank?
-      errors.add(key, 'IDがあってないんじゃね')
+      errors.add(key, I18n.t('text.youtube.errors.channel_id_invalid'))
     elsif res.status_error?
       errors.add(key, res.error.message)
     end
@@ -65,6 +63,17 @@ class Channel < ApplicationRecord
   end
 
   private
+
+  def parse_channel_id(val)
+    URI.parse(val)
+    if (m = val.match(Consts::Youtube::REGEXP_URL))
+      m[:channel_id]
+    elsif val.match?(Consts::Youtube::REGEXP_WITHOUT_SLASH)
+      val
+    end
+  rescue URI::InvalidURIError
+    nil
+  end
 
   def snippet_params(snippet)
     {

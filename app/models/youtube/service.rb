@@ -18,13 +18,13 @@ class Youtube::Service
   def statistics(channel_id)
     status, res, error = get_channel(:statistics, channel_id)
     statics = res.items.first.try(:statistics) if error.blank?
-    Youtube::ServiceResponse.new(status, statics, error)
+    ::Youtube::ServiceResponse.new(status, statics, error)
   end
 
   def snippet(channel_id)
     status, res, error = get_channel(:snippet, channel_id)
     snippet = res.items.first.try(:snippet) if error.blank?
-    Youtube::ServiceResponse.new(status, snippet, error)
+    ::Youtube::ServiceResponse.new(status, snippet, error)
   end
 
   def get_channel(part, channel_id)
@@ -33,9 +33,13 @@ class Youtube::Service
     error = nil
     begin
       response = service.list_channels(part, id: channel_id)
-      status = response.page_info.total_results.zero? ? Statuses::BLANK : Statuses::OK
+      status = if response.page_info.total_results.zero?
+                 Consts::Statuses::BLANK
+               else
+                 Consts::Statuses::OK
+               end
     rescue Google::Apis::ClientError => e
-      status = Statuses::ERROR
+      status = Consts::Statuses::ERROR
       error = e
     end
     [status, response, error]

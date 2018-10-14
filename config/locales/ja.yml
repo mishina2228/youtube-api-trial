@@ -14,6 +14,7 @@ ja:
         thumbnail_url: サムネイルURL
       channel_statistic:
         channel_id: チャンネルID
+        created_at: 統計取得日時
         view_count: 総視聴回数
         subscriber_count: 登録者数
         video_count: 動画数
@@ -159,10 +160,12 @@ ja:
   helpers:
     link:
       back: 戻る
+      build_statistics: 統計取得
       delete: 削除
       edit: 編集
       new: 新規作成
       show: 閲覧
+      update_snippet: 情報更新
     notice:
       continuously_create: 続けて作成します
       create: 正常に作成されました
@@ -180,7 +183,6 @@ ja:
     title:
       edit: "%{model}編集"
       list: "%{models}一覧"
-      load_csv: "%{models}読込"
       new: "%{model}新規作成"
       search: "%{models}検索結果"
       show: "%{model}閲覧"

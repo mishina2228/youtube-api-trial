@@ -3,6 +3,7 @@
 </h1>
 
 <%= render partial: 'partials/action' %>
+<%= render partial: 'action' %>
 
 <div class="container">
   <div class="row">
@@ -12,7 +13,7 @@
     <div class="col-xs-8 col-sm-10">
       <%= link_to image_tag(@channel.thumbnail_url),
                   @channel.url if @channel.thumbnail_url.present? %>
-      <%= print_link(@channel.title, @channel.url, '(チャンネル名未取得)') %>
+      <%= print_link(@channel.title, @channel.url, t('text.channel.title.missing')) %>
     </div>
   </div>
   <div class="row">
@@ -49,7 +50,4 @@
   </div>
 </div>
 
-<%= link_to 'Snippet', update_snippet_channel_path(@channel), method: :put %>
-<br>
-<%= link_to 'Statistics', build_statistics_channel_path(@channel), method: :put %>
-<br>
+<%= render 'statistics', channel_statistics: @channel.channel_statistics %>

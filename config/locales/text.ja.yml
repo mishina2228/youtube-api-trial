@@ -5,6 +5,11 @@ ja:
       build_statistics:
         success: チャンネル統計の取得に成功しました
         error: チャンネル統計の取得に失敗しました
+      channel_id:
+        description: チャンネルID、あるいはチャンネルのURLを入力できます。
+        invalid: が未入力、あるいは無効な値です
+      statistics:
+        missing: チャンネル統計が未取得です
       thumbnail: サムネイル
       title:
         missing: (チャンネル名未取得)
@@ -16,3 +21,6 @@ ja:
       sign_out: ログアウト
     top:
       top_page: TOPページ
+    youtube:
+      errors:
+        channel_id_invalid: チャンネルIDが間違っていませんか?

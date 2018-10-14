@@ -2,9 +2,9 @@
   <% if channel.errors.any? %>
     <div id="error_explanation">
       <ul>
-      <% channel.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% channel.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -20,6 +20,7 @@
         </div>
       </div>
     </div>
+    * <%= t('text.channel.channel_id.description') %>
 
     <div class="actions">
       <%= form.submit class: 'btn btn-primary' %>

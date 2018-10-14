@@ -8,18 +8,18 @@ class Youtube::ServiceResponse
   end
 
   def status_name
-    Statuses::STATUS[status]
+    Consts::Statuses::STATUS[status]
   end
 
   def status_ok?
-    status == Statuses::OK
+    status == Consts::Statuses::OK
   end
 
   def status_blank?
-    status == Statuses::BLANK
+    status == Consts::Statuses::BLANK
   end
 
   def status_error?
-    status == Statuses::ERROR
+    status == Consts::Statuses::ERROR
   end
 end

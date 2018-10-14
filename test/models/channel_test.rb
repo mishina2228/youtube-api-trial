@@ -14,22 +14,37 @@ class ChannelTest < ActiveSupport::TestCase
     assert channel.valid?
   end
 
-  def test_channel_id=
-    channel = Channel.new(channel_id: 'abc')
-    assert_equal channel.channel_id, 'abc'
+  def test_channel_id_valid
+    valid_channel_ids = %w(
+      abc
+      https://www.youtube.com/channel/abc
+      www.youtube.com/channel/abc
+      https://www.youtube.com/channel/abc/featured
+      www.youtube.com/channel/abc/featured
+    )
 
-    channel = Channel.new(channel_id: 'https://www.youtube.com/channel/abc')
-    assert_equal channel.channel_id, 'abc'
+    valid_channel_ids.each do |channel_id|
+      channel = Channel.new(channel_id: channel_id)
+      assert_equal 'abc', channel.channel_id
+    end
+  end
 
-    channel = Channel.new(channel_id: 'www.youtube.com/channel/abc')
-    assert_equal channel.channel_id, 'abc'
+  def test_channel_id_invalid
+    invalid_channel_ids = [
+      nil, '', '1 2 3'
+    ]
 
-    channel = Channel.new(channel_id: nil)
-    assert_nil channel.channel_id
-    channel = Channel.new(channel_id: '')
-    assert_nil channel.channel_id
-    channel = Channel.new(channel_id: '1 2 3')
-    assert_nil channel.channel_id
+    invalid_channel_ids += %w(
+      https://www.youtube.com/
+      https://www.youtube.com/user/abc
+      https://www.youtube.com/watch?v=abc
+      https://example.com/abc
+    )
+
+    invalid_channel_ids.each do |channel_id|
+      channel = Channel.new(channel_id: channel_id)
+      assert channel.channel_id.blank?
+    end
   end
 
   def valid_params

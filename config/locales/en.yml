@@ -14,6 +14,7 @@ en:
         thumbnail_url: Thumbnail URL
       channel_statistic:
         channel_id: Channel ID
+        created_at: Statistics acquisition date and time
         view_count: View Count
         subscriber_count: Subscriber count
         video_count: Video count
@@ -165,10 +166,12 @@ en:
   helpers:
     link:
       back: Back
+      build_statistics: Acquire statistics
       delete: Delete
       edit: Edit
       new: New
       show: Show
+      update_snippet: Update info
     notice:
       continuously_create: Continue to create
       create: Created successfully
@@ -186,7 +189,6 @@ en:
     title:
       edit: "Editing %{model}"
       list: "Listing %{models}"
-      load_csv: "Load %{models}"
       new: "New %{model}"
       search: "Search Results of %{models}"
       show: "Show %{model}"

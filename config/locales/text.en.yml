@@ -5,6 +5,11 @@ en:
       build_statistics:
         success: Acquiring channel statistics were succeeded.
         error: Acquiring channel statistics were failed.
+      channel_id:
+        description: You can input the channel ID or the URL of the channel.
+        invalid: is blank, or invalid.
+      statistics:
+        missing: Channel statistics are not yet acquired.
       thumbnail: Thumbnail
       title:
         missing: (Title not acquired)
@@ -16,3 +21,6 @@ en:
       sign_out: Log out
     top:
       top_page: TOP Page
+    youtube:
+      errors:
+        channel_id_invalid: Is the channel ID wrong?
