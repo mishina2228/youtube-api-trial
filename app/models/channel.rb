@@ -30,7 +30,7 @@ class Channel < ApplicationRecord
     return @youtube_service if @youtube_service
 
     ss = SystemSetting.first
-    raise 'missing' unless ss
+    raise t('text.system_setting.missing') unless ss
 
     @youtube_service = Youtube::Service.new(ss.api_key)
   end
