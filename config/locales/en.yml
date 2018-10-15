@@ -166,12 +166,14 @@ en:
   helpers:
     link:
       back: Back
+      build_all_statistics: Acquire statistics in bulk
       build_statistics: Acquire statistics
       delete: Delete
       edit: Edit
       new: New
       show: Show
       update_snippet: Update info
+      update_all_snippets: Update infos in bulk
     notice:
       continuously_create: Continue to create
       create: Created successfully

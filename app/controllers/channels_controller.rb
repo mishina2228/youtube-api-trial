@@ -62,6 +62,19 @@ class ChannelsController < ApplicationController
     end
   end
 
+  def build_all_statistics
+    success = []
+    failure = []
+    Channel.find_each do |channel|
+      channel.build_statistics ? success << channel : failure << channel
+    end
+    message = []
+    message << t('text.channel.build_all_statistics.message')
+    message << t('text.common.success_count', count: success.count)
+    message << t('text.common.failure_count', count: failure.count)
+    redirect_to channels_url, notice: message
+  end
+
   def update_snippet
     if @channel.update_snippet
       redirect_to @channel, notice: t('text.channel.update_snippet.success')
@@ -71,6 +84,19 @@ class ChannelsController < ApplicationController
       message << @channel.errors.full_messages
       redirect_to channels_url, alert: message.flatten
     end
+  end
+
+  def update_all_snippets
+    success = []
+    failure = []
+    Channel.find_each do |channel|
+      channel.update_snippet ? success << channel : failure << channel
+    end
+    message = []
+    message << t('text.channel.update_all_snippets.message')
+    message << t('text.common.success_count', count: success.count)
+    message << t('text.common.failure_count', count: failure.count)
+    redirect_to channels_url, notice: message
   end
 
   private

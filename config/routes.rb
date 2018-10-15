@@ -9,6 +9,10 @@ Rails.application.routes.draw do
         put :build_statistics
         put :update_snippet
       end
+      collection do
+        put :build_all_statistics
+        put :update_all_snippets
+      end
     end
   end
 end

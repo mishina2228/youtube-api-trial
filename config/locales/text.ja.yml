@@ -2,6 +2,8 @@
 ja:
   text:
     channel:
+      build_all_statistics:
+        message: チャンネル統計の一括取得を行いました
       build_statistics:
         success: チャンネル統計の取得に成功しました
         error: チャンネル統計の取得に失敗しました
@@ -13,9 +15,14 @@ ja:
       thumbnail: サムネイル
       title:
         missing: (チャンネル名未取得)
+      update_all_snippets:
+        message: チャンネル情報の一括取得を行いました
       update_snippet:
         success: チャンネル情報の取得に成功しました
         error: チャンネル情報の取得に失敗しました
+    common:
+      failure_count: "失敗: %{count}件"
+      success_count: "成功: %{count}件"
     devise:
       sign_in: ログイン
       sign_out: ログアウト

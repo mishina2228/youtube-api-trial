@@ -2,6 +2,8 @@
 en:
   text:
     channel:
+      build_all_statistics:
+        message: Acquired channel statistics in bulk.
       build_statistics:
         success: Acquiring channel statistics were succeeded.
         error: Acquiring channel statistics were failed.
@@ -13,9 +15,14 @@ en:
       thumbnail: Thumbnail
       title:
         missing: (Title not acquired)
+      update_all_snippets:
+        message: Acquired channel infos in bulk.
       update_snippet:
         success: Acquiring a channel info was succeeded.
         error: Acquiring a channel info was failed.
+    common:
+      failure_count: "Failure: %{count}"
+      success_count: "Success: %{count}"
     devise:
       sign_in: Log in
       sign_out: Log out

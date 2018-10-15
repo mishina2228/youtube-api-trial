@@ -2,6 +2,10 @@
   <%= t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale)) %>
 </h1>
 
+<p>
+  <%= render partial: 'actions' %>
+</p>
+
 <%= link_to t('helpers.link.new'), new_channel_path %>
 <br><br>
 

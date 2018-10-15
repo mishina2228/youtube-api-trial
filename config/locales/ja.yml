@@ -160,11 +160,13 @@ ja:
   helpers:
     link:
       back: 戻る
+      build_all_statistics: 一括統計取得
       build_statistics: 統計取得
       delete: 削除
       edit: 編集
       new: 新規作成
       show: 閲覧
+      update_all_snippets: 一括情報更新
       update_snippet: 情報更新
     notice:
       continuously_create: 続けて作成します
