@@ -121,3 +121,7 @@ td a {
   border: solid 3px #6091d3;
   border-radius: 10px;
 }
+
+.vertical > * {
+  display: block;
+}

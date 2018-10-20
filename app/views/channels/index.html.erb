@@ -18,6 +18,7 @@
     <th><%= ChannelStatistic.human_attribute_name :subscriber_count %></th>
     <th><%= ChannelStatistic.human_attribute_name :video_count %></th>
     <th><%= ChannelStatistic.human_attribute_name :view_count %></th>
+    <th><%= ChannelStatistic.human_attribute_name :created_at %></th>
   </tr>
   </thead>
 
@@ -27,9 +28,46 @@
       <td><%= image_tag(c.thumbnail_url) if c.thumbnail_url.present? %></td>
       <td><%= print_link(c.title, channel_path(c), t('text.channel.title.missing')) %></td>
       <td><%= print_datetime(c.published_at) %></td>
-      <td><%= print_number(c.latest_subscriber_count) %></td>
-      <td><%= print_number(c.latest_video_count) %></td>
-      <td><%= print_number(c.latest_view_count) %></td>
+      <td>
+        <div class="vertical text-right text-nowrap">
+          <span>
+            <%= print_number(c.latest_subscriber_count) %>
+          </span>
+          <span>
+            <%= print_diff_numbers(c.latest_subscriber_count, c.second_latest_subscriber_count) %>
+          </span>
+        </div>
+      </td>
+      <td>
+        <div class="vertical text-right text-nowrap">
+          <span>
+            <%= print_number(c.latest_video_count) %>
+          </span>
+          <span>
+            <%= print_diff_numbers(c.latest_video_count, c.second_latest_video_count) %>
+          </span>
+        </div>
+      </td>
+      <td>
+        <div class="vertical text-right text-nowrap">
+          <span>
+            <%= print_number(c.latest_view_count) %>
+          </span>
+          <span>
+            <%= print_diff_numbers(c.latest_view_count, c.second_latest_view_count) %>
+          </span>
+        </div>
+      </td>
+      <td>
+        <div class="vertical text-right text-nowrap">
+          <span>
+        <%= print_datetime(c.latest_acquired_at) %>
+          </span>
+          <span>
+        <%= print_diff_datetimes(c.latest_acquired_at, c.second_latest_acquired_at) %>
+          </span>
+        </div>
+      </td>
     </tr>
   <% end %>
   </tbody>

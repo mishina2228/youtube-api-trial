@@ -50,16 +50,44 @@ class Channel < ApplicationRecord
     true
   end
 
+  def latest_statistics
+    channel_statistics.first
+  end
+
   def latest_view_count
-    channel_statistics.first.try(:view_count)
+    latest_statistics&.view_count
   end
 
   def latest_subscriber_count
-    channel_statistics.first.try(:subscriber_count)
+    latest_statistics&.subscriber_count
   end
 
   def latest_video_count
-    channel_statistics.first.try(:video_count)
+    latest_statistics&.video_count
+  end
+
+  def latest_acquired_at
+    latest_statistics&.created_at
+  end
+
+  def second_latest_statistics
+    channel_statistics.second
+  end
+
+  def second_latest_view_count
+    second_latest_statistics&.view_count
+  end
+
+  def second_latest_subscriber_count
+    second_latest_statistics&.subscriber_count
+  end
+
+  def second_latest_video_count
+    second_latest_statistics&.video_count
+  end
+
+  def second_latest_acquired_at
+    second_latest_statistics&.created_at
   end
 
   private
