@@ -64,7 +64,7 @@
         <%= print_datetime(c.latest_acquired_at) %>
           </span>
           <span>
-        <%= print_diff_datetimes(c.latest_acquired_at, c.second_latest_acquired_at) %>
+        <%= elapsed_time print_diff_datetimes(c.latest_acquired_at, c.second_latest_acquired_at) %>
           </span>
         </div>
       </td>

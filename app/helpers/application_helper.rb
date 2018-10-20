@@ -33,6 +33,12 @@ module ApplicationHelper
     distance_of_time_in_words(datetime1, datetime2)
   end
 
+  def elapsed_time(time_word)
+    return if time_word.blank?
+
+    I18n.t('text.channel.statistics.elapsed_time', time: time_word)
+  end
+
   def text_url_to_link(text)
     URI.extract(text, %w(http https)).uniq.each do |url|
       text.gsub!(url, link_to(url, url))
