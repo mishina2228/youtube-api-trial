@@ -32,4 +32,11 @@ module ApplicationHelper
 
     distance_of_time_in_words(datetime1, datetime2)
   end
+
+  def text_url_to_link(text)
+    URI.extract(text, %w(http https)).uniq.each do |url|
+      text.gsub!(url, link_to(url, url))
+    end
+    text
+  end
 end
