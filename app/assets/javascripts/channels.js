@@ -3,7 +3,8 @@ $(document).on('turbolinks:load', (function () {
 }));
 
 function emojify() {
-  const $contents = $('.emojify');
-  const emojified = emojione.toImage($contents.html());
-  $contents.html(emojified);
+  $('.emojify').each(function(){
+    const emojified = emojione.toImage($(this).html());
+    $(this).html(emojified);
+  });
 }
