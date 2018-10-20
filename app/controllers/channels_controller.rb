@@ -4,7 +4,7 @@ class ChannelsController < ApplicationController
   ]
 
   def index
-    @channels = Channel.all
+    @channels = Channel.includes(:channel_statistics)
   end
 
   def show
