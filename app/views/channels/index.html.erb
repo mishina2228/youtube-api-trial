@@ -13,8 +13,16 @@
   <thead>
   <tr>
     <th><%= t('text.channel.thumbnail') %></th>
-    <th><%= Channel.human_attribute_name :title %></th>
-    <th><%= Channel.human_attribute_name :published_at %></th>
+    <th>
+      <%= Channel.human_attribute_name :title %>
+      <%= link_to '▲', channels_path(order: :title) %>
+      <%= link_to '▼', channels_path(order: :title, desc: true) %>
+    </th>
+    <th>
+      <%= Channel.human_attribute_name :published_at %>
+      <%= link_to '▲', channels_path(order: :published_at) %>
+      <%= link_to '▼', channels_path(order: :published_at, desc: true) %>
+    </th>
     <th><%= ChannelStatistic.human_attribute_name :subscriber_count %></th>
     <th><%= ChannelStatistic.human_attribute_name :video_count %></th>
     <th><%= ChannelStatistic.human_attribute_name :view_count %></th>

@@ -5,6 +5,8 @@ class ChannelsController < ApplicationController
 
   def index
     @channels = Channel.includes(:channel_statistics)
+                       .order(params[:order])
+    @channels = @channels.reverse_order if params[:desc].present?
   end
 
   def show
