@@ -6,7 +6,9 @@
   <%= render partial: 'actions' %>
 </p>
 
-<%= link_to t('helpers.link.new'), new_channel_path %>
+<% if can? :create, Channel %>
+  <%= link_to t('helpers.link.new'), new_channel_path %>
+<% end %>
 <br><br>
 
 <table class='table table-bordered table-hover table-striped'>
@@ -83,4 +85,6 @@
 
 <br>
 
-<%= link_to t('helpers.link.new'), new_channel_path %>
+<% if can? :create, Channel %>
+  <%= link_to t('helpers.link.new'), new_channel_path %>
+<% end %>

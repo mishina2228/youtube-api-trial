@@ -2,6 +2,9 @@ class ChannelsController < ApplicationController
   before_action :set_channel, only: [
     :show, :edit, :update, :destroy, :build_statistics, :update_snippet
   ]
+  before_action -> {require_data(channels_url, Channel)},
+                only: [:build_all_statistics, :update_all_snippets]
+  authorize_resource
 
   def index
     @channels = Channel.includes(:channel_statistics)

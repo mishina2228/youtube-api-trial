@@ -1,5 +1,6 @@
 class SystemSettingsController < ApplicationController
   before_action :set_system_setting
+  authorize_resource
 
   def index
     if @system_setting.blank?
