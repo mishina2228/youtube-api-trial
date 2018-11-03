@@ -7,4 +7,19 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def user
+    User.find_by!(admin: false)
+  end
+
+  def admin
+    User.find_by!(admin: true)
+  end
+end
+
+class ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+end
+
+class ActionController::TestCase
+  include Devise::Test::ControllerHelpers
 end
