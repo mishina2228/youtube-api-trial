@@ -65,5 +65,5 @@ gem 'cancancan'
 gem 'devise'
 gem 'devise-i18n'
 
-gem 'paranoia', '~> 2.2'
 gem 'google-api-client', '~> 0.11'
+gem 'paranoia', '~> 2.2'
