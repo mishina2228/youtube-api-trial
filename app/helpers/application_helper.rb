@@ -40,6 +40,8 @@ module ApplicationHelper
   end
 
   def text_url_to_link(text)
+    return if text.blank?
+
     URI.extract(text, %w(http https)).uniq.each do |url|
       text.gsub!(url, link_to(url, url))
     end
