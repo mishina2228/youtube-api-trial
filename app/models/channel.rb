@@ -32,7 +32,7 @@ class Channel < ApplicationRecord
     ss = SystemSetting.first
     raise t('text.system_setting.missing') unless ss
 
-    @youtube_service = Youtube::Service.new(ss.api_key)
+    @youtube_service = ::Youtube::Service.new(ss.api_key)
   end
 
   def channel_id=(val)

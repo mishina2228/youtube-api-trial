@@ -28,7 +28,6 @@ class Youtube::Service
   end
 
   def get_channel(part, channel_id)
-    status = nil
     response = nil
     error = nil
     begin
