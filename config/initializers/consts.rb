@@ -8,7 +8,7 @@ module Consts
   end
 
   module Youtube
-    REGEXP_URL = %r(\A(https://)?www\.youtube\.com/channel/(?<channel_id>[^/]+).*\z)
-    REGEXP_WITHOUT_SLASH = %r(\A[^/]+\z)
+    REGEXP_URL = %r(\A(https://)?www\.youtube\.com/channel/(?<channel_id>[^/]+).*\z).freeze
+    REGEXP_WITHOUT_SLASH = %r(\A[^/]+\z).freeze
   end
 end
