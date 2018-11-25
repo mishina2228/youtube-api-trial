@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     root 'channels#index'
     devise_for :users
 
-    resources :system_settings, except: :destroy
+    resource :system_setting, except: :destroy
     resources :channels do
       member do
         put :build_statistics

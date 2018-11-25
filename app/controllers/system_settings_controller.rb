@@ -2,20 +2,13 @@ class SystemSettingsController < ApplicationController
   before_action :set_system_setting
   authorize_resource
 
-  def index
-    if @system_setting.blank?
-      redirect_to new_system_setting_path
-      return
-    end
-    redirect_to system_setting_path(@system_setting)
-  end
-
   def show
+    redirect_to new_system_setting_path if @system_setting.blank?
   end
 
   def new
     if @system_setting.present?
-      redirect_to system_setting_path(@system_setting)
+      redirect_to system_setting_path
       return
     end
     @system_setting = SystemSetting.new
@@ -29,7 +22,7 @@ class SystemSettingsController < ApplicationController
 
     respond_to do |format|
       if @system_setting.save
-        format.html {redirect_to @system_setting, notice: t('helpers.notice.create')}
+        format.html {redirect_to system_setting_path, notice: t('helpers.notice.create')}
         format.json {render :show, status: :created, location: @system_setting}
       else
         format.html {render :new}
@@ -41,7 +34,7 @@ class SystemSettingsController < ApplicationController
   def update
     respond_to do |format|
       if @system_setting.update(system_setting_params)
-        format.html {redirect_to @system_setting, notice: t('helpers.notice.update')}
+        format.html {redirect_to system_setting_path, notice: t('helpers.notice.update')}
         format.json {render :show, status: :ok, location: @system_setting}
       else
         format.html {render :edit}

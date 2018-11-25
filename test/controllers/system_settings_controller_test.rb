@@ -5,35 +5,13 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     @system_setting = system_settings(:システム設定)
   end
 
-  test 'should get index' do
-    sign_in admin
-
-    assert ss = SystemSetting.first
-    get system_settings_url
-    assert_response :redirect
-    assert_redirected_to system_setting_url(id: ss)
-
-    SystemSetting.destroy_all
-    get system_settings_url
-    assert_response :redirect
-    assert_redirected_to new_system_setting_url
-  end
-
-  test 'should not get index' do
-    sign_in user
-
-    assert_raise CanCan::AccessDenied do
-      get system_settings_url
-    end
-  end
-
   test 'should get new' do
     sign_in admin
 
-    assert ss = SystemSetting.first
+    assert SystemSetting.first
     get new_system_setting_url
     assert_response :redirect
-    assert_redirected_to system_setting_url(id: ss)
+    assert_redirected_to system_setting_url
 
     SystemSetting.destroy_all
     get new_system_setting_url
@@ -52,21 +30,21 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     sign_in admin
 
     assert_difference('SystemSetting.count') do
-      post system_settings_url,
+      post system_setting_url,
            params: {
              system_setting: {
                api_key: @system_setting.api_key
              }
            }
     end
-    assert_redirected_to system_setting_url(SystemSetting.last)
+    assert_redirected_to system_setting_url
   end
 
   test 'should not create system_setting' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
-      post system_settings_url,
+      post system_setting_url,
            params: {
              system_setting: {
                api_key: @system_setting.api_key
@@ -78,7 +56,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
   test 'should show system_setting' do
     sign_in admin
 
-    get system_setting_url(id: @system_setting)
+    get system_setting_url
     assert_response :success
   end
 
@@ -86,14 +64,14 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     assert_raise CanCan::AccessDenied do
-      get system_setting_url(id: @system_setting)
+      get system_setting_url
     end
   end
 
   test 'should get edit' do
     sign_in admin
 
-    get edit_system_setting_url(id: @system_setting)
+    get edit_system_setting_url
     assert_response :success
   end
 
@@ -101,27 +79,27 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     assert_raise CanCan::AccessDenied do
-      get edit_system_setting_url(id: @system_setting)
+      get edit_system_setting_url
     end
   end
 
   test 'should update system_setting' do
     sign_in admin
 
-    patch system_setting_url(id: @system_setting),
+    patch system_setting_url,
           params: {
             system_setting: {
               api_key: @system_setting.api_key
             }
           }
-    assert_redirected_to system_setting_url(@system_setting)
+    assert_redirected_to system_setting_url
   end
 
   test 'should not update system_setting' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
-      patch system_setting_url(id: @system_setting),
+      patch system_setting_url,
             params: {
               system_setting: {
                 api_key: @system_setting.api_key

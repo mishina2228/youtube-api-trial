@@ -1,4 +1,4 @@
-<%= form_with(model: system_setting, local: true) do |form| %>
+<%= form_with(url: system_setting_path, model: system_setting, local: true) do |form| %>
   <% if system_setting.errors.any? %>
     <div id="error_explanation">
       <ul>
