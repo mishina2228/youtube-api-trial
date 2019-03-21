@@ -62,7 +62,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # User Authorization
 gem 'cancancan'
-gem 'devise'
+gem 'devise', '~> 4.6.0'
 gem 'devise-i18n'
 
 gem 'google-api-client', '~> 0.11'
