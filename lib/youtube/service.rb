@@ -1,4 +1,5 @@
 require 'google/apis/youtube_v3'
+require 'httpclient'
 
 class Youtube::Service
   attr_accessor :api_key
@@ -27,6 +28,8 @@ class Youtube::Service
     ::Youtube::ServiceResponse.new(status, snippet, error)
   end
 
+  private
+
   def get_channel(part, channel_id)
     response = nil
     error = nil
@@ -37,7 +40,7 @@ class Youtube::Service
                else
                  Consts::Statuses::OK
                end
-    rescue Google::Apis::ClientError => e
+    rescue Google::Apis::ClientError, HTTPClient::ReceiveTimeoutError => e
       status = Consts::Statuses::ERROR
       error = e
     end

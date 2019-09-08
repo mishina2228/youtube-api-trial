@@ -6,3 +6,9 @@
 
 チャンネル2:
   channel_id: channel_id2
+
+エラーチャンネル:
+  channel_id: error_channel_id
+
+存在しないチャンネル:
+  channel_id: blank_channel_id

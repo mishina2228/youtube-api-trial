@@ -32,22 +32,11 @@ class Channel < ApplicationRecord
     ss = SystemSetting.first
     raise t('text.system_setting.missing') unless ss
 
-    @youtube_service = ::Youtube::Service.new(ss.api_key)
+    @youtube_service = ::Youtube::ServiceFactory.create_service(ss.api_key)
   end
 
   def channel_id=(val)
     super(parse_channel_id(val))
-  end
-
-  def error_message(res, key = :base)
-    return false if res.status_ok?
-
-    if res.status_blank?
-      errors.add(key, I18n.t('text.youtube.errors.channel_id_invalid'))
-    elsif res.status_error?
-      errors.add(key, res.error.message)
-    end
-    true
   end
 
   def latest_statistics
@@ -91,6 +80,17 @@ class Channel < ApplicationRecord
   end
 
   private
+
+  def error_message(res, key = :base)
+    return false if res.status_ok?
+
+    if res.status_blank?
+      errors.add(key, I18n.t('text.youtube.errors.channel_id_invalid'))
+    elsif res.status_error?
+      errors.add(key, res.error.message)
+    end
+    true
+  end
 
   def parse_channel_id(val)
     URI.parse(val)

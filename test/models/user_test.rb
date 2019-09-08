@@ -10,7 +10,7 @@ class UserTest < ActiveSupport::TestCase
     assert user.invalid?
 
     user = User.new(valid_params)
-    assert user.invalid?
+    assert user.invalid?, 'emailでユニークであること'
   end
 
   def valid_params

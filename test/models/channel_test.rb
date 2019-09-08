@@ -47,6 +47,70 @@ class ChannelTest < ActiveSupport::TestCase
     end
   end
 
+  def test_youtube_service
+    channel = channels(:チャンネル1)
+    ret = channel.youtube_service
+    assert ret.is_a?(::Mock::Service), 'テスト環境ではmockを使用すること'
+  end
+
+  def test_youtube_service_no_system_setting
+    channel = channels(:チャンネル1)
+    SystemSetting.delete_all
+    assert_raise do
+      channel.youtube_service
+    end
+  end
+
+  def test_build_statistics
+    channel = channels(:チャンネル1)
+    assert_difference -> {ChannelStatistic.count} do
+      channel.build_statistics
+    end
+    assert channel.errors.blank?
+  end
+
+  def test_build_statistics_error
+    channel = channels(:エラーチャンネル)
+    assert_no_difference -> {ChannelStatistic.count} do
+      assert_not channel.build_statistics
+    end
+    assert channel.errors.present?
+  end
+
+  def test_build_statistics_blank
+    channel = channels(:存在しないチャンネル)
+    assert_no_difference -> {ChannelStatistic.count} do
+      assert_not channel.build_statistics
+    end
+    assert channel.errors.present?
+    assert channel.errors.messages[:base].include?(I18n.t('text.youtube.errors.channel_id_invalid'))
+  end
+
+  def test_update_snippet
+    channel = channels(:チャンネル1)
+    before_channel = channel.dup
+    channel.update_snippet
+    assert channel.errors.blank?
+    channel.reload
+    assert_not_equal channel.title, before_channel.title
+    assert_not_equal channel.description, before_channel.description
+    assert_not_equal channel.thumbnail_url, before_channel.thumbnail_url
+    assert_not_equal channel.published_at, before_channel.published_at
+  end
+
+  def test_update_snippet_error
+    channel = channels(:エラーチャンネル)
+    assert_not channel.update_snippet
+    assert channel.errors.present?
+  end
+
+  def test_update_snippet_blank
+    channel = channels(:存在しないチャンネル)
+    assert_not channel.update_snippet
+    assert channel.errors.present?
+    assert channel.errors.messages[:base].include?(I18n.t('text.youtube.errors.channel_id_invalid'))
+  end
+
   def valid_params
     {channel_id: 'abc', thumbnail_url: 'https://www.example.com'}
   end
