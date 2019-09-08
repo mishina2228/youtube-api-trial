@@ -11,7 +11,8 @@ ja:
         description: チャンネルID、あるいはチャンネルのURLを入力できます。
         invalid: が未入力、あるいは無効な値です
       statistics:
-        elapsed_time: "前回の取得から: %{time}"
+        comparison: 比較期間
+        elapsed_time: "%{time}前"
         missing: チャンネル統計が未取得です
       thumbnail: サムネイル
       title:

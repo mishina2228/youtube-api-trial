@@ -93,13 +93,13 @@ ja:
       almost_x_years:
         one: 1年弱
         other: "%{count}年弱"
-      half_a_minute: 30秒前後
+      half_a_minute: 30秒
       less_than_x_minutes:
-        one: 1分以内
-        other: "%{count}分未満"
+        one: 1分
+        other: "%{count}分"
       less_than_x_seconds:
-        one: 1秒以内
-        other: "%{count}秒未満"
+        one: 1秒
+        other: "%{count}秒"
       over_x_years:
         one: 1年以上
         other: "%{count}年以上"

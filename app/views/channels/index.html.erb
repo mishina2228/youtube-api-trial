@@ -71,10 +71,11 @@
       <td>
         <div class="vertical text-right text-nowrap">
           <span>
-        <%= print_datetime(c.latest_acquired_at) %>
+            <%= print_datetime(c.latest_acquired_at) %>
+            (<%= print_time_ago_in_words(c.latest_acquired_at) %>)
           </span>
           <span>
-            <%= elapsed_time print_diff_datetimes(c.latest_acquired_at, Time.current) %>
+            <%= t('text.channel.statistics.comparison') %>: <%= print_diff_datetimes(c.latest_acquired_at, c.second_latest_acquired_at) %>
           </span>
         </div>
       </td>

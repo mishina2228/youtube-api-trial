@@ -33,10 +33,10 @@ module ApplicationHelper
     distance_of_time_in_words(datetime1, datetime2)
   end
 
-  def elapsed_time(time_word)
-    return if time_word.blank?
+  def print_time_ago_in_words(datetime)
+    return if datetime.blank?
 
-    I18n.t('text.channel.statistics.elapsed_time', time: time_word)
+    I18n.t('text.channel.statistics.elapsed_time', time: time_ago_in_words(datetime))
   end
 
   def text_url_to_link(text)

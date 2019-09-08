@@ -14,7 +14,7 @@ en:
         thumbnail_url: Thumbnail URL
       channel_statistic:
         channel_id: Channel ID
-        created_at: Statistics acquisition date and time
+        created_at: Statistics acquisition date
         view_count: View Count
         subscriber_count: Subscriber count
         video_count: Video count
@@ -253,6 +253,6 @@ en:
     am: am
     formats:
       default: "%a, %d %b %Y %H:%M:%S %z"
-      long: "%B %d, %Y %H:%M"
+      long: "%b %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm

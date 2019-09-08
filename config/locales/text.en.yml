@@ -11,7 +11,8 @@ en:
         description: You can input the channel ID or the URL of the channel.
         invalid: is blank, or invalid.
       statistics:
-        elapsed_time: "From last acquisition: %{time}"
+        comparison: Comparison period
+        elapsed_time: "%{time} ago"
         missing: Channel statistics are not yet acquired.
       thumbnail: Thumbnail
       title:
