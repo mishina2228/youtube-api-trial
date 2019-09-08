@@ -3,11 +3,11 @@ class SystemSettingsController < ApplicationController
   authorize_resource
 
   def show
-    redirect_to new_system_setting_path if @system_setting.blank?
+    redirect_to new_system_setting_path unless @system_setting
   end
 
   def new
-    if @system_setting.present?
+    if @system_setting
       redirect_to system_setting_path
       return
     end

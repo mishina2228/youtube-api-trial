@@ -5,39 +5,53 @@ class SystemSettingsTest < ApplicationSystemTestCase
     @system_setting = system_settings(:システム設定)
   end
 
-  test 'visiting the index' do
-    visit system_settings_url
-    assert_selector 'h1', text: I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
+  test 'visiting a System setting as an user not logged in' do
+    visit root_path
+    assert_no_selector 'a', text: SystemSetting.model_name.human
+  end
+
+  test 'visiting a System setting as an user' do
+    sign_in user
+    visit root_path
+    assert_no_selector 'a', text: SystemSetting.model_name.human
+  end
+
+  test 'visiting a System setting as an admin' do
+    sign_in admin
+    visit root_path
+    assert_selector 'a', text: SystemSetting.model_name.human
+    click_on SystemSetting.model_name.human
+
+    page.assert_current_path(system_setting_path)
+    assert_selector 'h1', text: I18n.t('helpers.title.show', model: SystemSetting.model_name.human)
   end
 
   test 'creating a System setting' do
-    visit system_settings_url
-    click_on 'New System Setting'
+    SystemSetting.destroy_all
 
-    fill_in 'Api Key', with: @system_setting.api_key
-    click_on 'Create System setting'
+    sign_in admin
+    visit system_setting_path
+    page.assert_current_path(new_system_setting_path)
 
-    assert_text 'System setting was successfully created'
-    click_on 'Back'
+    fill_in SystemSetting.human_attribute_name(:api_key), with: @system_setting.api_key
+    click_on I18n.t('helpers.submit.create')
+
+    assert_text I18n.t('helpers.notice.create')
+    page.assert_current_path(system_setting_path)
   end
 
   test 'updating a System setting' do
-    visit system_settings_url
-    click_on 'Edit', match: :first
+    sign_in admin
+    visit system_setting_path
+    click_on I18n.t('helpers.link.edit')
 
-    fill_in 'Api Key', with: @system_setting.api_key
-    click_on 'Update System setting'
+    page.assert_current_path(edit_system_setting_path)
+    after_api_key = @system_setting.api_key + '_after'
+    fill_in SystemSetting.human_attribute_name(:api_key), with: after_api_key
+    click_on I18n.t('helpers.submit.update')
 
-    assert_text 'System setting was successfully updated'
-    click_on 'Back'
-  end
-
-  test 'destroying a System setting' do
-    visit system_settings_url
-    page.accept_confirm do
-      click_on 'Destroy', match: :first
-    end
-
-    assert_text 'System setting was successfully destroyed'
+    assert_text I18n.t('helpers.notice.update')
+    page.assert_current_path(system_setting_path)
+    assert_equal after_api_key, @system_setting.reload.api_key
   end
 end
