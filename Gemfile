@@ -67,3 +67,6 @@ gem 'devise-i18n'
 
 gem 'google-api-client', '~> 0.11'
 gem 'paranoia', '~> 2.2'
+
+gem 'resque'
+gem 'resque-scheduler'
