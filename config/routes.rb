@@ -2,7 +2,9 @@ require 'resque/scheduler/server'
 require 'resque/server'
 
 Rails.application.routes.draw do
-  mount Resque::Server.new, at: '/resque'
+  authenticated :user, ->(u) {u.admin?} do
+    mount Resque::Server.new, at: '/resque'
+  end
 
   scope '(:locale)', locale: /#{I18n.available_locales.map(&:to_s).join('|')}/ do
     root 'channels#index'
