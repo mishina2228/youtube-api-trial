@@ -25,6 +25,12 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'should not get new unless logged in' do
+    assert_raise CanCan::AccessDenied do
+      get new_channel_url
+    end
+  end
+
   test 'should create channel' do
     sign_in admin
 
@@ -55,6 +61,17 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'should not create channel unless logged in' do
+    assert_raise CanCan::AccessDenied do
+      post channels_url,
+           params: {
+             channel: {
+               channel_id: @channel.channel_id + Time.current.usec.to_s
+             }
+           }
+    end
+  end
+
   test 'should show channel' do
     get channel_url(id: @channel)
     assert_response :success
@@ -75,15 +92,21 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'should not get edit unless logged in' do
+    assert_raise CanCan::AccessDenied do
+      get edit_channel_url(id: @channel)
+    end
+  end
+
   test 'should update channel' do
     sign_in admin
 
-    patch channel_url(id: @channel),
-          params: {
-            channel: {
-              channel_id: @channel.channel_id
-            }
+    put channel_url(id: @channel),
+        params: {
+          channel: {
+            channel_id: @channel.channel_id
           }
+        }
     assert_redirected_to channel_url(@channel)
   end
 
@@ -91,12 +114,23 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     assert_raise CanCan::AccessDenied do
-      patch channel_url(id: @channel),
-            params: {
-              channel: {
-                channel_id: @channel.channel_id
-              }
+      put channel_url(id: @channel),
+          params: {
+            channel: {
+              channel_id: @channel.channel_id
             }
+          }
+    end
+  end
+
+  test 'should not update channel unless logged in' do
+    assert_raise CanCan::AccessDenied do
+      put channel_url(id: @channel),
+          params: {
+            channel: {
+              channel_id: @channel.channel_id
+            }
+          }
     end
   end
 
@@ -116,5 +150,116 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert_raise CanCan::AccessDenied do
       delete channel_url(id: @channel)
     end
+  end
+
+  test 'should not destroy channel unless logged in' do
+    assert_raise CanCan::AccessDenied do
+      delete channel_url(id: @channel)
+    end
+  end
+
+  test 'should build statistics' do
+    sign_in admin
+
+    put build_statistics_channel_url(id: @channel)
+    assert_redirected_to channel_url(@channel)
+  end
+
+  test 'should not build statistics' do
+    sign_in user
+
+    assert_raise CanCan::AccessDenied do
+      put build_statistics_channel_url(id: @channel)
+    end
+  end
+
+  test 'should not build statistics unless logged in' do
+    assert_raise CanCan::AccessDenied do
+      put build_statistics_channel_url(id: @channel)
+    end
+  end
+
+  test 'should build all statistics' do
+    [channels(:エラーチャンネル), channels(:存在しないチャンネル)].each(&:destroy)
+
+    sign_in admin
+
+    put build_all_statistics_channels_url
+    assert_redirected_to channels_url
+  end
+
+  test 'should not build all statistics' do
+    sign_in user
+
+    assert_raise CanCan::AccessDenied do
+      put build_all_statistics_channels_path
+    end
+  end
+
+  test 'should not build all statistics unless logged in' do
+    assert_raise CanCan::AccessDenied do
+      put build_all_statistics_channels_path
+    end
+  end
+
+  test 'should redirect to index when trying to build all statistics if no channel' do
+    Channel.delete_all
+
+    sign_in admin
+    put build_all_statistics_channels_url
+    assert_redirected_to channels_url
+  end
+
+  test 'should update snippet' do
+    sign_in admin
+
+    put update_snippet_channel_path(id: @channel)
+    assert_redirected_to channel_url(@channel)
+  end
+
+  test 'should not update snippet' do
+    sign_in user
+
+    assert_raise CanCan::AccessDenied do
+      put update_snippet_channel_path(id: @channel)
+    end
+  end
+
+  test 'should not update snippet unless logged in' do
+    assert_raise CanCan::AccessDenied do
+      put update_snippet_channel_path(id: @channel)
+    end
+  end
+
+  test 'should update all snippets' do
+    [channels(:エラーチャンネル), channels(:存在しないチャンネル)].each(&:destroy)
+
+    sign_in admin
+
+    put update_all_snippets_channels_path
+    assert_redirected_to channels_url
+  end
+
+  test 'should not update all snippets' do
+    sign_in user
+
+    assert_raise CanCan::AccessDenied do
+      put update_all_snippets_channels_path
+    end
+  end
+
+  test 'should not update all snippets unless logged in' do
+    assert_raise CanCan::AccessDenied do
+      put update_all_snippets_channels_path
+    end
+  end
+
+  test 'should redirect to index when trying to update all snippets if no channel' do
+    Channel.delete_all
+
+    sign_in admin
+
+    put update_all_snippets_channels_path
+    assert_redirected_to channels_url
   end
 end

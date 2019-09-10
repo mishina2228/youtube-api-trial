@@ -5,6 +5,7 @@ en:
       build_all_statistics:
         message: Acquired channel statistics in bulk.
       build_statistics:
+        start: Acquiring channel statistics started.
         success: Acquiring channel statistics were succeeded.
         error: Acquiring channel statistics were failed.
       channel_id:
@@ -18,8 +19,9 @@ en:
       title:
         missing: (Title not acquired)
       update_all_snippets:
-        message: Acquired channel infos in bulk.
+        message: Acquiring channel infos in bulk started.
       update_snippet:
+        start: Acquiring a channel info started.
         success: Acquiring a channel info was succeeded.
         error: Acquiring a channel info was failed.
     common:

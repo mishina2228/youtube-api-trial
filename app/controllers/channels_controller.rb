@@ -59,51 +59,23 @@ class ChannelsController < ApplicationController
   end
 
   def build_statistics
-    if @channel.build_statistics
-      redirect_to @channel, notice: t('text.channel.build_statistics.success')
-    else
-      message = []
-      message << t('text.channel.build_statistics.error')
-      message << @channel.errors.full_messages
-      redirect_to channels_url, alert: message.flatten
-    end
+    JobUtils.enqueue(Channel::BuildStatisticsJob, 'channel_id' => @channel.id)
+    redirect_to @channel, notice: t('text.channel.build_statistics.start')
   end
 
   def build_all_statistics
-    success = []
-    failure = []
-    Channel.find_each do |channel|
-      channel.build_statistics ? success << channel : failure << channel
-    end
-    message = []
-    message << t('text.channel.build_all_statistics.message')
-    message << t('text.common.success_count', count: success.count)
-    message << t('text.common.failure_count', count: failure.count)
-    redirect_to channels_url, notice: message
+    JobUtils.enqueue(Channel::BuildAllStatisticsJob)
+    redirect_to channels_url, notice: t('text.channel.update_all_snippets.message')
   end
 
   def update_snippet
-    if @channel.update_snippet
-      redirect_to @channel, notice: t('text.channel.update_snippet.success')
-    else
-      message = []
-      message << t('text.channel.update_snippet.error')
-      message << @channel.errors.full_messages
-      redirect_to channels_url, alert: message.flatten
-    end
+    JobUtils.enqueue(Channel::UpdateSnippetJob, 'channel_id' => @channel.id)
+    redirect_to @channel, notice: t('text.channel.update_snippet.start')
   end
 
   def update_all_snippets
-    success = []
-    failure = []
-    Channel.find_each do |channel|
-      channel.update_snippet ? success << channel : failure << channel
-    end
-    message = []
-    message << t('text.channel.update_all_snippets.message')
-    message << t('text.common.success_count', count: success.count)
-    message << t('text.common.failure_count', count: failure.count)
-    redirect_to channels_url, notice: message
+    JobUtils.enqueue(Channel::UpdateAllSnippetsJob)
+    redirect_to channels_url, notice: t('text.channel.update_all_snippets.message')
   end
 
   private

@@ -5,10 +5,11 @@ ja:
       build_all_statistics:
         message: チャンネル統計の一括取得を行いました
       build_statistics:
+        start: チャンネル統計の取得を開始しました
         success: チャンネル統計の取得に成功しました
         error: チャンネル統計の取得に失敗しました
       channel_id:
-        description: チャンネルID、あるいはチャンネルのURLを入力できます。
+        description: チャンネルID、あるいはチャンネルのURLを入力できます
         invalid: が未入力、あるいは無効な値です
       statistics:
         comparison: 比較期間
@@ -18,8 +19,9 @@ ja:
       title:
         missing: (チャンネル名未取得)
       update_all_snippets:
-        message: チャンネル情報の一括取得を行いました
+        message: チャンネル情報の一括取得を開始しました
       update_snippet:
+        start: チャンネル情報の取得を開始しました
         success: チャンネル情報の取得に成功しました
         error: チャンネル情報の取得に失敗しました
     common:

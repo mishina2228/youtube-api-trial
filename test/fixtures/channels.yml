@@ -6,9 +6,18 @@
 
 チャンネル2:
   channel_id: channel_id2
+  title: Channel2
+  description: description2
+  thumbnail_url: https://example.com/thumbnail/2
 
 エラーチャンネル:
   channel_id: error_channel_id
+  title: ErrorChannel
+  description: description_error
+  thumbnail_url: https://example.com/thumbnail/error
 
 存在しないチャンネル:
   channel_id: blank_channel_id
+  title: NotExistChannel
+  description: description_blank
+  thumbnail_url: https://example.com/thumbnail/not_exist
