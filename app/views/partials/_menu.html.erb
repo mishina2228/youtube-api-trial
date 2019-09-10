@@ -19,14 +19,14 @@
       </div>
     <% end %>
     <% if user_signed_in? %>
-      <div class="col-md-3 col-xs-4">
+      <div class="col-md-2 col-xs-4">
         <%= current_user.email %>
       </div>
-      <div class="col-md-3 col-xs-4">
+      <div class="col-md-2 col-xs-4">
         <%= link_to t('text.devise.sign_out'), destroy_user_session_path, method: :delete %>
       </div>
     <% else %>
-      <div class="col-md-3 col-xs-4">
+      <div class="col-md-2 col-xs-4">
         <%= link_to t('text.devise.sign_in'), new_user_session_path %>
       </div>
     <% end %>
