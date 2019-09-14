@@ -7,13 +7,12 @@
     w.env = {'QUEUE' => 'normal', 'RAILS_ENV' => "<%= @rails_env %>"}
     w.start = "bundle exec rake -f <%= @rails_root %>/Rakefile environment resque:work"
     w.log = "#{w.dir}/log/#{w.name}.log"
-    w.err_log = "#{w.dir}/log/#{w.name}_error.log"
     w.start_grace  = 10.seconds
     w.stop_signal  = 'QUIT'
     w.stop_timeout = 300.seconds
 
-    #    w.uid = 'git'
-    #    w.gid = 'git'
+    # w.uid = 'git'
+    # w.gid = 'git'
 
     # restart if memory gets too high
     w.transition(:up, :restart) do |on|
@@ -63,13 +62,12 @@ end
     w.env = {'RAILS_ENV' => "<%= @rails_env %>", 'DYNAMIC_SCHEDULE' => true}
     w.start = "bundle exec rake -f <%= @rails_root %>/Rakefile environment resque:scheduler"
     w.log = "#{w.dir}/log/#{w.name}.log"
-    w.err_log = "#{w.dir}/log/#{w.name}_error.log"
     w.start_grace  = 10.seconds
     w.stop_signal  = 'QUIT'
     w.stop_timeout = 300.seconds
 
-    #    w.uid = 'git'
-    #    w.gid = 'git'
+    # w.uid = 'git'
+    # w.gid = 'git'
 
     # restart if memory gets too high
     w.transition(:up, :restart) do |on|
