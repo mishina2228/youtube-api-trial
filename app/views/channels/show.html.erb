@@ -17,26 +17,10 @@
   </div>
   <div class="row">
     <div class="col-xs-4 col-sm-2">
-      <%= Channel.human_attribute_name :channel_id %>
-    </div>
-    <div class="col-xs-8 col-sm-10">
-      <%= @channel.channel_id %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-4 col-sm-2">
       <%= Channel.human_attribute_name :description %>
     </div>
     <div class="col-xs-8 col-sm-10 emojify">
       <%= simple_format text_url_to_link(@channel.description) %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-4 col-sm-2">
-      <%= Channel.human_attribute_name :thumbnail_url %>
-    </div>
-    <div class="col-xs-8 col-sm-10">
-      <%= @channel.thumbnail_url %>
     </div>
   </div>
   <div class="row">

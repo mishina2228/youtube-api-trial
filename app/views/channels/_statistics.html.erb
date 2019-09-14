@@ -7,8 +7,8 @@
     <thead>
     <tr>
       <th><%= ChannelStatistic.human_attribute_name :subscriber_count %></th>
-      <th><%= ChannelStatistic.human_attribute_name :video_count %></th>
       <th><%= ChannelStatistic.human_attribute_name :view_count %></th>
+      <th><%= ChannelStatistic.human_attribute_name :video_count %></th>
       <th><%= ChannelStatistic.human_attribute_name :created_at %></th>
     </tr>
     </thead>
@@ -17,8 +17,8 @@
     <% channel_statistics.each do |cs| %>
       <tr>
         <td><%= print_number(cs.subscriber_count) %></td>
-        <td><%= print_number(cs.video_count) %></td>
         <td><%= print_number(cs.view_count) %></td>
+        <td><%= print_number(cs.video_count) %></td>
         <td><%= print_datetime(cs.created_at) %></td>
       </tr>
     <% end %>

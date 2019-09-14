@@ -26,8 +26,8 @@
       <%= link_to '▼', channels_path(order: :published_at, desc: true) %>
     </th>
     <th><%= ChannelStatistic.human_attribute_name :subscriber_count %></th>
-    <th><%= ChannelStatistic.human_attribute_name :video_count %></th>
     <th><%= ChannelStatistic.human_attribute_name :view_count %></th>
+    <th><%= ChannelStatistic.human_attribute_name :video_count %></th>
     <th><%= ChannelStatistic.human_attribute_name :created_at %></th>
   </tr>
   </thead>
@@ -51,16 +51,6 @@
       <td>
         <div class="vertical text-right text-nowrap">
           <span>
-            <%= print_number(c.latest_video_count) %>
-          </span>
-          <span>
-            <%= print_diff_numbers(c.latest_video_count, c.second_latest_video_count) %>
-          </span>
-        </div>
-      </td>
-      <td>
-        <div class="vertical text-right text-nowrap">
-          <span>
             <%= print_number(c.latest_view_count) %>
           </span>
           <span>
@@ -71,11 +61,20 @@
       <td>
         <div class="vertical text-right text-nowrap">
           <span>
-            <%= print_datetime(c.latest_acquired_at) %>
-            (<%= print_time_ago_in_words(c.latest_acquired_at) %>)
+            <%= print_number(c.latest_video_count) %>
           </span>
           <span>
-            <%= t('text.channel.statistics.comparison') %>: <%= print_diff_datetimes(c.latest_acquired_at, c.second_latest_acquired_at) %>
+            <%= print_diff_numbers(c.latest_video_count, c.second_latest_video_count) %>
+          </span>
+        </div>
+      </td>
+      <td>
+        <div class="vertical text-right text-nowrap">
+          <span>
+            <%= print_acquired_at(c.latest_acquired_at) %>
+          </span>
+          <span>
+            <%= print_comparison_period(c.latest_acquired_at, c.second_latest_acquired_at) %>
           </span>
         </div>
       </td>

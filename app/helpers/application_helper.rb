@@ -15,6 +15,15 @@ module ApplicationHelper
     l(datetime, format: format) if datetime
   end
 
+  def print_acquired_at(datetime)
+    "#{print_datetime(datetime)} (#{print_time_ago_in_words(datetime)})" if datetime
+  end
+
+  def print_comparison_period(datetime1, datetime2)
+    diff = print_diff_datetimes(datetime1, datetime2)
+    "#{t('text.channel.statistics.comparison')}: #{diff}" if diff
+  end
+
   def print_number(number)
     number&.to_s(:delimited)
   end
@@ -22,8 +31,12 @@ module ApplicationHelper
   def print_diff_numbers(num1, num2)
     return if num1.blank? || num2.blank?
 
-    ret = print_number(num1 - num2)
-    ret = '+' + ret if (num1 - num2).positive?
+    ret = print_number(diff = num1 - num2)
+    if diff.positive?
+      ret = '+' + ret
+    elsif diff.zero?
+      ret = '±' + ret
+    end
     ret
   end
 
