@@ -12,17 +12,17 @@ class Channel::UpdateSnippetJobTest < ActiveSupport::TestCase
 
   def test_perform_error
     channel = channels(:エラーチャンネル)
-    before_description = channel.description
+    assert_nil channel.description
     assert_raise do
       Channel::UpdateSnippetJob.perform('channel_id' => channel.id)
     end
-    assert_equal channel.reload.description, before_description
+    assert_nil channel.reload.description
 
     channel = channels(:存在しないチャンネル)
-    before_description = channel.description
+    assert_nil channel.description
     assert_raise do
       Channel::UpdateSnippetJob.perform('channel_id' => channel.id)
     end
-    assert_equal channel.reload.description, before_description
+    assert_nil channel.reload.description
   end
 end
