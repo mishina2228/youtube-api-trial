@@ -60,6 +60,9 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
     builder (3.2.3)
+    bullet (6.0.2)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.0.1)
     cancancan (3.0.1)
     capybara (3.29.0)
@@ -300,6 +303,7 @@ GEM
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.6.0)
+    uniform_notifier (1.12.1)
     vegas (0.1.11)
       rack (>= 1.0.0)
     warden (1.2.8)
@@ -322,6 +326,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap-sass (>= 3.4.1)
+  bullet
   byebug
   cancancan
   capybara (>= 2.15)
