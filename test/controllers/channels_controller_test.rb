@@ -77,63 +77,6 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get edit' do
-    sign_in admin
-
-    get edit_channel_url(id: @channel)
-    assert_response :success
-  end
-
-  test 'should not get edit' do
-    sign_in user
-
-    assert_raise CanCan::AccessDenied do
-      get edit_channel_url(id: @channel)
-    end
-  end
-
-  test 'should not get edit unless logged in' do
-    assert_raise CanCan::AccessDenied do
-      get edit_channel_url(id: @channel)
-    end
-  end
-
-  test 'should update channel' do
-    sign_in admin
-
-    put channel_url(id: @channel),
-        params: {
-          channel: {
-            channel_id: @channel.channel_id
-          }
-        }
-    assert_redirected_to channel_url(@channel)
-  end
-
-  test 'should not update channel' do
-    sign_in user
-
-    assert_raise CanCan::AccessDenied do
-      put channel_url(id: @channel),
-          params: {
-            channel: {
-              channel_id: @channel.channel_id
-            }
-          }
-    end
-  end
-
-  test 'should not update channel unless logged in' do
-    assert_raise CanCan::AccessDenied do
-      put channel_url(id: @channel),
-          params: {
-            channel: {
-              channel_id: @channel.channel_id
-            }
-          }
-    end
-  end
-
   test 'should destroy channel' do
     sign_in admin
 

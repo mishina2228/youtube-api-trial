@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     devise_for :users
 
     resource :system_setting, except: :destroy
-    resources :channels do
+    resources :channels, except: [:edit, :update] do
       member do
         put :build_statistics
         put :update_snippet

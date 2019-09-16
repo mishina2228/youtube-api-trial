@@ -1,6 +1,6 @@
 class ChannelsController < ApplicationController
   before_action :set_channel, only: [
-    :show, :edit, :update, :destroy, :build_statistics, :update_snippet
+    :show, :destroy, :build_statistics, :update_snippet
   ]
   before_action -> {require_data(channels_url, Channel)},
                 only: [:build_all_statistics, :update_all_snippets]
@@ -18,9 +18,6 @@ class ChannelsController < ApplicationController
     @channel = Channel.new
   end
 
-  def edit
-  end
-
   def create
     @channel = Channel.new(channel_params)
 
@@ -32,18 +29,6 @@ class ChannelsController < ApplicationController
         format.json {render :show, status: :created, location: @channel}
       else
         format.html {render :new}
-        format.json {render json: @channel.errors, status: :unprocessable_entity}
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @channel.update(channel_params)
-        format.html {redirect_to @channel, notice: t('helpers.notice.update')}
-        format.json {render :show, status: :ok, location: @channel}
-      else
-        format.html {render :edit}
         format.json {render json: @channel.errors, status: :unprocessable_entity}
       end
     end
