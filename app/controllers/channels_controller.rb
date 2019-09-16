@@ -1,5 +1,4 @@
 class ChannelsController < ApplicationController
-  VALID_SORT_COLUMNS = %w(title published_at).freeze
   before_action :set_channel, only: [
     :show, :edit, :update, :destroy, :build_statistics, :update_snippet
   ]
@@ -8,10 +7,8 @@ class ChannelsController < ApplicationController
   authorize_resource
 
   def index
-    order = params[:order] if VALID_SORT_COLUMNS.include?(params[:order])
-    @channels = Channel.includes(:channel_statistics)
-                       .order(order)
-    @channels = @channels.reverse_order if params[:desc].present?
+    search = Search::Channel.new(search_params)
+    @channels = search.search
   end
 
   def show
@@ -88,5 +85,9 @@ class ChannelsController < ApplicationController
 
   def channel_params
     params.require(:channel).permit(:channel_id)
+  end
+
+  def search_params
+    params.permit(:order, :asc, :desc)
   end
 end

@@ -17,18 +17,34 @@
     <th><%= t('text.channel.thumbnail') %></th>
     <th>
       <%= Channel.human_attribute_name :title %>
-      <%= link_to '▲', channels_path(order: :title) %>
+      <%= link_to '▲', channels_path(order: :title, asc: true) %>
       <%= link_to '▼', channels_path(order: :title, desc: true) %>
     </th>
     <th>
       <%= Channel.human_attribute_name :published_at %>
-      <%= link_to '▲', channels_path(order: :published_at) %>
+      <%= link_to '▲', channels_path(order: :published_at, asc: true) %>
       <%= link_to '▼', channels_path(order: :published_at, desc: true) %>
     </th>
-    <th><%= ChannelStatistic.human_attribute_name :subscriber_count %></th>
-    <th><%= ChannelStatistic.human_attribute_name :view_count %></th>
-    <th><%= ChannelStatistic.human_attribute_name :video_count %></th>
-    <th><%= ChannelStatistic.human_attribute_name :created_at %></th>
+    <th>
+      <%= ChannelStatistic.human_attribute_name :subscriber_count %>
+      <%= link_to '▲', channels_path(order: :subscriber_count, asc: true) %>
+      <%= link_to '▼', channels_path(order: :subscriber_count, desc: true) %>
+    </th>
+    <th>
+      <%= ChannelStatistic.human_attribute_name :view_count %>
+      <%= link_to '▲', channels_path(order: :view_count, asc: true) %>
+      <%= link_to '▼', channels_path(order: :view_count, desc: true) %>
+    </th>
+    <th>
+      <%= ChannelStatistic.human_attribute_name :video_count %>
+      <%= link_to '▲', channels_path(order: :video_count, asc: true) %>
+      <%= link_to '▼', channels_path(order: :video_count, desc: true) %>
+    </th>
+    <th>
+      <%= ChannelStatistic.human_attribute_name :created_at %>
+      <%= link_to '▲', channels_path(order: :latest_acquired_at, asc: true) %>
+      <%= link_to '▼', channels_path(order: :latest_acquired_at, desc: true) %>
+    </th>
   </tr>
   </thead>
 
@@ -41,30 +57,30 @@
       <td>
         <div class="vertical text-right text-nowrap">
           <span>
-            <%= print_number(c.latest_subscriber_count) %>
+            <%= print_number(c.subscriber_count) %>
           </span>
           <span>
-            <%= print_diff_numbers(c.latest_subscriber_count, c.second_latest_subscriber_count) %>
-          </span>
-        </div>
-      </td>
-      <td>
-        <div class="vertical text-right text-nowrap">
-          <span>
-            <%= print_number(c.latest_view_count) %>
-          </span>
-          <span>
-            <%= print_diff_numbers(c.latest_view_count, c.second_latest_view_count) %>
+            <%= print_diff_numbers(c.subscriber_count, c.second_latest_subscriber_count) %>
           </span>
         </div>
       </td>
       <td>
         <div class="vertical text-right text-nowrap">
           <span>
-            <%= print_number(c.latest_video_count) %>
+            <%= print_number(c.view_count) %>
           </span>
           <span>
-            <%= print_diff_numbers(c.latest_video_count, c.second_latest_video_count) %>
+            <%= print_diff_numbers(c.view_count, c.second_latest_view_count) %>
+          </span>
+        </div>
+      </td>
+      <td>
+        <div class="vertical text-right text-nowrap">
+          <span>
+            <%= print_number(c.video_count) %>
+          </span>
+          <span>
+            <%= print_diff_numbers(c.video_count, c.second_latest_video_count) %>
           </span>
         </div>
       </td>

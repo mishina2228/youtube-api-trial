@@ -6,6 +6,14 @@ class Channel < ApplicationRecord
   validates :channel_id, uniqueness: true
   validates :thumbnail_url, format: URI.regexp(%w(http https)), allow_blank: true
 
+  def self.with_channel_statistics
+    cs = ChannelStatistic.select(:channel_id, :view_count, :subscriber_count, :video_count)
+                         .select('max(channel_statistics.created_at) as latest_acquired_at')
+                         .group(:channel_id)
+    Channel.joins("INNER JOIN (#{cs.to_sql}) as cs ON channels.id = cs.channel_id")
+           .select('"channels".*, cs.subscriber_count, cs.view_count, cs.video_count, cs.latest_acquired_at')
+  end
+
   def url
     "https://www.youtube.com/channel/#{channel_id}"
   end
@@ -39,24 +47,8 @@ class Channel < ApplicationRecord
     super(parse_channel_id(val))
   end
 
-  def latest_statistics
-    channel_statistics.first
-  end
-
-  def latest_view_count
-    latest_statistics&.view_count
-  end
-
-  def latest_subscriber_count
-    latest_statistics&.subscriber_count
-  end
-
-  def latest_video_count
-    latest_statistics&.video_count
-  end
-
   def latest_acquired_at
-    latest_statistics&.created_at
+    DateTime.parse self[:latest_acquired_at]
   end
 
   def second_latest_statistics
