@@ -21,7 +21,7 @@
       <%= Channel.human_attribute_name :description %>
     </div>
     <div class="col-xs-8 col-sm-10 emojify">
-      <%= simple_format text_url_to_link(@channel.description) %>
+      <%= simple_format text_url_to_link(@channel.description), {}, sanitize: false %>
     </div>
   </div>
   <div class="row">

@@ -58,6 +58,6 @@ module ApplicationHelper
     URI.extract(text, %w(http https)).uniq.each do |url|
       text.gsub!(url, link_to(url, url, target: '_blank'))
     end
-    text
+    sanitize(text, attributes: %w(href title target))
   end
 end
