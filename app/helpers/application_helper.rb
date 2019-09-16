@@ -3,11 +3,11 @@ module ApplicationHelper
     render partial: 'partials/notices'
   end
 
-  def print_link(body, url, alt = 'body is missing')
+  def print_link(body, url, alt = 'body is missing', html_options = {})
     if body.present?
-      link_to body, url
+      link_to body, url, html_options
     else
-      link_to alt, url
+      link_to alt, url, html_options
     end
   end
 
@@ -56,7 +56,7 @@ module ApplicationHelper
     return if text.blank?
 
     URI.extract(text, %w(http https)).uniq.each do |url|
-      text.gsub!(url, link_to(url, url))
+      text.gsub!(url, link_to(url, url, target: '_blank'))
     end
     text
   end

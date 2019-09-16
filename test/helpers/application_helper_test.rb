@@ -14,5 +14,7 @@ class ApplicationHelperTest < ActionView::TestCase
                      print_link('', 'https://example.com', 'alternate')
     assert_dom_equal %{<a href="https://example.com">body is missing</a>},
                      print_link('', 'https://example.com')
+    assert_dom_equal %{<a target="_blank" href="https://example.com">body</a>},
+                     print_link('body', 'https://example.com', nil, target: '_blank')
   end
 end

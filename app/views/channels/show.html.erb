@@ -10,9 +10,10 @@
       <%= Channel.human_attribute_name :title %>
     </div>
     <div class="col-xs-8 col-sm-10">
-      <%= link_to image_tag(@channel.thumbnail_url),
-                  @channel.url if @channel.thumbnail_url.present? %>
-      <%= print_link(@channel.title, @channel.url, t('text.channel.title.missing')) %>
+      <% if @channel.thumbnail_url.present? %>
+        <%= link_to image_tag(@channel.thumbnail_url), @channel.url, target: '_blank' %>
+      <% end %>
+      <%= print_link(@channel.title, @channel.url, t('text.channel.title.missing'), target: '_blank') %>
     </div>
   </div>
   <div class="row">
