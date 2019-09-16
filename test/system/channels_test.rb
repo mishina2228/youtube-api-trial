@@ -66,11 +66,21 @@ class ChannelsTest < ApplicationSystemTestCase
 
     assert_text I18n.t('helpers.notice.create')
     assert_selector 'h1', text: I18n.t('helpers.title.show', model: Channel.model_name.human)
+
+    click_on I18n.t('helpers.link.back')
+    page.assert_current_path(root_path)
+    # 登録したチャンネルが一覧に表示されること
+    # ただしジョブが実行され、統計情報が取得できて初めて表示される
+    # テスト環境ではジョブが即時実行されるため、即表示される
+    assert_selector 'a', text: @channel.reload.title
   end
 
   test 'destroying a Channel' do
+    assert @channel.channel_statistics.present?
+
     sign_in admin
     visit channels_url
+    assert_selector 'a', text: @channel.title
     click_on @channel.title, match: :first
     page.accept_confirm do
       click_on I18n.t('helpers.link.delete')

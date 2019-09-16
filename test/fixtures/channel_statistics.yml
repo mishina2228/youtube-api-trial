@@ -1,11 +1,11 @@
 チャンネル統計1:
-  channel_id: channel_id1
+  channel: チャンネル1
   view_count: 1
   subscriber_count: 1
   video_count: 1
 
 チャンネル統計2:
-  channel_id: channel_id2
+  channel: チャンネル2
   view_count: 1
   subscriber_count: 1
   video_count: 1
