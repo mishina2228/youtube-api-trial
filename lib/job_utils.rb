@@ -42,5 +42,14 @@ class JobUtils
       end
       Resque.remove_schedule(name)
     end
+
+    def peek(queue, start, count)
+      if Rails.env.test?
+        Rails.logger.info('テスト環境では空の配列を返します。')
+        []
+      else
+        Resque.peek(queue, start, count)
+      end
+    end
   end
 end
