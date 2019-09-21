@@ -10,7 +10,7 @@ class Search::Channel < Search::Base
     ret = ret.where('published_date >= ?', from_date) if from_date.present?
     ret = ret.where('published_date <= ?', to_date) if to_date.present?
     ret = ret.order(sort_column)
-    ret = ret.reverse_order if desc.present? || (asc.blank? && desc.blank?)
+    ret = ret.reverse_order if direction == 'desc' || direction.nil?
     ret
   end
 

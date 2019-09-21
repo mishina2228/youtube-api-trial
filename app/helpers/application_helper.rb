@@ -3,6 +3,14 @@ module ApplicationHelper
     render partial: 'partials/notices'
   end
 
+  def sortable(title, order)
+    direction = sort_column == order && sort_direction == 'desc' ? 'asc' : 'desc'
+    if sort_column == order
+      title += direction == 'asc' ? '▼' : '▲'
+    end
+    link_to title, order: order, direction: direction
+  end
+
   def print_link(body, url, alt = 'body is missing', html_options = {})
     if body.present?
       link_to body, url, html_options

@@ -1,4 +1,6 @@
 class ChannelsController < ApplicationController
+  helper_method :sort_column, :sort_direction
+
   before_action :set_channel, only: [
     :show, :destroy, :build_statistics, :update_snippet
   ]
@@ -73,6 +75,14 @@ class ChannelsController < ApplicationController
   end
 
   def search_params
-    params.permit(:order, :asc, :desc)
+    params.permit(:order, :direction)
+  end
+
+  def sort_column
+    params[:order] || 'subscriber_count'
+  end
+
+  def sort_direction
+    %w(asc desc).include?(params[:direction]) ? params[:direction] : 'desc'
   end
 end
