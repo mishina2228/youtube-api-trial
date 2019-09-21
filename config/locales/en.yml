@@ -180,6 +180,7 @@ en:
       delete: Deleted successfully
       delete_confirm: Are you sure you want to delete it?
       loading: loading...
+      processing: processing...
       require_data: "Please register the data of %{model}"
       update: Updated successfully
     select:

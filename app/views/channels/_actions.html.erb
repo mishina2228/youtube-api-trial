@@ -1,8 +1,10 @@
 <% if can? :update, Channel %>
-  <%= link_to t('helpers.link.update_all_snippets'), update_all_snippets_channels_path,
-              method: :put, class: 'btn btn-success', role: :button %>
+  <%= button_to t('helpers.link.update_all_snippets'), update_all_snippets_channels_path,
+              method: :put, class: 'btn btn-success', role: :button,
+              data: {disable_with: t('helpers.notice.processing')} %>
 <% end %>
 <% if can? :create, ChannelStatistic %>
-  <%= link_to t('helpers.link.build_all_statistics'), build_all_statistics_channels_path,
-              method: :put, class: 'btn btn-success', role: :button %>
+  <%= button_to t('helpers.link.build_all_statistics'), build_all_statistics_channels_path,
+              method: :put, class: 'btn btn-success', role: :button,
+              data: {disable_with: t('helpers.notice.processing')} %>
 <% end %>

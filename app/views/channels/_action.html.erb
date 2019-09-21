@@ -3,15 +3,17 @@
 <% case controller.action_name %>
 <% when 'show' %>
   <% if can? :update, Channel %>
-    <%= link_to t('helpers.link.update_snippet'), update_snippet_channel_path,
-                method: :put, class: 'btn btn-success', role: :button %>
+    <%= button_to t('helpers.link.update_snippet'), update_snippet_channel_path,
+                method: :put, class: 'btn btn-success', role: :button,
+                data: {disable_with: t('helpers.notice.processing')} %>
   <% end %>
   <% if can? :create, ChannelStatistic %>
-    <%= link_to t('helpers.link.build_statistics'), build_statistics_channel_path,
-                method: :put, class: 'btn btn-success', role: :button %>
+    <%= button_to t('helpers.link.build_statistics'), build_statistics_channel_path,
+                method: :put, class: 'btn btn-success', role: :button,
+                data: {disable_with: t('helpers.notice.processing')} %>
   <% end %>
   <% if can? :delete, Channel %>
-    <%= link_to t('helpers.link.delete'), {controller: controller.controller_name, action: :destroy}, method: :delete,
+    <%= button_to t('helpers.link.delete'), {controller: controller.controller_name, action: :destroy}, method: :delete,
                 data: {confirm: t('helpers.notice.delete_confirm')},
                 class: 'btn btn-danger', role: :button %>
   <% end %>
