@@ -48,7 +48,7 @@ class Channel < ApplicationRecord
   end
 
   def latest_acquired_at
-    DateTime.parse self[:latest_acquired_at]
+    Time.zone.parse self[:latest_acquired_at]
   end
 
   def second_latest_statistics
