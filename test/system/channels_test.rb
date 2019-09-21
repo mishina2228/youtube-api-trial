@@ -9,8 +9,8 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channels_url
     assert_selector 'h1', text: I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
     assert_no_selector 'a', text: I18n.t('helpers.link.new')
-    assert_no_selector 'a', text: I18n.t('helpers.link.update_all_snippets')
-    assert_no_selector 'a', text: I18n.t('helpers.link.build_all_statistics')
+    has_no_button? I18n.t('helpers.link.update_all_snippets')
+    has_no_button? I18n.t('helpers.link.build_all_statistics')
   end
 
   test 'visiting the index as an user' do
@@ -18,8 +18,8 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channels_url
     assert_selector 'h1', text: I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
     assert_no_selector 'a', text: I18n.t('helpers.link.new')
-    assert_no_selector 'a', text: I18n.t('helpers.link.update_all_snippets')
-    assert_no_selector 'a', text: I18n.t('helpers.link.build_all_statistics')
+    has_no_button? I18n.t('helpers.link.update_all_snippets')
+    has_no_button? I18n.t('helpers.link.build_all_statistics')
   end
 
   test 'visiting the index as an admin' do
@@ -27,31 +27,31 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channels_url
     assert_selector 'h1', text: I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
     assert_selector 'a', text: I18n.t('helpers.link.new')
-    assert_selector 'a', text: I18n.t('helpers.link.update_all_snippets')
-    assert_selector 'a', text: I18n.t('helpers.link.build_all_statistics')
+    has_button? I18n.t('helpers.link.update_all_snippets')
+    has_button? I18n.t('helpers.link.build_all_statistics')
   end
 
   test 'visiting a Channel as an user not logged in' do
     visit channel_url(id: @channel.id)
-    assert_no_selector 'a', text: I18n.t('helpers.link.update_snippet')
-    assert_no_selector 'a', text: I18n.t('helpers.link.build_statistics')
-    assert_no_selector 'a', text: I18n.t('helpers.link.delete')
+    has_no_button? I18n.t('helpers.link.update_snippet')
+    has_no_button? I18n.t('helpers.link.build_statistics')
+    has_no_button? I18n.t('helpers.link.delete')
   end
 
   test 'visiting a Channel as an user' do
     sign_in user
     visit channel_url(id: @channel.id)
-    assert_no_selector 'a', text: I18n.t('helpers.link.update_snippet')
-    assert_no_selector 'a', text: I18n.t('helpers.link.build_statistics')
-    assert_no_selector 'a', text: I18n.t('helpers.link.delete')
+    has_no_button? I18n.t('helpers.link.update_snippet')
+    has_no_button? I18n.t('helpers.link.build_statistics')
+    has_no_button? I18n.t('helpers.link.delete')
   end
 
   test 'visiting a Channel as an admin' do
     sign_in admin
     visit channel_url(id: @channel.id)
-    assert_selector 'a', text: I18n.t('helpers.link.update_snippet')
-    assert_selector 'a', text: I18n.t('helpers.link.build_statistics')
-    assert_selector 'a', text: I18n.t('helpers.link.delete')
+    has_button? I18n.t('helpers.link.update_snippet')
+    has_button? I18n.t('helpers.link.build_statistics')
+    has_button? I18n.t('helpers.link.delete')
   end
 
   test 'creating a Channel' do
