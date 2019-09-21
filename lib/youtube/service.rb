@@ -1,5 +1,4 @@
 require 'google/apis/youtube_v3'
-require 'httpclient'
 
 class Youtube::Service
   attr_accessor :api_key
@@ -40,7 +39,7 @@ class Youtube::Service
                else
                  Consts::Statuses::OK
                end
-    rescue Google::Apis::ClientError, HTTPClient::ReceiveTimeoutError => e
+    rescue Google::Apis::ClientError => e
       status = Consts::Statuses::ERROR
       error = e
     end

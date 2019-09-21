@@ -11,4 +11,8 @@ module Consts
     REGEXP_URL = %r(\A(https://)?www\.youtube\.com/channel/(?<channel_id>[^/]+).*\z).freeze
     REGEXP_WITHOUT_SLASH = %r(\A[^/]+\z).freeze
   end
+
+  module Job
+    RETRY_MAX_COUNT = 3
+  end
 end

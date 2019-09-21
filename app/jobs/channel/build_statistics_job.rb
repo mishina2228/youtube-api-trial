@@ -1,3 +1,5 @@
+require 'google/apis/youtube_v3'
+
 class Channel::BuildStatisticsJob
   @queue = :normal
 
@@ -14,7 +16,15 @@ class Channel::BuildStatisticsJob
 
   def self.perform(options = {})
     channel = Channel.find(options['channel_id'])
-    raise "チャンネル「#{channel.title}」の統計取得に失敗しました。" unless channel.build_statistics
+    begin
+      raise "チャンネル「#{channel.title}」の統計取得に失敗しました。" unless channel.build_statistics
+    rescue Google::Apis::TransmissionError, HTTPClient::TimeoutError => e
+      retry_count = options['retry'].to_i
+      raise e unless retry_count < Consts::Job::RETRY_MAX_COUNT
+
+      seconds = 3 * 10**retry_count
+      JobUtils.enqueue_in(seconds, self, options.merge('retry' => retry_count + 1))
+    end
 
     Rails.logger.info("チャンネル「#{channel.title}」の統計取得が終了しました。")
   end

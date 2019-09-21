@@ -18,6 +18,24 @@ class JobUtils
       end
     end
 
+    def enqueue_in(seconds_from_now, klass, options = {})
+      if Rails.env.test?
+        Rails.logger.info('テスト環境ではキューに追加せずに即実行します。')
+        klass.perform(options)
+      else
+        Resque.enqueue_in(seconds_from_now, klass, options)
+      end
+    end
+
+    def enqueue_in_with_queue(queue, seconds_from_now, klass, options = {})
+      if Rails.env.test?
+        Rails.logger.info('テスト環境ではキューに追加せずに即実行します。')
+        klass.perform(options)
+      else
+        Resque.enqueue_in_with_queue(queue, seconds_from_now, klass, options)
+      end
+    end
+
     def schedule
       if Rails.env.test?
         Rails.logger.info('テスト環境では空のハッシュを返します。')
