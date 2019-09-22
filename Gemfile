@@ -9,6 +9,7 @@ gem 'rails', '~> 5.2.3'
 gem 'sqlite3', '~> 1.3.13'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+gem 'puma_worker_killer'
 # Use SCSS for stylesheets
 gem 'sassc-rails'
 
@@ -62,6 +63,7 @@ group :itamae do
   gem 'itamae'
 end
 
+gem 'sys-proctable', platforms: [:mingw, :mswin, :x64_mingw]
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 

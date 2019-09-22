@@ -55,3 +55,14 @@ state_path "#{Dir.pwd}/tmp/pids/puma.state"
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
+
+before_fork do
+  PumaWorkerKiller.config do |config|
+    config.ram = 1024
+    config.frequency = 1 * 60
+    config.percent_usage = 0.65
+    config.rolling_restart_frequency = 24 * 3600
+    config.reaper_status_logs = true
+  end
+  PumaWorkerKiller.start
+end
