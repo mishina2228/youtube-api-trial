@@ -75,7 +75,7 @@ class ChannelsController < ApplicationController
   end
 
   def search_params
-    params.permit(:order, :direction)
+    params.permit(:order, :direction, :title)
   end
 
   def sort_column

@@ -6,7 +6,7 @@ class Search::Channel < Search::Base
     ret = ::Channel.includes(:channel_statistics)
     ret = ret.with_channel_statistics
     ret = ret.where(id: ids) if ids.present?
-    ret = ret.where('title LIKE ?', title) if title.present?
+    ret = ret.where('title LIKE ?', "%#{title}%") if title.present?
     ret = ret.where('published_date >= ?', from_date) if from_date.present?
     ret = ret.where('published_date <= ?', to_date) if to_date.present?
     ret = ret.order(sort_column)
