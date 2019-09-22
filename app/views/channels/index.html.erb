@@ -11,7 +11,11 @@
 <% end %>
 <br><br>
 
-<%= render partial: 'search_result', locals: {channels: @channels} %>
+<% if @channels.present? %>
+  <%= render partial: 'search_result', locals: {channels: @channels} %>
+<% else %>
+  <%= render partial: 'no_result' %>
+<% end %>
 
 <br>
 

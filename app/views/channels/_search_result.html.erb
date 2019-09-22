@@ -1,7 +1,7 @@
 <table class='table table-bordered table-hover table-striped'>
   <thead>
   <tr>
-    <th><%= t('text.channel.thumbnail') %></th>
+    <th></th>
     <th>
       <%= sortable Channel.human_attribute_name(:title), 'title' %>
     </th>
@@ -26,7 +26,7 @@
   <tbody>
   <% channels.each do |c| %>
     <tr>
-      <td><%= image_tag(c.thumbnail_url) if c.thumbnail_url.present? %></td>
+      <td><%= link_to(image_tag(c.thumbnail_url), channel_path(c)) if c.thumbnail_url.present? %></td>
       <td><%= print_link(c.title, channel_path(c), t('text.channel.title.missing')) %></td>
       <td><%= print_datetime(c.published_at) %></td>
       <td>

@@ -11,6 +11,8 @@ en:
       channel_id:
         description: You can input the channel ID or the URL of the channel.
         invalid: is blank, or invalid.
+      search:
+        not_found: Search results were not found.
       statistics:
         comparison: Comparison period
         elapsed_time: "%{time} ago"

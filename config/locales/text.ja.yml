@@ -11,6 +11,8 @@ ja:
       channel_id:
         description: チャンネルID、あるいはチャンネルのURLを入力できます
         invalid: が未入力、あるいは無効な値です
+      search:
+        not_found: 条件に一致するチャンネルが見つかりませんでした。
       statistics:
         comparison: 比較期間
         elapsed_time: "%{time}前"
