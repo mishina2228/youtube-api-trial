@@ -24,9 +24,7 @@ class ChannelsController < ApplicationController
     @channel = Channel.new(channel_params)
 
     respond_to do |format|
-      if @channel.save
-        JobUtils.enqueue(Channel::BuildStatisticsJob, 'channel_id' => @channel.id)
-        JobUtils.enqueue(Channel::UpdateSnippetJob, 'channel_id' => @channel.id)
+      if @channel.save_and_set_job
         format.html {redirect_to @channel, notice: t('helpers.notice.create')}
         format.json {render :show, status: :created, location: @channel}
       else

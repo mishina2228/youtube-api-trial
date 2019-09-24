@@ -14,6 +14,14 @@ class Channel < ApplicationRecord
            .select('"channels".*, cs.subscriber_count, cs.view_count, cs.video_count, cs.latest_acquired_at')
   end
 
+  def save_and_set_job
+    return false unless save
+
+    JobUtils.enqueue(Channel::BuildStatisticsJob, 'channel_id' => id)
+    JobUtils.enqueue(Channel::UpdateSnippetJob, 'channel_id' => id)
+    true
+  end
+
   def url
     "https://www.youtube.com/channel/#{channel_id}"
   end
