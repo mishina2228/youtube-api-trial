@@ -16,13 +16,13 @@ class Youtube::Service
   end
 
   def statistics(channel_id)
-    status, res, error = get_channel(:statistics, channel_id)
+    status, res, error = get_channel('statistics', channel_id)
     statics = res.items.first.try(:statistics) if error.blank?
     ::Youtube::ServiceResponse.new(status, statics, error)
   end
 
   def snippet(channel_id)
-    status, res, error = get_channel(:snippet, channel_id)
+    status, res, error = get_channel('snippet', channel_id)
     snippet = res.items.first.try(:snippet) if error.blank?
     ::Youtube::ServiceResponse.new(status, snippet, error)
   end
