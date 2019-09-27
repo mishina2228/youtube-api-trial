@@ -3,8 +3,3 @@ build_all_statistics_job:
   class: 'Channel::BuildAllStatisticsJob'
   queue: 'normal'
   description: '全チャンネルの統計取得'
-update_all_snippets_job:
-  cron: '5 0 * * *'
-  class: 'Channel::UpdateAllSnippetsJob'
-  queue: 'normal'
-  description: '全チャンネルの情報更新'
