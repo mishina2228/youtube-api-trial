@@ -18,7 +18,7 @@
     <th>
       <%= sortable ChannelStatistic.human_attribute_name(:video_count), 'video_count' %>
     </th>
-    <th>
+    <th class="visible-lg visible-md">
       <%= sortable ChannelStatistic.human_attribute_name(:created_at), 'latest_acquired_at' %>
     </th>
   </tr>
@@ -60,7 +60,7 @@
           </span>
         </div>
       </td>
-      <td>
+      <td class="visible-lg visible-md">
         <div class="vertical text-right text-nowrap">
           <span>
             <%= print_acquired_at(c.latest_acquired_at) %>
