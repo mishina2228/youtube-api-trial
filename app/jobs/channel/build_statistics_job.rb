@@ -17,7 +17,7 @@ class Channel::BuildStatisticsJob
   def self.perform(options = {})
     channel = Channel.find(options['channel_id'])
     begin
-      raise "チャンネル「#{channel.title}」の統計取得に失敗しました。" unless channel.build_statistics
+      channel.build_statistics!
     rescue Google::Apis::TransmissionError, HTTPClient::TimeoutError => e
       retry_count = options['retry'].to_i
       raise e unless retry_count < Consts::Job::RETRY_MAX_COUNT

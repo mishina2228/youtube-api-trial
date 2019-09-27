@@ -26,20 +26,20 @@ class Channel < ApplicationRecord
     "https://www.youtube.com/channel/#{channel_id}"
   end
 
-  def build_statistics
+  def build_statistics!
     res = youtube_service.statistics(channel_id)
-    return false if error_message(res)
+    raise res.error if res.error.present?
 
     statistics = res.response
-    channel_statistics.build(channel_statistics_params(statistics)).save
+    channel_statistics.build(channel_statistics_params(statistics)).save!
   end
 
-  def update_snippet
+  def update_snippet!
     res = youtube_service.snippet(channel_id)
-    return false if error_message(res)
+    raise res.error if res.error.present?
 
     snippet = res.response
-    update(snippet_params(snippet))
+    update!(snippet_params(snippet))
   end
 
   def youtube_service
@@ -80,17 +80,6 @@ class Channel < ApplicationRecord
   end
 
   private
-
-  def error_message(res, key = :base)
-    return false if res.status_ok?
-
-    if res.status_blank?
-      errors.add(key, I18n.t('text.youtube.errors.channel_id_invalid'))
-    elsif res.status_error?
-      errors.add(key, res.error.message)
-    end
-    true
-  end
 
   def parse_channel_id(val)
     URI.parse(val)

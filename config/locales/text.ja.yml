@@ -36,6 +36,3 @@ ja:
       top_page: TOPページ
     system_setting:
       missing: システム設定が作成されていません
-    youtube:
-      errors:
-        channel_id_invalid: チャンネルIDが間違っていませんか?

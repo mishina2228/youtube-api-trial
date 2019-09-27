@@ -64,33 +64,32 @@ class ChannelTest < ActiveSupport::TestCase
   def test_build_statistics
     channel = channels(:チャンネル1)
     assert_difference -> {ChannelStatistic.count} do
-      channel.build_statistics
+      channel.build_statistics!
     end
-    assert channel.errors.blank?
   end
 
   def test_build_statistics_error
     channel = channels(:エラーチャンネル)
-    assert_no_difference -> {ChannelStatistic.count} do
-      assert_not channel.build_statistics
+    assert_raise Google::Apis::ClientError do
+      assert_no_difference -> {ChannelStatistic.count} do
+        assert_not channel.build_statistics!
+      end
     end
-    assert channel.errors.present?
   end
 
   def test_build_statistics_blank
     channel = channels(:存在しないチャンネル)
-    assert_no_difference -> {ChannelStatistic.count} do
-      assert_not channel.build_statistics
+    assert_raise Youtube::NoChannelError do
+      assert_no_difference -> {ChannelStatistic.count} do
+        assert_not channel.build_statistics!
+      end
     end
-    assert channel.errors.present?
-    assert channel.errors.messages[:base].include?(I18n.t('text.youtube.errors.channel_id_invalid'))
   end
 
   def test_update_snippet
     channel = channels(:チャンネル1)
     before_channel = channel.dup
-    channel.update_snippet
-    assert channel.errors.blank?
+    channel.update_snippet!
     channel.reload
     assert_not_equal channel.title, before_channel.title
     assert_not_equal channel.description, before_channel.description
@@ -100,15 +99,16 @@ class ChannelTest < ActiveSupport::TestCase
 
   def test_update_snippet_error
     channel = channels(:エラーチャンネル)
-    assert_not channel.update_snippet
-    assert channel.errors.present?
+    assert_raise Google::Apis::ClientError do
+      assert_not channel.update_snippet!
+    end
   end
 
   def test_update_snippet_blank
     channel = channels(:存在しないチャンネル)
-    assert_not channel.update_snippet
-    assert channel.errors.present?
-    assert channel.errors.messages[:base].include?(I18n.t('text.youtube.errors.channel_id_invalid'))
+    assert_raise Youtube::NoChannelError do
+      assert_not channel.update_snippet!
+    end
   end
 
   def valid_params

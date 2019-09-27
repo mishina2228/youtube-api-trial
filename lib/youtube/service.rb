@@ -31,14 +31,13 @@ class Youtube::Service
 
   def get_channel(part, channel_id)
     response = nil
-    error = nil
     begin
       response = service.list_channels(part, id: channel_id)
-      status = if response.page_info.total_results.zero?
-                 Consts::Statuses::BLANK
-               else
-                 Consts::Statuses::OK
-               end
+      status, error = if response.page_info.total_results.zero?
+                        [Consts::Statuses::BLANK, Youtube::NoChannelError.new(channel_id)]
+                      else
+                        [Consts::Statuses::OK, nil]
+                      end
     rescue Google::Apis::ClientError => e
       status = Consts::Statuses::ERROR
       error = e

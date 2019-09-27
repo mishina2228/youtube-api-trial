@@ -36,6 +36,3 @@ en:
       top_page: TOP Page
     system_setting:
       missing: The system setting has not been created
-    youtube:
-      errors:
-        channel_id_invalid: Is the channel ID wrong?

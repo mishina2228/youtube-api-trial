@@ -23,7 +23,7 @@ class Mock::Service
       ::Youtube::ServiceResponse.new(
         Consts::Statuses::BLANK,
         nil,
-        Google::Apis::ClientError.new('Invalid request')
+        Youtube::NoChannelError.new(channel_id)
       )
     else
       ::Youtube::ServiceResponse.new(
@@ -50,7 +50,7 @@ class Mock::Service
       ::Youtube::ServiceResponse.new(
         Consts::Statuses::BLANK,
         nil,
-        Google::Apis::ClientError.new('Invalid request')
+        Youtube::NoChannelError.new(channel_id)
       )
     else
       ::Youtube::ServiceResponse.new(
