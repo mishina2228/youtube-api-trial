@@ -10,7 +10,7 @@ class ChannelsController < ApplicationController
 
   def index
     search = Search::Channel.new(search_params)
-    @channels = search.search
+    @channels = search.search.paginate(params)
   end
 
   def show
