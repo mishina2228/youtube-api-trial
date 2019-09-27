@@ -49,7 +49,7 @@ class ChannelsController < ApplicationController
 
   def build_all_statistics
     JobUtils.enqueue(Channel::BuildAllStatisticsJob)
-    redirect_to channels_url, notice: t('text.channel.update_all_snippets.message')
+    redirect_to channels_url, notice: t('text.channel.build_all_statistics.message')
   end
 
   def update_snippet
