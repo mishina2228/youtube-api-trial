@@ -2,11 +2,12 @@ class SystemSetting < ApplicationRecord
   include Encryptor
 
   attr_accessor :client_secret
+  enum auth_method: {nothing: 0, api_key: 1, oauth2: 2}
 
   before_save :encrypt_client_secret
   after_initialize :decrypt_client_secret
 
-  validates :api_key, presence: true
+  validates :auth_method, presence: true
 
   private
 

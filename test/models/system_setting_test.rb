@@ -5,11 +5,11 @@ class SystemSettingTest < ActiveSupport::TestCase
     ss = SystemSetting.new(valid_params)
     assert ss.valid?
 
-    ss = SystemSetting.new(valid_params.merge(api_key: nil))
+    ss = SystemSetting.new(valid_params.merge(auth_method: nil))
     assert ss.invalid?
   end
 
   def valid_params
-    {api_key: 'test_api_key'}
+    {auth_method: :api_key}
   end
 end

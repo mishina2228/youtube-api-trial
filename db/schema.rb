@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_27_162917) do
+ActiveRecord::Schema.define(version: 2019_09_28_045559) do
 
   create_table "channel_statistics", force: :cascade do |t|
     t.integer "channel_id", null: false
@@ -34,11 +34,12 @@ ActiveRecord::Schema.define(version: 2019_09_27_162917) do
   end
 
   create_table "system_settings", force: :cascade do |t|
-    t.string "api_key", null: false
+    t.string "api_key"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "client_id"
     t.string "encrypted_client_secret"
+    t.integer "auth_method", default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|
