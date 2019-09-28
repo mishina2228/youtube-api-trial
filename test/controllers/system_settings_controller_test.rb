@@ -35,7 +35,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
   test 'should create system_setting' do
     sign_in admin
 
-    assert_difference('SystemSetting.count') do
+    assert_difference -> {SystemSetting.count} do
       post system_setting_url,
            params: {
              system_setting: {

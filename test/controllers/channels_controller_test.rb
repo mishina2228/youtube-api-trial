@@ -35,7 +35,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in admin
 
     channel_id = @channel.channel_id + Time.current.usec.to_s
-    assert_difference('Channel.count') do
+    assert_difference -> {Channel.count} do
       post channels_url,
            params: {
              channel: {
@@ -80,7 +80,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
   test 'should destroy channel' do
     sign_in admin
 
-    assert_difference('Channel.count', -1) do
+    assert_difference -> {Channel.count}, -1 do
       delete channel_url(id: @channel)
     end
 
