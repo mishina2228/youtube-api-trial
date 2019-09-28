@@ -37,13 +37,139 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
 
     assert_difference -> {SystemSetting.count} do
       post system_setting_url,
-           params: {
-             system_setting: {
-               api_key: @system_setting.api_key
-             }
-           }
+           params: api_key_params
     end
     assert_redirected_to system_setting_url
+  end
+
+  test 'should not create system_setting if parameters are invalid - auth_method1' do
+    sign_in admin
+
+    assert_no_difference -> {SystemSetting.count} do
+      post system_setting_url,
+           params: api_key_params.deep_merge(system_setting: {auth_method: nil})
+    end
+    assert_response :success
+  end
+
+  test 'should not create system_setting if parameters are invalid - auth_method2' do
+    sign_in admin
+
+    assert_no_difference -> {SystemSetting.count} do
+      post system_setting_url,
+           params: api_key_params.deep_merge(system_setting: {auth_method: ''})
+    end
+    assert_response :success
+  end
+
+  test 'should create system_setting if parameter "auth_method" is missing' do
+    sign_in admin
+
+    assert_difference -> {SystemSetting.count} do
+      params = api_key_params
+      params[:system_setting].delete(:auth_method)
+      post system_setting_url,
+           params: params
+    end
+    assert_redirected_to system_setting_url
+    ss = SystemSetting.find_by(api_key: api_key_params[:system_setting][:api_key])
+    assert ss.nothing?
+  end
+
+  test 'should not create system_setting if parameters are invalid - api_key1' do
+    sign_in admin
+
+    assert_no_difference -> {SystemSetting.count} do
+      post system_setting_url,
+           params: api_key_params.deep_merge(system_setting: {api_key: nil})
+    end
+    assert_response :success
+  end
+
+  test 'should not create system_setting if parameters are invalid - api_key2' do
+    sign_in admin
+
+    assert_no_difference -> {SystemSetting.count} do
+      post system_setting_url,
+           params: api_key_params.deep_merge(system_setting: {api_key: ''})
+    end
+    assert_response :success
+  end
+
+  test 'should not create system_setting if parameters are invalid - api_key3' do
+    sign_in admin
+
+    assert_no_difference -> {SystemSetting.count} do
+      params = api_key_params
+      params[:system_setting].delete(:api_key)
+      post system_setting_url,
+           params: params
+    end
+    assert_response :success
+  end
+
+  test 'should not create system_setting if parameters are invalid - client_id1' do
+    sign_in admin
+
+    assert_no_difference -> {SystemSetting.count} do
+      post system_setting_url,
+           params: oauth2_params.deep_merge(system_setting: {client_id: nil})
+    end
+    assert_response :success
+  end
+
+  test 'should not create system_setting if parameters are invalid - client_id2' do
+    sign_in admin
+
+    assert_no_difference -> {SystemSetting.count} do
+      post system_setting_url,
+           params: oauth2_params.deep_merge(system_setting: {client_id: ''})
+    end
+    assert_response :success
+  end
+
+  test 'should not create system_setting if parameters are invalid - client_id3' do
+    sign_in admin
+
+    assert_no_difference -> {SystemSetting.count} do
+      params = oauth2_params
+      params[:system_setting].delete(:client_id)
+      post system_setting_url,
+           params: params
+    end
+    assert_response :success
+  end
+
+  test 'should not create system_setting if parameters are invalid - client_secret1' do
+    sign_in admin
+
+    assert_no_difference -> {SystemSetting.count} do
+      post system_setting_url,
+           params: oauth2_params.deep_merge(system_setting: {client_secret: nil})
+    end
+    assert_response :success
+  end
+
+  test 'should not create system_setting if parameters are invalid - client_secret2' do
+    sign_in admin
+
+    assert_no_difference -> {SystemSetting.count} do
+      post system_setting_url,
+           params: oauth2_params.deep_merge(system_setting: {client_secret: ''})
+    end
+    assert_response :success
+  end
+
+  test 'should not create system_setting if parameters are invalid - client_secret3' do
+    sign_in admin
+
+    assert_no_difference -> {SystemSetting.count} do
+      params = oauth2_params
+      params[:system_setting].delete(:client_secret)
+      post system_setting_url,
+           params: params
+    end
+    assert_response :success
   end
 
   test 'should not create system_setting if logged in as an user' do
@@ -51,22 +177,14 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
 
     assert_raise CanCan::AccessDenied do
       post system_setting_url,
-           params: {
-             system_setting: {
-               api_key: @system_setting.api_key
-             }
-           }
+           params: api_key_params
     end
   end
 
   test 'should not create system_setting unless logged in' do
     assert_raise CanCan::AccessDenied do
       post system_setting_url,
-           params: {
-             system_setting: {
-               api_key: @system_setting.api_key
-             }
-           }
+           params: api_key_params
     end
   end
 
@@ -116,11 +234,111 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     sign_in admin
 
     patch system_setting_url,
-          params: {
-            system_setting: {
-              api_key: @system_setting.api_key
-            }
-          }
+          params: api_key_params
+    assert_redirected_to system_setting_url
+  end
+
+  test 'should not update system_setting if parameters are invalid - auth_method1' do
+    sign_in admin
+
+    patch system_setting_url,
+          params: api_key_params.deep_merge(system_setting: {auth_method: nil})
+    assert_response :success
+  end
+
+  test 'should not update system_setting if parameters are invalid - auth_method2' do
+    sign_in admin
+
+    patch system_setting_url,
+          params: api_key_params.deep_merge(system_setting: {auth_method: ''})
+    assert_response :success
+  end
+
+  test 'should update system_setting if parameter "auth_method" is missing' do
+    sign_in admin
+
+    params = api_key_params
+    params[:system_setting].delete(:auth_method)
+    patch system_setting_url,
+          params: params
+    assert_redirected_to system_setting_url
+  end
+
+  test 'should not update system_setting if parameters are invalid - api_key1' do
+    sign_in admin
+
+    patch system_setting_url,
+          params: api_key_params.deep_merge(system_setting: {api_key: nil})
+    assert_response :success
+  end
+
+  test 'should not update system_setting if parameters are invalid - api_key2' do
+    sign_in admin
+
+    patch system_setting_url,
+          params: api_key_params.deep_merge(system_setting: {api_key: ''})
+    assert_response :success
+  end
+
+  test 'should update system_setting if parameter "api_key" is missing' do
+    sign_in admin
+
+    params = api_key_params
+    params[:system_setting].delete(:api_key)
+    patch system_setting_url,
+          params: params
+    assert_redirected_to system_setting_url
+  end
+
+  test 'should not update system_setting if parameters are invalid - client_id1' do
+    sign_in admin
+
+    patch system_setting_url,
+          params: oauth2_params.deep_merge(system_setting: {client_id: nil})
+    assert_response :success
+  end
+
+  test 'should not update system_setting if parameters are invalid - client_id2' do
+    sign_in admin
+
+    patch system_setting_url,
+          params: oauth2_params.deep_merge(system_setting: {client_id: ''})
+    assert_response :success
+  end
+
+  test 'should update system_setting if parameter "client_id" is missing' do
+    sign_in admin
+
+    params = oauth2_params
+    params[:system_setting].delete(:client_id)
+    patch system_setting_url,
+          params: params
+    assert_redirected_to system_setting_url
+  end
+
+  test 'should update system_setting if client_secret is blank1' do
+    sign_in admin
+
+    patch system_setting_url,
+          params: oauth2_params.deep_merge(system_setting: {client_secret: nil})
+    assert_redirected_to system_setting_url
+  end
+
+  test 'should update system_setting if client_secret is blank2' do
+    sign_in admin
+
+    patch system_setting_url,
+          params: oauth2_params.deep_merge(system_setting: {client_secret: ''})
+    assert_redirected_to system_setting_url
+  end
+
+  test 'should update system_setting if client_secret is blank3' do
+    sign_in admin
+
+    params = oauth2_params
+    params[:system_setting].delete(:client_secret)
+    patch system_setting_url,
+          params: params
     assert_redirected_to system_setting_url
   end
 
@@ -129,22 +347,33 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
 
     assert_raise CanCan::AccessDenied do
       patch system_setting_url,
-            params: {
-              system_setting: {
-                api_key: @system_setting.api_key
-              }
-            }
+            params: api_key_params
     end
   end
 
   test 'should not update system_setting unless not logged in' do
     assert_raise CanCan::AccessDenied do
       patch system_setting_url,
-            params: {
-              system_setting: {
-                api_key: @system_setting.api_key
-              }
-            }
+            params: api_key_params
     end
+  end
+
+  def api_key_params
+    {
+      system_setting: {
+        auth_method: :api_key,
+        api_key: @system_setting.api_key + '_new'
+      }
+    }
+  end
+
+  def oauth2_params
+    {
+      system_setting: {
+        auth_method: :oauth2,
+        client_id: @system_setting.client_id + '_new',
+        client_secret: @system_setting.client_secret + '_new'
+      }
+    }
   end
 end

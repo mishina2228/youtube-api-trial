@@ -97,6 +97,8 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.8.2)
       devise (>= 4.6)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.8.0)
     et-orbi (1.2.2)
       tzinfo
@@ -347,6 +349,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.7.1)
   devise-i18n
+  enum_help
   god
   google-api-client (~> 0.11)
   itamae

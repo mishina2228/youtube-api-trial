@@ -12,11 +12,48 @@
   <div class="container">
     <div class="row">
       <div class="form-group">
-        <div class="col-xs-4 col-sm-2">
+        <div class="col-xs-4 col-sm-4">
+          <%= form.label :auth_method %>
+        </div>
+        <div class="col-xs-8 col-sm-8">
+          <div class="row">
+            <%= form.collection_radio_buttons :auth_method, SystemSetting.auth_methods_i18n_without_nothing, :first, :last do |b| %>
+              <div class="col-xs-6 col-sm-6 col-md-3">
+                <%= b.radio_button %>
+                <%= b.label %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-4 col-sm-4">
           <%= form.label :api_key %>
         </div>
-        <div class="col-xs-8 col-sm-10">
+        <div class="col-xs-8 col-sm-8">
           <%= form.text_field :api_key, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-4 col-sm-4">
+          <%= form.label :client_id %>
+        </div>
+        <div class="col-xs-8 col-sm-8">
+          <%= form.text_field :client_id, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-4 col-sm-4">
+          <%= form.label :client_secret %>
+        </div>
+        <div class="col-xs-8 col-sm-8">
+          <%= form.password_field :client_secret, class: 'form-control' %>
         </div>
       </div>
     </div>

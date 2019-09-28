@@ -1,2 +1,5 @@
 システム設定:
+  auth_method: 1
   api_key: test_api_key
+  client_id: test_client_id
+  encrypted_client_secret: 'xBkc+sa1uFnhAGBtuLK3SBeogmfGRxCqJ8LLFWky7ayd81Eib+dl50wP1aDDuhA=--h2Loz42cwBUSHtrg--7cXAYPlDsHmbkVGzN36HmQ=='

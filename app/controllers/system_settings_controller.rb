@@ -50,6 +50,8 @@ class SystemSettingsController < ApplicationController
   end
 
   def system_setting_params
-    params.require(:system_setting).permit(:api_key)
+    ret = params.require(:system_setting).permit(:api_key, :auth_method, :client_id, :client_secret)
+    ret = ret.except(:client_secret) if ret[:client_secret].blank?
+    ret
   end
 end

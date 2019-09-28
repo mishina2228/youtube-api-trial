@@ -20,6 +20,9 @@ en:
         video_count: Video count
       system_setting:
         api_key: API Key
+        auth_method: Auth method
+        client_id: Client ID
+        client_secret: Client Secret
     errors:
       messages:
         record_invalid: "Validation failed: %{errors}"
@@ -125,6 +128,12 @@ en:
       month: Month
       second: Seconds
       year: Year
+  enums:
+    system_setting:
+      auth_method:
+        api_key: API Key
+        nothing: Authentication method not set
+        oauth2: OAuth2
   errors:
     format: "%{attribute} %{message}"
     messages:

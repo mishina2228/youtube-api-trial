@@ -20,6 +20,9 @@ ja:
         video_count: 動画数
       system_setting:
         api_key: APIキー
+        auth_method: 認証方式
+        client_id: クライアント ID
+        client_secret: クライアント シークレット
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
@@ -125,6 +128,12 @@ ja:
       month: 月
       second: 秒
       year: 年
+  enums:
+    system_setting:
+      auth_method:
+        api_key: APIキー
+        nothing: 認証方式未設定
+        oauth2: OAuth2
   errors:
     format: "%{attribute}%{message}"
     messages:

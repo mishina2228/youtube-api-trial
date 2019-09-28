@@ -36,3 +36,4 @@ ja:
       top_page: TOPページ
     system_setting:
       missing: システム設定が作成されていません
+      missing_auth_method: 認証方式が未設定です。編集画面から認証方式を設定してください。

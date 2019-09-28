@@ -8,6 +8,17 @@ class SystemSetting < ApplicationRecord
   after_initialize :decrypt_client_secret
 
   validates :auth_method, presence: true
+  validates :api_key, presence: true, if: :api_key?
+  validates :client_id, presence: true, if: :oauth2?
+  validates :client_secret, presence: true, if: :oauth2?
+
+  def self.auth_methods_without_nothing
+    auth_methods.reject {|k, _v| k.to_sym == :nothing}
+  end
+
+  def self.auth_methods_i18n_without_nothing
+    auth_methods_i18n.reject {|k, _v| k.to_sym == :nothing}
+  end
 
   private
 

@@ -36,3 +36,4 @@ en:
       top_page: TOP Page
     system_setting:
       missing: The system setting has not been created
+      missing_auth_method: The authentication method is not set. Please set the authentication method.
