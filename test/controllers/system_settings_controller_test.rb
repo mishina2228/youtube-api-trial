@@ -18,7 +18,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not get new' do
+  test 'should not get new if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
@@ -46,7 +46,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to system_setting_url
   end
 
-  test 'should not create system_setting' do
+  test 'should not create system_setting if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
@@ -77,7 +77,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not show system_setting' do
+  test 'should not show system_setting if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
@@ -98,7 +98,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not get edit' do
+  test 'should not get edit if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
@@ -124,7 +124,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to system_setting_url
   end
 
-  test 'should not update system_setting' do
+  test 'should not update system_setting if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do

@@ -17,7 +17,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not get new' do
+  test 'should not get new if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
@@ -48,7 +48,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert_equal channel_id, Channel.last.channel_id
   end
 
-  test 'should not create channel' do
+  test 'should not create channel if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
@@ -87,7 +87,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to channels_url
   end
 
-  test 'should not destroy channel' do
+  test 'should not destroy channel if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
@@ -108,7 +108,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to channel_url(@channel)
   end
 
-  test 'should not build statistics' do
+  test 'should not build statistics if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
@@ -131,7 +131,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to channels_url
   end
 
-  test 'should not build all statistics' do
+  test 'should not build all statistics if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
@@ -160,7 +160,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to channel_url(@channel)
   end
 
-  test 'should not update snippet' do
+  test 'should not update snippet if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
@@ -183,7 +183,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to channels_url
   end
 
-  test 'should not update all snippets' do
+  test 'should not update all snippets if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
