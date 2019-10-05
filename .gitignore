@@ -35,3 +35,6 @@
 
 /.idea/
 *.iml
+
+# Ignore google oauth2 credential file.
+/config/youtube/oauth2_credentials.yml

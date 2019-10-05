@@ -38,3 +38,10 @@ ja:
       change_client_secret: クライアント シークレットを変更する
       missing: システム設定が作成されていません
       missing_auth_method: 認証方式が未設定です。編集画面から認証方式を設定してください。
+      oauth2_setting: OAuth2認証設定
+      oauth2_setting_configured:
+        true: 設定済み
+        false: 未設定
+      oauth2_setting_description_html:
+        上記のURLにアクセスすると、Googleのログイン画面が表示されます。<br>
+        ログイン後に表示されるコードを以下に入力して送信ボタンを押してください。

@@ -38,3 +38,10 @@ en:
       change_client_secret: Change the Client Secret
       missing: The system setting has not been created
       missing_auth_method: The authentication method is not set. Please set the authentication method.
+      oauth2_setting: OAuth2 Setting
+      oauth2_setting_configured:
+        true: configured
+        false: not configured yet
+      oauth2_setting_description_html:
+        When you access the above URL, the Google login screen is displayed.<br>
+        Enter the code displayed after login and press the Send button.

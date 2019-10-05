@@ -1,32 +1,28 @@
 require 'google/apis/youtube_v3'
 
-class Mock::Service
-  attr_accessor :api_key
+class Mishina::Youtube::Mock::Service
+  attr_accessor :service
 
-  def initialize(api_key = nil)
-    self.api_key = api_key
-  end
-
-  def service
+  def initialize(_options = {})
     self
   end
 
   def statistics(channel_id)
     case channel_id
     when /error/
-      ::Youtube::ServiceResponse.new(
+      Mishina::Youtube::ServiceResponse.new(
         Consts::Statuses::ERROR,
         nil,
         Google::Apis::ClientError.new('Invalid request')
       )
     when /blank/
-      ::Youtube::ServiceResponse.new(
+      Mishina::Youtube::ServiceResponse.new(
         Consts::Statuses::BLANK,
         nil,
-        Youtube::NoChannelError.new(channel_id)
+        Mishina::Youtube::NoChannelError.new(channel_id)
       )
     else
-      ::Youtube::ServiceResponse.new(
+      Mishina::Youtube::ServiceResponse.new(
         Consts::Statuses::OK,
         Google::Apis::YoutubeV3::ChannelStatistics.new(
           view_count: 5000,
@@ -41,19 +37,19 @@ class Mock::Service
   def snippet(channel_id)
     case channel_id
     when /error/
-      ::Youtube::ServiceResponse.new(
+      Mishina::Youtube::ServiceResponse.new(
         Consts::Statuses::ERROR,
         nil,
         Google::Apis::ClientError.new('Invalid request')
       )
     when /blank/
-      ::Youtube::ServiceResponse.new(
+      Mishina::Youtube::ServiceResponse.new(
         Consts::Statuses::BLANK,
         nil,
-        Youtube::NoChannelError.new(channel_id)
+        Mishina::Youtube::NoChannelError.new(channel_id)
       )
     else
-      ::Youtube::ServiceResponse.new(
+      Mishina::Youtube::ServiceResponse.new(
         Consts::Statuses::OK,
         Google::Apis::YoutubeV3::ChannelSnippet.new(
           title: 'dummy channel',

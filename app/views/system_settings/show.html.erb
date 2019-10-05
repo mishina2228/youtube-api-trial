@@ -41,6 +41,23 @@
         <%= '********' if @system_setting.client_secret.present? %>
       </div>
     </div>
+    <div class="row">
+      <div class="col-xs-4 col-sm-4">
+        <%= t('text.system_setting.oauth2_setting') %>
+      </div>
+      <div class="col-xs-8 col-sm-8">
+        <% if @system_setting.oauth2_configured? %>
+          <%= t('text.system_setting.oauth2_setting_configured.true') %>
+        <% else %>
+          <%= t('text.system_setting.oauth2_setting_configured.false') %>
+          <div class="oauth2-authorize-url">
+            <%= button_to t('helpers.link.oauth2_setting'), oauth2_authorize_system_setting_path,
+                        method: :put, remote: true, class: 'btn btn-success',
+                        role: :button, data: {disable_with: t('helpers.notice.processing')} %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   <% when :nothing %>
     <div class="row">
       <span class="col-xs-8 col-sm-10 alert alert-danger font-weight-bold">

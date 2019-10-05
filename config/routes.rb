@@ -10,7 +10,12 @@ Rails.application.routes.draw do
     root 'channels#index'
     devise_for :users
 
-    resource :system_setting, except: :destroy
+    resource :system_setting, except: :destroy do
+      member do
+        put :oauth2_authorize
+        put :oauth2_store_credential
+      end
+    end
     resources :channels, except: [:edit, :update] do
       member do
         put :build_statistics

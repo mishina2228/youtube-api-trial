@@ -43,6 +43,27 @@ class SystemSettingsController < ApplicationController
     end
   end
 
+  def oauth2_authorize
+    if @system_setting.oauth2?
+      @url = @system_setting.authorization_url
+    else
+      flash[:notice] = t('helpers.notice.oauth2_required')
+      render js: 'window.location.reload();'
+    end
+  end
+
+  def oauth2_store_credential
+    if @system_setting.oauth2?
+      @system_setting.store_credential(oauth2_code_params[:code])
+      redirect_to system_setting_path, notice: t('helpers.notice.oauth2_credential_stored')
+    else
+      redirect_to system_setting_path, notice: t('helpers.notice.oauth2_required')
+    end
+  rescue Signet::AuthorizationError => e
+    Rails.logger.error e.inspect
+    redirect_to system_setting_path, notice: t('helpers.notice.oauth2_credential_store_failed')
+  end
+
   private
 
   def set_system_setting
@@ -53,5 +74,9 @@ class SystemSettingsController < ApplicationController
     ret = params.require(:system_setting).permit(:api_key, :auth_method, :client_id, :client_secret)
     ret = ret.except(:client_secret) if ret[:client_secret].blank?
     ret
+  end
+
+  def oauth2_code_params
+    params.require(:system_setting).permit(:code)
   end
 end

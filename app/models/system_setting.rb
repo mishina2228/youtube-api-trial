@@ -1,5 +1,6 @@
 class SystemSetting < ApplicationRecord
   include Encryptor
+  include Mishina::Youtube::Oauth2
 
   attr_accessor :client_secret
   enum auth_method: {nothing: 0, api_key: 1, oauth2: 2}
@@ -20,7 +21,26 @@ class SystemSetting < ApplicationRecord
     auth_methods_i18n.reject {|k, _v| k.to_sym == :nothing}
   end
 
+  def oauth2_configured?
+    credential.present?
+  end
+
+  def youtube_service
+    return @youtube_service if @youtube_service
+
+    @youtube_service = Mishina::Youtube::ServiceFactory.create_service(service_params)
+  end
+
   private
+
+  def service_params
+    case auth_method.to_sym
+    when :api_key
+      {api_key: api_key}
+    when :oauth2
+      {credentials: credential}
+    end
+  end
 
   def encrypt_client_secret
     self.encrypted_client_secret = encrypt(client_secret) if client_secret

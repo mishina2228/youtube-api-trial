@@ -1,30 +1,25 @@
 require 'google/apis/youtube_v3'
 
-class Youtube::Service
-  attr_accessor :api_key
+class Mishina::Youtube::Service
+  attr_accessor :service
 
-  def initialize(api_key = nil)
-    self.api_key = api_key
-  end
-
-  def service
-    return @service if @service.present?
-
-    @service = Google::Apis::YoutubeV3::YouTubeService.new
-    @service.key = api_key
-    @service
+  def initialize(options = {})
+    service = Google::Apis::YoutubeV3::YouTubeService.new
+    service.key = options.delete(:api_key)
+    service.authorization = options.delete(:credentials)
+    self.service = service
   end
 
   def statistics(channel_id)
     status, res, error = get_channel('statistics', channel_id)
     statics = res.items.first.try(:statistics) if error.blank?
-    ::Youtube::ServiceResponse.new(status, statics, error)
+    Mishina::Youtube::ServiceResponse.new(status, statics, error)
   end
 
   def snippet(channel_id)
     status, res, error = get_channel('snippet', channel_id)
     snippet = res.items.first.try(:snippet) if error.blank?
-    ::Youtube::ServiceResponse.new(status, snippet, error)
+    Mishina::Youtube::ServiceResponse.new(status, snippet, error)
   end
 
   private
@@ -34,7 +29,7 @@ class Youtube::Service
     begin
       response = service.list_channels(part, id: channel_id)
       status, error = if response.page_info.total_results.zero?
-                        [Consts::Statuses::BLANK, Youtube::NoChannelError.new(channel_id)]
+                        [Consts::Statuses::BLANK, Mishina::Youtube::NoChannelError.new(channel_id)]
                       else
                         [Consts::Statuses::OK, nil]
                       end

@@ -358,6 +358,34 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'should not get oauth2 auth url if logged in as an user' do
+    sign_in user
+
+    assert_raise CanCan::AccessDenied do
+      put oauth2_authorize_system_setting_url
+    end
+  end
+
+  test 'should not get oauth2 auth url unless not logged in' do
+    assert_raise CanCan::AccessDenied do
+      put oauth2_authorize_system_setting_url
+    end
+  end
+
+  test 'should not store oauth2 credential if logged in as an user' do
+    sign_in user
+
+    assert_raise CanCan::AccessDenied do
+      put oauth2_store_credential_system_setting_url
+    end
+  end
+
+  test 'should not store oauth2 credential unless not logged in' do
+    assert_raise CanCan::AccessDenied do
+      put oauth2_store_credential_system_setting_url
+    end
+  end
+
   def api_key_params
     {
       system_setting: {

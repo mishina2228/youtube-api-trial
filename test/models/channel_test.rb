@@ -51,7 +51,7 @@ class ChannelTest < ActiveSupport::TestCase
   def test_youtube_service
     channel = channels(:チャンネル1)
     ret = channel.youtube_service
-    assert ret.is_a?(::Mock::Service), 'テスト環境ではmockを使用すること'
+    assert ret.is_a?(Mishina::Youtube::Mock::Service), 'テスト環境ではmockを使用すること'
   end
 
   def test_youtube_service_no_system_setting
@@ -80,7 +80,7 @@ class ChannelTest < ActiveSupport::TestCase
 
   def test_build_statistics_blank
     channel = channels(:存在しないチャンネル)
-    assert_raise Youtube::NoChannelError do
+    assert_raise Mishina::Youtube::NoChannelError do
       assert_no_difference -> {ChannelStatistic.count} do
         assert_not channel.build_statistics!
       end
@@ -107,7 +107,7 @@ class ChannelTest < ActiveSupport::TestCase
 
   def test_update_snippet_blank
     channel = channels(:存在しないチャンネル)
-    assert_raise Youtube::NoChannelError do
+    assert_raise Mishina::Youtube::NoChannelError do
       assert_not channel.update_snippet!
     end
   end

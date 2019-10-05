@@ -1,4 +1,4 @@
-class Youtube::ServiceResponse
+class Mishina::Youtube::ServiceResponse
   attr_accessor :status, :response, :error
 
   def initialize(status, response, error)
