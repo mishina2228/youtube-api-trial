@@ -10,9 +10,6 @@
         <%= link_to SystemSetting.model_name.human, system_setting_path %>
       </div>
     <% end %>
-    <div class="col-md-2 col-xs-4">
-      <%= link_to Channel.model_name.human, channels_path %>
-    </div>
     <% if user_signed_in? && current_user.admin? %>
       <div class="col-md-2 col-xs-4">
         <%= link_to 'Resque', '/resque/overview', target: '_blank' %>
