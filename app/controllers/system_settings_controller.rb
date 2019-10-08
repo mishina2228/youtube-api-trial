@@ -1,5 +1,5 @@
 class SystemSettingsController < ApplicationController
-  before_action :set_system_setting
+  before_action :set_system_setting, except: :create
   authorize_resource
 
   def show
@@ -7,10 +7,8 @@ class SystemSettingsController < ApplicationController
   end
 
   def new
-    if @system_setting
-      redirect_to system_setting_path
-      return
-    end
+    return redirect_to system_setting_path if @system_setting
+
     @system_setting = SystemSetting.new
   end
 
