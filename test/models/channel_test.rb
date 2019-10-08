@@ -112,6 +112,32 @@ class ChannelTest < ActiveSupport::TestCase
     end
   end
 
+  def test_medium_thumbnail_url
+    channel = channels(:チャンネル1)
+    thumbnail_url = 'https://yt3.ggpht.com/-4nB6EusJ1Iw/AAAAAAAAAAI/AAAAAAAAAAA/coEXMA5Pjrg/s88-c-k-no-mo-rj-c0xffffff/photo.jpg'
+    channel.thumbnail_url = thumbnail_url
+    expected = 'https://yt3.ggpht.com/-4nB6EusJ1Iw/AAAAAAAAAAI/AAAAAAAAAAA/coEXMA5Pjrg/s240-c-k-no-mo-rj-c0xffffff/photo.jpg'
+    assert_equal expected, channel.medium_thumbnail_url
+
+    thumbnail_url = 'https://yt3.ggpht.com/a/AGF-l79ixJhX3qrps2VymdF7R-Mq_z86tUJGHxY8qg=s88-c-k-c0xffffffff-no-rj-mo'
+    channel.thumbnail_url = thumbnail_url
+    expected = 'https://yt3.ggpht.com/a/AGF-l79ixJhX3qrps2VymdF7R-Mq_z86tUJGHxY8qg=s240-c-k-c0xffffffff-no-rj-mo'
+    assert_equal expected, channel.medium_thumbnail_url
+  end
+
+  def test_high_thumbnail_url
+    channel = channels(:チャンネル1)
+    thumbnail_url = 'https://yt3.ggpht.com/-4nB6EusJ1Iw/AAAAAAAAAAI/AAAAAAAAAAA/coEXMA5Pjrg/s88-c-k-no-mo-rj-c0xffffff/photo.jpg'
+    channel.thumbnail_url = thumbnail_url
+    expected = 'https://yt3.ggpht.com/-4nB6EusJ1Iw/AAAAAAAAAAI/AAAAAAAAAAA/coEXMA5Pjrg/s800-c-k-no-mo-rj-c0xffffff/photo.jpg'
+    assert_equal expected, channel.high_thumbnail_url
+
+    thumbnail_url = 'https://yt3.ggpht.com/a/AGF-l79ixJhX3qrps2VymdF7R-Mq_z86tUJGHxY8qg=s88-c-k-c0xffffffff-no-rj-mo'
+    channel.thumbnail_url = thumbnail_url
+    expected = 'https://yt3.ggpht.com/a/AGF-l79ixJhX3qrps2VymdF7R-Mq_z86tUJGHxY8qg=s800-c-k-c0xffffffff-no-rj-mo'
+    assert_equal expected, channel.high_thumbnail_url
+  end
+
   def valid_params
     {channel_id: 'abc', thumbnail_url: 'https://www.example.com'}
   end

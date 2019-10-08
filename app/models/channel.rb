@@ -79,6 +79,14 @@ class Channel < ApplicationRecord
     second_latest_statistics&.created_at
   end
 
+  def medium_thumbnail_url
+    thumbnail_url.gsub(/s88-/, 's240-')
+  end
+
+  def high_thumbnail_url
+    thumbnail_url.gsub(/s88-/, 's800-')
+  end
+
   private
 
   def parse_channel_id(val)
