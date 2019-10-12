@@ -80,9 +80,11 @@
 
 <script>
   $(document).on('turbolinks:load', (function () {
+    SystemSetting.prop_fields($('.auth-field').find('.form-group'), false);
     $('.auth-methods input[type="radio"]').change(function () {
       SystemSetting.toggle_auth_method($(this));
-    }).change();
+    });
+    $('.auth-methods input[type="radio"]:checked').change();
     $('.change-client-secret').click(function () {
       SystemSetting.change_password($(this));
     });
