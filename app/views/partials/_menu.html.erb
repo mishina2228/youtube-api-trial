@@ -1,31 +1,32 @@
-<%= render partial: 'partials/locale' %>
-
-<div class="container">
-  <div class="row text-center bg-primary header">
-    <div class="col-md-2 col-xs-4">
-      <%= link_to t('text.top.top_page'), root_path %>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <%= render partial: 'partials/locale' %>
+  <div class="container">
+    <div class="row text-center bg-primary header">
+      <div class="col-md-2 col-xs-4">
+        <%= link_to t('text.top.top_page'), root_path %>
+      </div>
+      <% if can? :manage, SystemSetting %>
+        <div class="col-md-2 col-xs-4">
+          <%= link_to SystemSetting.model_name.human, system_setting_path %>
+        </div>
+      <% end %>
+      <% if user_signed_in? && current_user.admin? %>
+        <div class="col-md-2 col-xs-4">
+          <%= link_to 'Resque', '/resque/overview', target: '_blank' %>
+        </div>
+      <% end %>
+      <% if user_signed_in? %>
+        <div class="col-md-2 col-xs-4">
+          <%= current_user.email %>
+        </div>
+        <div class="col-md-2 col-xs-4">
+          <%= link_to t('text.devise.sign_out'), destroy_user_session_path, method: :delete %>
+        </div>
+      <% else %>
+        <div class="col-md-2 col-xs-4">
+          <%= link_to t('text.devise.sign_in'), new_user_session_path %>
+        </div>
+      <% end %>
     </div>
-    <% if can? :manage, SystemSetting %>
-      <div class="col-md-2 col-xs-4">
-        <%= link_to SystemSetting.model_name.human, system_setting_path %>
-      </div>
-    <% end %>
-    <% if user_signed_in? && current_user.admin? %>
-      <div class="col-md-2 col-xs-4">
-        <%= link_to 'Resque', '/resque/overview', target: '_blank' %>
-      </div>
-    <% end %>
-    <% if user_signed_in? %>
-      <div class="col-md-2 col-xs-4">
-        <%= current_user.email %>
-      </div>
-      <div class="col-md-2 col-xs-4">
-        <%= link_to t('text.devise.sign_out'), destroy_user_session_path, method: :delete %>
-      </div>
-    <% else %>
-      <div class="col-md-2 col-xs-4">
-        <%= link_to t('text.devise.sign_in'), new_user_session_path %>
-      </div>
-    <% end %>
   </div>
-</div>
+</nav>
