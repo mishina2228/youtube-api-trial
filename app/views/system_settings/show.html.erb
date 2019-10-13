@@ -7,7 +7,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-4 col-sm-4">
+    <div class="col-xs-4 col-sm-4 font-weight-bold">
       <%= SystemSetting.human_attribute_name :auth_method %>
     </div>
     <div class="col-xs-8 col-sm-8">
@@ -17,7 +17,7 @@
   <% case @system_setting.auth_method.to_sym %>
   <% when :api_key %>
     <div class="row">
-      <div class="col-xs-4 col-sm-4">
+      <div class="col-xs-4 col-sm-4 font-weight-bold">
         <%= SystemSetting.human_attribute_name :api_key %>
       </div>
       <div class="col-xs-8 col-sm-8">
@@ -26,7 +26,7 @@
     </div>
   <% when :oauth2 %>
     <div class="row">
-      <div class="col-xs-4 col-sm-4">
+      <div class="col-xs-4 col-sm-4 font-weight-bold">
         <%= SystemSetting.human_attribute_name :client_id %>
       </div>
       <div class="col-xs-8 col-sm-8">
@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-4 col-sm-4">
+      <div class="col-xs-4 col-sm-4 font-weight-bold">
         <%= SystemSetting.human_attribute_name :client_secret %>
       </div>
       <div class="col-xs-8 col-sm-8">
@@ -42,7 +42,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-4 col-sm-4">
+      <div class="col-xs-4 col-sm-4 font-weight-bold">
         <%= t('text.system_setting.oauth2_setting') %>
       </div>
       <div class="col-xs-8 col-sm-8">

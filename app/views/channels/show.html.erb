@@ -4,9 +4,9 @@
 
 <%= render partial: 'action' %>
 
-<div class="container">
+<div class="container kinda-table">
   <div class="row">
-    <div class="col-xs-4 col-sm-2">
+    <div class="col-xs-4 col-sm-2 font-weight-bold">
       <%= Channel.human_attribute_name :title %>
     </div>
     <div class="col-xs-8 col-sm-10">
@@ -17,21 +17,23 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-4 col-sm-2">
+    <div class="col-xs-4 col-sm-2 font-weight-bold">
       <%= Channel.human_attribute_name :thumbnail_url %>
     </div>
-    <div class="col-xs-2">
-      <%= link_to 'Small', @channel.thumbnail_url, target: '_blank' %>
-    </div>
-    <div class="col-xs-2" style="font-size: medium">
-      <%= link_to 'Medium', @channel.medium_thumbnail_url, target: '_blank' %>
-    </div>
-    <div class="col-xs-2" style="font-size: large">
-      <%= link_to 'Large', @channel.high_thumbnail_url, target: '_blank' %>
-    </div>
+    <% if @channel.thumbnail_url.present? %>
+      <div class="col-xs-2">
+        <%= link_to 'Small', @channel.thumbnail_url, target: '_blank' %>
+      </div>
+      <div class="col-xs-2" style="font-size: medium">
+        <%= link_to 'Medium', @channel.medium_thumbnail_url, target: '_blank' %>
+      </div>
+      <div class="col-xs-2" style="font-size: large">
+        <%= link_to 'Large', @channel.high_thumbnail_url, target: '_blank' %>
+      </div>
+    <% end %>
   </div>
   <div class="row">
-    <div class="col-xs-4 col-sm-2">
+    <div class="col-xs-4 col-sm-2 font-weight-bold">
       <%= Channel.human_attribute_name :description %>
     </div>
     <div class="col-xs-8 col-sm-10 emojify">
@@ -39,7 +41,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-4 col-sm-2">
+    <div class="col-xs-4 col-sm-2 font-weight-bold">
       <%= Channel.human_attribute_name :published_at %>
     </div>
     <div class="col-xs-8 col-sm-10">

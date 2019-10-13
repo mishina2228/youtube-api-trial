@@ -132,3 +132,18 @@ form.button_to {
 .break-word-wrap {
   word-wrap: break-word;
 }
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.kinda-table {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.kinda-table .row {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  border: 1px solid #ddd;
+}
