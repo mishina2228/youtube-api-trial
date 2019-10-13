@@ -22,6 +22,10 @@ class Mishina::Youtube::Service
     Mishina::Youtube::ServiceResponse.new(status, snippet, error)
   end
 
+  def subscriptions(token:, max_results:)
+    service.list_subscriptions('snippet', mine: true, max_results: max_results, page_token: token)
+  end
+
   private
 
   def get_channel(part, channel_id)

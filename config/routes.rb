@@ -26,5 +26,6 @@ Rails.application.routes.draw do
         put :update_all_snippets
       end
     end
+    resources :subscriptions, only: :index
   end
 end

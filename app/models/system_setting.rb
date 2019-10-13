@@ -25,6 +25,12 @@ class SystemSetting < ApplicationRecord
     credential.present?
   end
 
+  def subscriptions(token: nil, max_results: 50)
+    raise I18n.t('helpers.notice.oauth2_required') unless oauth2?
+
+    youtube_service.subscriptions(token: token, max_results: max_results)
+  end
+
   def youtube_service
     return @youtube_service if @youtube_service
 

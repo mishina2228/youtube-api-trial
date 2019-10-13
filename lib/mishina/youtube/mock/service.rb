@@ -63,4 +63,17 @@ class Mishina::Youtube::Mock::Service
       )
     end
   end
+
+  def subscriptions(_token:, max_results:)
+    snippet = Google::Apis::YoutubeV3::Subscription.new(
+      channel_id: 'dummy_channel_id',
+      title: 'dummy channel',
+      thumbnails: Google::Apis::YoutubeV3::ThumbnailDetails.new(
+        default: Google::Apis::YoutubeV3::Thumbnail.new(url: 'https://example.com/thumbnail/dummy')
+      )
+    )
+    Google::Apis::YoutubeV3::ListSubscriptionResponse.new(
+      channels: Array.new(max_results, snippet)
+    )
+  end
 end

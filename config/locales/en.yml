@@ -177,6 +177,9 @@ en:
       back: Back
       build_all_statistics: Acquire statistics in bulk
       build_statistics: Acquire statistics
+      channel_created: Created
+      channel_create_failed: Failed to Create
+      create_from_subscription: Create from Subscription
       delete: Delete
       edit: Edit
       new: New
@@ -200,6 +203,7 @@ en:
       prompt: Please select
     submit:
       create: Create
+      create_channel: Create
       send: Send
       submit: Save
       update: Update

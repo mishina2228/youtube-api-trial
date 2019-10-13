@@ -14,6 +14,13 @@ class Channel < ApplicationRecord
            .select('"channels".*, cs.subscriber_count, cs.view_count, cs.video_count, cs.latest_acquired_at')
   end
 
+  def self.use_oauth2?
+    ss = SystemSetting.first
+    return false unless ss
+
+    ss.oauth2? && ss.oauth2_configured?
+  end
+
   def save_and_set_job
     return false unless save
 

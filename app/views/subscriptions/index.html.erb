@@ -1,0 +1,6 @@
+<h1>
+  <%= t('helpers.link.create_from_subscription') %>
+</h1>
+
+<%= render partial: 'actions' %>
+<%= render partial: 'channels', locals: {subscription: @subscription} %>

@@ -1,0 +1,19 @@
+let Subscription = {};
+
+Subscription.prop_submit_button = function () {
+  $('form.create-channel').on('ajax:beforeSend', function (event) {
+    const button = $(event.currentTarget).find('input[type="submit"]');
+    button.prop('disabled', true);
+    button.val('<%= I18n.t('helpers.notice.processing') %>');
+  }).on('ajax:success', function (event) {
+    const button = $(event.currentTarget).find('input[type="submit"]');
+    button.addClass('btn-secondary');
+    button.removeClass('btn-primary');
+    button.val('<%= I18n.t('helpers.link.channel_created') %>');
+  }).on('ajax:error', function (event) {
+    const button = $(event.currentTarget).find('input[type="submit"]');
+    button.addClass('btn-danger');
+    button.removeClass('btn-primary');
+    button.val('<%= I18n.t('helpers.link.channel_create_failed') %>');
+  });
+};

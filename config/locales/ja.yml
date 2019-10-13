@@ -171,6 +171,9 @@ ja:
       back: 戻る
       build_all_statistics: 一括統計取得
       build_statistics: 統計取得
+      channel_created: 作成済み
+      channel_create_failed: 作成失敗
+      create_from_subscription: 登録済チャンネルから作成
       delete: 削除
       edit: 編集
       new: 新規作成
@@ -194,6 +197,7 @@ ja:
       prompt: 選択してください
     submit:
       create: 登録する
+      create_channel: 作成する
       send: 送信
       submit: 保存する
       update: 更新する
