@@ -1,3 +1,8 @@
+<div class="row">
+  <div class="col-xs-12 alert alert-info total-subscription">
+    <%= t('text.subscription.total_results') %>: <%= subscription.total_results %>
+  </div>
+</div>
 <div class="container kinda-table">
   <% subscription.channels.each do |channel| %>
     <div class="row">

@@ -34,6 +34,8 @@ ja:
       sign_out: ログアウト
     top:
       top_page: TOPページ
+    subscription:
+      total_results: 登録チャンネルの総数
     system_setting:
       change_client_secret: クライアント シークレットを変更する
       missing: システム設定が作成されていません

@@ -173,7 +173,7 @@ ja:
       build_statistics: 統計取得
       channel_created: 作成済み
       channel_create_failed: 作成失敗
-      create_from_subscription: 登録済チャンネルから作成
+      create_from_subscription: 登録チャンネルから作成
       delete: 削除
       edit: 編集
       new: 新規作成

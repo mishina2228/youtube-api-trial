@@ -34,6 +34,8 @@ en:
       sign_out: Log out
     top:
       top_page: TOP Page
+    subscription:
+      total_results: Total Subscriptions
     system_setting:
       change_client_secret: Change the Client Secret
       missing: The system setting has not been created
