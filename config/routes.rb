@@ -26,6 +26,8 @@ Rails.application.routes.draw do
         put :update_all_snippets
       end
     end
-    resources :subscriptions, only: :index
+    scope module: :channel_lists do
+      resources :subscriptions, only: :index
+    end
   end
 end
