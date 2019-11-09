@@ -14,6 +14,11 @@ class ChannelsController < ApplicationController
   end
 
   def show
+    @channel_statistics = @channel.channel_statistics.paginate(params)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
