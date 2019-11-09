@@ -34,6 +34,8 @@ ja:
       sign_out: ログアウト
     top:
       top_page: TOPページ
+    search:
+      total_results: 検索結果の総数
     subscription:
       total_results: 登録チャンネルの総数
     system_setting:

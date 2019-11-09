@@ -2,19 +2,7 @@
   <%= t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale)) %>
 </h1>
 
-<p>
-  <%= render partial: 'actions' %>
-</p>
-
-<% if can? :create, Channel %>
-  <%= button_to t('helpers.link.new'), new_channel_path,
-                method: :get, class: 'btn btn-info', role: :button %>
-  <% if Channel.use_oauth2? %>
-    <%= button_to t('helpers.link.create_from_subscription'), subscriptions_path,
-                  method: :get, class: 'btn btn-info', role: :button %>
-  <% end %>
-<% end %>
-<br><br>
+<%= render partial: 'actions' %>
 
 <% if @channels.present? %>
   <%= render partial: 'search_result', locals: {channels: @channels} %>

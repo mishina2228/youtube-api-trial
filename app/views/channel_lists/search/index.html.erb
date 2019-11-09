@@ -1,0 +1,6 @@
+<h1>
+  <%= t('helpers.link.create_from_search') %>
+</h1>
+
+<%= render partial: 'actions' %>
+<%= render partial: 'channels', locals: {search_results: @search_results} %>

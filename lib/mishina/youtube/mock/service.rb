@@ -73,7 +73,15 @@ class Mishina::Youtube::Mock::Service
       )
     )
     Google::Apis::YoutubeV3::ListSubscriptionResponse.new(
-      channels: Array.new(max_results, snippet)
+      items: Array.new(max_results, snippet),
+      page_info: Google::Apis::YoutubeV3::PageInfo.new(total_results: max_results)
+    )
+  end
+
+  def search_channel(query, max_results:, _token:)
+    Google::Apis::YoutubeV3::SearchListsResponse.new(
+      items: Array.new(max_results, nil),
+      page_info: Google::Apis::YoutubeV3::PageInfo.new(total_results: max_results)
     )
   end
 end

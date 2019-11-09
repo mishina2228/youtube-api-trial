@@ -179,6 +179,7 @@ en:
       build_statistics: Acquire statistics
       channel_created: Created
       channel_create_failed: Failed to Create
+      create_from_search: Create from Search
       create_from_subscription: Create from Subscription
       delete: Delete
       edit: Edit

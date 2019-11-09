@@ -34,6 +34,8 @@ en:
       sign_out: Log out
     top:
       top_page: TOP Page
+    search:
+      total_results: Total Results
     subscription:
       total_results: Total Subscriptions
     system_setting:

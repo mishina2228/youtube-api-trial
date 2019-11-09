@@ -26,6 +26,13 @@ class Mishina::Youtube::Service
     service.list_subscriptions('snippet', mine: true, max_results: max_results, page_token: token)
   end
 
+  def search_channel(query, max_results:, token:, safe_search: 'moderate')
+    service.list_searches(
+      'snippet',
+      q: query, safe_search: safe_search, type: 'channel', max_results: max_results, page_token: token
+    )
+  end
+
   private
 
   def get_channel(part, channel_id)
