@@ -20,8 +20,11 @@
       <div class="col-xs-2">
         <%= image_tag channel.thumbnail_url %>
       </div>
-      <div class="col-xs-8">
+      <div class="col-xs-4">
         <%= link_to channel.title, channel.url, target: '_blank' %>
+      </div>
+      <div class="col-xs-4">
+        <%= channel.description.truncate(100) %>
       </div>
     </div>
   <% end %>
@@ -40,6 +43,6 @@
 
 <script>
   $(document).on('turbolinks:load', (function () {
-    Subscription.prop_submit_button();
+    ChannelList.prop_submit_button();
   }));
 </script>

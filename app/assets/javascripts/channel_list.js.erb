@@ -1,6 +1,6 @@
-let Subscription = {};
+let ChannelList = {};
 
-Subscription.prop_submit_button = function () {
+ChannelList.prop_submit_button = function () {
   $('form.create-channel').on('ajax:beforeSend', function (event) {
     const button = $(event.currentTarget).find('input[type="submit"]');
     button.prop('disabled', true);
