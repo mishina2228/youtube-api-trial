@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_28_045559) do
+ActiveRecord::Schema.define(version: 2019_11_09_162940) do
 
   create_table "channel_statistics", force: :cascade do |t|
     t.integer "channel_id", null: false
@@ -30,7 +30,9 @@ ActiveRecord::Schema.define(version: 2019_09_28_045559) do
     t.datetime "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "disabled", default: false, null: false
     t.index ["channel_id"], name: "index_channels_on_channel_id", unique: true
+    t.index ["disabled"], name: "index_channels_on_disabled"
   end
 
   create_table "system_settings", force: :cascade do |t|
