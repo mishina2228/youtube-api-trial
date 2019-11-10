@@ -183,6 +183,7 @@ ja:
       update_all_snippets: 一括情報更新
       update_snippet: 情報更新
     notice:
+      channel_disabled: このチャンネルは無効化されています
       continuously_create: 続けて作成します
       create: 正常に作成されました
       delete: 正常に削除されました

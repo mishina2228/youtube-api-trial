@@ -189,6 +189,7 @@ en:
       update_snippet: Update info
       update_all_snippets: Update infos in bulk
     notice:
+      channel_disabled: This channel is disabled
       continuously_create: Continue to create
       create: Created successfully
       delete: Deleted successfully

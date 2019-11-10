@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', (function () {
   emojify();
+  $('[data-toggle="tooltip"]').tooltip();
 }));
 
 function emojify() {

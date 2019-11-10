@@ -11,6 +11,8 @@ ja:
       channel_id:
         description: チャンネルID、あるいはチャンネルのURLを入力できます
         invalid: が未入力、あるいは無効な値です
+      disabled_html:
+        このチャンネルは現在YouTube上に存在しないため、無効化されています。
       search:
         not_found: 条件に一致するチャンネルが見つかりませんでした。
       statistics:

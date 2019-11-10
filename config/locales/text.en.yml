@@ -11,6 +11,8 @@ en:
       channel_id:
         description: You can input the channel ID or the URL of the channel.
         invalid: is blank, or invalid.
+      disabled_html:
+        This channel is disabled because it does not currently exist on YouTube.
       search:
         not_found: Search results were not found.
       statistics:

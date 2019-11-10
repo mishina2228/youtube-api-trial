@@ -13,7 +13,13 @@
       <% if @channel.thumbnail_url.present? %>
         <%= link_to image_tag(@channel.thumbnail_url), @channel.url, target: '_blank' %>
       <% end %>
+      <% if @channel.disabled? %>
+        <span data-toggle="tooltip" title="<%= t('helpers.notice.channel_disabled') %>">⚠️</span>
+      <% end %>
       <%= print_link(@channel.title, @channel.url, t('text.channel.title.missing'), target: '_blank') %>
+    </div>
+    <div class="col-xs-12 font-weight-bold text-danger">
+      <%= t('text.channel.disabled_html') %>
     </div>
   </div>
   <div class="row">
