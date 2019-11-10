@@ -94,6 +94,10 @@ class Channel < ApplicationRecord
     thumbnail_url&.gsub(/s88-/, 's800-')
   end
 
+  def enabled?
+    !disabled?
+  end
+
   private
 
   def parse_channel_id(val)
