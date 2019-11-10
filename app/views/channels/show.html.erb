@@ -18,9 +18,11 @@
       <% end %>
       <%= print_link(@channel.title, @channel.url, t('text.channel.title.missing'), target: '_blank') %>
     </div>
-    <div class="col-xs-12 font-weight-bold text-danger">
-      <%= t('text.channel.disabled_html') %>
-    </div>
+    <% if @channel.disabled? %>
+      <div class="col-xs-12 font-weight-bold text-danger">
+        <%= t('text.channel.disabled_html') %>
+      </div>
+    <% end %>
   </div>
   <div class="row">
     <div class="col-xs-4 col-sm-2 font-weight-bold">
