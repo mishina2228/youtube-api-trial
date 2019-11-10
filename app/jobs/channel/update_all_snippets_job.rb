@@ -10,7 +10,7 @@ class Channel::UpdateAllSnippetsJob
   end
 
   def self.perform(_options = {})
-    Channel.find_each do |channel|
+    Channel.where(disabled: false).find_each do |channel|
       JobUtils.enqueue(Channel::UpdateSnippetJob, 'channel_id' => channel.id)
     end
   end

@@ -16,6 +16,8 @@ class Channel::UpdateSnippetJob
 
   def self.perform(options = {})
     channel = Channel.find(options['channel_id'])
+    raise Mishina::Youtube::DisabledChannelError, channel.channel_id if channel.disabled?
+
     begin
       channel.update_snippet!
     rescue Google::Apis::TransmissionError, HTTPClient::TimeoutError => e
@@ -24,6 +26,9 @@ class Channel::UpdateSnippetJob
 
       seconds = 3 * 10**retry_count
       JobUtils.enqueue_in(seconds, self, options.merge('retry' => retry_count + 1))
+    rescue Mishina::Youtube::NoChannelError => e
+      channel.update!(disabled: true)
+      raise e
     end
 
     Rails.logger.info("チャンネル「#{channel.title}」の情報更新が終了しました。")
