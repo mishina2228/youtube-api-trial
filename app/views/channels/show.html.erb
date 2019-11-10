@@ -36,7 +36,7 @@
     <div class="col-xs-4 col-sm-2 font-weight-bold">
       <%= Channel.human_attribute_name :description %>
     </div>
-    <div class="col-xs-8 col-sm-10 emojify">
+    <div class="col-xs-8 col-sm-10 emojify break-word-wrap">
       <%= simple_format text_url_to_link(@channel.description), {}, sanitize: false %>
     </div>
   </div>

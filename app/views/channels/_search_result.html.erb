@@ -6,16 +6,16 @@
     <th>
       <%= sortable Channel.human_attribute_name(:title), 'title' %>
     </th>
-    <th>
+    <th class="hidden-xs">
       <%= sortable Channel.human_attribute_name(:published_at), 'published_at' %>
     </th>
     <th>
       <%= sortable ChannelStatistic.human_attribute_name(:subscriber_count), 'subscriber_count' %>
     </th>
-    <th>
+    <th class="hidden-xs">
       <%= sortable ChannelStatistic.human_attribute_name(:view_count), 'view_count' %>
     </th>
-    <th>
+    <th class="hidden-xs">
       <%= sortable ChannelStatistic.human_attribute_name(:video_count), 'video_count' %>
     </th>
     <th class="visible-lg visible-md">
@@ -29,7 +29,7 @@
     <tr>
       <td><%= link_to(image_tag(c.thumbnail_url), channel_path(c)) if c.thumbnail_url.present? %></td>
       <td><%= print_link(c.title, channel_path(c), t('text.channel.title.missing')) %></td>
-      <td><%= print_datetime(c.published_at) %></td>
+      <td class="hidden-xs"><%= print_datetime(c.published_at) %></td>
       <td>
         <div class="vertical text-right text-nowrap">
           <span>
@@ -40,7 +40,7 @@
           </span>
         </div>
       </td>
-      <td>
+      <td class="hidden-xs">
         <div class="vertical text-right text-nowrap">
           <span>
             <%= print_number(c.view_count) %>
@@ -50,7 +50,7 @@
           </span>
         </div>
       </td>
-      <td>
+      <td class="hidden-xs">
         <div class="vertical text-right text-nowrap">
           <span>
             <%= print_number(c.video_count) %>
