@@ -9,9 +9,3 @@
 <% else %>
   <%= render partial: 'no_result' %>
 <% end %>
-
-<br>
-
-<% if can? :create, Channel %>
-  <%= link_to t('helpers.link.new'), new_channel_path %>
-<% end %>
