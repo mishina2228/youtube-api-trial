@@ -3,7 +3,7 @@ ja:
   text:
     channel:
       build_all_statistics:
-        message: チャンネル統計の一括取得を行いました
+        message: チャンネル統計の一括取得を開始しました
       build_statistics:
         start: チャンネル統計の取得を開始しました
         success: チャンネル統計の取得に成功しました

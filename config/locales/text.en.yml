@@ -3,7 +3,7 @@ en:
   text:
     channel:
       build_all_statistics:
-        message: Acquired channel statistics in bulk.
+        message: Acquiring channel statistics in bulk started.
       build_statistics:
         start: Acquiring channel statistics started.
         success: Acquiring channel statistics were succeeded.
