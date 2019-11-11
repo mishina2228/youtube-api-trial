@@ -77,6 +77,7 @@ gem 'google-api-client', '~> 0.11'
 gem 'kaminari', '~> 0.17.0'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'paranoia', '~> 2.2'
+gem 'toastr-rails'
 
 gem 'resque'
 gem 'resque-scheduler'

@@ -49,22 +49,34 @@ class ChannelsController < ApplicationController
 
   def build_statistics
     JobUtils.enqueue(Channel::BuildStatisticsJob, 'channel_id' => @channel.id)
-    redirect_to @channel, notice: t('text.channel.build_statistics.start')
+    respond_to do |format|
+      format.html {redirect_to @channel, notice: t('text.channel.build_statistics.start')}
+      format.js {render 'partials/toastr', locals: {message: t('text.channel.build_statistics.start')}}
+    end
   end
 
   def build_all_statistics
     JobUtils.enqueue(Channel::BuildAllStatisticsJob)
-    redirect_to channels_url, notice: t('text.channel.build_all_statistics.message')
+    respond_to do |format|
+      format.html {redirect_to channels_url, notice: t('text.channel.build_all_statistics.message')}
+      format.js {render 'partials/toastr', locals: {message: t('text.channel.build_all_statistics.message')}}
+    end
   end
 
   def update_snippet
     JobUtils.enqueue(Channel::UpdateSnippetJob, 'channel_id' => @channel.id)
-    redirect_to @channel, notice: t('text.channel.update_snippet.start')
+    respond_to do |format|
+      format.html {redirect_to @channel, notice: t('text.channel.update_snippet.start')}
+      format.js {render 'partials/toastr', locals: {message: t('text.channel.update_snippet.start')}}
+    end
   end
 
   def update_all_snippets
     JobUtils.enqueue(Channel::UpdateAllSnippetsJob)
-    redirect_to channels_url, notice: t('text.channel.update_all_snippets.message')
+    respond_to do |format|
+      format.html {redirect_to channels_url, notice: t('text.channel.update_all_snippets.message')}
+      format.js {render 'partials/toastr', locals: {message: t('text.channel.update_all_snippets.message')}}
+    end
   end
 
   private
