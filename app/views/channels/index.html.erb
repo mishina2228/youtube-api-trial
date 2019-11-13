@@ -3,6 +3,7 @@
 </h1>
 
 <%= render partial: 'actions' %>
+<%= render partial: 'search_form', locals: {search_channel: @search_channel} %>
 
 <div id="search-result-pagination">
   <%= render partial: 'search_result', locals: {channels: @channels} %>

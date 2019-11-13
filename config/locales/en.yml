@@ -1,5 +1,9 @@
 ---
 en:
+  activemodel:
+    attributes:
+      search/channel:
+        title: Title
   activerecord:
     models:
       channel: Channel
@@ -173,6 +177,8 @@ en:
         one: 1 error prohibited this %{model} from being saved
         other: "%{count} errors prohibited this %{model} from being saved"
   helpers:
+    button:
+      reset: Reset
     link:
       back: Back
       build_all_statistics: Acquire statistics in bulk
@@ -207,6 +213,7 @@ en:
       create: Create
       create_channel: Create
       send: Send
+      search: Search
       submit: Save
       update: Update
     title:

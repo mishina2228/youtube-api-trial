@@ -1,0 +1,18 @@
+<%= form_with(model: search_channel, url: channels_path, method: :get,
+              class: 'search') do |form| %>
+  <div class="container box_radius">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-3 col-sm-2">
+          <%= form.label :title %>
+        </div>
+        <div class="input-group col-xs-4">
+          <%= form.text_field :title, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <%= button_tag t('helpers.button.reset'), type: :button, id: 'reset-search',
+                   class: 'btn btn-secondary' %>
+    <%= form.submit t('helpers.submit.search'), class: 'btn btn-success', name: nil %>
+  </div>
+<% end %>

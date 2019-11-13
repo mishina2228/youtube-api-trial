@@ -1,5 +1,9 @@
 ---
 ja:
+  activemodel:
+    attributes:
+      search/channel:
+          title: タイトル
   activerecord:
     models:
       channel: チャンネル
@@ -167,6 +171,8 @@ ja:
         one: "%{model}にエラーが発生しました"
         other: "%{model}に%{count}個のエラーが発生しました"
   helpers:
+    button:
+      reset: リセット
     link:
       back: 戻る
       build_all_statistics: 一括統計取得
@@ -201,6 +207,7 @@ ja:
       create: 登録する
       create_channel: 作成する
       send: 送信
+      search: 検索
       submit: 保存する
       update: 更新する
     title:
