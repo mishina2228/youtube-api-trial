@@ -3,4 +3,7 @@
 </h1>
 
 <%= render partial: 'actions' %>
-<%= render partial: 'channels', locals: {search_results: @search_results} %>
+<%= render partial: 'search_form' %>
+<% if @search_results.present? %>
+  <%= render partial: 'channels', locals: {search_results: @search_results} %>
+<% end %>
