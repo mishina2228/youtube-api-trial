@@ -95,7 +95,8 @@ class ChannelsController < ApplicationController
   end
 
   def search_params
-    params.permit(:order, :direction, :title)
+    ret = params.permit(:order, :direction)
+    ret.merge(params.fetch(:search_channel, {}).permit(:title))
   end
 
   def sort_column
