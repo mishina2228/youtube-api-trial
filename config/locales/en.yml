@@ -180,7 +180,6 @@ en:
     button:
       reset: Reset
     link:
-      back: Back
       build_all_statistics: Acquire statistics in bulk
       build_statistics: Acquire statistics
       channel_created: Created
@@ -189,6 +188,7 @@ en:
       create_from_subscription: Create from Subscription
       delete: Delete
       edit: Edit
+      index: List
       new: New
       oauth2_setting: Set up OAuth2
       show: Show
