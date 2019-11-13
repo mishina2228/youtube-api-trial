@@ -4,8 +4,6 @@
 
 <%= render partial: 'actions' %>
 
-<% if @channels.present? %>
+<div id="search-result-pagination">
   <%= render partial: 'search_result', locals: {channels: @channels} %>
-<% else %>
-  <%= render partial: 'no_result' %>
-<% end %>
+</div>

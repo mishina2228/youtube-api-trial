@@ -3,12 +3,12 @@ module ApplicationHelper
     render partial: 'partials/notices'
   end
 
-  def sortable(title, order)
+  def sortable(title, order, html_options = {})
     direction = sort_column == order && sort_direction == 'desc' ? 'asc' : 'desc'
     if sort_column == order
       title += direction == 'asc' ? '▼' : '▲'
     end
-    link_to title, order: order, direction: direction
+    link_to title, {order: order, direction: direction}, html_options
   end
 
   def print_link(body, url, alt = 'body is missing', html_options = {})
@@ -23,8 +23,8 @@ module ApplicationHelper
     l(datetime, format: format) if datetime
   end
 
-  def print_acquired_at(datetime)
-    "#{print_datetime(datetime)} (#{print_time_ago_in_words(datetime)})" if datetime
+  def print_acquired_at(datetime, format: :long)
+    "#{print_datetime(datetime, format: format)} (#{print_time_ago_in_words(datetime)})" if datetime
   end
 
   def print_comparison_period(datetime1, datetime2)

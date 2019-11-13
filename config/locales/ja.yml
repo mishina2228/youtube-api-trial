@@ -265,6 +265,7 @@ ja:
   time:
     am: 午前
     formats:
+      date: "%Y/%m/%d"
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"

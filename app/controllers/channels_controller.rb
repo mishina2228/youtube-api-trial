@@ -9,8 +9,13 @@ class ChannelsController < ApplicationController
   authorize_resource
 
   def index
-    search = Search::Channel.new(search_params)
-    @channels = search.search.paginate(params)
+    @search_channel = Search::Channel.new(search_params)
+    @channels = @search_channel.search.paginate(params)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
