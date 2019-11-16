@@ -18,6 +18,8 @@ function emojify() {
 
 function reset_search_form() {
   const $form = $('form.search');
-  const $forms = $form.find('input[type="text"], select');
-  $forms.each((_, elem) => $(elem).val(''))
+  const $text_fields = $form.find('input[type="text"]');
+  $text_fields.each((_, elem) => $(elem).val(''));
+  const $selects = $form.find('select');
+  $selects.each((_, elem) => $(elem).prop('selectedIndex', 0))
 }
