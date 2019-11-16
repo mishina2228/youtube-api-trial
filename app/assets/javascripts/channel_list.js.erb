@@ -1,16 +1,16 @@
 let ChannelList = {};
 
-ChannelList.prop_submit_button = function () {
-  $('form.create-channel').on('ajax:beforeSend', function (event) {
+ChannelList.prop_submit_button = () => {
+  $('form.create-channel').on('ajax:beforeSend', event => {
     const button = $(event.currentTarget).find('input[type="submit"]');
     button.prop('disabled', true);
     button.val('<%= I18n.t('helpers.notice.processing') %>');
-  }).on('ajax:success', function (event) {
+  }).on('ajax:success', event => {
     const button = $(event.currentTarget).find('input[type="submit"]');
     button.addClass('btn-secondary');
     button.removeClass('btn-primary');
     button.val('<%= I18n.t('helpers.link.channel_created') %>');
-  }).on('ajax:error', function (event) {
+  }).on('ajax:error', event => {
     const button = $(event.currentTarget).find('input[type="submit"]');
     button.addClass('btn-danger');
     button.removeClass('btn-primary');

@@ -1,13 +1,13 @@
-$(document).on('turbolinks:load', (function () {
+$(document).on('turbolinks:load', () => {
   emojify();
   $('[data-toggle="tooltip"]').tooltip();
-  $('#reset-search').click(reset_search_form);
-}));
+  $('#reset-search').on('click', reset_search_form);
+});
 
 function emojify() {
-  $('.emojify').each(function(){
-    const emojified = emojione.toImage($(this).html());
-    $(this).html(emojified);
+  $('.emojify').each((_, elem) => {
+    const emojified = emojione.toImage($(elem).html());
+    $(elem).html(emojified);
   });
 }
 
