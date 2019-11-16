@@ -1,1 +1,3 @@
-$('#search-statistics-pagination').html("<%= j(render 'statistics', channel_statistics: @channel_statistics ) %>");
+$('#search-statistics-pagination')
+  .html("<%= j(render 'statistics', channel_statistics: @channel_statistics ) %>")
+  .trigger('ajax:success');

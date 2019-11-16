@@ -1,1 +1,3 @@
-$('#search-result-pagination').html("<%= j(render 'search_result', channels: @channels ) %>");
+$('#search-result-pagination')
+  .html("<%= j(render 'search_result', channels: @channels ) %>")
+  .trigger('ajax:success');
