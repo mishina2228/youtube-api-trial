@@ -20,7 +20,7 @@ class ChannelsController < ApplicationController
 
   def show
     @channel_statistics = @channel.channel_statistics.paginate(
-      per: params[:per], page: params[:page]
+      per: params[:statics_per], page: params[:statics_page]
     )
     respond_to do |format|
       format.html
