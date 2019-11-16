@@ -27,12 +27,16 @@
     <tbody>
     <% channels.each do |c| %>
       <tr>
-        <td><%= link_to(image_tag(c.thumbnail_url), channel_path(c)) if c.thumbnail_url.present? %></td>
+        <td>
+          <% if c.thumbnail_url.present? %>
+            <%= link_to(image_tag(c.thumbnail_url), channel_path(c, take_params)) %>
+          <% end %>
+        </td>
         <td>
           <% if c.disabled? %>
             <span data-toggle="tooltip" title="<%= t('helpers.notice.channel_disabled') %>">⚠️</span>
           <% end %>
-          <%= print_link(c.title, channel_path(c), t('text.channel.title.missing')) %>
+          <%= print_link(c.title, channel_path(c, take_params), t('text.channel.title.missing')) %>
         </td>
         <td class="hidden-xs"><%= print_datetime(c.published_at, format: :date) %></td>
         <td>

@@ -11,7 +11,7 @@ class Search::Channel < Search::Base
     ret = ret.where('published_date <= ?', to_date) if to_date.present?
     ret = ret.order(sort_column)
     ret = ret.reverse_order if direction == 'desc' || direction.nil?
-    ret
+    ret.paginate(per: per, page: page)
   end
 
   private

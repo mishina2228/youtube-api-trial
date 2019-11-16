@@ -67,7 +67,7 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_text I18n.t('helpers.notice.create')
     assert_selector 'h1', text: I18n.t('helpers.title.show', model: Channel.model_name.human)
 
-    click_on I18n.t('helpers.link.back')
+    click_on I18n.t('helpers.link.index')
     page.assert_current_path(root_path)
     # 登録したチャンネルが一覧に表示されること
     # ただしジョブが実行され、統計情報が取得できて初めて表示される

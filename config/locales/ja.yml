@@ -2,8 +2,11 @@
 ja:
   activemodel:
     attributes:
+      search: &search
+        per: 1ページあたりの件数
       search/channel:
-          title: タイトル
+        <<: *search
+        title: タイトル
   activerecord:
     models:
       channel: チャンネル

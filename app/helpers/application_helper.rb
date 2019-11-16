@@ -8,7 +8,7 @@ module ApplicationHelper
     if sort_column == order
       title += direction == 'asc' ? '▼' : '▲'
     end
-    link_to title, {order: order, direction: direction}, html_options
+    link_to title, take_params.merge(order: order, direction: direction), html_options
   end
 
   def print_link(body, url, alt = 'body is missing', html_options = {})

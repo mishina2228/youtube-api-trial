@@ -1,4 +1,4 @@
-<%= link_to t('helpers.link.index'), {controller: controller.controller_name, action: :index},
+<%= link_to t('helpers.link.index'), channels_path(take_params),
             class: 'btn btn-info', role: :button %>
 <% case controller.action_name %>
 <% when 'show' %>
@@ -13,7 +13,7 @@
                 data: {disable_with: t('helpers.notice.processing')}, remote: true %>
   <% end %>
   <% if can? :delete, Channel %>
-    <%= button_to t('helpers.link.delete'), {controller: controller.controller_name, action: :destroy}, method: :delete,
+    <%= button_to t('helpers.link.delete'), channel_path(@channel), method: :delete,
                 data: {confirm: t('helpers.notice.delete_confirm')},
                 class: 'btn btn-danger', role: :button %>
   <% end %>

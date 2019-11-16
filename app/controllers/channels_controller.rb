@@ -9,8 +9,8 @@ class ChannelsController < ApplicationController
   authorize_resource
 
   def index
-    @search_channel = Search::Channel.new(search_params)
-    @channels = @search_channel.search.paginate(params)
+    @search_channel = search_condition
+    @channels = @search_channel.search
 
     respond_to do |format|
       format.html
@@ -19,7 +19,9 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    @channel_statistics = @channel.channel_statistics.paginate(params)
+    @channel_statistics = @channel.channel_statistics.paginate(
+      per: params[:per], page: params[:page]
+    )
     respond_to do |format|
       format.html
       format.js
@@ -84,6 +86,14 @@ class ChannelsController < ApplicationController
     end
   end
 
+  protected
+
+  def take_params
+    super.merge(
+      search_channel: search_params
+    )
+  end
+
   private
 
   def set_channel
@@ -96,7 +106,14 @@ class ChannelsController < ApplicationController
 
   def search_params
     ret = params.permit(:order, :direction)
-    ret.merge(params.fetch(:search_channel, {}).permit(:title))
+    ret.merge(params.fetch(:search_channel, {}).permit(:title, :per))
+  end
+
+  def search_condition
+    cond = Search::Channel.new(search_params)
+    cond.per ||= params[:per] || Channel::DEFAULT_PER
+    cond.page = params[:page]
+    cond
   end
 
   def sort_column

@@ -26,4 +26,12 @@ class ApplicationController < ActionController::Base
 
     redirect_to redirect_url, notice: notices
   end
+
+  def take_params
+    {
+      page: params[:page],
+      per: params[:per]
+    }
+  end
+  helper_method :take_params
 end
