@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', () => {
   $('#reset-search').on('click', reset_search_form);
   $('#search-result-pagination').on('ajax:beforeSend', _event => {
     const margin = $('nav.navbar-fixed-top').height();
-    $('html, body').animate({scrollTop: $('form.search').offset().top - margin});
+    $('html, body').animate({scrollTop: $('#search-result').offset().top - margin});
   }).on('ajax:success', _event => {
   });
 });
