@@ -3,42 +3,5 @@
     <%= t('text.search.total_results') %>: <%= search_results.total_results %>
   </div>
 </div>
-<div class="container kinda-table">
-  <% search_results.channels.each do |channel| %>
-    <div class="row">
-      <div class="col-xs-2">
-        <% if channel.persisted? %>
-          <%= button_tag t('helpers.link.channel_created'), type: 'button', disabled: true, class: 'btn btn-secondary' %>
-        <% else %>
-          <%= form_with(model: channel, format: :json, class: 'create-channel') do |form| %>
-            <%= form.hidden_field :channel_id %>
-            <%= form.submit t('helpers.submit.create_channel'), class: 'btn btn-primary',
-                            data: {disable_with: false} %>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="col-xs-2">
-        <%= image_tag channel.thumbnail_url %>
-      </div>
-      <div class="col-xs-4">
-        <%= link_to channel.title, channel.url, target: '_blank' %>
-      </div>
-      <div class="col-xs-4">
-        <%= channel.description.truncate(100) %>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<div class="container">
-  <div class="row">
-    <% if search_results.prev_page_token %>
-      <%= link_to raw(t('views.pagination.previous')), channel_lists_search_index_path(token: search_results.prev_page_token, query: search_results.query),
-                  class: 'btn btn-info', remote: true %>
-    <% end %>
-    <% if search_results.next_page_token %>
-      <%= link_to raw(t('views.pagination.next')), channel_lists_search_index_path(token: search_results.next_page_token, query: search_results.query),
-                  class: 'btn btn-info', remote: true %>
-    <% end %>
-  </div>
-</div>
+<%= render partial: 'channel_lists/partials/channel_tables',
+           locals: {channels: search_results.channels} %>

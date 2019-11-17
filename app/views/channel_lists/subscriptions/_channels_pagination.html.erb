@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <% if subscription.prev_page_token %>
+      <%= link_to raw(t('views.pagination.previous')),
+                  channel_lists_subscriptions_path(
+                      search_channel_list_condition: {
+                          token: subscription.prev_page_token,
+                          per: condition.per
+                      }
+                  ),
+                  class: 'btn btn-info', remote: true %>
+    <% end %>
+    <% if subscription.next_page_token %>
+      <%= link_to raw(t('views.pagination.next')),
+                  channel_lists_subscriptions_path(
+                      search_channel_list_condition: {
+                          token: subscription.next_page_token,
+                          per: condition.per
+                      }
+                  ),
+                  class: 'btn btn-info', remote: true %>
+    <% end %>
+  </div>
+</div>

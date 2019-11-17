@@ -1,12 +1,28 @@
 class ChannelLists::SearchController < ApplicationController
   def index
-    if params[:query].present?
-      response = ChannelLists::Search.search(params[:query], token: params[:token], max_results: 5)
-      @search_results = ChannelLists::Search.new(response, params[:query])
+    @condition = search_condition
+    if request.xhr?
+      response = ChannelLists::Search.search(
+        @condition.query, token: @condition.token, max_results: @condition.per
+      )
+      @search_results = ChannelLists::Search.new(response)
     end
     respond_to do |format|
       format.html
       format.js
     end
+  end
+
+  private
+
+  def search_condition
+    cond = ::Search::ChannelListCondition.new(search_params)
+    cond.per ||= ChannelList::DEFAULT_PER
+    cond
+  end
+
+  def search_params
+    params.fetch(:search_channel_list_condition, {})
+          .permit(:query, :per, :token)
   end
 end

@@ -1,6 +1,28 @@
 class ChannelLists::SubscriptionsController < ApplicationController
   def index
-    response = ChannelLists::Subscription.subscriptions(token: params[:token])
-    @subscription = ChannelLists::Subscription.new(response)
+    @condition = search_condition
+    if request.xhr?
+      response = ChannelLists::Subscription.subscriptions(
+        token: @condition.token, max_results: @condition.per
+      )
+      @subscription = ChannelLists::Subscription.new(response)
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  private
+
+  def search_condition
+    cond = ::Search::ChannelListCondition.new(search_params)
+    cond.per ||= ChannelList::DEFAULT_PER
+    cond
+  end
+
+  def search_params
+    params.fetch(:search_channel_list_condition, {})
+          .permit(:per, :token)
   end
 end

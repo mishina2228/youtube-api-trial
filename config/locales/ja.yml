@@ -7,6 +7,9 @@ ja:
       search/channel:
         <<: *search
         title: タイトル
+      search/channel_list_condition:
+        <<: *search
+        query: 検索条件
   activerecord:
     models:
       channel: チャンネル
@@ -211,6 +214,7 @@ ja:
       create_channel: 作成する
       send: 送信
       search: 検索
+      show: 表示
       submit: 保存する
       update: 更新する
     title:

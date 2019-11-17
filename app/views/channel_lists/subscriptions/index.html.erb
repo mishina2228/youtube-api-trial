@@ -3,4 +3,7 @@
 </h1>
 
 <%= render partial: 'actions' %>
-<%= render partial: 'channels', locals: {subscription: @subscription} %>
+<%= render partial: 'search_form', locals: {condition: @condition} %>
+
+<div id="search-result"></div>
+<div id="search-result-pagination"></div>

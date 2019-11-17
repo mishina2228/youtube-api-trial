@@ -3,46 +3,5 @@
     <%= t('text.subscription.total_results') %>: <%= subscription.total_results %>
   </div>
 </div>
-<div class="container kinda-table">
-  <% subscription.channels.each do |channel| %>
-    <div class="row">
-      <div class="col-xs-2">
-        <% if channel.persisted? %>
-          <%= button_tag t('helpers.link.channel_created'), type: 'button', disabled: true, class: 'btn btn-secondary' %>
-        <% else %>
-          <%= form_with(model: channel, format: :json, class: 'create-channel') do |form| %>
-            <%= form.hidden_field :channel_id %>
-            <%= form.submit t('helpers.submit.create_channel'), class: 'btn btn-primary',
-                            data: {disable_with: false} %>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="col-xs-2">
-        <%= image_tag channel.thumbnail_url %>
-      </div>
-      <div class="col-xs-4">
-        <%= link_to channel.title, channel.url, target: '_blank' %>
-      </div>
-      <div class="col-xs-4">
-        <%= channel.description.truncate(100) %>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<div class="container">
-  <div class="row">
-    <% if subscription.prev_page_token %>
-      <%= link_to raw(t('views.pagination.previous')), channel_lists_subscriptions_path(token: subscription.prev_page_token), class: 'btn btn-info' %>
-    <% end %>
-    <% if subscription.next_page_token %>
-      <%= link_to raw(t('views.pagination.next')), channel_lists_subscriptions_path(token: subscription.next_page_token), class: 'btn btn-info' %>
-    <% end %>
-  </div>
-</div>
-
-<script>
-  $(document).on('turbolinks:load', (() => {
-    ChannelList.prop_submit_button();
-  }));
-</script>
+<%= render partial: 'channel_lists/partials/channel_tables',
+           locals: {channels: subscription.channels} %>

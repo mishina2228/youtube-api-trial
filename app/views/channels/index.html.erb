@@ -5,6 +5,9 @@
 <%= render partial: 'actions' %>
 <%= render partial: 'search_form', locals: {search_channel: @search_channel} %>
 
-<div id="search-result-pagination">
+<div id="search-result">
   <%= render partial: 'search_result', locals: {channels: @channels} %>
+</div>
+<div id="search-result-pagination">
+  <%= render partial: 'search_result_pagination', locals: {channels: @channels} %>
 </div>
