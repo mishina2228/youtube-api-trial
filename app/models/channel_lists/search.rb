@@ -16,7 +16,7 @@ class ChannelLists::Search < ChannelList
     end
   end
 
-  def self.search(query, token: nil, max_results: 50)
+  def self.search(query, token: nil, max_results: Consts::Youtube::LIST_MAX_RESULTS)
     ss = SystemSetting.first
     raise I18n.t('text.system_setting.missing') unless ss
 

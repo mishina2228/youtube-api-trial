@@ -13,7 +13,7 @@ class ChannelLists::Subscription < ChannelList
     end
   end
 
-  def self.subscriptions(token: nil, max_results: 50)
+  def self.subscriptions(token: nil, max_results: Consts::Youtube::LIST_MAX_RESULTS)
     ss = SystemSetting.first
     raise I18n.t('helpers.notice.oauth2_required') unless ss&.oauth2?
 
