@@ -223,6 +223,11 @@ ja:
       new: "%{model}新規作成"
       search: "%{models}検索結果"
       show: "%{model}閲覧"
+  job_failure_notice_mailer:
+    alert:
+      error_backtrace: 'バックトレース'
+      error_summary: 'エラー概要'
+      subject: '[YoutubeApiTrial] ジョブが失敗しました'
   number:
     currency:
       format:
