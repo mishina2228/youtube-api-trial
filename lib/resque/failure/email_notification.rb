@@ -1,8 +1,9 @@
 module Resque
   module Failure
     class EmailNotification < Base
+      include NotificationRecipient
+
       def save
-        recipients = User.should_notify.pluck(:email)
         return if recipients.blank?
 
         mail = JobFailureNoticeMailer.with(to: recipients, exception: exception).alert
