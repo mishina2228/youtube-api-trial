@@ -1,6 +1,6 @@
 class SystemSetting < ApplicationRecord
   include Encryptor
-  include Mishina::Youtube::Oauth2
+  include Mishina::Youtube::Oauth2Factory
 
   attr_accessor :client_secret
   enum auth_method: {nothing: 0, api_key: 1, oauth2: 2}
