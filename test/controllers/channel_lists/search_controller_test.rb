@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class ChannelLists::SubscriptionsControllerTest < ActionDispatch::IntegrationTest
+class ChannelLists::SearchControllerTest < ActionDispatch::IntegrationTest
   test 'should get index as html' do
     sign_in admin
 
-    get channel_lists_subscriptions_url
+    get channel_lists_search_index_url
     assert_response :success
   end
 
@@ -12,22 +12,20 @@ class ChannelLists::SubscriptionsControllerTest < ActionDispatch::IntegrationTes
     sign_in user
 
     assert_raise ActionController::RoutingError do
-      get channel_lists_subscriptions_url
+      get channel_lists_search_index_url
     end
   end
 
   test 'should not get index unless logged in' do
     assert_raise ActionController::RoutingError do
-      get channel_lists_subscriptions_url
+      get channel_lists_search_index_url
     end
   end
 
   test 'should get index via ajax as js' do
-    ss = SystemSetting.first
-    assert ss.update(auth_method: :oauth2)
     sign_in admin
 
-    get channel_lists_subscriptions_url, xhr: true
+    get channel_lists_search_index_url, xhr: true
     assert_response :success
   end
 
@@ -35,13 +33,13 @@ class ChannelLists::SubscriptionsControllerTest < ActionDispatch::IntegrationTes
     sign_in user
 
     assert_raise ActionController::RoutingError do
-      get channel_lists_subscriptions_url, xhr: true
+      get channel_lists_search_index_url, xhr: true
     end
   end
 
   test 'should not get index via ajax as js unless logged in' do
     assert_raise ActionController::RoutingError do
-      get channel_lists_subscriptions_url, xhr: true
+      get channel_lists_search_index_url, xhr: true
     end
   end
 end

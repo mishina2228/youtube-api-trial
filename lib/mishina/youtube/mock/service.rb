@@ -64,23 +64,40 @@ class Mishina::Youtube::Mock::Service
     end
   end
 
-  def subscriptions(_token:, max_results:)
-    snippet = Google::Apis::YoutubeV3::Subscription.new(
-      channel_id: 'dummy_channel_id',
-      title: 'dummy channel',
-      thumbnails: Google::Apis::YoutubeV3::ThumbnailDetails.new(
-        default: Google::Apis::YoutubeV3::Thumbnail.new(url: 'https://example.com/thumbnail/dummy')
+  # @return [Google::Apis::YoutubeV3::ListSubscriptionResponse]
+  def subscriptions(token:, max_results:)
+    subscription = Google::Apis::YoutubeV3::Subscription.new(
+      snippet: Google::Apis::YoutubeV3::SubscriptionSnippet.new(
+        resource_id: Google::Apis::YoutubeV3::ResourceId.new(
+          channel_id: 'dummy_channel_id'
+        ),
+        title: 'dummy channel',
+        description: 'dummy description',
+        thumbnails: Google::Apis::YoutubeV3::ThumbnailDetails.new(
+          default: Google::Apis::YoutubeV3::Thumbnail.new(url: 'https://example.com/thumbnail/dummy')
+        )
       )
     )
     Google::Apis::YoutubeV3::ListSubscriptionResponse.new(
-      items: Array.new(max_results, snippet),
+      items: Array.new(max_results, subscription),
       page_info: Google::Apis::YoutubeV3::PageInfo.new(total_results: max_results)
     )
   end
 
-  def search_channel(query, max_results:, _token:)
+  # @return [Google::Apis::YoutubeV3::SearchListsResponse]
+  def search_channel(query, max_results:, token:)
+    search_result = Google::Apis::YoutubeV3::SearchResult.new(
+      snippet: Google::Apis::YoutubeV3::SearchResultSnippet.new(
+        channel_id: 'dummy_channel_id',
+        title: 'dummy channel',
+        description: 'dummy description',
+        thumbnails: Google::Apis::YoutubeV3::ThumbnailDetails.new(
+          default: Google::Apis::YoutubeV3::Thumbnail.new(url: 'https://example.com/thumbnail/dummy')
+        )
+      )
+    )
     Google::Apis::YoutubeV3::SearchListsResponse.new(
-      items: Array.new(max_results, nil),
+      items: Array.new(max_results, search_result),
       page_info: Google::Apis::YoutubeV3::PageInfo.new(total_results: max_results)
     )
   end
