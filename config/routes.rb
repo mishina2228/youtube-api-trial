@@ -26,9 +26,11 @@ Rails.application.routes.draw do
         put :update_all_snippets
       end
     end
-    namespace :channel_lists do
-      resources :search, only: :index
-      resources :subscriptions, only: :index
+    authenticated :user, ->(u) {u.admin?} do
+      namespace :channel_lists do
+        resources :search, only: :index
+        resources :subscriptions, only: :index
+      end
     end
   end
 end
