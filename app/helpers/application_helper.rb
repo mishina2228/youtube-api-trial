@@ -12,11 +12,8 @@ module ApplicationHelper
   end
 
   def print_link(body, url, alt = 'body is missing', html_options = {})
-    if body.present?
-      link_to body, url, html_options
-    else
-      link_to alt, url, html_options
-    end
+    name = body.presence || alt
+    link_to name, url, html_options
   end
 
   def print_datetime(datetime, format: :long)
