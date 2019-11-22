@@ -3,9 +3,14 @@
   title: Channel1
   description: description1
   thumbnail_url: https://example.com/thumbnail/1
+  published_at: '2018-10-20T01:23:34'
 
 チャンネル2:
   channel_id: channel_id2
+  title: Channel2
+  description: description2
+  thumbnail_url: https://example.com/thumbnail/2
+  published_at: '2018-12-20T01:23:34'
 
 エラーチャンネル:
   channel_id: error_channel_id
