@@ -22,10 +22,12 @@ class Mishina::Youtube::Service
     Mishina::Youtube::ServiceResponse.new(status, snippet, error)
   end
 
+  # @return [Google::Apis::YoutubeV3::ListSubscriptionResponse]
   def subscriptions(token:, max_results:)
     service.list_subscriptions('snippet', mine: true, max_results: max_results, page_token: token)
   end
 
+  # @return [Google::Apis::YoutubeV3::SearchListsResponse]
   def search_channel(query, max_results:, token:, safe_search: 'moderate')
     service.list_searches(
       'snippet',

@@ -1,5 +1,4 @@
 class ChannelLists::Subscription < ChannelList
-
   # @param response [ListSubscriptionResponse]
   def initialize(response)
     super
