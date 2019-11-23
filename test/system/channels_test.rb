@@ -8,7 +8,7 @@ class ChannelsTest < ApplicationSystemTestCase
   test 'visiting the index as an user not logged in' do
     visit channels_url
     assert_selector 'h1', text: I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
-    assert_no_selector 'a', text: I18n.t('helpers.link.new')
+    has_no_button? I18n.t('helpers.link.new')
     has_no_button? I18n.t('helpers.link.update_all_snippets')
     has_no_button? I18n.t('helpers.link.build_all_statistics')
   end
@@ -17,7 +17,7 @@ class ChannelsTest < ApplicationSystemTestCase
     sign_in user
     visit channels_url
     assert_selector 'h1', text: I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
-    assert_no_selector 'a', text: I18n.t('helpers.link.new')
+    has_no_button? I18n.t('helpers.link.new')
     has_no_button? I18n.t('helpers.link.update_all_snippets')
     has_no_button? I18n.t('helpers.link.build_all_statistics')
   end
@@ -26,7 +26,7 @@ class ChannelsTest < ApplicationSystemTestCase
     sign_in admin
     visit channels_url
     assert_selector 'h1', text: I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
-    assert_selector 'a', text: I18n.t('helpers.link.new')
+    has_button? I18n.t('helpers.link.new')
     has_button? I18n.t('helpers.link.update_all_snippets')
     has_button? I18n.t('helpers.link.build_all_statistics')
   end
@@ -68,7 +68,7 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: I18n.t('helpers.title.show', model: Channel.model_name.human)
 
     click_on I18n.t('helpers.link.index')
-    page.assert_current_path(root_path)
+    page.assert_current_path(channels_path)
     # 登録したチャンネルが一覧に表示されること
     # ただしジョブが実行され、統計情報が取得できて初めて表示される
     # テスト環境ではジョブが即時実行されるため、即表示される
