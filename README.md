@@ -1,6 +1,6 @@
 # YouTube API Trial
 
-Ruby on Rails application to get information of youtube channel
+Ruby on Rails application to get information of YouTube channel
 
 # Commands
 
