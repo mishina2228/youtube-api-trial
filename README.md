@@ -1,22 +1,26 @@
 # YouTube API Trial
 
-YouTubeのAPIを試してみたい
+Ruby on Rails application to get information of youtube channel
 
 # Commands
 
-### Resqueの設定
+### Resque settings
 
-Resque, resque-scheduler を God で管理するための設定ファイル作成
+Create a configuration file to manage [Resque](https://github.com/resque/resque) and [resque-scheduler](https://github.com/resque/resque-scheduler) with [God](http://godrb.com/)
 ```
 $ RAILS_ENV=[RAILS_ENV] bundle exec itamae local config/itamae/resque.rb
 ```
 
-設定ファイル読み込み
+Load configuration file
 ```
 $ god -c /etc/god/master.conf
 ```
 
-God から Resque, resque-scheduler の状態確認/起動/再起動/停止
+Resque, resque-scheduler operation with God
+* check the status
+* start
+* restart
+* stop
 ```
 $ sudo god status youtube_api_trial
 $ sudo god start youtube_api_trial
@@ -24,7 +28,7 @@ $ sudo god restart youtube_api_trial
 $ sudo god stop youtube_api_trial
 ```
 
-### ソース更新時の作業
+### After source update
 
 ```
 bundle
@@ -36,9 +40,9 @@ bundle exec pumactl start -F config/puma/[RAILS_ENV].rb
 
 ### Notify when Resque job failed
 
-Resque ジョブが失敗した場合にメールで通知します。  
-メール送信のための設定を config/mail.yml に配置してください。  
-以下は Gmail から送信する際の一例です。
+If a Resque job fails, a notification is sent by email.  
+Please fill in the settings of email to config/mail.yml .  
+The following is an example when sending from Gmail:
 
 ```
 production:
