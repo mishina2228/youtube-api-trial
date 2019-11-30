@@ -3,6 +3,9 @@ require 'application_system_test_case'
 class ChannelsTest < ApplicationSystemTestCase
   setup do
     @channel = channels(:チャンネル1)
+    100.times do
+      build_channel_with_statistics.save!
+    end
   end
 
   test 'visiting the index as an user not logged in' do
@@ -29,6 +32,21 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_button I18n.t('helpers.link.new')
     assert_button I18n.t('helpers.link.update_all_snippets')
     assert_button I18n.t('helpers.link.build_all_statistics')
+  end
+
+  test 'get max number of channels when visit the index with per = MAX_PER + 1' do
+    visit channels_url(per: Channel::MAX_PER + 1)
+    assert_selector('#search-result table tbody tr', count: Channel::MAX_PER)
+  end
+
+  test 'get default number of channels when visit the index with per = 0' do
+    visit channels_url(per: 0)
+    assert_selector('#search-result table tbody tr', count: Channel::DEFAULT_PER)
+  end
+
+  test 'get default number of channels when visit the index with per = -1' do
+    visit channels_url(per: -1)
+    assert_selector('#search-result table tbody tr', count: Channel::DEFAULT_PER)
   end
 
   test 'visiting a Channel as an user not logged in' do

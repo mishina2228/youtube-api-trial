@@ -5,8 +5,17 @@ class ApplicationRecord < ActiveRecord::Base
   MAX_PER = 50
 
   def self.paginate(page:, per:)
-    per = (per || DEFAULT_PER).to_i
-    per = MAX_PER if per > MAX_PER
-    page(page.to_i).per(per)
+    page(page.to_i).per(proper_per(per))
+  end
+
+  def self.proper_per(per)
+    per = per.to_i
+    if per <= 0
+      DEFAULT_PER
+    elsif per > MAX_PER
+      MAX_PER
+    else
+      per
+    end
   end
 end
