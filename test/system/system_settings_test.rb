@@ -22,7 +22,7 @@ class SystemSettingsTest < ApplicationSystemTestCase
     assert_selector 'a', text: SystemSetting.model_name.human
     click_on SystemSetting.model_name.human
 
-    page.assert_current_path(system_setting_path)
+    assert_current_path(system_setting_path)
     assert_selector 'h1', text: I18n.t('helpers.title.show', model: SystemSetting.model_name.human)
   end
 
@@ -31,14 +31,14 @@ class SystemSettingsTest < ApplicationSystemTestCase
 
     sign_in admin
     visit system_setting_path
-    page.assert_current_path(new_system_setting_path)
+    assert_current_path(new_system_setting_path)
 
     choose SystemSetting.auth_methods_i18n['api_key']
     fill_in SystemSetting.human_attribute_name(:api_key), with: @system_setting.api_key
     click_on I18n.t('helpers.submit.create')
 
     assert_text I18n.t('helpers.notice.create')
-    page.assert_current_path(system_setting_path)
+    assert_current_path(system_setting_path)
   end
 
   test 'creating a System setting oauth2' do
@@ -46,7 +46,7 @@ class SystemSettingsTest < ApplicationSystemTestCase
 
     sign_in admin
     visit system_setting_path
-    page.assert_current_path(new_system_setting_path)
+    assert_current_path(new_system_setting_path)
 
     choose SystemSetting.auth_methods_i18n['oauth2']
     fill_in SystemSetting.human_attribute_name(:client_id), with: @system_setting.client_id
@@ -54,7 +54,7 @@ class SystemSettingsTest < ApplicationSystemTestCase
     click_on I18n.t('helpers.submit.create')
 
     assert_text I18n.t('helpers.notice.create')
-    page.assert_current_path(system_setting_path)
+    assert_current_path(system_setting_path)
   end
 
   test 'updating a System setting' do
@@ -62,13 +62,13 @@ class SystemSettingsTest < ApplicationSystemTestCase
     visit system_setting_path
     click_on I18n.t('helpers.link.edit')
 
-    page.assert_current_path(edit_system_setting_path)
+    assert_current_path(edit_system_setting_path)
     after_api_key = @system_setting.api_key + '_after'
     fill_in SystemSetting.human_attribute_name(:api_key), with: after_api_key
     click_on I18n.t('helpers.submit.update')
 
     assert_text I18n.t('helpers.notice.update')
-    page.assert_current_path(system_setting_path)
+    assert_current_path(system_setting_path)
     assert_equal after_api_key, @system_setting.reload.api_key
   end
 end
