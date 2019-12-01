@@ -189,7 +189,8 @@ GEM
     parser (2.6.5.0)
       ast (~> 2.4.0)
     public_suffix (4.0.1)
-    puma (3.12.1)
+    puma (4.3.0)
+      nio4r (~> 2.0)
     puma_worker_killer (0.1.1)
       get_process_mem (~> 0.2)
       puma (>= 2.7, < 5)
@@ -359,7 +360,7 @@ DEPENDENCIES
   kaminari (~> 1.1.1)
   kaminari-bootstrap (~> 3.0.1)
   paranoia (~> 2.2)
-  puma (~> 3.11)
+  puma (~> 4.3)
   puma_worker_killer
   rails (~> 5.2.4)
   resque
