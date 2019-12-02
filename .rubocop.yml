@@ -1,7 +1,8 @@
+require:
+  - rubocop-rails
+
 AllCops:
   TargetRubyVersion: 2.6
-Rails:
-  Enabled: true
 
 Layout/EndOfLine:
   EnforcedStyle: lf

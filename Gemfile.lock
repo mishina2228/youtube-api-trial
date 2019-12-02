@@ -256,6 +256,9 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
+    rubocop-rails (2.4.0)
+      rack (>= 1.1)
+      rubocop (>= 0.72.0)
     ruby-progressbar (1.10.1)
     rubyzip (2.0.0)
     rufus-scheduler (3.6.0)
@@ -366,6 +369,7 @@ DEPENDENCIES
   resque
   resque-scheduler
   rubocop
+  rubocop-rails
   sassc-rails
   selenium-webdriver
   sqlite3
