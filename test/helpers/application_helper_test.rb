@@ -14,6 +14,8 @@ class ApplicationHelperTest < ActionView::TestCase
                      print_link('', 'https://example.com')
     assert_dom_equal %{<a target="_blank" href="https://example.com">body</a>},
                      print_link('body', 'https://example.com', nil, target: '_blank')
+    assert_dom_equal %{<a target="_blank" rel="noopener" href="https://example.com">body</a>},
+                     print_link('body', 'https://example.com', nil, target: '_blank', rel: 'noopener')
   end
 
   def test_print_number
@@ -38,10 +40,10 @@ class ApplicationHelperTest < ActionView::TestCase
 
     assert_equal 'abc', text_url_to_link('abc')
     input = 'https://example.com'
-    expected = %{<a target="_blank" href="https://example.com">https://example.com</a>}
+    expected = %{<a target="_blank" rel="noopener" href="https://example.com">https://example.com</a>}
     assert_dom_equal expected, text_url_to_link(input)
     input = 'My URL: https://example.com'
-    expected = %{My URL: <a target="_blank" href="https://example.com">https://example.com</a>}
+    expected = %{My URL: <a target="_blank" rel="noopener" href="https://example.com">https://example.com</a>}
     assert_dom_equal expected, text_url_to_link(input)
   end
 end

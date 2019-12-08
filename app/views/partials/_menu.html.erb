@@ -12,7 +12,7 @@
       <% end %>
       <% if user_signed_in? && current_user.admin? %>
         <div class="col-md-2 col-xs-4">
-          <%= link_to 'Resque', '/resque/overview', target: '_blank' %>
+          <%= link_to 'Resque', '/resque/overview', target: '_blank', rel: 'noopener' %>
         </div>
       <% end %>
       <% if user_signed_in? %>
