@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @system_setting = system_settings(:システム設定)
+    @system_setting = system_settings(:system_setting)
   end
 
   test 'should get new' do

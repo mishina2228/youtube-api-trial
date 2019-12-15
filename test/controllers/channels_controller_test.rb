@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ChannelsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @channel = channels(:チャンネル1)
+    @channel = channels(:channel1)
   end
 
   test 'should get index' do
@@ -123,7 +123,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should build all statistics' do
-    [channels(:エラーチャンネル), channels(:存在しないチャンネル)].each(&:destroy)
+    [channels(:error_channel), channels(:non_existing_channel)].each(&:destroy)
 
     sign_in admin
 
@@ -175,7 +175,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update all snippets' do
-    [channels(:エラーチャンネル), channels(:存在しないチャンネル)].each(&:destroy)
+    [channels(:error_channel), channels(:non_existing_channel)].each(&:destroy)
 
     sign_in admin
 

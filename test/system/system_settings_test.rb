@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class SystemSettingsTest < ApplicationSystemTestCase
   setup do
-    @system_setting = system_settings(:システム設定)
+    @system_setting = system_settings(:system_setting)
   end
 
   test 'visiting a System setting as an user not logged in' do

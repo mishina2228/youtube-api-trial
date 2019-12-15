@@ -2,8 +2,8 @@ require 'test_helper'
 
 class Search::ChannelTest < ActiveSupport::TestCase
   setup do
-    @c1 = channels(:チャンネル1)
-    @c2 = channels(:チャンネル2)
+    @c1 = channels(:channel1)
+    @c2 = channels(:channel2)
   end
 
   def test_search_id

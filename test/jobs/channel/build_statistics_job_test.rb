@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Channel::BuildStatisticsJobTest < ActiveSupport::TestCase
   def test_perform
-    channel = channels(:チャンネル1)
+    channel = channels(:channel1)
     assert_nothing_raised do
       assert_difference -> {channel.channel_statistics.count} do
         Channel::BuildStatisticsJob.perform('channel_id' => channel.id)
@@ -11,14 +11,14 @@ class Channel::BuildStatisticsJobTest < ActiveSupport::TestCase
   end
 
   def test_perform_error
-    channel = channels(:エラーチャンネル)
+    channel = channels(:error_channel)
     assert_raise Google::Apis::ClientError do
       assert_no_difference -> {channel.channel_statistics.count} do
         Channel::BuildStatisticsJob.perform('channel_id' => channel.id)
       end
     end
 
-    channel = channels(:存在しないチャンネル)
+    channel = channels(:non_existing_channel)
     assert_not channel.disabled?
     assert_raise Mishina::Youtube::NoChannelError do
       assert_no_difference -> {channel.channel_statistics.count} do

@@ -22,7 +22,7 @@ class ChannelStatisticTest < ActiveSupport::TestCase
   end
 
   def valid_params
-    channel = channels(:チャンネル1)
+    channel = channels(:channel1)
     {
       channel_id: channel.id,
       view_count: 0,

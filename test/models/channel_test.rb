@@ -49,13 +49,13 @@ class ChannelTest < ActiveSupport::TestCase
   end
 
   def test_youtube_service
-    channel = channels(:チャンネル1)
+    channel = channels(:channel1)
     ret = channel.youtube_service
     assert ret.is_a?(Mishina::Youtube::Mock::Service), 'テスト環境ではmockを使用すること'
   end
 
   def test_youtube_service_no_system_setting
-    channel = channels(:チャンネル1)
+    channel = channels(:channel1)
     SystemSetting.delete_all
     assert_raise do
       channel.youtube_service
@@ -63,14 +63,14 @@ class ChannelTest < ActiveSupport::TestCase
   end
 
   def test_build_statistics
-    channel = channels(:チャンネル1)
+    channel = channels(:channel1)
     assert_difference -> {ChannelStatistic.count} do
       channel.build_statistics!
     end
   end
 
   def test_build_statistics_error
-    channel = channels(:エラーチャンネル)
+    channel = channels(:error_channel)
     assert_raise Google::Apis::ClientError do
       assert_no_difference -> {ChannelStatistic.count} do
         assert_not channel.build_statistics!
@@ -79,7 +79,7 @@ class ChannelTest < ActiveSupport::TestCase
   end
 
   def test_build_statistics_blank
-    channel = channels(:存在しないチャンネル)
+    channel = channels(:non_existing_channel)
     assert_raise Mishina::Youtube::NoChannelError do
       assert_no_difference -> {ChannelStatistic.count} do
         assert_not channel.build_statistics!
@@ -88,7 +88,7 @@ class ChannelTest < ActiveSupport::TestCase
   end
 
   def test_update_snippet
-    channel = channels(:チャンネル1)
+    channel = channels(:channel1)
     before_channel = channel.dup
     channel.update_snippet!
     channel.reload
@@ -99,21 +99,21 @@ class ChannelTest < ActiveSupport::TestCase
   end
 
   def test_update_snippet_error
-    channel = channels(:エラーチャンネル)
+    channel = channels(:error_channel)
     assert_raise Google::Apis::ClientError do
       assert_not channel.update_snippet!
     end
   end
 
   def test_update_snippet_blank
-    channel = channels(:存在しないチャンネル)
+    channel = channels(:non_existing_channel)
     assert_raise Mishina::Youtube::NoChannelError do
       assert_not channel.update_snippet!
     end
   end
 
   def test_medium_thumbnail_url
-    channel = channels(:チャンネル1)
+    channel = channels(:channel1)
     thumbnail_url = 'https://yt3.ggpht.com/-4nB6EusJ1Iw/AAAAAAAAAAI/AAAAAAAAAAA/coEXMA5Pjrg/s88-c-k-no-mo-rj-c0xffffff/photo.jpg'
     channel.thumbnail_url = thumbnail_url
     expected = 'https://yt3.ggpht.com/-4nB6EusJ1Iw/AAAAAAAAAAI/AAAAAAAAAAA/coEXMA5Pjrg/s240-c-k-no-mo-rj-c0xffffff/photo.jpg'
@@ -126,7 +126,7 @@ class ChannelTest < ActiveSupport::TestCase
   end
 
   def test_high_thumbnail_url
-    channel = channels(:チャンネル1)
+    channel = channels(:channel1)
     thumbnail_url = 'https://yt3.ggpht.com/-4nB6EusJ1Iw/AAAAAAAAAAI/AAAAAAAAAAA/coEXMA5Pjrg/s88-c-k-no-mo-rj-c0xffffff/photo.jpg'
     channel.thumbnail_url = thumbnail_url
     expected = 'https://yt3.ggpht.com/-4nB6EusJ1Iw/AAAAAAAAAAI/AAAAAAAAAAA/coEXMA5Pjrg/s800-c-k-no-mo-rj-c0xffffff/photo.jpg'

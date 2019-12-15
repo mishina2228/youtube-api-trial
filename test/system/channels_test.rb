@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class ChannelsTest < ApplicationSystemTestCase
   setup do
-    @channel = channels(:チャンネル1)
+    @channel = channels(:channel1)
     100.times do
       build_channel_with_statistics.save!
     end
