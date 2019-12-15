@@ -51,7 +51,7 @@ class ChannelTest < ActiveSupport::TestCase
   def test_youtube_service
     channel = channels(:channel1)
     ret = channel.youtube_service
-    assert ret.is_a?(Mishina::Youtube::Mock::Service), 'テスト環境ではmockを使用すること'
+    assert ret.is_a?(Mishina::Youtube::Mock::Service), 'use mock in a test environment'
   end
 
   def test_youtube_service_no_system_setting

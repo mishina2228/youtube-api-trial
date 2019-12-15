@@ -73,6 +73,6 @@ class Search::ChannelTest < ActiveSupport::TestCase
 
     channel = Search::Channel.new(order: nil, direction: nil)
     ret = channel.search
-    assert_equal [@c2, @c1], ret.to_a, 'デフォルトでは登録者の降順'
+    assert_equal [@c2, @c1], ret.to_a, 'default order is descending number of subscribers'
   end
 end

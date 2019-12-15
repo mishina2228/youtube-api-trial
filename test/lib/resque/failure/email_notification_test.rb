@@ -8,14 +8,14 @@ module Resque
           sample_exception, 'worker', 'queue', 'payload'
         )
 
-        assert notification.recipients.empty?, '通知対象ユーザーがいないことを確認'
+        assert notification.recipients.empty?, 'confirm that there are no users to be notified'
         assert_nil notification.save
 
         u = users(:admin)
         assert u.update(email: 'admin@real_domain.com')
-        assert notification.recipients.present?, '通知対象ユーザーがいることを確認'
+        assert notification.recipients.present?, 'confirm that there are users to be notified'
         mail = notification.save
-        assert mail.present?, 'メールが送信されること'
+        assert mail.present?, 'email should be sent'
       end
     end
   end
