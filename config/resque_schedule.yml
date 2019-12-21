@@ -2,4 +2,4 @@ build_all_statistics_job:
   cron: '5 0 * * *'
   class: 'Channel::BuildAllStatisticsJob'
   queue: 'normal'
-  description: '全チャンネルの統計取得'
+  description: 'Job to acquire statistics for all channels'

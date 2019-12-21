@@ -31,6 +31,6 @@ class Channel::UpdateSnippetJob
       raise e
     end
 
-    Rails.logger.info("チャンネル「#{channel.title}」の情報更新が終了しました。")
+    Rails.logger.info %Q(Updated information of channel "#{channel.title}")
   end
 end

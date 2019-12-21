@@ -87,9 +87,8 @@ class ChannelsTest < ApplicationSystemTestCase
 
     click_on I18n.t('helpers.link.index')
     assert_current_path(channels_path)
-    # 登録したチャンネルが一覧に表示されること
-    # ただしジョブが実行され、統計情報が取得できて初めて表示される
-    # テスト環境ではジョブが即時実行されるため、即表示される
+    # The registered channel will be displayed in the index page after BuildStatisticsJob ends.
+    # The job ends immediately in the test environment, so it should be displayed.
     assert_selector 'a', text: @channel.reload.title
   end
 

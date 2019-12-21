@@ -3,12 +3,12 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  # 全リンクにlocale情報をセットする
+  # Set locale information for all links
   def default_url_options(options = {})
     options.merge(locale: locale)
   end
 
-  # リンクの多言語化に対応する
+  # Supports multilingual links
   def set_locale
     I18n.locale = locale
   end

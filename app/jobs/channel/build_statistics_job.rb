@@ -31,6 +31,6 @@ class Channel::BuildStatisticsJob
       raise e
     end
 
-    Rails.logger.info("チャンネル「#{channel.title}」の統計取得が終了しました。")
+    Rails.logger.info %Q(Acquired statistics for channel "#{channel.title}")
   end
 end

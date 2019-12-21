@@ -45,7 +45,7 @@ class Search::ChannelTest < ActiveSupport::TestCase
     channel = Search::Channel.new(to_date: '2018-12-20')
     ret = channel.search
     assert_includes ret, @c1
-    # TODO: 日付の扱い
+    # TODO: improve date handling
     # assert_includes ret, @c2
 
     channel = Search::Channel.new(to_date: '2018-12-19')
