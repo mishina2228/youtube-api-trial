@@ -12,7 +12,7 @@ Layout/SpaceInsideBlockBraces:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 100
 
 Style/AsciiComments:
