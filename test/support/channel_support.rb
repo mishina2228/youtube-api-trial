@@ -1,11 +1,11 @@
 module ChannelSupport
   def build_channel_with_statistics
-    c = Channel.new(valid_params)
-    c.channel_statistics.build(statistics_valid_params)
+    c = Channel.new(valid_channel_params)
+    c.channel_statistics.build(valid_statistics_params)
     c
   end
 
-  def valid_params
+  def valid_channel_params
     {
       channel_id: SecureRandom.hex(8),
       title: "Channel-#{SecureRandom.hex(8)}",
@@ -15,7 +15,7 @@ module ChannelSupport
     }
   end
 
-  def statistics_valid_params
+  def valid_statistics_params
     {
       view_count: rand(100..10000),
       subscriber_count: rand(100..10000),
