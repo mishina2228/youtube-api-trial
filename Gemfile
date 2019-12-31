@@ -62,7 +62,7 @@ gem 'devise', '~> 4.7.1'
 gem 'devise-i18n'
 
 gem 'enum_help'
-gem 'google-api-client', '~> 0.35'
+gem 'google-api-client', '~> 0.36'
 gem 'kaminari', '~> 1.1.1'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'paranoia', '~> 2.2'
