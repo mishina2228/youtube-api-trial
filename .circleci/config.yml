@@ -54,7 +54,7 @@ jobs: # a collection of steps
           command: |
             bundle exec rails test
 
-      # Save test results for timing analysis
+      # Save test results for timing analysis.
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test/reports
       # See https://circleci.com/docs/2.0/deployment-integrations/ for example deploy configs
