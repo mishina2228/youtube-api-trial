@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/mishina2228/youtube-api-trial.svg?style=svg)](https://circleci.com/gh/mishina2228/youtube-api-trial)
+
 # YouTube API Trial
 
 Ruby on Rails application to get information of YouTube channel
