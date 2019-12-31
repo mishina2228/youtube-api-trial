@@ -65,5 +65,8 @@ jobs: # a collection of steps
           command: |
             bundle exec rails test:system
 
+      - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+          path: test/reports
+
       - store_artifacts:
           path: tmp/screenshots
