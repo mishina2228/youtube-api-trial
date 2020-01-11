@@ -31,6 +31,7 @@ executors:
       - image: redis:4.0.14
     environment:
       <<: *common_env
+
 commands:
   update_rubygems:
     steps:
