@@ -13,13 +13,22 @@ executors:
       - image: circleci/ruby:latest
     environment:
       <<: *common_env
+  node-browsers-2-5:
+    docker:
+      - image: circleci/ruby:2.5-node-browsers
+    environment:
+      <<: *common_env
   node-browsers-2-6:
     docker:
       - image: circleci/ruby:2.6-node-browsers
       - image: redis:4.0.14
     environment:
       <<: *common_env
-
+  node-browsers-latest:
+    docker:
+      - image: circleci/ruby:latest-node-browsers
+    environment:
+      <<: *common_env
 commands:
   update_rubygems:
     steps:
@@ -91,6 +100,44 @@ jobs: # a collection of steps
           name: Run Brakeman
           command: |-
             bundle exec brakeman
+  minitest-2-5:
+    executor: node-browsers-2-5
+    steps:
+      - checkout
+      - update_rubygems
+      - which_bundler
+      - which_ruby
+      - restore_gems:
+          ruby-version: '2.5'
+      - install_gems
+      - save_gems:
+          ruby-version: '2.5'
+      - setup_database
+      - run:
+          name: Run minitest
+          command: |-
+            bundle exec rails test
+      - store_test_reports
+  system-test-2-5:
+    executor: node-browsers-2-5
+    steps:
+      - checkout
+      - update_rubygems
+      - which_bundler
+      - which_ruby
+      - restore_gems:
+          ruby-version: '2.5'
+      - install_gems
+      - save_gems:
+          ruby-version: '2.5'
+      - setup_database
+      - run:
+          name: Run system test
+          command: |-
+            bundle exec rails test:system
+      - store_test_reports
+      - store_artifacts:
+          path: tmp/screenshots
   minitest-2-6:
     executor: node-browsers-2-6
     steps:
@@ -129,13 +176,59 @@ jobs: # a collection of steps
       - store_test_reports
       - store_artifacts:
           path: tmp/screenshots
-          
+  minitest-latest:
+    executor: node-browsers-latest
+    steps:
+      - checkout
+      - update_rubygems
+      - which_bundler
+      - which_ruby
+      - restore_gems:
+          ruby-version: latest
+      - install_gems
+      - save_gems:
+          ruby-version: latest
+      - setup_database
+      - run:
+          name: Run minitest
+          command: |-
+            bundle exec rails test
+      - store_test_reports
+  system-test-latest:
+    executor: node-browsers-latest
+    steps:
+      - checkout
+      - update_rubygems
+      - which_bundler
+      - which_ruby
+      - restore_gems:
+          ruby-version: latest
+      - install_gems
+      - save_gems:
+          ruby-version: latest
+      - setup_database
+      - run:
+          name: Run system test
+          command: |-
+            bundle exec rails test:system
+      - store_test_reports
+      - store_artifacts:
+          path: tmp/screenshots
+
 workflows:
   version: 2.1
   brakeman:
     jobs:
       - brakeman
+  ruby-2.5-test:
+    jobs:
+      - minitest-2-5
+      - system-test-2-5
   ruby-2.6-test:
     jobs:
       - minitest-2-6
       - system-test-2-6
+  ruby-latest-test:
+    jobs:
+      - minitest-latest
+      - system-test-latest
