@@ -1,3 +1,5 @@
+require 'resque/failure/notification_recipient'
+
 module Resque
   module Failure
     class EmailNotification < Base
