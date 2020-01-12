@@ -43,3 +43,4 @@
 
 # Ignore test meta data
 /test/reports/*
+/coverage/
