@@ -3,6 +3,7 @@ require 'resque-scheduler'
 require 'resque/scheduler/server'
 require 'resque/failure/multiple'
 require 'resque/failure/redis'
+require 'resque/failure/email_notification'
 
 Resque.redis = 'localhost:6379'
 Resque.redis.namespace = "resque:youtube_api_trials:#{Rails.env}"

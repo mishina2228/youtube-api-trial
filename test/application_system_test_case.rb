@@ -1,6 +1,8 @@
 require "test_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
+  include Devise::Test::IntegrationHelpers
+
   caps = Selenium::WebDriver::Remote::Capabilities.chrome(
     'chromeOptions' => {
       'args' => %w(--headless --disable-gpu --no-sandbox)
