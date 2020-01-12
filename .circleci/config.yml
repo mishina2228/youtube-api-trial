@@ -81,6 +81,27 @@ commands:
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
+  download_test_reporter:
+    steps:
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |-
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+  minitest:
+    steps:
+      - run:
+          name: Run minitest
+          command: |-
+            bundle exec rails test
+  system_test:
+    steps:
+      - run:
+          name: Run system test
+          command: |-
+            bundle exec rails test:system
+      - store_artifacts:
+          path: tmp/screenshots
   store_test_reports:
     steps:
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
@@ -116,10 +137,7 @@ jobs: # a collection of steps
       - save_gems:
           ruby-version: '2.5'
       - setup_database
-      - run:
-          name: Run minitest
-          command: |-
-            bundle exec rails test
+      - minitest
       - store_test_reports
   system-test-2-5:
     executor: node-browsers-2-5
@@ -134,13 +152,8 @@ jobs: # a collection of steps
       - save_gems:
           ruby-version: '2.5'
       - setup_database
-      - run:
-          name: Run system test
-          command: |-
-            bundle exec rails test:system
+      - system_test
       - store_test_reports
-      - store_artifacts:
-          path: tmp/screenshots
   minitest-2-6:
     executor: node-browsers-2-6
     steps:
@@ -154,10 +167,7 @@ jobs: # a collection of steps
       - save_gems:
           ruby-version: '2.6'
       - setup_database
-      - run:
-          name: Run minitest
-          command: |-
-            bundle exec rails test
+      - minitest
       - store_test_reports
   system-test-2-6:
     executor: node-browsers-2-6
@@ -172,13 +182,8 @@ jobs: # a collection of steps
       - save_gems:
           ruby-version: '2.6'
       - setup_database
-      - run:
-          name: Run system test
-          command: |-
-            bundle exec rails test:system
+      - system_test
       - store_test_reports
-      - store_artifacts:
-          path: tmp/screenshots
   minitest-latest:
     executor: node-browsers-latest
     steps:
@@ -192,10 +197,7 @@ jobs: # a collection of steps
       - save_gems:
           ruby-version: latest
       - setup_database
-      - run:
-          name: Run minitest
-          command: |-
-            bundle exec rails test
+      - minitest
       - store_test_reports
   system-test-latest:
     executor: node-browsers-latest
@@ -210,13 +212,8 @@ jobs: # a collection of steps
       - save_gems:
           ruby-version: latest
       - setup_database
-      - run:
-          name: Run system test
-          command: |-
-            bundle exec rails test:system
+      - system_test
       - store_test_reports
-      - store_artifacts:
-          path: tmp/screenshots
 
 workflows:
   version: 2.1
