@@ -1,5 +1,6 @@
 [![CircleCI](https://circleci.com/gh/mishina2228/youtube-api-trial.svg?style=svg)](https://circleci.com/gh/mishina2228/youtube-api-trial)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b80a05b702d4a8ee5b13/maintainability)](https://codeclimate.com/github/mishina2228/youtube-api-trial/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b80a05b702d4a8ee5b13/test_coverage)](https://codeclimate.com/github/mishina2228/youtube-api-trial/test_coverage)
 
 # YouTube API Trial
 
