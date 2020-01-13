@@ -17,19 +17,16 @@ executors:
   node-browsers-2-5:
     docker:
       - image: circleci/ruby:2.5-node-browsers
-      - image: redis:4.0.14
     environment:
       <<: *common_env
   node-browsers-2-6:
     docker:
       - image: circleci/ruby:2.6-node-browsers
-      - image: redis:4.0.14
     environment:
       <<: *common_env
   node-browsers-latest:
     docker:
       - image: circleci/ruby:latest-node-browsers
-      - image: redis:4.0.14
     environment:
       <<: *common_env
 
