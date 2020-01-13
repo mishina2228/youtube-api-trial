@@ -1,6 +1,25 @@
 require 'test_helper'
 
 class Channel::UpdateSnippetJobTest < ActiveSupport::TestCase
+  def test_before_enqueue
+    assert Channel::UpdateSnippetJob.before_enqueue
+
+    jobs = [
+      {
+        'class' => Channel::UpdateSnippetJob.name,
+        'args' => [
+          {
+            'channel_id' => 'test_channel_id'
+          }
+        ]
+      }
+    ]
+    JobUtils.stub(:peek, jobs) do
+      params = {'channel_id' => 'test_channel_id'}
+      assert_not Channel::UpdateSnippetJob.before_enqueue(params)
+    end
+  end
+
   def test_perform
     channel = channels(:channel1)
     before_description = channel.description

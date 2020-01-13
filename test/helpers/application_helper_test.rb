@@ -34,6 +34,16 @@ class ApplicationHelperTest < ActionView::TestCase
     assert '-9,999', print_diff_numbers(1, 10_000)
   end
 
+  def test_print_diff_datetimes
+    print_diff_datetimes(nil, nil)
+    print_diff_datetimes(nil, Time.zone.now)
+    print_diff_datetimes(Time.zone.now, nil)
+
+    actual = print_diff_datetimes(Time.zone.now - 3.days, Time.zone.now)
+    expected = distance_of_time_in_words(Time.zone.now - 3.days, Time.zone.now)
+    assert_equal expected, actual
+  end
+
   def test_text_url_to_link
     assert_nil text_url_to_link(nil)
     assert_nil text_url_to_link('')
