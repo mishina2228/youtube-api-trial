@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'googleauth/user_refresh'
 
 class SystemSettingTest < ActiveSupport::TestCase
   def test_validation
@@ -28,7 +29,19 @@ class SystemSettingTest < ActiveSupport::TestCase
     assert SystemSetting.new(valid_params_oauth2.merge(client_id: nil)).invalid?
     assert SystemSetting.new(valid_params_oauth2.merge(client_secret: nil)).invalid?
   end
+  
+  def test_oauth2_configured?
+    ss = SystemSetting.new(valid_params_oauth2)
+    ss.stub(:credential, nil) do
+      assert_not ss.oauth2_configured?
+    end
 
+    credential_mock = Google::Auth::UserRefreshCredentials.new
+    ss.stub(:credential, credential_mock) do
+      assert ss.oauth2_configured?
+    end
+  end
+  
   def valid_params
     {
       auth_method: :api_key,
