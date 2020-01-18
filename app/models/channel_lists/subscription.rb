@@ -1,4 +1,6 @@
 class ChannelLists::Subscription < ChannelList
+  extend SystemSettingAware
+
   # @param response [ListSubscriptionResponse]
   def initialize(response)
     super
@@ -13,9 +15,8 @@ class ChannelLists::Subscription < ChannelList
   end
 
   def self.subscriptions(token: nil, max_results: Consts::Youtube::LIST_MAX_RESULTS)
-    ss = SystemSetting.first
-    raise I18n.t('helpers.notice.oauth2_required') unless ss&.oauth2?
+    raise I18n.t('helpers.notice.oauth2_required') unless system_setting&.oauth2?
 
-    ss.youtube_service.subscriptions(token: token, max_results: max_results)
+    system_setting.youtube_service.subscriptions(token: token, max_results: max_results)
   end
 end

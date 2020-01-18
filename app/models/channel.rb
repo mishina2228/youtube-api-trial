@@ -1,4 +1,7 @@
 class Channel < ApplicationRecord
+  include SystemSettingAware
+  extend SystemSettingAware
+
   has_many :channel_statistics, -> {order('created_at DESC')},
            dependent: :destroy, inverse_of: :channel
 
@@ -15,10 +18,9 @@ class Channel < ApplicationRecord
   end
 
   def self.use_oauth2?
-    ss = SystemSetting.first
-    return false unless ss
+    return false unless system_setting
 
-    ss.oauth2? && ss.oauth2_configured?
+    system_setting.oauth2? && system_setting.oauth2_configured?
   end
 
   def save_and_set_job
@@ -51,11 +53,9 @@ class Channel < ApplicationRecord
 
   def youtube_service
     return @youtube_service if @youtube_service
+    raise t('text.system_setting.missing') unless system_setting
 
-    ss = SystemSetting.first
-    raise t('text.system_setting.missing') unless ss
-
-    @youtube_service = ss.youtube_service
+    @youtube_service = system_setting.youtube_service
   end
 
   def channel_id=(val)

@@ -2,6 +2,30 @@ require 'test_helper'
 require 'google/apis/youtube_v3'
 
 class ChannelTest < ActiveSupport::TestCase
+  def test_use_oauth2?
+    assert ss = SystemSetting.first
+
+    SystemSetting.destroy_all
+    assert_not Channel.use_oauth2?
+
+    assert ss.update(auth_method: :api_key)
+    assert_not Channel.use_oauth2?
+    
+    assert ss.update(auth_method: :oauth2)
+    assert ss.oauth2?
+
+    Channel.stub(:system_setting, ss) do
+      ss.stub(:oauth2_configured?, false) do
+        assert_not ss.oauth2_configured?
+        assert_not Channel.use_oauth2?
+      end
+      ss.stub(:oauth2_configured?, true) do
+        assert ss.oauth2_configured?
+        assert Channel.use_oauth2?
+      end
+    end
+  end
+
   def test_validation
     channel = Channel.new(valid_params)
     assert channel.valid?
@@ -136,6 +160,12 @@ class ChannelTest < ActiveSupport::TestCase
     channel.thumbnail_url = thumbnail_url
     expected = 'https://yt3.ggpht.com/a/AGF-l79ixJhX3qrps2VymdF7R-Mq_z86tUJGHxY8qg=s800-c-k-c0xffffffff-no-rj-mo'
     assert_equal expected, channel.high_thumbnail_url
+  end
+
+  def test_enabled?
+    channel = channels(:channel1)
+    channel.disabled = false
+    assert channel.enabled?
   end
 
   def valid_params

@@ -1,4 +1,6 @@
 class ChannelLists::Search < ChannelList
+  extend SystemSettingAware
+
   # @param response [ListSubscriptionResponse]
   def initialize(response)
     super(response)
@@ -13,9 +15,8 @@ class ChannelLists::Search < ChannelList
   end
 
   def self.search(query, token: nil, max_results: Consts::Youtube::LIST_MAX_RESULTS)
-    ss = SystemSetting.first
-    raise I18n.t('text.system_setting.missing') unless ss
+    raise I18n.t('text.system_setting.missing') unless system_setting
 
-    ss.youtube_service.search_channel(query, token: token, max_results: max_results)
+    system_setting.youtube_service.search_channel(query, token: token, max_results: max_results)
   end
 end

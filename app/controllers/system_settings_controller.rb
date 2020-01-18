@@ -1,4 +1,6 @@
 class SystemSettingsController < ApplicationController
+  include SystemSettingAware
+
   before_action :set_system_setting, except: :create
   authorize_resource
 
@@ -65,7 +67,7 @@ class SystemSettingsController < ApplicationController
   private
 
   def set_system_setting
-    @system_setting = SystemSetting.first
+    @system_setting = system_setting
   end
 
   def system_setting_params
