@@ -3,7 +3,7 @@ require 'google/apis/youtube_v3'
 
 class ChannelTest < ActiveSupport::TestCase
   def test_use_oauth2?
-    assert ss = SystemSetting.first
+    assert ss = system_setting
 
     SystemSetting.destroy_all
     assert_not Channel.use_oauth2?

@@ -23,8 +23,7 @@ class ChannelLists::SubscriptionsControllerTest < ActionDispatch::IntegrationTes
   end
 
   test 'should get index via ajax as js' do
-    ss = SystemSetting.first
-    assert ss.update(auth_method: :oauth2)
+    assert system_setting.update(auth_method: :oauth2)
     sign_in admin
 
     get channel_lists_subscriptions_url, xhr: true
