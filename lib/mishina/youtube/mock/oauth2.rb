@@ -1,3 +1,5 @@
+require 'googleauth/user_refresh'
+
 module Mishina::Youtube::Mock::Oauth2
   def credential
     if client_id == 'no_credential'
