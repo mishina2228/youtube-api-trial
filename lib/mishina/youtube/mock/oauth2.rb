@@ -1,6 +1,10 @@
 module Mishina::Youtube::Mock::Oauth2
   def credential
-    'dummy_credential'
+    if client_id == 'no_credential'
+      nil
+    else
+      Google::Auth::UserRefreshCredentials.new
+    end
   end
 
   def authorization_url

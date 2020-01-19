@@ -32,14 +32,12 @@ class SystemSettingTest < ActiveSupport::TestCase
   
   def test_oauth2_configured?
     ss = SystemSetting.new(valid_params_oauth2)
-    ss.stub(:credential, nil) do
-      assert_not ss.oauth2_configured?
-    end
+    assert_not_nil ss.credential
+    assert ss.oauth2_configured?
 
-    credential_mock = Google::Auth::UserRefreshCredentials.new
-    ss.stub(:credential, credential_mock) do
-      assert ss.oauth2_configured?
-    end
+    ss.client_id = 'no_credential'
+    assert_nil ss.credential
+    assert_not ss.oauth2_configured?
   end
   
   def valid_params
