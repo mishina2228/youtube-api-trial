@@ -31,7 +31,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should create channel' do
+  test 'should create a channel' do
     sign_in admin
 
     channel_id = @channel.channel_id + Time.current.usec.to_s
@@ -44,11 +44,27 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
+    assert_response :redirect
     assert_redirected_to channel_url(Channel.last)
     assert_equal channel_id, Channel.last.channel_id
   end
 
-  test 'should not create channel if logged in as an user' do
+  test 'should not create a channel if parameters are invalid' do
+    sign_in admin
+
+    assert_no_difference -> {Channel.count} do
+      post channels_url,
+           params: {
+             channel: {
+               channel_id: nil
+             }
+           }
+    end
+
+    assert_response :success
+  end
+
+  test 'should not create a channel if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
@@ -61,7 +77,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should not create channel unless logged in' do
+  test 'should not create a channel unless logged in' do
     assert_raise CanCan::AccessDenied do
       post channels_url,
            params: {
@@ -72,22 +88,23 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should show channel' do
+  test 'should show a channel' do
     get channel_url(id: @channel)
     assert_response :success
   end
 
-  test 'should destroy channel' do
+  test 'should destroy a channel' do
     sign_in admin
 
     assert_difference -> {Channel.count}, -1 do
       delete channel_url(id: @channel)
     end
 
+    assert_response :redirect
     assert_redirected_to channels_url
   end
 
-  test 'should not destroy channel if logged in as an user' do
+  test 'should not destroy a channel if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
@@ -95,7 +112,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should not destroy channel unless logged in' do
+  test 'should not destroy a channel unless logged in' do
     assert_raise CanCan::AccessDenied do
       delete channel_url(id: @channel)
     end
@@ -105,6 +122,8 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in admin
 
     put build_statistics_channel_url(id: @channel)
+
+    assert_response :redirect
     assert_redirected_to channel_url(@channel)
   end
 
@@ -128,6 +147,8 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in admin
 
     put build_all_statistics_channels_url
+
+    assert_response :redirect
     assert_redirected_to channels_url
   end
 
@@ -147,20 +168,24 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should redirect to index when trying to build all statistics if no channel' do
     Channel.delete_all
-
     sign_in admin
+
     put build_all_statistics_channels_url
+
+    assert_response :redirect
     assert_redirected_to channels_url
   end
 
-  test 'should update snippet' do
+  test 'should update a snippet' do
     sign_in admin
 
     put update_snippet_channel_path(id: @channel)
+
+    assert_response :redirect
     assert_redirected_to channel_url(@channel)
   end
 
-  test 'should not update snippet if logged in as an user' do
+  test 'should not update a snippet if logged in as an user' do
     sign_in user
 
     assert_raise CanCan::AccessDenied do
@@ -168,7 +193,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should not update snippet unless logged in' do
+  test 'should not update a snippet unless logged in' do
     assert_raise CanCan::AccessDenied do
       put update_snippet_channel_path(id: @channel)
     end
@@ -176,10 +201,11 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update all snippets' do
     [channels(:error_channel), channels(:non_existing_channel)].each(&:destroy)
-
     sign_in admin
 
     put update_all_snippets_channels_path
+
+    assert_response :redirect
     assert_redirected_to channels_url
   end
 
@@ -203,6 +229,8 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in admin
 
     put update_all_snippets_channels_path
+
+    assert_response :redirect
     assert_redirected_to channels_url
   end
 end
