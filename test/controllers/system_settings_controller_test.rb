@@ -358,6 +358,28 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'should get oauth2 auth url' do
+    assert system_setting.update(auth_method: :oauth2)
+    assert system_setting.oauth2?
+    sign_in admin
+
+    skip
+    put oauth2_authorize_system_setting_url
+
+    assert_response :success
+    # TODO
+  end
+
+  test 'should reload if auth method is not oauth2' do
+    assert_not system_setting.oauth2?
+    sign_in admin
+
+    put oauth2_authorize_system_setting_url
+
+    assert_response :success
+    # TODO
+  end
+
   test 'should not get oauth2 auth url if logged in as an user' do
     sign_in user
 
