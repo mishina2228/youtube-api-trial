@@ -363,21 +363,44 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert system_setting.oauth2?
     sign_in admin
 
-    skip
-    put oauth2_authorize_system_setting_url
+    put oauth2_authorize_system_setting_url, xhr: true
 
     assert_response :success
-    # TODO
   end
 
   test 'should reload if auth method is not oauth2' do
     assert_not system_setting.oauth2?
     sign_in admin
 
-    put oauth2_authorize_system_setting_url
+    put oauth2_authorize_system_setting_url, xhr: true
 
     assert_response :success
-    # TODO
+    assert_equal I18n.t('helpers.notice.oauth2_required'), flash[:notice]
+  end
+
+  test 'should redirect to system setting if auth method is oauth2' do
+    assert system_setting.update(auth_method: :oauth2)
+    assert system_setting.oauth2?
+    sign_in admin
+
+    put oauth2_store_credential_system_setting_path,
+        params: {system_setting: {code: 'dummy'}}
+
+    assert_response :redirect
+    assert_redirected_to system_setting_url
+    assert_equal I18n.t('helpers.notice.oauth2_credential_stored'), flash[:notice]
+  end
+
+  test 'should redirect to system setting if auth method is not oauth2' do
+    assert_not system_setting.oauth2?
+    sign_in admin
+
+    put oauth2_store_credential_system_setting_path,
+        params: {system_setting: {code: 'dummy'}}
+
+    assert_response :redirect
+    assert_redirected_to system_setting_url
+    assert_equal I18n.t('helpers.notice.oauth2_required'), flash[:notice]
   end
 
   test 'should not get oauth2 auth url if logged in as an user' do
