@@ -65,7 +65,7 @@ class Mishina::Youtube::Mock::Service
   end
 
   # @return [Google::Apis::YoutubeV3::ListSubscriptionResponse]
-  def subscriptions(token:, max_results:)
+  def subscriptions(_token:, max_results:)
     subscription = Google::Apis::YoutubeV3::Subscription.new(
       snippet: Google::Apis::YoutubeV3::SubscriptionSnippet.new(
         resource_id: Google::Apis::YoutubeV3::ResourceId.new(
@@ -85,7 +85,7 @@ class Mishina::Youtube::Mock::Service
   end
 
   # @return [Google::Apis::YoutubeV3::SearchListsResponse]
-  def search_channel(query, max_results:, token:)
+  def search_channel(_query, max_results:, _token:)
     search_result = Google::Apis::YoutubeV3::SearchResult.new(
       snippet: Google::Apis::YoutubeV3::SearchResultSnippet.new(
         channel_id: 'dummy_channel_id',

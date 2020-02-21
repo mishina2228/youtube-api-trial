@@ -10,7 +10,7 @@ class ChannelTest < ActiveSupport::TestCase
 
     assert ss.update(auth_method: :api_key)
     assert_not Channel.use_oauth2?
-    
+
     assert ss.update(auth_method: :oauth2)
     assert ss.oauth2?
 

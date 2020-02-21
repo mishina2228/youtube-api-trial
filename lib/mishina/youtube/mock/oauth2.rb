@@ -13,7 +13,7 @@ module Mishina::Youtube::Mock::Oauth2
     'dummy_authorization_url'
   end
 
-  def store_credential(code)
+  def store_credential(_code)
     'dummy_store_credential'
   end
 end

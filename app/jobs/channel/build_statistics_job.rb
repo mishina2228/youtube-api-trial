@@ -31,6 +31,6 @@ class Channel::BuildStatisticsJob
       raise e
     end
 
-    Rails.logger.info %Q(Acquired statistics for channel "#{channel.title}")
+    Rails.logger.info %(Acquired statistics for channel "#{channel.title}")
   end
 end

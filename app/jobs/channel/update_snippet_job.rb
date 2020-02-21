@@ -31,6 +31,6 @@ class Channel::UpdateSnippetJob
       raise e
     end
 
-    Rails.logger.info %Q(Updated information of channel "#{channel.title}")
+    Rails.logger.info %(Updated information of channel "#{channel.title}")
   end
 end

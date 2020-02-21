@@ -10,7 +10,8 @@ class ChannelsTest < ApplicationSystemTestCase
 
   test 'visiting the index as an user not logged in' do
     visit channels_url
-    assert_selector 'h1', text: I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
+    text = I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
+    assert_selector 'h1', text: text
     assert_no_button I18n.t('helpers.link.new')
     assert_no_button I18n.t('helpers.link.update_all_snippets')
     assert_no_button I18n.t('helpers.link.build_all_statistics')
@@ -19,7 +20,8 @@ class ChannelsTest < ApplicationSystemTestCase
   test 'visiting the index as an user' do
     sign_in user
     visit channels_url
-    assert_selector 'h1', text: I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
+    text = I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
+    assert_selector 'h1', text: text
     assert_no_button I18n.t('helpers.link.new')
     assert_no_button I18n.t('helpers.link.update_all_snippets')
     assert_no_button I18n.t('helpers.link.build_all_statistics')
@@ -28,7 +30,8 @@ class ChannelsTest < ApplicationSystemTestCase
   test 'visiting the index as an admin' do
     sign_in admin
     visit channels_url
-    assert_selector 'h1', text: I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
+    text = I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
+    assert_selector 'h1', text: text
     assert_button I18n.t('helpers.link.new')
     assert_button I18n.t('helpers.link.update_all_snippets')
     assert_button I18n.t('helpers.link.build_all_statistics')

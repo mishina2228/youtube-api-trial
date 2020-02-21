@@ -29,7 +29,7 @@ class SystemSettingTest < ActiveSupport::TestCase
     assert SystemSetting.new(valid_params_oauth2.merge(client_id: nil)).invalid?
     assert SystemSetting.new(valid_params_oauth2.merge(client_secret: nil)).invalid?
   end
-  
+
   def test_oauth2_configured?
     ss = SystemSetting.new(valid_params_oauth2)
     assert_not_nil ss.credential
@@ -39,7 +39,7 @@ class SystemSettingTest < ActiveSupport::TestCase
     assert_nil ss.credential
     assert_not ss.oauth2_configured?
   end
-  
+
   def valid_params
     {
       auth_method: :api_key,

@@ -26,7 +26,7 @@ module Resque
         assert u.update(email: 'admin@real_domain.com')
         assert notification.recipients.present?
 
-        JobFailureNoticeMailer.stub(:with, -> (**_options) {raise 'mock error'}) do
+        JobFailureNoticeMailer.stub(:with, ->(**_options) {raise 'mock error'}) do
           assert_output(/RuntimeError mock error/) {notification.save}
         end
       end

@@ -57,11 +57,11 @@ class Channel::UpdateSnippetJobTest < ActiveSupport::TestCase
     channel = channels(:channel1)
     job_utils_mock = MiniTest::Mock.new
     job_utils_mock.expect(:call, nil) do |seconds_from_now, klass, options|
-      assert_equal 3 * 10 ** 0, seconds_from_now
+      assert_equal 3 * 10**0, seconds_from_now
       assert_equal Channel::UpdateSnippetJob, klass
       assert_equal 1, options['retry']
     end
-    expected_error = -> {raise Google::Apis::TransmissionError.new('mock error')}
+    expected_error = -> {raise Google::Apis::TransmissionError, 'mock error'}
 
     Channel.stub(:find, ->(_channel_id) {channel}) do
       channel.stub(:update_snippet!, expected_error) do
@@ -76,7 +76,7 @@ class Channel::UpdateSnippetJobTest < ActiveSupport::TestCase
 
   test 'fail if the transmission error occurred and retry limit exceeded' do
     channel = channels(:channel1)
-    expected_error = -> {raise Google::Apis::TransmissionError.new('mock error')}
+    expected_error = -> {raise Google::Apis::TransmissionError, 'mock error'}
 
     Channel.stub(:find, ->(_channel_id) {channel}) do
       channel.stub(:update_snippet!, expected_error) do

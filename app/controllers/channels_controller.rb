@@ -89,9 +89,7 @@ class ChannelsController < ApplicationController
   protected
 
   def take_params
-    super.merge(
-      search_channel: search_params
-    )
+    super.merge(search_channel: search_params)
   end
 
   private

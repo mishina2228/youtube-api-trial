@@ -14,11 +14,9 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  Dir.glob(Rails.root.join('test', 'support', '*.rb')).each do |filename|
+  Dir.glob(Rails.root.join('test/support/*.rb')).sort.each do |filename|
     require filename
-    if filename.end_with?('_support.rb')
-      include File.basename(filename).split('.').first.camelize.constantize
-    end
+    include File.basename(filename).split('.').first.camelize.constantize if filename.end_with?('_support.rb')
   end
 end
 
