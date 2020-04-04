@@ -17,6 +17,11 @@ Layout/SpaceInsideHashLiteralBraces:
 Layout/LineLength:
   Max: 110
 
+Lint/RaiseException:
+  Enabled: true
+Lint/StructNewOverride: 
+  Enabled: true
+
 Style/AsciiComments:
   Enabled: false
 Style/ClassAndModuleChildren:
