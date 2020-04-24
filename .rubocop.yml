@@ -9,6 +9,8 @@ AllCops:
 
 Layout/EndOfLine:
   EnforcedStyle: lf
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
 Layout/SpaceInsideBlockBraces:
   EnforcedStyle: no_space
   SpaceBeforeBlockParameters: false
@@ -30,6 +32,8 @@ Style/Documentation:
   Enabled: false
 Style/EmptyMethod:
   EnforcedStyle: expanded
+Style/ExponentialNotation:
+  Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
 Style/HashEachMethods:
