@@ -44,3 +44,6 @@
 # Ignore test meta data
 /test/reports/*
 /coverage/
+
+# Ignore rbenv's .ruby-version file.
+.ruby-version
