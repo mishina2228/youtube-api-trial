@@ -294,6 +294,16 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert body.include?(I18n.t('text.channel.enable.succeeded'))
   end
 
+  test 'should not re-enable a channel via ajax if parameters are invalid' do
+    assert @channel.update_columns(disabled: true, channel_id: '')
+    sign_in admin
+
+    put enable_channel_path(id: @channel), xhr: true
+
+    assert_response :success
+    assert body.include?(I18n.t('text.channel.enable.failed'))
+  end
+
   test 'should not re-enable a channel if logged in as an user' do
     assert @channel.update(disabled: true)
     sign_in user
