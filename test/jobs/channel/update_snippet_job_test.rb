@@ -33,15 +33,17 @@ class Channel::UpdateSnippetJobTest < ActiveSupport::TestCase
     channel = channels(:non_existing_channel)
     assert_nil channel.description
     assert_not channel.disabled?
-    assert_raise Mishina::Youtube::NoChannelError do
+    e = assert_raise Mishina::Youtube::NoChannelError do
       Channel::UpdateSnippetJob.perform('channel_id' => channel.id)
     end
+    assert e.message.include?("title = #{channel.title}")
 
     assert_nil channel.reload.description
     assert channel.disabled?, 'the channel is disabled if it does not exist'
-    assert_raise Mishina::Youtube::DisabledChannelError do
+    e = assert_raise Mishina::Youtube::DisabledChannelError do
       Channel::UpdateSnippetJob.perform('channel_id' => channel.id)
     end
+    assert e.message.include?("title = #{channel.title}")
   end
 
   test 'fail if client error occurred' do

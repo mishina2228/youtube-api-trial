@@ -104,11 +104,12 @@ class ChannelTest < ActiveSupport::TestCase
 
   def test_build_statistics_blank
     channel = channels(:non_existing_channel)
-    assert_raise Mishina::Youtube::NoChannelError do
+    e = assert_raise Mishina::Youtube::NoChannelError do
       assert_no_difference -> {ChannelStatistic.count} do
         assert_not channel.build_statistics!
       end
     end
+    assert e.message.include?("title = #{channel.title}")
   end
 
   def test_update_snippet
@@ -131,9 +132,10 @@ class ChannelTest < ActiveSupport::TestCase
 
   def test_update_snippet_blank
     channel = channels(:non_existing_channel)
-    assert_raise Mishina::Youtube::NoChannelError do
+    e = assert_raise Mishina::Youtube::NoChannelError do
       assert_not channel.update_snippet!
     end
+    assert e.message.include?("title = #{channel.title}")
   end
 
   def test_medium_thumbnail_url
