@@ -42,10 +42,13 @@ class ChannelTest < ActiveSupport::TestCase
   def test_channel_id_valid
     valid_channel_ids = %w(
       abc
+      abc?sub_confirmation=1
       https://www.youtube.com/channel/abc
       www.youtube.com/channel/abc
       https://www.youtube.com/channel/abc/featured
       www.youtube.com/channel/abc/featured
+      https://www.youtube.com/channel/abc?sub_confirmation=1
+      www.youtube.com/channel/abc?sub_confirmation=1
     )
 
     valid_channel_ids.each do |channel_id|
@@ -69,17 +72,6 @@ class ChannelTest < ActiveSupport::TestCase
     invalid_channel_ids.each do |channel_id|
       channel = Channel.new(channel_id: channel_id)
       assert channel.channel_id.blank?
-    end
-  end
-
-  def test_channel_id_ignore_query
-    valid_channel_ids = %w(
-      https://www.youtube.com/channel/abc?sub_confirmation=1"
-    )
-
-    valid_channel_ids.each do |channel_id|
-      channel = Channel.new(channel_id: channel_id)
-      assert_equal 'abc', channel.channel_id
     end
   end
 

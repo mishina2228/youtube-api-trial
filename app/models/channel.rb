@@ -102,11 +102,9 @@ class Channel < ApplicationRecord
   private
 
   def parse_channel_id(val)
-    URI.parse(val)
-    if (m = val.match(Consts::Youtube::REGEXP_URL))
+    uri = URI.parse(val)
+    if (m = uri.path.match(Consts::Youtube::REGEXP_URL))
       m[:channel_id]
-    elsif val.match?(Consts::Youtube::REGEXP_WITHOUT_SLASH)
-      val
     end
   rescue URI::InvalidURIError
     nil
