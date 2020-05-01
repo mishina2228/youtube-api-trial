@@ -10,7 +10,7 @@ module Consts
   module Youtube
     CREDENTIAL_YML_PATH = Rails.root.join('config/youtube/oauth2_credentials.yml')
     LIST_MAX_RESULTS = 50
-    REGEXP_URL = %r(\A(https://)?www\.youtube\.com/channel/(?<channel_id>[^/]+).*\z).freeze
+    REGEXP_URL = %r(\A(https://)?www\.youtube\.com/channel/(?<channel_id>[^/?]+).*\z).freeze
     REGEXP_WITHOUT_SLASH = %r(\A[^/]+\z).freeze
   end
 

@@ -72,6 +72,17 @@ class ChannelTest < ActiveSupport::TestCase
     end
   end
 
+  def test_channel_id_ignore_query
+    valid_channel_ids = %w(
+      https://www.youtube.com/channel/abc?sub_confirmation=1"
+    )
+
+    valid_channel_ids.each do |channel_id|
+      channel = Channel.new(channel_id: channel_id)
+      assert_equal 'abc', channel.channel_id
+    end
+  end
+
   def test_youtube_service
     channel = channels(:channel1)
     ret = channel.youtube_service
