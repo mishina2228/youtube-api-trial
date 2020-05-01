@@ -3,6 +3,11 @@ ja:
   activemodel:
     attributes:
       search: &search
+        disabled: 有効/無効
+        disabled_options:
+          both: 両方
+          disabled_only: 無効のみ
+          enabled_only: 有効のみ
         per: 1ページあたりの件数
       search/channel:
         <<: *search

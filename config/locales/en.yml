@@ -3,6 +3,11 @@ en:
   activemodel:
     attributes:
       search: &search
+        disabled: Enabled/Disabled
+        disabled_options:
+          both: Both
+          disabled_only: Disabled Only
+          enabled_only: Enabled Only
         per: Page size
       search/channel:
         <<: *search

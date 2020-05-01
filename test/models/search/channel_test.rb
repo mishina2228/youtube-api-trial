@@ -75,4 +75,24 @@ class Search::ChannelTest < ActiveSupport::TestCase
     ret = channel.search
     assert_equal [@c2, @c1], ret.to_a, 'default order is descending number of subscribers'
   end
+
+  def test_search_disabled
+    assert @c2.update(disabled: true)
+
+    channel = Search::Channel.new(disabled: nil)
+    ret = channel.search
+    assert_equal [@c2, @c1], ret.to_a
+
+    channel = Search::Channel.new(disabled: '')
+    ret = channel.search
+    assert_equal [@c2, @c1], ret.to_a
+
+    channel = Search::Channel.new(disabled: false)
+    ret = channel.search
+    assert_equal [@c1], ret.to_a
+
+    channel = Search::Channel.new(disabled: true)
+    ret = channel.search
+    assert_equal [@c2], ret.to_a
+  end
 end
