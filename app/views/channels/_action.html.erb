@@ -2,6 +2,12 @@
             class: 'btn btn-info', role: :button %>
 <% case controller.action_name %>
 <% when 'show' %>
+  <% if can?(:update, Channel) && @channel.disabled? %>
+    <%= button_to t('helpers.link.enable'), enable_channel_path,
+                  method: :put, class: 'btn btn-success', role: :button,
+                  data: {disable_with: t('helpers.notice.processing'),
+                         confirm: t('helpers.notice.enable_confirm')}, remote: true %>
+  <% end %>
   <% if can?(:update, Channel) && @channel.enabled? %>
     <%= button_to t('helpers.link.update_snippet'), update_snippet_channel_path,
                 method: :put, class: 'btn btn-success', role: :button,
@@ -12,7 +18,7 @@
                 method: :put, class: 'btn btn-success', role: :button,
                 data: {disable_with: t('helpers.notice.processing')}, remote: true %>
   <% end %>
-  <% if can? :delete, Channel %>
+  <% if can?(:delete, Channel) %>
     <%= button_to t('helpers.link.delete'), channel_path(@channel), method: :delete,
                 data: {confirm: t('helpers.notice.delete_confirm')},
                 class: 'btn btn-danger', role: :button %>

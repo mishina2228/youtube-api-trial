@@ -199,6 +199,7 @@ en:
       create_from_subscription: Create from Subscription
       delete: Delete
       edit: Edit
+      enable: Enable
       index: List
       new: New
       oauth2_setting: Set up OAuth2
@@ -211,6 +212,7 @@ en:
       create: Created successfully
       delete: Deleted successfully
       delete_confirm: Are you sure you want to delete it?
+      enable_confirm: Are you sure you want to enable it?
       loading: loading...
       oauth2_credential_stored: OAuth2 authentication setup is complete
       oauth2_credential_store_failed: OAuth2 authentication setup is failed

@@ -2,7 +2,7 @@ class ChannelsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   before_action :set_channel, only: [
-    :show, :destroy, :build_statistics, :update_snippet
+    :show, :destroy, :build_statistics, :update_snippet, :enable
   ]
   before_action -> {require_data(channels_url, Channel)},
                 only: [:build_all_statistics, :update_all_snippets]
@@ -65,8 +65,8 @@ class ChannelsController < ApplicationController
   def build_all_statistics
     JobUtils.enqueue(Channel::BuildAllStatisticsJob)
     respond_to do |format|
-      format.html {redirect_to channels_url, notice: t('text.channel.build_all_statistics.message')}
-      format.js {render 'partials/toastr', locals: {message: t('text.channel.build_all_statistics.message')}}
+      format.html {redirect_to channels_url, notice: t('text.channel.build_all_statistics.start')}
+      format.js {render 'partials/toastr', locals: {message: t('text.channel.build_all_statistics.start')}}
     end
   end
 
@@ -81,8 +81,20 @@ class ChannelsController < ApplicationController
   def update_all_snippets
     JobUtils.enqueue(Channel::UpdateAllSnippetsJob)
     respond_to do |format|
-      format.html {redirect_to channels_url, notice: t('text.channel.update_all_snippets.message')}
-      format.js {render 'partials/toastr', locals: {message: t('text.channel.update_all_snippets.message')}}
+      format.html {redirect_to channels_url, notice: t('text.channel.update_all_snippets.start')}
+      format.js {render 'partials/toastr', locals: {message: t('text.channel.update_all_snippets.start')}}
+    end
+  end
+
+  def enable
+    respond_to do |format|
+      if @channel.update(disabled: false)
+        format.html {redirect_to @channel, notice: t('text.channel.enable.succeeded')}
+        format.js {render 'partials/toastr', locals: {message: t('text.channel.enable.succeeded')}}
+      else
+        format.html {redirect_to @channel, notice: t('text.channel.enable.failed')}
+        format.js {render 'partials/toastr', locals: {message: t('text.channel.enable.failed')}}
+      end
     end
   end
 

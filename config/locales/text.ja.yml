@@ -3,7 +3,7 @@ ja:
   text:
     channel:
       build_all_statistics:
-        message: チャンネル統計の一括取得を開始しました
+        start: チャンネル統計の一括取得を開始しました
       build_statistics:
         start: チャンネル統計の取得を開始しました
         success: チャンネル統計の取得に成功しました
@@ -13,6 +13,9 @@ ja:
         invalid: が未入力、あるいは無効な値です
       disabled_html:
         このチャンネルは現在YouTube上に存在しないため、無効化されています。
+      enable:
+        succeeded: 有効化しました
+        failed: 有効化に失敗しました
       search:
         not_found: 条件に一致するチャンネルが見つかりませんでした。
       statistics:
@@ -23,7 +26,7 @@ ja:
       title:
         missing: (チャンネル名未取得)
       update_all_snippets:
-        message: チャンネル情報の一括取得を開始しました
+        start: チャンネル情報の一括取得を開始しました
       update_snippet:
         start: チャンネル情報の取得を開始しました
         success: チャンネル情報の取得に成功しました

@@ -127,6 +127,15 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to channel_url(@channel)
   end
 
+  test 'should build statistics via ajax' do
+    sign_in admin
+
+    put build_statistics_channel_url(id: @channel), xhr: true
+
+    assert_response :success
+    assert body.include?(I18n.t('text.channel.build_statistics.start'))
+  end
+
   test 'should not build statistics if logged in as an user' do
     sign_in user
 
@@ -150,6 +159,17 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
     assert_redirected_to channels_url
+  end
+
+  test 'should build all statistics via ajax' do
+    [channels(:error_channel), channels(:non_existing_channel)].each(&:destroy)
+
+    sign_in admin
+
+    put build_all_statistics_channels_url, xhr: true
+
+    assert_response :success
+    assert body.include?(I18n.t('text.channel.build_all_statistics.start'))
   end
 
   test 'should not build all statistics if logged in as an user' do
@@ -185,6 +205,15 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to channel_url(@channel)
   end
 
+  test 'should update a snippet via ajax' do
+    sign_in admin
+
+    put update_snippet_channel_path(id: @channel), xhr: true
+
+    assert_response :success
+    assert body.include?(I18n.t('text.channel.update_snippet.start'))
+  end
+
   test 'should not update a snippet if logged in as an user' do
     sign_in user
 
@@ -207,6 +236,16 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
     assert_redirected_to channels_url
+  end
+
+  test 'should update all snippets via ajax' do
+    [channels(:error_channel), channels(:non_existing_channel)].each(&:destroy)
+    sign_in admin
+
+    put update_all_snippets_channels_path, xhr: true
+
+    assert_response :success
+    assert body.include?(I18n.t('text.channel.update_all_snippets.start'))
   end
 
   test 'should not update all snippets if logged in as an user' do
@@ -232,5 +271,45 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
     assert_redirected_to channels_url
+  end
+
+  test 'should re-enable a channel' do
+    assert @channel.update(disabled: true)
+    sign_in admin
+
+    put enable_channel_path(id: @channel)
+
+    assert_response :redirect
+    assert_redirected_to channel_url(@channel)
+    assert @channel.reload.enabled?
+  end
+
+  test 'should re-enable a channel via ajax' do
+    assert @channel.update(disabled: true)
+    sign_in admin
+
+    put enable_channel_path(id: @channel), xhr: true
+
+    assert_response :success
+    assert body.include?(I18n.t('text.channel.enable.succeeded'))
+  end
+
+  test 'should not re-enable a channel if logged in as an user' do
+    assert @channel.update(disabled: true)
+    sign_in user
+
+    assert_raise CanCan::AccessDenied do
+      put enable_channel_path(id: @channel)
+    end
+    assert @channel.reload.disabled?
+  end
+
+  test 'should not re-enable a channel unless logged in' do
+    assert @channel.update(disabled: true)
+
+    assert_raise CanCan::AccessDenied do
+      put enable_channel_path(id: @channel)
+    end
+    assert @channel.reload.disabled?
   end
 end
