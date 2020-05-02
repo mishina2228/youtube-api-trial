@@ -6,7 +6,7 @@
     <%= button_to t('helpers.link.enable'), enable_channel_path,
                   method: :put, class: 'btn btn-success', role: :button,
                   data: {disable_with: t('helpers.notice.processing'),
-                         confirm: t('helpers.notice.enable_confirm')}, remote: true %>
+                         confirm: t('helpers.notice.enable_confirm')} %>
   <% end %>
   <% if can?(:update, Channel) && @channel.enabled? %>
     <%= button_to t('helpers.link.update_snippet'), update_snippet_channel_path,
