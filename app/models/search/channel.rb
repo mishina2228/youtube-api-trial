@@ -1,16 +1,17 @@
 class Search::Channel < Search::Base
   attr_accessor :ids, :title, :from_date, :to_date,
-                :subscriber_count, :video_count, :view_count
+                :subscriber_count, :video_count, :view_count, :tag
   attr_writer :disabled
 
   def search
-    ret = ::Channel.includes(:channel_statistics).includes(:taggings)
+    ret = ::Channel.preload(:channel_statistics).preload(:taggings)
     ret = ret.with_channel_statistics
     ret = ret.where(id: ids) if ids.present?
     ret = ret.where('title LIKE ?', "%#{title}%") if title.present?
     ret = ret.where('published_at >= ?', from_date) if from_date.present?
     ret = ret.where('published_at <= ?', to_date) if to_date.present?
     ret = ret.where(disabled: disabled) unless disabled.nil?
+    ret = ret.tagged_with(tag) if tag.present?
     ret = ret.order(sort_column)
     ret = ret.reverse_order if direction == 'desc' || direction.nil?
     ret.paginate(per: per, page: page)

@@ -136,7 +136,7 @@ class ChannelsController < ApplicationController
 
   def search_params
     ret = params.permit(:order, :direction)
-    ret.merge(params.fetch(:search_channel, {}).permit(:title, :per, :disabled))
+    ret.merge(params.fetch(:search_channel, {}).permit(:title, :per, :disabled, :tag))
   end
 
   def update_tags_params

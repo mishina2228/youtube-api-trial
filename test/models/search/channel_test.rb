@@ -95,4 +95,11 @@ class Search::ChannelTest < ActiveSupport::TestCase
     ret = channel.search
     assert_equal [@c2], ret.to_a
   end
+
+  def test_search_tag
+    assert_includes @c1.tag_list, 'tag1'
+    channel = Search::Channel.new(tag: 'tag1')
+    ret = channel.search
+    assert_equal [@c1], ret.to_a
+  end
 end
