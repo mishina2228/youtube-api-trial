@@ -21,6 +21,8 @@ Rails.application.routes.draw do
         put :build_statistics
         put :update_snippet
         put :enable
+        get :edit_tags
+        put :update_tags
       end
       collection do
         put :build_all_statistics

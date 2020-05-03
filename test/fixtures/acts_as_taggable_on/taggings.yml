@@ -1,0 +1,5 @@
+channel1_tag1:
+  tag: tag1
+  taggable_type: Channel
+  taggable: channel1
+  context: tags

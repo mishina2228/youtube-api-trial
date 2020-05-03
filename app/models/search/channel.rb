@@ -4,7 +4,7 @@ class Search::Channel < Search::Base
   attr_writer :disabled
 
   def search
-    ret = ::Channel.includes(:channel_statistics)
+    ret = ::Channel.includes(:channel_statistics).includes(:taggings)
     ret = ret.with_channel_statistics
     ret = ret.where(id: ids) if ids.present?
     ret = ret.where('title LIKE ?', "%#{title}%") if title.present?

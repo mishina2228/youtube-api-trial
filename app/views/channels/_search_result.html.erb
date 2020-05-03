@@ -37,6 +37,11 @@
             <span data-toggle="tooltip" title="<%= t('helpers.notice.channel_disabled') %>">⚠️</span>
           <% end %>
           <%= print_link(c.title, channel_path(c, take_params), t('text.channel.title.missing')) %>
+          <div>
+            <% c.tag_list.each do |tag| %>
+              <span class="badge badge-primary"><%= tag %></span>
+            <% end %>
+          </div>
         </td>
         <td class="hidden-xs"><%= print_datetime(c.published_at, format: :date) %></td>
         <td>

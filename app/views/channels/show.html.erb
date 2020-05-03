@@ -26,6 +26,14 @@
   </div>
   <div class="row">
     <div class="col-xs-4 col-sm-2 font-weight-bold">
+      <%= Channel.human_attribute_name :tags %>
+    </div>
+    <div class="channel tag-list col-xs-8 col-sm-10">
+      <%= render partial: 'tag_list', locals: {channel: @channel} %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-sm-2 font-weight-bold">
       <%= Channel.human_attribute_name :thumbnail_url %>
     </div>
     <% if @channel.thumbnail_url.present? %>

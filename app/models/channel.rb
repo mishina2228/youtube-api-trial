@@ -10,6 +10,8 @@ class Channel < ApplicationRecord
   validates :thumbnail_url, format: URI::DEFAULT_PARSER.make_regexp(%w(http https)),
                             allow_blank: true
 
+  acts_as_taggable
+
   def self.with_channel_statistics
     cs = ChannelStatistic.select(:channel_id, :view_count, :subscriber_count, :video_count)
                          .select('max(channel_statistics.created_at) as latest_acquired_at')

@@ -22,6 +22,9 @@ ja:
         comparison: 比較期間
         elapsed_time: "%{time}前"
         missing: チャンネル統計が未取得です
+      update_tags:
+        success: タグを更新しました
+        error: タグの更新に失敗しました
       thumbnail: サムネイル
       title:
         missing: (チャンネル名未取得)
