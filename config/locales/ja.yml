@@ -26,6 +26,7 @@ ja:
         title: チャンネル名
         description: 説明
         published_at: 登録日
+        tags: タグ
         thumbnail_url: サムネイルURL
       channel_statistic:
         channel_id: チャンネルID

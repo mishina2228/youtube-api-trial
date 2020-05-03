@@ -26,6 +26,7 @@ en:
         title: Title
         description: Description
         published_at: Published at
+        tags: Tags
         thumbnail_url: Thumbnail URL
       channel_statistic:
         channel_id: Channel ID
