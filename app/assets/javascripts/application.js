@@ -15,5 +15,6 @@
 //= require activestorage
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require bootstrap-tagsinput
 //= require toastr
 //= require_tree .
