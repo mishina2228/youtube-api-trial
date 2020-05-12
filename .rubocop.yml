@@ -7,6 +7,8 @@ AllCops:
     - 'bin/*'
     - 'db/**/*'
 
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
 Layout/EndOfLine:
   EnforcedStyle: lf
 Layout/SpaceAroundMethodCallOperator:
@@ -43,6 +45,8 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: true
 Style/PercentLiteralDelimiters:
+  Enabled: false
+Style/SlicingWithRange:
   Enabled: false
 Style/SymbolArray:
   Enabled: false

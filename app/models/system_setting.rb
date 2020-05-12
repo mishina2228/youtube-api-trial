@@ -3,6 +3,7 @@ class SystemSetting < ApplicationRecord
   include Mishina::Youtube::Oauth2Factory
 
   attr_accessor :client_secret
+
   enum auth_method: {nothing: 0, api_key: 1, oauth2: 2}
 
   before_save :encrypt_client_secret
