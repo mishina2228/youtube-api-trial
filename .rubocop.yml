@@ -21,9 +21,11 @@ Layout/SpaceInsideHashLiteralBraces:
 
 Lint/DeprecatedOpenSSLConstant:
   Enabled: true
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
 Lint/RaiseException:
   Enabled: true
-Lint/StructNewOverride: 
+Lint/StructNewOverride:
   Enabled: true
 
 Style/AsciiComments:
@@ -46,6 +48,10 @@ Style/HashTransformValues:
   Enabled: true
 Style/PercentLiteralDelimiters:
   Enabled: false
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+Style/RedundantRegexpEscape:
+  Enabled: true
 Style/SlicingWithRange:
   Enabled: false
 Style/SymbolArray:
