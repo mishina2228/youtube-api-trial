@@ -143,7 +143,7 @@ GEM
     httpclient (2.8.3)
     i18n (1.8.3)
       concurrent-ruby (~> 1.0)
-    itamae (1.10.8)
+    itamae (1.10.9)
       ansi
       hashie
       schash (~> 0.1.0)
