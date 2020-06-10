@@ -61,7 +61,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # User Authorization
 gem 'cancancan'
-gem 'devise', '~> 4.7.1'
+gem 'devise', '~> 4.7.2'
 gem 'devise-i18n'
 
 gem 'acts-as-taggable-on', '~> 6.0'
