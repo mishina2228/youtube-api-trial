@@ -4,7 +4,7 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum; this matches the default thread size of Active Record.
 #
-threads_count = ENV.fetch('RAILS_MAX_THREADS') {5}
+threads_count = ENV.fetch('RAILS_MAX_THREADS', 5)
 threads threads_count, threads_count
 
 # Daemonize the server into the background. Highly suggest that
@@ -21,7 +21,7 @@ daemonize true
 # The default is "tcp://0.0.0.0:9292".
 #
 # bind 'tcp://0.0.0.0:9292'
-bind "tcp://#{`hostname -I | awk '{print $1}'`.chomp}:#{ENV.fetch('PORT') {3001}}"
+bind "tcp://#{`hostname -I | awk '{print $1}'`.chomp}:#{ENV.fetch('PORT', 3001)}"
 
 # Specifies the `environment` that Puma will run in.
 #
