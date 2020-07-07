@@ -28,8 +28,12 @@ Lint/RaiseException:
 Lint/StructNewOverride:
   Enabled: true
 
+Style/AccessorGrouping:
+  Enabled: false
 Style/AsciiComments:
   Enabled: false
+Style/BisectedAttrAccessor:
+  Enabled: true
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
 Style/Documentation:
@@ -48,6 +52,8 @@ Style/HashTransformValues:
   Enabled: true
 Style/PercentLiteralDelimiters:
   Enabled: false
+Style/RedundantAssignment:
+  Enabled: true
 Style/RedundantFetchBlock:
   Enabled: true
 Style/RedundantRegexpCharacterClass:
