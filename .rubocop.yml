@@ -21,6 +21,8 @@ Layout/SpaceInsideHashLiteralBraces:
 
 Lint/DeprecatedOpenSSLConstant:
   Enabled: true
+Lint/DuplicateElsifCondition:
+  Enabled: true
 Lint/MixedRegexpCaptureTypes:
   Enabled: true
 Lint/RaiseException:
@@ -30,9 +32,13 @@ Lint/StructNewOverride:
 
 Style/AccessorGrouping:
   Enabled: false
+Style/ArrayCoercion:
+  Enabled: true
 Style/AsciiComments:
   Enabled: false
 Style/BisectedAttrAccessor:
+  Enabled: true
+Style/CaseLikeIf:
   Enabled: true
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
@@ -44,8 +50,12 @@ Style/ExponentialNotation:
   Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
+Style/HashAsLastArrayItem:
+  Enabled: true
 Style/HashEachMethods:
   Enabled: true
+Style/HashLikeCase:
+  Enabled: false
 Style/HashTransformKeys:
   Enabled: true
 Style/HashTransformValues:
@@ -55,6 +65,8 @@ Style/PercentLiteralDelimiters:
 Style/RedundantAssignment:
   Enabled: true
 Style/RedundantFetchBlock:
+  Enabled: true
+Style/RedundantFileExtensionInRequire:
   Enabled: true
 Style/RedundantRegexpCharacterClass:
   Enabled: true
