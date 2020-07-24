@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_02_130519) do
+ActiveRecord::Schema.define(version: 2020_05_16_134024) do
+
+  create_table "channel_snippets", force: :cascade do |t|
+    t.integer "channel_id", null: false
+    t.string "title"
+    t.string "description"
+    t.string "thumbnail_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["channel_id"], name: "index_channel_snippets_on_channel_id"
+  end
 
   create_table "channel_statistics", force: :cascade do |t|
     t.integer "channel_id", null: false
