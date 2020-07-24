@@ -8,7 +8,7 @@ body {
   padding-top: 60px;
 
   &.dark_mode {
-    background: #10171f;
+    background: #21252c;
     color: whitesmoke;
 
     nav {
@@ -17,17 +17,31 @@ body {
       }
     }
 
+    td, th {
+      a {
+        color: #44b9d6;
+      }
+    }
+
+    pre {
+      color: #f5f5f5;
+      background: #333;
+    }
+
     .table-striped {
       tbody {
         tr {
           &:nth-of-type(odd) {
             background: #404040;
+
             &:hover {
               background: #585858;
             }
           }
+
           &:nth-of-type(even) {
             background: #10171f;
+
             &:hover {
               background: #313131;
             }
@@ -35,32 +49,47 @@ body {
         }
       }
     }
-    
+
     .box_radius {
-      background: #10171f;
+      background: #21252c;
     }
-    
+
     .pagination {
       li {
         a {
           background: #000000;
+          color: #44b9d6;
         }
       }
+
       .active {
         a {
           background: #337ab7;
+          color: #fff;
+
           &:hover {
             background: #337ab7;
+            color: #fff;
           }
         }
       }
+
       .disabled {
         a {
           background: #000000;
+
           &:hover {
             background: #000000;
           }
         }
+      }
+    }
+
+    a.badge {
+      color: #fff;
+
+      &:visited {
+        color: #fff;
       }
     }
   }
@@ -118,6 +147,7 @@ td {
 div {
   &.field, &.actions {
     margin-bottom: 10px;
+
     input.form-control {
       width: 40%;
     }
