@@ -9,16 +9,16 @@
     <% if @minimum_password_length %>
       <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em><br />
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "off", class: "form-control", required: true %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation, t('.confirm_new_password') %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", required: true %>
   </div>
 
   <div class="actions">
-    <%= f.submit t('.change_my_password') %>
+    <%= f.submit t('.change_my_password'), class: 'btn btn-primary' %>
   </div>
 <% end %>
 
