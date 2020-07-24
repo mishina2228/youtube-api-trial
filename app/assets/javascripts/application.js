@@ -17,4 +17,5 @@
 //= require bootstrap-sprockets
 //= require bootstrap-tagsinput
 //= require toastr
+//= require js.cookie.min
 //= require_tree .

@@ -7,6 +7,9 @@ $(document).on('turbolinks:load', () => {
     $('html, body').animate({scrollTop: $('#search-result').offset().top - margin});
   }).on('ajax:success', _event => {
   });
+  $('button.dark-mode-toggle').click(() => {
+    change_theme();
+  });
 });
 
 function emojify() {
@@ -21,5 +24,12 @@ function reset_search_form() {
   const $text_fields = $form.find('input[type="text"]');
   $text_fields.each((_, elem) => $(elem).val(''));
   const $selects = $form.find('select');
-  $selects.each((_, elem) => $(elem).prop('selectedIndex', 0))
+  $selects.each((_, elem) => $(elem).prop('selectedIndex', 0));
+}
+
+function change_theme() {
+  const body = $('body');
+  body.toggleClass('dark_mode');
+  const dark_mode_val = body.hasClass('dark_mode') ? 'isActive' : 'notActive';
+  Cookies.set('dark_mode', dark_mode_val);
 }

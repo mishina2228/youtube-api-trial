@@ -6,6 +6,80 @@ body {
   font-size: 13px;
   line-height: 18px;
   padding-top: 60px;
+
+  &.dark_mode {
+    background: #10171f;
+    color: whitesmoke;
+
+    nav {
+      &.navbar-default {
+        background: #464646;
+      }
+    }
+
+    .table-striped {
+      tbody {
+        tr {
+          &:nth-of-type(odd) {
+            background: #404040;
+            &:hover {
+              background: #585858;
+            }
+          }
+          &:nth-of-type(even) {
+            background: #10171f;
+            &:hover {
+              background: #313131;
+            }
+          }
+        }
+      }
+    }
+    
+    .box_radius {
+      background: #10171f;
+    }
+    
+    .pagination {
+      li {
+        a {
+          background: #000000;
+        }
+      }
+      .active {
+        a {
+          background: #337ab7;
+          &:hover {
+            background: #337ab7;
+          }
+        }
+      }
+      .disabled {
+        a {
+          background: #000000;
+          &:hover {
+            background: #000000;
+          }
+        }
+      }
+    }
+  }
+}
+
+.dark-mode-toggle {
+  width: 3rem;
+  height: 3rem;
+  position: fixed;
+  border-radius: 50%;
+  border: none;
+  right: 32px;
+  bottom: 32px;
+  left: unset;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease;
 }
 
 p, ol, ul, td {
