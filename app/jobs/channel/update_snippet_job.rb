@@ -19,7 +19,9 @@ class Channel::UpdateSnippetJob
     raise Mishina::Youtube::DisabledChannelError, channel.channel_id if channel.disabled?
 
     begin
-      channel.update_snippet!
+      channel.transaction do
+        channel.update_snippet!
+      end
     rescue Google::Apis::TransmissionError, HTTPClient::TimeoutError => e
       retry_count = options['retry'].to_i
       raise e unless retry_count < Consts::Job::RETRY_MAX_COUNT
