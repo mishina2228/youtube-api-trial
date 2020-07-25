@@ -118,7 +118,9 @@ class ChannelTest < ActiveSupport::TestCase
   def test_update_snippet
     channel = channels(:channel1)
     before_channel = channel.dup
-    channel.update_snippet!
+    assert_difference -> {channel.channel_snippets.count} do
+      channel.update_snippet!
+    end
     channel.reload
     assert_not_equal channel.title, before_channel.title
     assert_not_equal channel.description, before_channel.description

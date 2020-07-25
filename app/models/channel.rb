@@ -53,7 +53,11 @@ class Channel < ApplicationRecord
     raise res.error if res.error.present?
 
     snippet = res.response
-    update!(snippet_params(snippet))
+    self.attributes = snippet_params(snippet)
+    return unless has_changes_to_save?
+
+    channel_snippets.create!(channel_snippet_params(snippet))
+    save!
   end
 
   def youtube_service
@@ -120,6 +124,14 @@ class Channel < ApplicationRecord
       description: snippet.description,
       thumbnail_url: snippet.thumbnails.default.url,
       published_at: snippet.published_at
+    }
+  end
+
+  def channel_snippet_params(snippet)
+    {
+      title: snippet.title,
+      description: snippet.description,
+      thumbnail_url: snippet.thumbnails.default.url
     }
   end
 
