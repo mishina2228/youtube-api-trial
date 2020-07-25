@@ -23,11 +23,14 @@ en:
     attributes:
       channel:
         channel_id: Channel ID
+        channel_snippets: Channel info histories
         title: Title
         description: Description
         published_at: Published at
         tags: Tags
         thumbnail_url: Thumbnail URL
+      channel_snippet:
+        created_at: Info acquisition date
       channel_statistic:
         channel_id: Channel ID
         created_at: Statistics acquisition date
@@ -190,6 +193,7 @@ en:
         other: "%{count} errors prohibited this %{model} from being saved"
   helpers:
     button:
+      close: Close
       reset: Reset
     link:
       build_all_statistics: Acquire statistics in bulk

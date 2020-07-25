@@ -1,0 +1,40 @@
+<div class="modal fade snippet-modal-box" data-snippet-modal-id="<%= snippet.id %>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="box_inner">
+        <div class="container kinda-table">
+          <div class="row">
+            <div class="col-xs-4 col-sm-2 font-weight-bold">
+              <%= Channel.human_attribute_name :title %>
+            </div>
+            <div class="col-xs-8 col-sm-10">
+              <%= image_tag(snippet.thumbnail_url) %>
+              <%= snippet.title %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4 col-sm-2 font-weight-bold">
+              <%= Channel.human_attribute_name :description %>
+            </div>
+            <div class="col-xs-8 col-sm-10 emojify break-word-wrap">
+              <%= simple_format text_url_to_link(snippet.description), {}, sanitize: false %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4 col-sm-2 font-weight-bold">
+              <%= ChannelSnippet.human_attribute_name :created_at %>
+            </div>
+            <div class="col-xs-8 col-sm-10 emojify break-word-wrap">
+              <%= print_datetime(snippet.created_at) %>
+            </div>
+          </div>
+        </div>
+        <p class="text-center">
+          <a class="btn btn-primary" data-dismiss="modal" href="#">
+            <%= t('helpers.button.close') %>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

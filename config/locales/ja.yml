@@ -187,6 +187,7 @@ ja:
         other: "%{model}に%{count}個のエラーが発生しました"
   helpers:
     button:
+      close: 閉じる
       reset: リセット
     link:
       build_all_statistics: 一括統計取得

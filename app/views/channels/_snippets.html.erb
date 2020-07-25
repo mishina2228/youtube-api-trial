@@ -13,7 +13,7 @@
 
   <tbody>
   <% channel_snippets.each do |cs| %>
-    <tr>
+    <tr class="click-btn" data-snippet-modal-id="<%= cs.id %>">
       <td>
         <%= image_tag(cs.thumbnail_url, width: '30px') %>
         <%= cs.title %>
@@ -24,3 +24,16 @@
   <% end %>
   </tbody>
 </table>
+
+<% channel_snippets.each do |cs| %>
+  <%= render 'snippet_modal', snippet: cs %>
+<% end %>
+
+<script>
+  $(document).on('turbolinks:load', () => {
+    $('.click-btn').on('click', event => {
+      const snippet_modal_id = $(event.currentTarget).data('snippet-modal-id');
+      $('.snippet-modal-box[data-snippet-modal-id=' + snippet_modal_id + ']').modal('show');
+    });
+  });
+</script>
