@@ -4,7 +4,7 @@ class Channel < ApplicationRecord
 
   has_many :channel_statistics, -> {order('created_at DESC')},
            dependent: :destroy, inverse_of: :channel
-  has_many :channel_snippets,
+  has_many :channel_snippets, -> {order('created_at DESC')},
            dependent: :destroy, inverse_of: :channel
 
   validates :channel_id, presence: {message: proc {I18n.t('text.channel.channel_id.invalid')}}

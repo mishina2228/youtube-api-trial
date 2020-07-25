@@ -66,6 +66,12 @@
   </div>
 </div>
 
+<div>
+  <% if @channel_snippets.present? %>
+    <%= render 'snippets', channel_snippets: @channel_snippets %>
+  <% end %>
+</div>
+
 <div id="search-statistics">
   <%= render 'statistics', channel_statistics: @channel_statistics %>
 </div>

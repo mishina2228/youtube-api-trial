@@ -23,11 +23,14 @@ ja:
     attributes:
       channel:
         channel_id: チャンネルID
+        channel_snippets: 過去のチャンネル情報
         title: チャンネル名
         description: 説明
         published_at: 登録日
         tags: タグ
         thumbnail_url: サムネイルURL
+      channel_snippet:
+        created_at: 情報取得日時
       channel_statistic:
         channel_id: チャンネルID
         created_at: 統計取得日時

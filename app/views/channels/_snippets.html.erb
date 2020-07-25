@@ -1,0 +1,26 @@
+<h3>
+  <%= Channel.human_attribute_name :channel_snippets %>
+</h3>
+
+<table class='table table-bordered table-hover table-striped'>
+  <thead>
+    <tr>
+      <th class="col-xs-3"><%= Channel.human_attribute_name :title %></th>
+      <th class="col-xs-7"><%= Channel.human_attribute_name :description %></th>
+      <th class="col-xs-2"><%= ChannelSnippet.human_attribute_name :created_at %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% channel_snippets.each do |cs| %>
+    <tr>
+      <td>
+        <%= image_tag(cs.thumbnail_url, width: '30px') %>
+        <%= cs.title %>
+      </td>
+      <td><%= cs.description.truncate(80) %></td>
+      <td><%= print_datetime(cs.created_at) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
