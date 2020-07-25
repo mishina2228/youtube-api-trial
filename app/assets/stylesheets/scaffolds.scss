@@ -17,10 +17,27 @@ body {
       }
     }
 
-    td, th {
+    td, th, div {
       a {
         color: #44b9d6;
       }
+    }
+
+    .header a {
+      color: #fff;
+
+      &:visited {
+        color: #fff;
+      }
+
+      &:hover {
+        color: #337ab7;
+        background-color: #fff;
+      }
+    }
+
+    a.btn {
+      color: #fff;
     }
 
     pre {
@@ -130,10 +147,6 @@ td a {
     color: #337ab7;
   }
 
-  &:hover {
-    color: #fff;
-    background-color: #337ab7;
-  }
 }
 
 th {
