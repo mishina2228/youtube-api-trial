@@ -3,3 +3,8 @@ build_all_statistics_job:
   class: 'Channel::BuildAllStatisticsJob'
   queue: 'normal'
   description: 'Job to acquire statistics for all channels'
+update_all_snippets_job:
+  cron: '5 0 * * 0'
+  class: 'Channel::UpdateAllSnippetsJob'
+  queue: 'normal'
+  description: 'Job to update snippet on all channels'
