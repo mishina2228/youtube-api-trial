@@ -1,5 +1,8 @@
+<% title = t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale)) %>
+<% content_for(:html_title) {title} %>
+
 <h1>
-  <%= t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale)) %>
+  <%= title %>
 </h1>
 
 <%= render partial: 'actions' %>

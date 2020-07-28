@@ -1,3 +1,6 @@
+<% title = @channel.title.presence %>
+<% content_for(:html_title) {title} %>
+
 <h1>
   <%= t('helpers.title.show', model: Channel.model_name.human) %>
 </h1>

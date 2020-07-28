@@ -1,5 +1,8 @@
+<% title = t('helpers.title.new', model: SystemSetting.model_name.human) %>
+<% content_for(:html_title) {title} %>
+
 <h1>
-  <%= t('helpers.title.new', model: SystemSetting.model_name.human) %>
+  <%= title %>
 </h1>
 
 <%= render 'form', system_setting: @system_setting %>

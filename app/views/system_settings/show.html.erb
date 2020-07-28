@@ -1,5 +1,8 @@
+<% title = t('helpers.title.show', model: SystemSetting.model_name.human) %>
+<% content_for(:html_title) {title} %>
+
 <h1>
-  <%= t('helpers.title.show', model: SystemSetting.model_name.human) %>
+  <%= title %>
 </h1>
 
 <%= link_to t('helpers.link.edit'), {controller: controller.controller_name, action: :edit},

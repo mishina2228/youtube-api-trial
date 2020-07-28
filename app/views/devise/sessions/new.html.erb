@@ -1,4 +1,7 @@
-<h2><%= t('.sign_in') %></h2>
+<% title = t('.sign_in') %>
+<% content_for(:html_title) {title} %>
+
+<h2><%= title %></h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
