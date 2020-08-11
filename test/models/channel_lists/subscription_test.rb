@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ChannelLists::SubscriptionTest < ActiveSupport::TestCase
-  def test_initialize
+  test 'initialize' do
     service = Mishina::Youtube::Mock::Service.new
     response = service.subscriptions(token: 'TEST_TOKEN', max_results: 10)
     search = ChannelLists::Subscription.new(response)
@@ -9,19 +9,21 @@ class ChannelLists::SubscriptionTest < ActiveSupport::TestCase
     assert(search.channels.all? {|c| c.is_a?(Channel)})
   end
 
-  def test_subscriptions
+  test 'subscriptions' do
     assert system_setting.update(auth_method: :oauth2)
     assert system_setting.oauth2?
     ret = ChannelLists::Subscription.subscriptions(token: 'TEST_TOKEN', max_results: 10)
     assert ret.is_a?(Google::Apis::YoutubeV3::ListSubscriptionResponse)
   end
 
-  def test_subscriptions_raise
+  test 'calling subscriptions when auth_method is api_key should raise error' do
     assert system_setting.update(auth_method: :api_key)
     assert_raise do
       ChannelLists::Subscription.subscriptions
     end
+  end
 
+  test "calling subscriptions without any SystemSetting's records should raise error" do
     SystemSetting.destroy_all
     assert_raise do
       ChannelLists::Subscription.subscriptions

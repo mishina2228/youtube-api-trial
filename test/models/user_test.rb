@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  def test_validation
+  test 'validation' do
     user = User.new(valid_params)
     assert user.valid?
     assert user.save

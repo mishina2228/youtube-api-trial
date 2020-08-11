@@ -1,1 +1,1 @@
-json.partial! "system_settings/system_setting", system_setting: @system_setting
+json.partial! 'system_settings/system_setting', system_setting: @system_setting

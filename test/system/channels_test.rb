@@ -81,7 +81,7 @@ class ChannelsTest < ApplicationSystemTestCase
     click_on I18n.t('helpers.link.new'), match: :first
     assert_current_path(new_channel_path)
 
-    channel_id = @channel.channel_id + '_other'
+    channel_id = "#{@channel.channel_id}_other"
     fill_in Channel.human_attribute_name(:channel_id), with: channel_id
     click_on I18n.t('helpers.submit.create')
 

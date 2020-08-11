@@ -2,7 +2,7 @@ require 'test_helper'
 require 'google/apis/youtube_v3'
 
 class ChannelTest < ActiveSupport::TestCase
-  def test_use_oauth2?
+  test 'use_oauth2?' do
     assert ss = system_setting
 
     SystemSetting.destroy_all
@@ -26,7 +26,7 @@ class ChannelTest < ActiveSupport::TestCase
     end
   end
 
-  def test_validation
+  test 'validation' do
     channel = Channel.new(valid_params)
     assert channel.valid?
 
@@ -39,7 +39,7 @@ class ChannelTest < ActiveSupport::TestCase
     assert channel.valid?
   end
 
-  def test_channel_id_valid
+  test 'should extract channel id from channel_id in the valid format' do
     valid_channel_ids = %w(
       abc
       abc?sub_confirmation=1
@@ -57,7 +57,7 @@ class ChannelTest < ActiveSupport::TestCase
     end
   end
 
-  def test_channel_id_invalid
+  test 'should not extract channel id from channel_id in the invalid format' do
     invalid_channel_ids = [
       nil, '', '1 2 3'
     ]
@@ -75,13 +75,13 @@ class ChannelTest < ActiveSupport::TestCase
     end
   end
 
-  def test_youtube_service
+  test 'youtube_service should return mock in the test environment' do
     channel = channels(:channel1)
     ret = channel.youtube_service
-    assert ret.is_a?(Mishina::Youtube::Mock::Service), 'use mock in a test environment'
+    assert ret.is_a?(Mishina::Youtube::Mock::Service), 'use mock in the test environment'
   end
 
-  def test_youtube_service_no_system_setting
+  test "calling youtube_service without any SystemSetting's records should raise error" do
     channel = channels(:channel1)
     SystemSetting.delete_all
     assert_raise do
@@ -89,14 +89,14 @@ class ChannelTest < ActiveSupport::TestCase
     end
   end
 
-  def test_build_statistics
+  test "build_statistics should create a ChannelStatistic's record" do
     channel = channels(:channel1)
     assert_difference -> {ChannelStatistic.count} do
       channel.build_statistics!
     end
   end
 
-  def test_build_statistics_error
+  test 'build_statistics should raise error if the channel is invalid' do
     channel = channels(:error_channel)
     assert_raise Google::Apis::ClientError do
       assert_no_difference -> {ChannelStatistic.count} do
@@ -105,7 +105,7 @@ class ChannelTest < ActiveSupport::TestCase
     end
   end
 
-  def test_build_statistics_blank
+  test 'build_statistics should raise error if the channel no longer exists' do
     channel = channels(:non_existing_channel)
     e = assert_raise Mishina::Youtube::NoChannelError do
       assert_no_difference -> {ChannelStatistic.count} do
@@ -115,7 +115,7 @@ class ChannelTest < ActiveSupport::TestCase
     assert e.message.include?("title = #{channel.title}")
   end
 
-  def test_update_snippet
+  test 'update_snippet should update attributes of a channel' do
     channel = channels(:channel1)
     before_channel = channel.dup
     assert_difference -> {channel.channel_snippets.count} do
@@ -128,14 +128,14 @@ class ChannelTest < ActiveSupport::TestCase
     assert_not_equal channel.published_at, before_channel.published_at
   end
 
-  def test_update_snippet_error
+  test 'update_snippet should raise error if the channel is invalid' do
     channel = channels(:error_channel)
     assert_raise Google::Apis::ClientError do
       assert_not channel.update_snippet!
     end
   end
 
-  def test_update_snippet_blank
+  test 'update_snippet should raise error if the channel no longer exists' do
     channel = channels(:non_existing_channel)
     e = assert_raise Mishina::Youtube::NoChannelError do
       assert_not channel.update_snippet!
@@ -143,7 +143,7 @@ class ChannelTest < ActiveSupport::TestCase
     assert e.message.include?("title = #{channel.title}")
   end
 
-  def test_medium_thumbnail_url
+  test 'medium_thumbnail_url' do
     channel = channels(:channel1)
     thumbnail_url = 'https://yt3.ggpht.com/-4nB6EusJ1Iw/AAAAAAAAAAI/AAAAAAAAAAA/coEXMA5Pjrg/s88-c-k-no-mo-rj-c0xffffff/photo.jpg'
     channel.thumbnail_url = thumbnail_url
@@ -156,7 +156,7 @@ class ChannelTest < ActiveSupport::TestCase
     assert_equal expected, channel.medium_thumbnail_url
   end
 
-  def test_high_thumbnail_url
+  test 'high_thumbnail_url' do
     channel = channels(:channel1)
     thumbnail_url = 'https://yt3.ggpht.com/-4nB6EusJ1Iw/AAAAAAAAAAI/AAAAAAAAAAA/coEXMA5Pjrg/s88-c-k-no-mo-rj-c0xffffff/photo.jpg'
     channel.thumbnail_url = thumbnail_url
@@ -169,7 +169,7 @@ class ChannelTest < ActiveSupport::TestCase
     assert_equal expected, channel.high_thumbnail_url
   end
 
-  def test_enabled?
+  test 'enabled?' do
     channel = channels(:channel1)
     channel.disabled = false
     assert channel.enabled?

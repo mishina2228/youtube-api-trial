@@ -63,7 +63,7 @@ class SystemSettingsTest < ApplicationSystemTestCase
     click_on I18n.t('helpers.link.edit')
 
     assert_current_path(edit_system_setting_path)
-    after_api_key = @system_setting.api_key + '_after'
+    after_api_key = "#{@system_setting.api_key}_after"
     fill_in SystemSetting.human_attribute_name(:api_key), with: after_api_key
     click_on I18n.t('helpers.submit.update')
 

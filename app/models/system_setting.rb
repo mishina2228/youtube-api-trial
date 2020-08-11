@@ -6,8 +6,8 @@ class SystemSetting < ApplicationRecord
 
   enum auth_method: {nothing: 0, api_key: 1, oauth2: 2}
 
-  before_save :encrypt_client_secret
   after_initialize :decrypt_client_secret
+  before_save :encrypt_client_secret
 
   validates :auth_method, presence: true
   validates :api_key, presence: true, if: :api_key?

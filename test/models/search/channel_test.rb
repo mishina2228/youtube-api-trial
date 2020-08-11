@@ -6,13 +6,13 @@ class Search::ChannelTest < ActiveSupport::TestCase
     @c2 = channels(:channel2)
   end
 
-  def test_search_id
+  test 'search by id' do
     channel = Search::Channel.new(ids: [@c1.id])
     ret = channel.search
     assert_includes ret, @c1
   end
 
-  def test_search_title
+  test 'search by title' do
     channel = Search::Channel.new(title: 'Channel')
     ret = channel.search
     assert_includes ret, @c1
@@ -24,7 +24,7 @@ class Search::ChannelTest < ActiveSupport::TestCase
     assert_not_includes ret, @c2
   end
 
-  def test_search_from_date
+  test 'search by from_date' do
     channel = Search::Channel.new(from_date: '2018-10-20')
     ret = channel.search
     assert_includes ret, @c1
@@ -36,7 +36,7 @@ class Search::ChannelTest < ActiveSupport::TestCase
     assert_includes ret, @c2
   end
 
-  def test_search_to_date
+  test 'search by to_date' do
     channel = Search::Channel.new(to_date: '2018-12-21')
     ret = channel.search
     assert_includes ret, @c1
@@ -54,7 +54,7 @@ class Search::ChannelTest < ActiveSupport::TestCase
     assert_not_includes ret, @c2
   end
 
-  def test_search_order_direction
+  test 'search by order and direction' do
     channel = Search::Channel.new(order: 'title', direction: nil)
     ret = channel.search
     assert_equal [@c2, @c1], ret.to_a
@@ -76,7 +76,7 @@ class Search::ChannelTest < ActiveSupport::TestCase
     assert_equal [@c2, @c1], ret.to_a, 'default order is descending number of subscribers'
   end
 
-  def test_search_disabled
+  test 'search by disabled' do
     assert @c2.update(disabled: true)
 
     channel = Search::Channel.new(disabled: nil)
@@ -96,7 +96,7 @@ class Search::ChannelTest < ActiveSupport::TestCase
     assert_equal [@c2], ret.to_a
   end
 
-  def test_search_tag
+  test 'search by tag' do
     assert_includes @c1.tag_list, 'tag1'
     channel = Search::Channel.new(tag: 'tag1')
     ret = channel.search

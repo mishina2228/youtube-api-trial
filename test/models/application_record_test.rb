@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ApplicationRecordTest < ActiveSupport::TestCase
-  def test_proper_per
+  test 'proper_per' do
     assert_equal 1, ApplicationRecord.proper_per(1)
     assert_equal 1, ApplicationRecord.proper_per('1')
     assert_equal ApplicationRecord::DEFAULT_PER, ApplicationRecord.proper_per(0)

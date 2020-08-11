@@ -435,7 +435,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     {
       system_setting: {
         auth_method: :api_key,
-        api_key: @system_setting.api_key + '_new'
+        api_key: "#{@system_setting.api_key}_new"
       }
     }
   end
@@ -444,8 +444,8 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     {
       system_setting: {
         auth_method: :oauth2,
-        client_id: @system_setting.client_id + '_new',
-        client_secret: @system_setting.client_secret + '_new'
+        client_id: "#{@system_setting.client_id}_new",
+        client_secret: "#{@system_setting.client_secret}_new"
       }
     }
   end

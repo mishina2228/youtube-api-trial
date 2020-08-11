@@ -2,7 +2,7 @@ require 'test_helper'
 require 'googleauth/user_refresh'
 
 class SystemSettingTest < ActiveSupport::TestCase
-  def test_validation
+  test 'validation' do
     ss = SystemSetting.new(valid_params)
     assert ss.valid?
 
@@ -10,7 +10,7 @@ class SystemSettingTest < ActiveSupport::TestCase
     assert ss.invalid?
   end
 
-  def test_validation_api_key
+  test 'api_key should not be blank when auth_method is api_key' do
     ss = SystemSetting.new(valid_params)
     assert ss.api_key?
     assert ss.api_key.present?
@@ -19,7 +19,7 @@ class SystemSettingTest < ActiveSupport::TestCase
     assert SystemSetting.new(valid_params.merge(api_key: nil)).invalid?
   end
 
-  def test_validation_oauth2
+  test 'client_id and client_secret should not be blank when auth_method is oauth2' do
     ss = SystemSetting.new(valid_params_oauth2)
     assert ss.oauth2?
     assert ss.client_id.present?
@@ -30,7 +30,7 @@ class SystemSettingTest < ActiveSupport::TestCase
     assert SystemSetting.new(valid_params_oauth2.merge(client_secret: nil)).invalid?
   end
 
-  def test_oauth2_configured?
+  test 'oauth2_configured?' do
     ss = SystemSetting.new(valid_params_oauth2)
     assert_not_nil ss.credential
     assert ss.oauth2_configured?

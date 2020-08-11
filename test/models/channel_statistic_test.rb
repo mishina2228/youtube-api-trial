@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ChannelStatisticTest < ActiveSupport::TestCase
-  def test_validation
+  test 'validation' do
     cs = ChannelStatistic.new(valid_params)
     assert cs.valid?
 

@@ -38,9 +38,9 @@ module ApplicationHelper
 
     ret = print_number(diff = num1 - num2)
     if diff.positive?
-      ret = '+' + ret
+      ret = "+#{ret}"
     elsif diff.zero?
-      ret = '±' + ret
+      ret = "±#{ret}"
     end
     ret
   end
