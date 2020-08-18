@@ -41,7 +41,7 @@ class Mishina::Youtube::Service
     response = nil
     begin
       response = service.list_channels(part, id: channel_id)
-      status, error = if response.page_info.total_results.zero?
+      status, error = if response.items.blank?
                         [Consts::Statuses::BLANK, Mishina::Youtube::NoChannelError.new(channel_id)]
                       else
                         [Consts::Statuses::OK, nil]
