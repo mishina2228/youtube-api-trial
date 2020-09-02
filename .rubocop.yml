@@ -25,9 +25,13 @@ Lint/DeprecatedOpenSSLConstant:
   Enabled: true
 Lint/DuplicateElsifCondition:
   Enabled: true
+Lint/DuplicateRequire:
+  Enabled: true
 Lint/DuplicateRescueException:
   Enabled: true
 Lint/EmptyConditionalBody:
+  Enabled: true
+Lint/EmptyFile:
   Enabled: true
 Lint/FloatComparison:
   Enabled: true
@@ -45,7 +49,11 @@ Lint/StructNewOverride:
   Enabled: true
 Lint/TopLevelReturnWithArgument:
   Enabled: true
+Lint/TrailingCommaInAttributeDeclaration:
+  Enabled: true
 Lint/UnreachableLoop:
+  Enabled: true
+Lint/UselessMethodDefinition:
   Enabled: true
 
 Rails/ActiveRecordCallbacksOrder:
@@ -87,6 +95,8 @@ Style/CaseLikeIf:
   Enabled: true
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
+Style/CombinableLoops:
+  Enabled: true
 Style/Documentation:
   Enabled: false
 Style/EmptyMethod:
@@ -109,6 +119,8 @@ Style/HashTransformKeys:
   Enabled: true
 Style/HashTransformValues:
   Enabled: true
+Style/KeywordParametersOrder:
+  Enabled: true
 Style/OptionalBooleanParameter:
   Enabled: true
 Style/PercentLiteralDelimiters:
@@ -123,10 +135,14 @@ Style/RedundantRegexpCharacterClass:
   Enabled: true
 Style/RedundantRegexpEscape:
   Enabled: true
+Style/RedundantSelfAssignment:
+  Enabled: true
 Style/SingleArgumentDig:
   Enabled: true
 Style/SlicingWithRange:
   Enabled: false
+Style/SoleNestedConditional:
+  Enabled: true
 Style/StringConcatenation:
   Enabled: true
 Style/SymbolArray:
