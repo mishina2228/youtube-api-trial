@@ -44,7 +44,7 @@ bundle exec pumactl start -e [RAILS_ENV]
 
 ### Notify when Resque job failed
 
-If a Resque job fails, a notification is sent by email.  
+If a Resque job fails, a notification email will be sent.  
 Please fill in the settings of email to config/mail.yml .  
 The following is an example when sending from Gmail:
 
