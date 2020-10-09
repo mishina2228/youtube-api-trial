@@ -8,7 +8,7 @@
                           per: condition.per
                       }
                   ),
-                  class: 'btn btn-info', remote: true %>
+                  class: 'btn btn-info', remote: true, data: {disable_with: t('helpers.notice.processing')} %>
     <% end %>
     <% if subscription.next_page_token %>
       <%= link_to raw(t('views.pagination.next')),
@@ -18,7 +18,7 @@
                           per: condition.per
                       }
                   ),
-                  class: 'btn btn-info', remote: true %>
+                  class: 'btn btn-info', remote: true, data: {disable_with: t('helpers.notice.processing')} %>
     <% end %>
   </div>
 </div>
