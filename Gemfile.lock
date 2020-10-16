@@ -405,7 +405,7 @@ DEPENDENCIES
   kaminari-bootstrap (~> 3.0.1)
   minitest-ci
   paranoia (~> 2.2)
-  puma (~> 4.3)
+  puma (~> 4.3, < 5.0)
   puma_worker_killer
   rails (~> 6.0.3)
   resque
