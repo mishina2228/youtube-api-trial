@@ -17,3 +17,6 @@ error_channel:
 
 non_existing_channel:
   channel_id: blank_channel_id
+
+hidden_subscriber_channel:
+  channel_id: hidden_subscriber_channel_id

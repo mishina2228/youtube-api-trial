@@ -138,7 +138,7 @@ class Channel < ApplicationRecord
   def channel_statistics_params(statistics)
     {
       view_count: statistics.view_count,
-      subscriber_count: statistics.subscriber_count,
+      subscriber_count: statistics.hidden_subscriber_count ? 0 : statistics.subscriber_count,
       video_count: statistics.video_count
     }
   end

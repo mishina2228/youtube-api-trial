@@ -21,13 +21,24 @@ class Mishina::Youtube::Mock::Service
         nil,
         Mishina::Youtube::NoChannelError.new(channel_id)
       )
+    when /hidden_subscriber/
+      Mishina::Youtube::ServiceResponse.new(
+        Consts::Statuses::OK,
+        Google::Apis::YoutubeV3::ChannelStatistics.new(
+          hidden_subscriber_count: true,
+          video_count: 50,
+          view_count: 5000,
+          ),
+        nil
+      )
     else
       Mishina::Youtube::ServiceResponse.new(
         Consts::Statuses::OK,
         Google::Apis::YoutubeV3::ChannelStatistics.new(
-          view_count: 5000,
+          hidden_subscriber_count: false,
           subscriber_count: 100_000,
-          video_count: 50
+          video_count: 50,
+          view_count: 5000
         ),
         nil
       )

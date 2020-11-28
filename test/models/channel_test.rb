@@ -91,15 +91,26 @@ class ChannelTest < ActiveSupport::TestCase
 
   test "build_statistics should create a ChannelStatistic's record" do
     channel = channels(:channel1)
-    assert_difference -> {ChannelStatistic.count} do
+    assert_difference -> {channel.channel_statistics.count} do
       channel.build_statistics!
     end
+    cs = channel.channel_statistics.first
+    assert_equal 100_000, cs.subscriber_count
+  end
+
+  test 'subscriber_count should be zero if hidden_subscriber_count is true' do
+    channel = channels(:hidden_subscriber_channel)
+    assert_difference -> {channel.channel_statistics.count} do
+      channel.build_statistics!
+    end
+    cs = channel.channel_statistics.first
+    assert_equal 0, cs.subscriber_count
   end
 
   test 'build_statistics should raise error if the channel is invalid' do
     channel = channels(:error_channel)
     assert_raise Google::Apis::ClientError do
-      assert_no_difference -> {ChannelStatistic.count} do
+      assert_no_difference -> {channel.channel_statistics.count} do
         assert_not channel.build_statistics!
       end
     end
@@ -108,7 +119,7 @@ class ChannelTest < ActiveSupport::TestCase
   test 'build_statistics should raise error if the channel no longer exists' do
     channel = channels(:non_existing_channel)
     e = assert_raise Mishina::Youtube::NoChannelError do
-      assert_no_difference -> {ChannelStatistic.count} do
+      assert_no_difference -> {channel.channel_statistics.count} do
         assert_not channel.build_statistics!
       end
     end
