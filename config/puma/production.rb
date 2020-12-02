@@ -7,14 +7,6 @@
 threads_count = ENV.fetch('RAILS_MAX_THREADS', 5)
 threads threads_count, threads_count
 
-# Daemonize the server into the background. Highly suggest that
-# this be combined with "pidfile" and "stdout_redirect".
-#
-# The default is "false".
-#
-# daemonize false
-daemonize true
-
 # Bind the server to "url". "tcp://", "unix://" and "ssl://" are the only
 # accepted protocols.
 #

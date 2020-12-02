@@ -26,10 +26,10 @@ Resque, resque-scheduler operation with God
 * restart
 * stop
 ```
-$ sudo god status youtube_api_trial
-$ sudo god start youtube_api_trial
-$ sudo god restart youtube_api_trial
-$ sudo god stop youtube_api_trial
+$ god status youtube_api_trial
+$ god start youtube_api_trial
+$ god restart youtube_api_trial
+$ god stop youtube_api_trial
 ```
 
 ### After source update
