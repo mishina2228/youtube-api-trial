@@ -70,7 +70,7 @@ gem 'enum_help'
 gem 'google-api-client', '~> 0.52'
 gem 'kaminari', '~> 1.2.1'
 gem 'kaminari-bootstrap', '~> 3.0.1'
-gem 'paranoia', '~> 2.2'
+gem 'paranoia', '~> 2.4'
 gem 'toastr-rails'
 
 gem 'resque'
