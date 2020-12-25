@@ -1,6 +1,7 @@
 [![CircleCI](https://circleci.com/gh/mishina2228/youtube-api-trial.svg?style=svg)](https://circleci.com/gh/mishina2228/youtube-api-trial)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b80a05b702d4a8ee5b13/maintainability)](https://codeclimate.com/github/mishina2228/youtube-api-trial/maintainability)
 [![codecov](https://codecov.io/gh/mishina2228/youtube-api-trial/branch/master/graph/badge.svg)](https://codecov.io/gh/mishina2228/youtube-api-trial)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmishina2228%2Fyoutube-api-trial.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmishina2228%2Fyoutube-api-trial?ref=badge_shield)
 
 # YouTube API Trial
 
@@ -60,3 +61,7 @@ production:
     authentication: 'plain'
     enable_starttls_auto: true
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmishina2228%2Fyoutube-api-trial.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmishina2228%2Fyoutube-api-trial?ref=badge_large)
