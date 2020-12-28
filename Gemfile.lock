@@ -143,7 +143,7 @@ GEM
     httpclient (2.8.3)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
-    itamae (1.10.10)
+    itamae (1.11.0)
       ansi
       hashie
       schash (~> 0.1.0)
@@ -326,7 +326,7 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.1.0)
       tilt (~> 2.0)
-    specinfra (2.82.18)
+    specinfra (2.82.22)
       net-scp
       net-ssh (>= 2.7)
       net-telnet (= 0.1.1)
