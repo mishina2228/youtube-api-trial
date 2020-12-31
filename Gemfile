@@ -64,7 +64,7 @@ gem 'cancancan'
 gem 'devise', '~> 4.7.3'
 gem 'devise-i18n'
 
-gem 'acts-as-taggable-on', '~> 6.0'
+gem 'acts-as-taggable-on', '~> 7.0'
 gem 'bootstrap-tagsinput-rails'
 gem 'enum_help'
 gem 'google-api-client', '~> 0.52'
