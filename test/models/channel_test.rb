@@ -109,8 +109,8 @@ class ChannelTest < ActiveSupport::TestCase
 
   test 'build_statistics should raise error if the channel is invalid' do
     channel = channels(:error_channel)
-    assert_raise Google::Apis::ClientError do
-      assert_no_difference -> {channel.channel_statistics.count} do
+    assert_no_difference -> {channel.channel_statistics.count} do
+      assert_raise Google::Apis::ClientError do
         assert_not channel.build_statistics!
       end
     end
@@ -118,12 +118,12 @@ class ChannelTest < ActiveSupport::TestCase
 
   test 'build_statistics should raise error if the channel no longer exists' do
     channel = channels(:non_existing_channel)
-    e = assert_raise Mishina::Youtube::NoChannelError do
-      assert_no_difference -> {channel.channel_statistics.count} do
+    assert_no_difference -> {channel.channel_statistics.count} do
+      err = assert_raise Mishina::Youtube::NoChannelError do
         assert_not channel.build_statistics!
       end
+      assert err.message.include?("title = #{channel.title}")
     end
-    assert e.message.include?("title = #{channel.title}")
   end
 
   test 'update_snippet should update attributes of a channel' do

@@ -33,12 +33,12 @@ class Channel::BuildStatisticsJobTest < ActiveSupport::TestCase
   test 'fail if the channel is not existed' do
     channel = channels(:non_existing_channel)
     assert_not channel.disabled?
-    e = assert_raise Mishina::Youtube::NoChannelError do
-      assert_no_difference -> {channel.channel_statistics.count} do
+    assert_no_difference -> {channel.channel_statistics.count} do
+      e = assert_raise Mishina::Youtube::NoChannelError do
         Channel::BuildStatisticsJob.perform('channel_id' => channel.id)
       end
+      assert e.message.include?("title = #{channel.title}")
     end
-    assert e.message.include?("title = #{channel.title}")
 
     assert channel.reload.disabled?, 'the channel is disabled if it does not exist'
     e = assert_raise Mishina::Youtube::DisabledChannelError do
@@ -49,8 +49,8 @@ class Channel::BuildStatisticsJobTest < ActiveSupport::TestCase
 
   test 'fail if the client error occurred' do
     channel = channels(:error_channel)
-    assert_raise Google::Apis::ClientError do
-      assert_no_difference -> {channel.channel_statistics.count} do
+    assert_no_difference -> {channel.channel_statistics.count} do
+      assert_raise Google::Apis::ClientError do
         Channel::BuildStatisticsJob.perform('channel_id' => channel.id)
       end
     end
