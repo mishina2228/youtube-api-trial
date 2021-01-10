@@ -1,7 +1,7 @@
 version: 2.1 # use CircleCI 2.1
 
 common_env: &common_env
-  BUNDLE_CLEAN: true
+  BUNDLE_CLEAN: 'true'
   BUNDLE_JOBS: 3
   BUNDLE_RETRY: 3
   BUNDLE_PATH: vendor/bundle
@@ -207,7 +207,7 @@ jobs: # a collection of steps
       - store_test_reports
 
 workflows:
-  version: 2.1
+  version: 2
   brakeman:
     jobs:
       - brakeman
