@@ -27,8 +27,8 @@ class Mishina::Youtube::Mock::Service
         Google::Apis::YoutubeV3::ChannelStatistics.new(
           hidden_subscriber_count: true,
           video_count: 50,
-          view_count: 5000,
-          ),
+          view_count: 5000
+        ),
         nil
       )
     else
@@ -96,7 +96,7 @@ class Mishina::Youtube::Mock::Service
   end
 
   # @return [Google::Apis::YoutubeV3::SearchListsResponse]
-  def search_channel(query, max_results:, token:)
+  def search_channel(_query, max_results:, token:)
     search_result = Google::Apis::YoutubeV3::SearchResult.new(
       snippet: Google::Apis::YoutubeV3::SearchResultSnippet.new(
         channel_id: 'dummy_channel_id',
