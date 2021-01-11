@@ -292,6 +292,11 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.4.0)
       parser (>= 2.7.1.5)
+    rubocop-minitest (0.10.2)
+      rubocop (>= 0.87, < 2.0)
+    rubocop-performance (1.9.2)
+      rubocop (>= 0.90.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
     rubocop-rails (2.9.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
@@ -412,6 +417,8 @@ DEPENDENCIES
   resque
   resque-scheduler
   rubocop
+  rubocop-minitest
+  rubocop-performance
   rubocop-rails
   sassc-rails
   selenium-webdriver

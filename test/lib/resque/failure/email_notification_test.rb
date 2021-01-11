@@ -2,12 +2,12 @@ require 'test_helper'
 
 module Resque::Failure
   class EmailNotificationTest < ActiveSupport::TestCase
-    def test_save
+    test 'save' do
       notification = Resque::Failure::EmailNotification.new(
         sample_exception, 'worker', 'queue', 'payload'
       )
 
-      assert notification.recipients.empty?, 'confirm that there are no users to be notified'
+      assert_empty notification.recipients, 'confirm that there are no users to be notified'
       assert_nil notification.save
 
       u = users(:admin)
@@ -17,7 +17,7 @@ module Resque::Failure
       assert mail.present?, 'email should be sent'
     end
 
-    def test_output_error_details
+    test 'output_error_details' do
       notification = Resque::Failure::EmailNotification.new(
         sample_exception, 'worker', 'queue', 'payload'
       )

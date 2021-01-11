@@ -122,7 +122,7 @@ class ChannelTest < ActiveSupport::TestCase
       err = assert_raise Mishina::Youtube::NoChannelError do
         assert_not channel.build_statistics!
       end
-      assert err.message.include?("title = #{channel.title}")
+      assert_includes err.message, "title = #{channel.title}"
     end
   end
 
@@ -151,7 +151,7 @@ class ChannelTest < ActiveSupport::TestCase
     e = assert_raise Mishina::Youtube::NoChannelError do
       assert_not channel.update_snippet!
     end
-    assert e.message.include?("title = #{channel.title}")
+    assert_includes e.message, "title = #{channel.title}"
   end
 
   test 'medium_thumbnail_url' do

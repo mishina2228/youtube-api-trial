@@ -5,7 +5,7 @@ class ApplicationHelperTest < ActionView::TestCase
     # TODO: refactor
   end
 
-  def test_print_link
+  test 'print_link' do
     assert_dom_equal %{<a href="https://example.com">body</a>},
                      print_link('body', 'https://example.com')
     assert_dom_equal %{<a href="https://example.com">alternate</a>},
@@ -18,13 +18,13 @@ class ApplicationHelperTest < ActionView::TestCase
                      print_link('body', 'https://example.com', nil, target: '_blank', rel: 'noopener')
   end
 
-  def test_print_number
+  test 'print_number' do
     assert_equal '123', print_number(123)
     assert_equal '1,234', print_number(1234)
     assert_nil print_number(nil)
   end
 
-  def test_print_diff_numbers
+  test 'print_diff_numbers' do
     assert_nil print_diff_numbers(nil, nil)
     assert_nil print_diff_numbers(nil, 1)
     assert_nil print_diff_numbers(1, nil)
@@ -34,7 +34,7 @@ class ApplicationHelperTest < ActionView::TestCase
     assert '-9,999', print_diff_numbers(1, 10_000)
   end
 
-  def test_print_diff_datetimes
+  test 'print_diff_datetimes' do
     print_diff_datetimes(nil, nil)
     print_diff_datetimes(nil, Time.zone.now)
     print_diff_datetimes(Time.zone.now, nil)
@@ -44,7 +44,7 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_equal expected, actual
   end
 
-  def test_text_url_to_link
+  test 'text_url_to_link' do
     assert_nil text_url_to_link(nil)
     assert_nil text_url_to_link('')
 

@@ -133,7 +133,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     put build_statistics_channel_url(id: @channel), xhr: true
 
     assert_response :success
-    assert body.include?(I18n.t('text.channel.build_statistics.start'))
+    assert_includes body, I18n.t('text.channel.build_statistics.start')
   end
 
   test 'should not build statistics if logged in as an user' do
@@ -169,7 +169,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     put build_all_statistics_channels_url, xhr: true
 
     assert_response :success
-    assert body.include?(I18n.t('text.channel.build_all_statistics.start'))
+    assert_includes body, I18n.t('text.channel.build_all_statistics.start')
   end
 
   test 'should not build all statistics if logged in as an user' do
@@ -211,7 +211,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     put update_snippet_channel_path(id: @channel), xhr: true
 
     assert_response :success
-    assert body.include?(I18n.t('text.channel.update_snippet.start'))
+    assert_includes body, I18n.t('text.channel.update_snippet.start')
   end
 
   test 'should not update a snippet if logged in as an user' do
@@ -245,7 +245,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     put update_all_snippets_channels_path, xhr: true
 
     assert_response :success
-    assert body.include?(I18n.t('text.channel.update_all_snippets.start'))
+    assert_includes body, I18n.t('text.channel.update_all_snippets.start')
   end
 
   test 'should not update all snippets if logged in as an user' do
@@ -291,7 +291,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     put enable_channel_path(id: @channel), xhr: true
 
     assert_response :success
-    assert body.include?(I18n.t('text.channel.enable.succeeded'))
+    assert_includes body, I18n.t('text.channel.enable.succeeded')
   end
 
   test 'should not re-enable a channel via ajax if a record is invalid' do
@@ -301,7 +301,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     put enable_channel_path(id: @channel), xhr: true
 
     assert_response :success
-    assert body.include?(I18n.t('text.channel.enable.failed'))
+    assert_includes body, I18n.t('text.channel.enable.failed')
   end
 
   test 'should not re-enable a channel if logged in as an user' do
@@ -407,7 +407,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
         }, xhr: true
 
     assert_response :success
-    assert body.include?(I18n.t('text.channel.update_tags.error'))
+    assert_includes body, I18n.t('text.channel.update_tags.error')
 
     assert_includes @channel.reload.tag_list, 'tag1'
     assert_not_includes @channel.tag_list, 'tag2'
