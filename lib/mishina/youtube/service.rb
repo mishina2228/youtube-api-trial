@@ -1,5 +1,3 @@
-require 'google/apis/youtube_v3'
-
 class Mishina::Youtube::Service
   attr_accessor :service
 

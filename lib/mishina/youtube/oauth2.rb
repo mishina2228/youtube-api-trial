@@ -1,4 +1,3 @@
-require 'google/apis/youtube_v3'
 require 'googleauth/stores/file_token_store'
 
 module Mishina::Youtube::Oauth2

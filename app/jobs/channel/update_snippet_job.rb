@@ -1,5 +1,3 @@
-require 'google/apis/youtube_v3'
-
 class Channel::UpdateSnippetJob
   @queue = :normal
 
