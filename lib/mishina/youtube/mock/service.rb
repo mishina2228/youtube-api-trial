@@ -37,7 +37,7 @@ class Mishina::Youtube::Mock::Service
           channel_id: 'dummy_channel_id'
         ),
         title: 'dummy channel',
-        description: 'dummy description',
+        description: "dummy description #{token}",
         thumbnails: Google::Apis::YoutubeV3::ThumbnailDetails.new(
           default: Google::Apis::YoutubeV3::Thumbnail.new(url: 'https://example.com/thumbnail/dummy')
         )
@@ -55,7 +55,7 @@ class Mishina::Youtube::Mock::Service
       snippet: Google::Apis::YoutubeV3::SearchResultSnippet.new(
         channel_id: 'dummy_channel_id',
         title: 'dummy channel',
-        description: 'dummy description',
+        description: "dummy description #{token}",
         thumbnails: Google::Apis::YoutubeV3::ThumbnailDetails.new(
           default: Google::Apis::YoutubeV3::Thumbnail.new(url: 'https://example.com/thumbnail/dummy')
         )
