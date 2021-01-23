@@ -2,9 +2,7 @@ class ChannelLists::SearchController < ApplicationController
   def index
     @condition = search_condition
     if request.xhr?
-      response = ChannelLists::Search.search(
-        @condition.query, token: @condition.token, max_results: @condition.per
-      )
+      response = ChannelLists::Search.search(@condition.query, token: @condition.token, max_results: @condition.per)
       @search_results = ChannelLists::Search.new(response)
     end
     respond_to do |format|

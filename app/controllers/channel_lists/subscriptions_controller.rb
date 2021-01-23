@@ -2,9 +2,7 @@ class ChannelLists::SubscriptionsController < ApplicationController
   def index
     @condition = search_condition
     if request.xhr?
-      response = ChannelLists::Subscription.subscriptions(
-        token: @condition.token, max_results: @condition.per
-      )
+      response = ChannelLists::Subscription.subscriptions(token: @condition.token, max_results: @condition.per)
       @subscription = ChannelLists::Subscription.new(response)
     end
     respond_to do |format|

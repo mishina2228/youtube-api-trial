@@ -4,8 +4,7 @@ class ChannelsController < ApplicationController
   before_action :set_channel, only: [
     :show, :destroy, :build_statistics, :update_snippet, :enable, :edit_tags, :update_tags
   ]
-  before_action -> {require_data(channels_url, Channel)},
-                only: [:build_all_statistics, :update_all_snippets]
+  before_action -> {require_data(channels_url, Channel)}, only: [:build_all_statistics, :update_all_snippets]
   authorize_resource
 
   def index
@@ -19,9 +18,7 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    @channel_statistics = @channel.channel_statistics.paginate(
-      per: params[:statics_per], page: params[:statics_page]
-    )
+    @channel_statistics = @channel.channel_statistics.paginate(per: params[:statics_per], page: params[:statics_page])
     @channel_snippets = @channel.channel_snippets.limit(5).offset(1)
     respond_to do |format|
       format.html
