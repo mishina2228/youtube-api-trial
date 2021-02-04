@@ -29,6 +29,11 @@ executors:
       - image: circleci/ruby:2.7-node-browsers
     environment:
       <<: *common_env
+  node-browsers-latest:
+    docker:
+      - image: circleci/ruby:latest-node-browsers
+    environment:
+      <<: *common_env
 
 commands:
   update_rubygems:
@@ -205,6 +210,36 @@ jobs: # a collection of steps
       - setup_database
       - system_test
       - store_test_reports
+  minitest-latest:
+    executor: node-browsers-latest
+    steps:
+      - checkout
+      - update_rubygems
+      - which_bundler
+      - which_ruby
+      - restore_gems:
+          ruby-version: 'latest'
+      - install_gems
+      - save_gems:
+          ruby-version: 'latest'
+      - setup_database
+      - minitest
+      - store_test_reports
+  system-test-latest:
+    executor: node-browsers-latest
+    steps:
+      - checkout
+      - update_rubygems
+      - which_bundler
+      - which_ruby
+      - restore_gems:
+          ruby-version: 'latest'
+      - install_gems
+      - save_gems:
+          ruby-version: 'latest'
+      - setup_database
+      - system_test
+      - store_test_reports
 
 workflows:
   version: 2
@@ -223,3 +258,7 @@ workflows:
     jobs:
       - minitest-2-7
       - system-test-2-7
+  ruby-latest-test:
+    jobs:
+      - minitest-latest
+      - system-test-latest
