@@ -9,6 +9,9 @@ common_env: &common_env
   TZ: 'Asia/Tokyo'
 
 executors:
+  node-14:
+    docker:
+      - image: circleci/node:14
   ruby-2-7:
     docker:
       - image: circleci/ruby:2.7
@@ -155,6 +158,19 @@ jobs: # a collection of steps
           name: Run Brakeman
           command: |-
             bundle exec brakeman
+  standard_style:
+    executor: node-14
+    steps:
+      - checkout
+      - which_nodejs
+      - which_yarn
+      - restore_packages
+      - install_packages
+      - save_packages
+      - run:
+          name: Run Standard
+          command: |-
+            yarn standard
   minitest-2-5:
     executor: node-browsers-2-5
     steps:
@@ -316,6 +332,9 @@ workflows:
   brakeman:
     jobs:
       - brakeman
+  standard_style:
+    jobs:
+      - standard_style
   ruby-2.5-test:
     jobs:
       - minitest-2-5
