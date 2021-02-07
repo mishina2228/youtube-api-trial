@@ -2,4 +2,4 @@ $('#search-result')
   .html("<%= j(render 'channels', subscription: @subscription) %>");
 $('#search-result-pagination')
   .html("<%= j(render 'channels_pagination', subscription: @subscription, condition: @condition) %>");
-ChannelList.prop_submit_button();
+prop_submit_button();

@@ -10,14 +10,9 @@ gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 5.2'
 gem 'puma_worker_killer'
-# Use SCSS for stylesheets
-gem 'sassc-rails'
+# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+gem 'webpacker', '~> 5.0'
 
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
-
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -25,7 +20,22 @@ gem 'jbuilder', '~> 2.11'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap-sass', '>= 3.4.1'
+
+# User Authorization
+gem 'cancancan'
+gem 'devise', '~> 4.7.3'
+gem 'devise-i18n'
+
+gem 'acts-as-taggable-on', '~> 7.0'
+gem 'enum_help'
+gem 'google-apis-youtube_v3', '~> 0.1.0'
+gem 'i18n-js'
+gem 'kaminari', '~> 1.2.1'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'paranoia', '~> 2.4'
+
+gem 'resque'
+gem 'resque-scheduler'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -62,20 +72,3 @@ group :itamae do
   gem 'god'
   gem 'itamae'
 end
-
-# User Authorization
-gem 'cancancan'
-gem 'devise', '~> 4.7.3'
-gem 'devise-i18n'
-
-gem 'acts-as-taggable-on', '~> 7.0'
-gem 'bootstrap-tagsinput-rails'
-gem 'enum_help'
-gem 'google-apis-youtube_v3', '~> 0.1.0'
-gem 'kaminari', '~> 1.2.1'
-gem 'kaminari-bootstrap', '~> 3.0.1'
-gem 'paranoia', '~> 2.4'
-gem 'toastr-rails'
-
-gem 'resque'
-gem 'resque-scheduler'

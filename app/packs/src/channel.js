@@ -1,3 +1,6 @@
+import emojione from 'emoji-toolkit'
+import Cookies from 'js-cookie'
+
 $(document).on('turbolinks:load', () => {
   emojify();
   $('[data-toggle="tooltip"]').tooltip();

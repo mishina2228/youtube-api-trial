@@ -1,6 +1,11 @@
 require_relative 'boot'
 
-require 'rails/all'
+require 'active_record/railtie'
+require 'active_storage/engine'
+require 'action_controller/railtie'
+require 'action_view/railtie'
+require 'action_mailer/railtie'
+require 'rails/test_unit/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -20,5 +25,7 @@ module YoutubeApiTrial
     config.active_record.default_timezone = :local
 
     config.paths.add 'lib', eager_load: true
+
+    config.middleware.use I18n::JS::Middleware
   end
 end

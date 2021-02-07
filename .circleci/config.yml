@@ -52,6 +52,16 @@ commands:
       - run:
           name: Which Ruby?
           command: ruby -v
+  which_nodejs:
+    steps:
+      - run:
+          name: Which Node.js?
+          command: node --version
+  which_yarn:
+    steps:
+      - run:
+          name: Which Yarn?
+          command: yarn --version
   # Restore bundle cache
   # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
   restore_gems:
@@ -79,6 +89,24 @@ commands:
           key: bundle-v2-<< parameters.ruby-version >>-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+  restore_packages:
+    steps:
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+  install_packages:
+    steps:
+      - run:
+          name: Install Yarn Dependencies
+          command: yarn install --immutable
+  save_packages:
+    steps:
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
   setup_database:
     steps:
       - run:
@@ -127,11 +155,15 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: '2.5'
       - install_gems
       - save_gems:
           ruby-version: '2.5'
+      - restore_packages
+      - install_packages
+      - save_packages
       - setup_database
       - minitest
       - store_test_reports
@@ -142,11 +174,15 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: '2.5'
       - install_gems
       - save_gems:
           ruby-version: '2.5'
+      - restore_packages
+      - install_packages
+      - save_packages
       - setup_database
       - system_test
       - store_test_reports
@@ -157,11 +193,15 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: '2.6'
       - install_gems
       - save_gems:
           ruby-version: '2.6'
+      - restore_packages
+      - install_packages
+      - save_packages
       - setup_database
       - minitest
       - store_test_reports
@@ -177,6 +217,9 @@ jobs: # a collection of steps
       - install_gems
       - save_gems:
           ruby-version: '2.6'
+      - restore_packages
+      - install_packages
+      - save_packages
       - setup_database
       - system_test
       - store_test_reports
@@ -187,11 +230,15 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: '2.7'
       - install_gems
       - save_gems:
           ruby-version: '2.7'
+      - restore_packages
+      - install_packages
+      - save_packages
       - setup_database
       - minitest
       - store_test_reports
@@ -202,11 +249,15 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: '2.7'
       - install_gems
       - save_gems:
           ruby-version: '2.7'
+      - restore_packages
+      - install_packages
+      - save_packages
       - setup_database
       - system_test
       - store_test_reports
@@ -217,11 +268,15 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: 'latest'
       - install_gems
       - save_gems:
           ruby-version: 'latest'
+      - restore_packages
+      - install_packages
+      - save_packages
       - setup_database
       - minitest
       - store_test_reports
@@ -232,11 +287,15 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: 'latest'
       - install_gems
       - save_gems:
           ruby-version: 'latest'
+      - restore_packages
+      - install_packages
+      - save_packages
       - setup_database
       - system_test
       - store_test_reports

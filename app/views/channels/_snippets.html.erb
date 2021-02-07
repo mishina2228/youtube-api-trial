@@ -30,6 +30,7 @@
 <% end %>
 
 <script>
+  // const $ = import('jquery')
   $(document).on('turbolinks:load', () => {
     $('.click-btn').on('click', event => {
       const snippet_modal_id = $(event.currentTarget).data('snippet-modal-id');
