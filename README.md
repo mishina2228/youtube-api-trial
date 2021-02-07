@@ -6,18 +6,37 @@
 
 Ruby on Rails application to get information of YouTube channel
 
-# Commands
+## Prerequisites
+
+- Ruby 2.5+
+- Node.js 10.22.1+ || 12+ || 14+
+- Yarn 1.x+
+
+## Installation
+
+### Set up Rails app
+
+First, install the gems and javascript packages required by the application:
+```
+bundle
+yarn
+```
+Next, execute the database migrations/schema setup:
+```
+bundle exec rails db:setup
+```
+
 
 ### Resque settings
 
 Create a configuration file to manage [Resque](https://github.com/resque/resque) and [resque-scheduler](https://github.com/resque/resque-scheduler) with [God](http://godrb.com/)
 ```
-$ RAILS_ENV=[RAILS_ENV] bundle exec itamae local config/itamae/resque.rb
+RAILS_ENV=[RAILS_ENV] bundle exec itamae local config/itamae/resque.rb
 ```
 
 Load configuration file
 ```
-$ god -c /etc/god/master.conf
+god -c /etc/god/master.conf
 ```
 
 Resque, resque-scheduler operation with God
@@ -26,16 +45,15 @@ Resque, resque-scheduler operation with God
 * restart
 * stop
 ```
-$ god status youtube_api_trial
-$ god start youtube_api_trial
-$ god restart youtube_api_trial
-$ god stop youtube_api_trial
+god status youtube_api_trial
+god start youtube_api_trial
+god restart youtube_api_trial
+god stop youtube_api_trial
 ```
 
-### After source update
+### Start the app
 
 ```
-bundle
 bundle exec rails assets:precompile RAILS_ENV=[RAILS_ENV]
 bundle exec pumactl start -e [RAILS_ENV]
 ```
