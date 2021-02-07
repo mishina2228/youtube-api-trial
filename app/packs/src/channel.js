@@ -11,14 +11,14 @@ $(document).on('turbolinks:load', () => {
   })
 })
 
-function emojify () {
+const emojify = () => {
   $('.emojify').each((_, elem) => {
     const emojified = emojione.toImage($(elem).html())
     $(elem).html(emojified)
   })
 }
 
-function resetSearchForm () {
+const resetSearchForm = () => {
   const $form = $('form.search')
   const $textFields = $form.find('input[type="text"]')
   $textFields.each((_, elem) => $(elem).val(''))

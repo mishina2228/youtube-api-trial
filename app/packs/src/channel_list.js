@@ -1,8 +1,5 @@
 import I18n from '../src/i18n.js.erb'
 
-console.log(I18n.locale = 'ja')
-console.log(I18n.t('helpers.notice.processing'))
-
 const propSubmitButton = () => {
   I18n.locale = $('body').data('locale')
   $('form.create-channel').on('ajax:beforeSend', event => {
