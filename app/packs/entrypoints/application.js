@@ -13,6 +13,7 @@ require('@fortawesome/fontawesome-free/js/all')
 import '../src/channel'
 import '../src/channel_list'
 import '../src/system_setting'
+import '../src/theme_changer'
 
 import './application.scss'
 
