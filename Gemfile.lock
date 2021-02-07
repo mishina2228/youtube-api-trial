@@ -165,9 +165,6 @@ GEM
     kaminari-activerecord (1.2.1)
       activerecord
       kaminari-core (= 1.2.1)
-    kaminari-bootstrap (3.0.1)
-      kaminari (>= 0.13.0)
-      rails
     kaminari-core (1.2.1)
     loofah (2.9.0)
       crass (~> 1.0.2)
@@ -337,8 +334,6 @@ GEM
     sqlite3 (1.4.2)
     thor (1.1.0)
     tilt (2.0.10)
-    toastr-rails (1.0.3)
-      railties (>= 3.1.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -394,7 +389,6 @@ DEPENDENCIES
   itamae
   jbuilder (~> 2.11)
   kaminari (~> 1.2.1)
-  kaminari-bootstrap (~> 3.0.1)
   minitest-ci
   paranoia (~> 2.4)
   puma (~> 5.2)
@@ -411,7 +405,6 @@ DEPENDENCIES
   simplecov
   spring
   sqlite3
-  toastr-rails
   turbolinks (~> 5)
   web-console (>= 3.3.0)
   webdrivers

@@ -31,7 +31,6 @@ gem 'enum_help'
 gem 'google-apis-youtube_v3', '~> 0.1.0'
 gem 'i18n-js'
 gem 'kaminari', '~> 1.2.1'
-gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'paranoia', '~> 2.4'
 
 gem 'resque'
