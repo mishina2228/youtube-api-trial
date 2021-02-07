@@ -30,7 +30,7 @@ const changePassword = link => {
 }
 
 $(document).on('turbolinks:load', () => {
-  if (document.URL.match(/system_setting\/edit/)) {
+  if (document.URL.match(/system_setting\/(edit|new)/)) {
     propFields($('.auth-field').find('.form-group'), false)
     $('.auth-methods input[type="radio"]').on('change', event =>
       toggleAuthMethod($(event.currentTarget))
