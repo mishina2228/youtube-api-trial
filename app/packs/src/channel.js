@@ -1,27 +1,27 @@
 import emojione from 'emoji-toolkit'
 
 $(document).on('turbolinks:load', () => {
-  emojify();
-  $('[data-toggle="tooltip"]').tooltip();
-  $('#reset-search').on('click', reset_search_form);
+  emojify()
+  $('[data-toggle="tooltip"]').tooltip()
+  $('#reset-search').on('click', resetSearchForm)
   $('#search-result-pagination').on('ajax:beforeSend', _event => {
-    const margin = $('nav.navbar-fixed-top').height();
-    $('html, body').animate({scrollTop: $('#search-result').offset().top - margin});
+    const margin = $('nav.navbar-fixed-top').height()
+    $('html, body').animate({ scrollTop: $('#search-result').offset().top - margin })
   }).on('ajax:success', _event => {
-  });
-});
+  })
+})
 
-function emojify() {
+function emojify () {
   $('.emojify').each((_, elem) => {
-    const emojified = emojione.toImage($(elem).html());
-    $(elem).html(emojified);
-  });
+    const emojified = emojione.toImage($(elem).html())
+    $(elem).html(emojified)
+  })
 }
 
-function reset_search_form() {
-  const $form = $('form.search');
-  const $text_fields = $form.find('input[type="text"]');
-  $text_fields.each((_, elem) => $(elem).val(''));
-  const $selects = $form.find('select');
-  $selects.each((_, elem) => $(elem).prop('selectedIndex', 0));
+function resetSearchForm () {
+  const $form = $('form.search')
+  const $textFields = $form.find('input[type="text"]')
+  $textFields.each((_, elem) => $(elem).val(''))
+  const $selects = $form.find('select')
+  $selects.each((_, elem) => $(elem).prop('selectedIndex', 0))
 }
