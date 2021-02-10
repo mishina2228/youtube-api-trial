@@ -28,7 +28,7 @@ gem 'devise-i18n'
 
 gem 'acts-as-taggable-on', '~> 7.0'
 gem 'enum_help'
-gem 'google-apis-youtube_v3', '~> 0.1.0'
+gem 'google-apis-youtube_v3', '~> 0.2.0'
 gem 'i18n-js'
 gem 'kaminari', '~> 1.2.1'
 gem 'paranoia', '~> 2.4'
