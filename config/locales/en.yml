@@ -33,10 +33,10 @@ en:
         created_at: Info acquisition date
       channel_statistic:
         channel_id: Channel ID
-        created_at: Statistics acquisition date
-        view_count: View Count
-        subscriber_count: Subscriber count
-        video_count: Video count
+        created_at: Acquired at
+        view_count: Views
+        subscriber_count: Subscribers
+        video_count: Videos
       system_setting:
         api_key: API Key
         auth_method: Auth method
