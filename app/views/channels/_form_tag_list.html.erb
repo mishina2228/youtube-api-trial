@@ -1,5 +1,5 @@
 <%= form_with(url: update_tags_channel_path, model: channel, method: :put) do |form| %>
-  <%= form.submit t('helpers.submit.send'), class: 'btn btn-xs btn-primary',
+  <%= form.submit t('helpers.submit.send'), class: 'btn btn-sm btn-primary',
                   data: {disable_with: t('helpers.notice.processing')}, remote: true %>
   <%= form.text_field :tag_list, value: channel.tag_list.join(','), class: 'channel-tags',
                       'data-role' => 'tagsinput' %>

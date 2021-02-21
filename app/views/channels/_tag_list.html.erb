@@ -1,6 +1,6 @@
 <% if can?(:update, Channel) %>
   <%= button_to t('helpers.link.edit'), edit_tags_channel_path,
-                method: :get, class: 'btn btn-xs btn-success', role: :button, remote: true %>
+                method: :get, class: 'btn btn-sm btn-success', role: :button, remote: true %>
 <% end %>
 <% channel.tag_list.each do |tag| %>
   <%= link_to(tag, channels_path(search_channel: {tag: tag}), class: 'badge badge-primary') %>

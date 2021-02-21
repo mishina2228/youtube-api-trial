@@ -2,23 +2,23 @@
   <table class='table table-bordered table-hover table-striped'>
     <thead>
     <tr>
-      <th class="col-xs-3 col-sm-1"></th>
-      <th class="col-xs-6 col-sm-3">
+      <th></th>
+      <th>
         <%= sortable Channel.human_attribute_name(:title), 'title', remote: true %>
       </th>
-      <th class="hidden-xs col-sm-2">
+      <th class="d-none d-md-table-cell">
         <%= sortable Channel.human_attribute_name(:published_at), 'published_at', remote: true %>
       </th>
-      <th class="col-xs-3 col-sm-2">
+      <th>
         <%= sortable ChannelStatistic.human_attribute_name(:subscriber_count), 'subscriber_count', remote: true %>
       </th>
-      <th class="hidden-xs col-sm-2">
+      <th class="d-none d-md-table-cell">
         <%= sortable ChannelStatistic.human_attribute_name(:view_count), 'view_count', remote: true %>
       </th>
-      <th class="hidden-xs col-sm-2">
+      <th class="d-none d-md-table-cell">
         <%= sortable ChannelStatistic.human_attribute_name(:video_count), 'video_count', remote: true %>
       </th>
-      <th class="visible-lg visible-md">
+      <th class="d-none d-xl-table-cell">
         <%= sortable ChannelStatistic.human_attribute_name(:created_at), 'latest_acquired_at', remote: true %>
       </th>
     </tr>
@@ -43,7 +43,7 @@
             <% end %>
           </div>
         </td>
-        <td class="hidden-xs"><%= print_datetime(c.published_at, format: :date) %></td>
+        <td class="d-none d-md-table-cell"><%= print_datetime(c.published_at, format: :date) %></td>
         <td>
           <div class="vertical text-right text-nowrap">
           <span>
@@ -54,7 +54,7 @@
           </span>
           </div>
         </td>
-        <td class="hidden-xs">
+        <td class="d-none d-md-table-cell">
           <div class="vertical text-right text-nowrap">
           <span>
             <%= print_number(c.view_count) %>
@@ -64,7 +64,7 @@
           </span>
           </div>
         </td>
-        <td class="hidden-xs">
+        <td class="d-none d-md-table-cell">
           <div class="vertical text-right text-nowrap">
           <span>
             <%= print_number(c.video_count) %>
@@ -74,7 +74,7 @@
           </span>
           </div>
         </td>
-        <td class="visible-lg visible-md">
+        <td class="d-none d-xl-table-cell">
           <div class="vertical text-right text-nowrap">
           <span>
             <%= print_acquired_at(c.latest_acquired_at, format: :date) %>

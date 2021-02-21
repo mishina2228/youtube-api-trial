@@ -1,14 +1,12 @@
 <%= form_with(model: condition, url: channel_lists_subscriptions_path, method: :get,
               class: 'search') do |form| %>
   <div class="container box_radius">
-    <div class="form-group">
-      <div class="row">
-        <div class="col-xs-5 col-sm-3">
-          <%= form.label :per %>
-        </div>
-        <div class="input-group col-xs-2 col-sm-2">
-          <%= form.select :per, [5, 10, 20, 30, 50], class: 'form-control' %>
-        </div>
+    <div class="form-group row">
+      <div class="col-5 col-md-3">
+        <%= form.label :per %>
+      </div>
+      <div class="input-group col-2 col-md-2">
+        <%= form.select :per, [5, 10, 20, 30, 50], class: 'form-control' %>
       </div>
     </div>
     <%= button_tag t('helpers.button.reset'), type: :button, id: 'reset-search',

@@ -5,9 +5,9 @@
 <table class='table table-bordered table-hover table-striped'>
   <thead>
     <tr>
-      <th class="col-xs-3"><%= Channel.human_attribute_name :title %></th>
-      <th class="col-xs-7"><%= Channel.human_attribute_name :description %></th>
-      <th class="col-xs-2"><%= ChannelSnippet.human_attribute_name :created_at %></th>
+      <th class="w-25"><%= Channel.human_attribute_name :title %></th>
+      <th class="w-58"><%= Channel.human_attribute_name :description %></th>
+      <th class="w-17"><%= ChannelSnippet.human_attribute_name :created_at %></th>
     </tr>
   </thead>
 
@@ -30,7 +30,6 @@
 <% end %>
 
 <script>
-  // const $ = import('jquery')
   $(document).on('turbolinks:load', () => {
     $('.click-btn').on('click', event => {
       const snippet_modal_id = $(event.currentTarget).data('snippet-modal-id');

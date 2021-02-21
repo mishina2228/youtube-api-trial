@@ -4,27 +4,27 @@
       <div class="box_inner">
         <div class="container kinda-table">
           <div class="row">
-            <div class="col-xs-4 col-sm-2 font-weight-bold">
+            <div class="col-4 col-md-2 font-weight-bold">
               <%= Channel.human_attribute_name :title %>
             </div>
-            <div class="col-xs-8 col-sm-10">
+            <div class="col-8 col-md-10">
               <%= image_tag(snippet.thumbnail_url) %>
               <%= snippet.title %>
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-4 col-sm-2 font-weight-bold">
+            <div class="col-4 col-md-2 font-weight-bold">
               <%= Channel.human_attribute_name :description %>
             </div>
-            <div class="col-xs-8 col-sm-10 emojify break-word-wrap">
+            <div class="col-8 col-md-10 emojify break-word-wrap">
               <%= simple_format text_url_to_link(snippet.description), {}, sanitize: false %>
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-4 col-sm-2 font-weight-bold">
+            <div class="col-4 col-md-2 font-weight-bold">
               <%= ChannelSnippet.human_attribute_name :created_at %>
             </div>
-            <div class="col-xs-8 col-sm-10 emojify break-word-wrap">
+            <div class="col-8 col-md-10 emojify break-word-wrap">
               <%= print_datetime(snippet.created_at) %>
             </div>
           </div>

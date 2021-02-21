@@ -10,45 +10,45 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-4 col-sm-4 font-weight-bold">
+    <div class="col-4 font-weight-bold">
       <%= SystemSetting.human_attribute_name :auth_method %>
     </div>
-    <div class="col-xs-8 col-sm-8">
+    <div class="col-8">
       <%= @system_setting.auth_method_i18n %>
     </div>
   </div>
   <% case @system_setting.auth_method.to_sym %>
   <% when :api_key %>
     <div class="row">
-      <div class="col-xs-4 col-sm-4 font-weight-bold">
+      <div class="col-4 font-weight-bold">
         <%= SystemSetting.human_attribute_name :api_key %>
       </div>
-      <div class="col-xs-8 col-sm-8">
+      <div class="col-8">
         <%= @system_setting.api_key %>
       </div>
     </div>
   <% when :oauth2 %>
     <div class="row">
-      <div class="col-xs-4 col-sm-4 font-weight-bold">
+      <div class="col-4 font-weight-bold">
         <%= SystemSetting.human_attribute_name :client_id %>
       </div>
-      <div class="col-xs-8 col-sm-8">
+      <div class="col-8 text-break">
         <%= @system_setting.client_id %>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-4 col-sm-4 font-weight-bold">
+      <div class="col-4 font-weight-bold">
         <%= SystemSetting.human_attribute_name :client_secret %>
       </div>
-      <div class="col-xs-8 col-sm-8">
+      <div class="col-8">
         <%= '********' if @system_setting.client_secret.present? %>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-4 col-sm-4 font-weight-bold">
+      <div class="col-4 font-weight-bold">
         <%= t('text.system_setting.oauth2_setting') %>
       </div>
-      <div class="col-xs-8 col-sm-8">
+      <div class="col-8">
         <% if @system_setting.oauth2_configured? %>
           <%= t('text.system_setting.oauth2_setting_configured.true') %>
         <% else %>
@@ -63,7 +63,7 @@
     </div>
   <% when :nothing %>
     <div class="row">
-      <span class="col-xs-8 col-sm-10 alert alert-danger font-weight-bold">
+      <span class="col-8 col-md-10 alert alert-danger font-weight-bold">
         <%= t('text.system_setting.missing_auth_method') %>
       </span>
     </div>

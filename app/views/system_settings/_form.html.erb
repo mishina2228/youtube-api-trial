@@ -10,64 +10,54 @@
   <% end %>
 
   <div class="container">
-    <div class="row">
-      <div class="form-group">
-        <div class="col-xs-4 col-sm-4">
-          <%= form.label :auth_method %>
-        </div>
-        <div class="col-xs-8 col-sm-8">
-          <div class="row">
-            <div class="auth-methods">
-              <%= form.collection_radio_buttons :auth_method, SystemSetting.auth_methods_i18n_without_nothing, :first, :last do |b| %>
-                <div class="col-xs-6 col-sm-6 col-md-3">
-                  <%= b.radio_button %>
-                  <%= b.label %>
-                </div>
-              <% end %>
+    <div class="form-group row">
+      <div class="col-4">
+        <%= form.label :auth_method %>
+      </div>
+      <div class="col-8">
+        <div class="row auth-methods">
+          <%= form.collection_radio_buttons :auth_method, SystemSetting.auth_methods_i18n_without_nothing, :first, :last do |b| %>
+            <div class="col-6 col-md-3">
+              <%= b.radio_button %>
+              <%= b.label %>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
     <div class="api_key auth-field">
-      <div class="row">
-        <div class="form-group">
-          <div class="col-xs-4 col-sm-4">
-            <%= form.label :api_key %>
-          </div>
-          <div class="col-xs-8 col-sm-8">
-            <%= form.text_field :api_key, class: 'form-control', required: true %>
-          </div>
+      <div class="form-group row">
+        <div class="col-4">
+          <%= form.label :api_key %>
+        </div>
+        <div class="col-8">
+          <%= form.text_field :api_key, class: 'form-control', required: true %>
         </div>
       </div>
     </div>
 
     <div class="oauth2 auth-field">
-      <div class="row">
-        <div class="form-group">
-          <div class="col-xs-4 col-sm-4">
-            <%= form.label :client_id %>
-          </div>
-          <div class="col-xs-8 col-sm-8">
-            <%= form.text_field :client_id, class: 'form-control', required: true, autocomplete: 'username' %>
-          </div>
+      <div class="form-group row">
+        <div class="col-4">
+          <%= form.label :client_id %>
+        </div>
+        <div class="col-8">
+          <%= form.text_field :client_id, class: 'form-control', required: true, autocomplete: 'username' %>
         </div>
       </div>
-      <div class="row">
-        <div class="form-group">
-          <div class="col-xs-4 col-sm-4">
-            <%= form.label :client_secret %>
-          </div>
-          <div class="col-xs-8 col-sm-8">
-            <% if system_setting.client_secret.present? %>
-              <a href="javascript:void(0);" class="change-client-secret">
-                <%= t('text.system_setting.change_client_secret') %>
-              </a>
-              <%= form.password_field :client_secret, class: 'form-control', style: 'display: none', autocomplete: 'new-password' %>
-            <% else %>
-              <%= form.password_field :client_secret, class: 'form-control', autocomplete: 'new-password' %>
-            <% end %>
-          </div>
+      <div class="form-group row">
+        <div class="col-4">
+          <%= form.label :client_secret %>
+        </div>
+        <div class="col-8">
+          <% if system_setting.client_secret.present? %>
+            <a href="javascript:void(0);" class="change-client-secret">
+              <%= t('text.system_setting.change_client_secret') %>
+            </a>
+            <%= form.password_field :client_secret, class: 'form-control', style: 'display: none', autocomplete: 'new-password' %>
+          <% else %>
+            <%= form.password_field :client_secret, class: 'form-control', autocomplete: 'new-password' %>
+          <% end %>
         </div>
       </div>
     </div>

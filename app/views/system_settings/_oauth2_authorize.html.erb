@@ -1,19 +1,17 @@
 <%= form_with(url: oauth2_store_credential_system_setting_path, model: @system_setting, method: :put, local: true) do |form| %>
   <div class="row">
-    <div class="col-xs-12 break-word-wrap">
+    <div class="col-12 break-word-wrap">
       <%= link_to @url, @url, target: '_blank', rel: 'noopener' %>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-12">
       <%= t('text.system_setting.oauth2_setting_description_html') %>
     </div>
   </div>
-  <div class="row">
-    <div class="form-group">
-      <div class="col-xs-12">
-        <%= form.text_field :code, class: 'form-control', required: true %>
-      </div>
+  <div class="form-group row">
+    <div class="col-12">
+      <%= form.text_field :code, class: 'form-control', required: true %>
     </div>
   </div>
 

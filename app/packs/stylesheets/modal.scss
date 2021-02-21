@@ -5,3 +5,11 @@
     }
   }
 }
+
+@media (min-width: 576px) {
+  .snippet-modal-box {
+    .modal-dialog {
+      max-width: 800px;
+    }
+  }
+}

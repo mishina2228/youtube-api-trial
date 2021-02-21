@@ -1,3 +1,7 @@
+html {
+  font-size: 14px;
+}
+
 body {
   background-color: #fff;
   color: #333;
@@ -11,8 +15,8 @@ body {
     background: #21252c;
     color: whitesmoke;
 
-    nav {
-      &.navbar-default {
+    div {
+      &.navigation-header-light {
         background: #464646;
       }
     }
@@ -21,6 +25,8 @@ body {
       a {
         color: #44b9d6;
       }
+
+      color: whitesmoke;
     }
 
     .header a {
@@ -109,10 +115,32 @@ body {
         color: #fff;
       }
     }
-    
+
     div.modal-content {
       background: #21252c;
     }
+
+    .alert-info {
+      color: #0c5460;
+    }
+  }
+
+  div {
+    &.navigation-header-light {
+      background: #f8f8f8;
+    }
+
+    &.navigation-header {
+      border: 1px solid #e7e7e7;
+    }
+
+    &.fixed-top {
+      border-width: 0 0 1px;
+    }
+  }
+
+  .bg-primary {
+    color: #fff;
   }
 }
 
@@ -166,17 +194,14 @@ div {
     margin-bottom: 10px;
 
     input.form-control {
-      width: 40%;
+      width: 80%;
+      max-width: 400px;
     }
   }
 }
 
 .notice {
   color: green;
-}
-
-.alert {
-  color: red;
 }
 
 .field_with_errors {
@@ -268,4 +293,27 @@ form.button_to {
   padding-top: .75rem;
   padding-bottom: .75rem;
   border: 1px solid #ddd;
+}
+
+.label-info {
+  background-color: #5bc0de;
+}
+
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+@for $size from 1 to 100 {
+  .w-#{$size} {
+    width: #{$size * 1%} !important;
+  }
 }

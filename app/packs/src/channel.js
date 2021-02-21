@@ -5,7 +5,10 @@ $(document).on('turbolinks:load', () => {
   $('[data-toggle="tooltip"]').tooltip()
   $('#reset-search').on('click', resetSearchForm)
   $('#search-result-pagination').on('ajax:beforeSend', _event => {
-    const margin = $('nav.navbar-fixed-top').height()
+    document.querySelectorAll('nav ul .page-item').forEach(element => {
+      element.classList.add('disabled')
+    })
+    const margin = $('div.fixed-top').height()
     $('html, body').animate({ scrollTop: $('#search-result').offset().top - margin })
   }).on('ajax:success', _event => {
   })
