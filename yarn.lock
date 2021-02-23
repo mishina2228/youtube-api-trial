@@ -2832,10 +2832,10 @@ emoji-regex@^7.0.1:
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-7.0.3.tgz#933a04052860c85e83c122479c4748a8e4c72156"
   integrity sha512-CwBLREIQ7LvYFB0WyRvwhq5N5qPhc6PMjD6bYggFlI5YyDgl+0vxq5VHbMOFqLg7hfWzmu8T5Z1QofhmTIhItA==
 
-emoji-toolkit@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/emoji-toolkit/-/emoji-toolkit-6.0.1.tgz#7dec51f79dd44863d86c647a805ebc41cea82a5a"
-  integrity sha512-QZZq0beHg753JxcBt89UBFqzwYNuMtXhNO+jY3viSAndewmn9biTE5glaro1RA0uWJ4hKqw4k1Mboe1M6sGkMA==
+emoji-toolkit@^6.5.1:
+  version "6.5.1"
+  resolved "https://registry.yarnpkg.com/emoji-toolkit/-/emoji-toolkit-6.5.1.tgz#6fbb0877a92db509b7bf3e3c681e15a264bfd03a"
+  integrity sha512-oY5E81cXvRUxXkbVgOI8NxYHKF5FeWfJhFCIYUKhbVfSmdCH8+bmJzgDdhufExa7t1+WEzpUFdHwYxJTXS90vQ==
 
 emojis-list@^2.0.0:
   version "2.1.0"
