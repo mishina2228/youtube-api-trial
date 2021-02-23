@@ -12,6 +12,7 @@ import 'bootstrap'
 import '../src/channel'
 import '../src/channel_list'
 import '../src/system_setting'
+import '../src/tagify'
 import '../src/theme_changer'
 
 import './application.scss'
@@ -23,6 +24,5 @@ Rails.start()
 Turbolinks.start()
 global.$ = require('jquery')
 global.toastr = require('toastr')
-require('bootstrap-tagsinput')
 
 require.context('../images', true)

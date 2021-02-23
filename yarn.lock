@@ -1096,6 +1096,11 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
+"@yaireo/tagify@^3.22.3":
+  version "3.22.3"
+  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-3.22.3.tgz#32f314980faa29faf2b333a4e3ea50c0d57d3818"
+  integrity sha512-jPDuX6gH0ryd0tDtNnUXQxw3hyKjQXwUfolDSLvVgj5VxDBpRXPkBT71cm6m+znFs1Ko3yhLIauxICzXUxn4tA==
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -1589,11 +1594,6 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
-
-bootstrap-tagsinput@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/bootstrap-tagsinput/-/bootstrap-tagsinput-0.7.1.tgz#ffe3b06bbe2a106945ef2814568005a94f211937"
-  integrity sha1-/+Owa74qEGlF7ygUVoAFqU8hGTc=
 
 bootstrap@^4.6.0:
   version "4.6.0"
