@@ -4,13 +4,16 @@ $(document).on('turbolinks:load', () => {
   emojify()
   $('[data-toggle="tooltip"]').tooltip()
   $('#reset-search').on('click', resetSearchForm)
+  const loaderBg = document.querySelector('.loader-bg')
   $('#search-result-pagination').on('ajax:beforeSend', _event => {
     document.querySelectorAll('nav ul .page-item').forEach(element => {
       element.classList.add('disabled')
     })
+    loaderBg.style.display = 'block'
     const margin = $('div.fixed-top').height()
     $('html, body').animate({ scrollTop: $('#search-result').offset().top - margin })
   }).on('ajax:success', _event => {
+    loaderBg.style.display = 'none'
   })
 })
 

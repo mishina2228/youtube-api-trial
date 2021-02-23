@@ -1,5 +1,6 @@
 $('#search-result')
   .html("<%= j(render 'channels', subscription: @subscription) %>");
 $('#search-result-pagination')
-  .html("<%= j(render 'channels_pagination', subscription: @subscription, condition: @condition) %>");
+  .html("<%= j(render 'channels_pagination', subscription: @subscription, condition: @condition) %>")
+  .trigger('ajax:success')
 propSubmitButton();
