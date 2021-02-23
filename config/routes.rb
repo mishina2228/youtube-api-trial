@@ -21,18 +21,23 @@ Rails.application.routes.draw do
         put :build_statistics
         put :update_snippet
         put :enable
-        get :edit_tags
-        put :update_tags
       end
       collection do
         put :build_all_statistics
         put :update_all_snippets
       end
     end
+
     authenticated :user, ->(u) {u.admin?} do
       namespace :channel_lists do
         resources :search, only: :index
         resources :subscriptions, only: :index
+      end
+
+      resources :channels, shallow: true do
+        scope module: :channels do
+          resource :tags, only: [:edit, :update]
+        end
       end
     end
   end

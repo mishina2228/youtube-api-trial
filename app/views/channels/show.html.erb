@@ -32,7 +32,7 @@
       <%= Channel.human_attribute_name :tags %>
     </div>
     <div class="channel tag-list col-8 col-md-10">
-      <%= render partial: 'tag_list', locals: {channel: @channel} %>
+      <%= render partial: 'channels/tags/tag_list', locals: {channel: @channel} %>
     </div>
   </div>
   <div class="row">

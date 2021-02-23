@@ -1,5 +1,5 @@
 <% if can?(:update, Channel) %>
-  <%= button_to t('helpers.link.edit'), edit_tags_channel_path,
+  <%= button_to t('helpers.link.edit'), edit_channel_tags_path(channel),
                 method: :get, class: 'btn btn-sm btn-success', role: :button, remote: true %>
 <% end %>
 <% channel.tag_list.each do |tag| %>

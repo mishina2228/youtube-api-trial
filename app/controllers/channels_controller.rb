@@ -2,7 +2,7 @@ class ChannelsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   before_action :set_channel, only: [
-    :show, :destroy, :build_statistics, :update_snippet, :enable, :edit_tags, :update_tags
+    :show, :destroy, :build_statistics, :update_snippet, :enable
   ]
   before_action -> {require_data(channels_url, Channel)}, only: [:build_all_statistics, :update_all_snippets]
   authorize_resource
@@ -92,26 +92,6 @@ class ChannelsController < ApplicationController
       else
         format.html {redirect_to @channel, notice: t('text.channel.enable.failed')}
         format.js {render 'partials/toastr', locals: {message: t('text.channel.enable.failed')}}
-      end
-    end
-  end
-
-  def edit_tags
-    respond_to do |format|
-      format.html {redirect_to @channel}
-      format.js
-    end
-  end
-
-  def update_tags
-    @channel.attributes = update_tags_params
-    respond_to do |format|
-      if @channel.save
-        format.html {redirect_to @channel, notice: t('text.channel.update_tags.success')}
-        format.js {render 'update_tags'}
-      else
-        format.html {redirect_to @channel, notice: t('text.channel.update_tags.error')}
-        format.js {render 'edit_tags', locals: {error_message: t('text.channel.update_tags.error')}}
       end
     end
   end

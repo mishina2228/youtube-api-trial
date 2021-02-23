@@ -29,6 +29,10 @@ body {
       color: whitesmoke;
     }
 
+    .tagify__tag > div {
+      color: var(--tag-text-color, #000);
+    }
+
     .header a {
       color: #fff;
 
