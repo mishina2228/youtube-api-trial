@@ -34,7 +34,7 @@ Rails.application.routes.draw do
         resources :subscriptions, only: :index
       end
 
-      resources :channels, shallow: true do
+      resources :channels do
         scope module: :channels do
           resource :tags, only: [:edit, :update]
         end
