@@ -5,7 +5,7 @@
     "@rails/activestorage": "^6.1.3",
     "@rails/ujs": "^6.1.3",
     "@rails/webpacker": "5.2.1",
-    "@yaireo/tagify": "^3.22.3",
+    "@yaireo/tagify": "^3.23.0",
     "bootstrap": "^4.6.0",
     "emoji-toolkit": "^6.5.1",
     "i18n-js": "^3.8.0",
