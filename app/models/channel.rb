@@ -107,6 +107,10 @@ class Channel < ApplicationRecord
     !disabled?
   end
 
+  def tag_list_json
+    tag_list.map {|tag| {value: tag}}.to_json
+  end
+
   private
 
   def parse_channel_id(val)

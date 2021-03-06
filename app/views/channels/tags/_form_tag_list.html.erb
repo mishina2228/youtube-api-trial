@@ -1,9 +1,9 @@
 <%= form_with(url: channel_tags_path, model: channel, method: :put) do |form| %>
   <div class="input-group">
-  <%= form.submit t('helpers.submit.send'), class: 'btn btn-sm btn-primary',
-                  data: {disable_with: t('helpers.notice.processing')}, remote: true %>
-  <%= form.text_field :tag_list, value: channel.tag_list.join(','), class: 'channel-tags',
-                      'data-role' => 'tagsinput' %>
+    <%= form.submit t('helpers.submit.send'), class: 'btn btn-sm btn-primary',
+                    data: {disable_with: t('helpers.notice.processing')}, remote: true %>
+    <%= form.text_field :tag_list, value: channel.tag_list_json, class: 'channel-tags',
+                        'data-role' => 'tagsinput' %>
   </div>
 <% end %>
 
@@ -11,7 +11,7 @@
   $(() => {
     const channelTags = document.querySelector('input.channel-tags')
     new Tagify(channelTags, {
-      originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(',')
+      delimiters: null
     })
   })
 </script>

@@ -185,6 +185,12 @@ class ChannelTest < ActiveSupport::TestCase
     assert channel.enabled?
   end
 
+  test 'tag_list_json' do
+    channel = channels(:channel1)
+    channel.tag_list = %w[tag1 tag2]
+    assert_equal %([{"value":"tag1"},{"value":"tag2"}]), channel.tag_list_json
+  end
+
   def valid_params
     {channel_id: 'abc', thumbnail_url: 'https://www.example.com'}
   end

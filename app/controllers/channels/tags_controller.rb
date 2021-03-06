@@ -9,7 +9,7 @@ class Channels::TagsController < ApplicationController
   end
 
   def update
-    @channel.attributes = update_tags_params
+    set_tag_list(@channel)
     respond_to do |format|
       if @channel.save
         format.html {redirect_to @channel, notice: t('text.channel.update_tags.success')}
@@ -29,5 +29,15 @@ class Channels::TagsController < ApplicationController
 
   def update_tags_params
     params.require(:channel).permit(:tag_list)
+  end
+
+  def set_tag_list(channel)
+    tag_list_was = channel.tag_list
+    channel.tag_list = [] # clear existing tags
+    begin
+      channel.tag_list.add(params.dig(:channel, :tag_list), parser: ChannelTag::Parser)
+    rescue ChannelTag::ParseError
+      channel.tag_list = tag_list_was # reset to original value
+    end
   end
 end
