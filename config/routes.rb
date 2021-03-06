@@ -39,6 +39,8 @@ Rails.application.routes.draw do
           resource :tags, only: [:edit, :update]
         end
       end
+
+      resources :tags, only: :index
     end
   end
 end
