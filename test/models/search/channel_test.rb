@@ -102,4 +102,20 @@ class Search::ChannelTest < ActiveSupport::TestCase
     ret = channel.search
     assert_equal [@c1], ret.to_a
   end
+
+  test 'search by tag containing a comma' do
+    @c1.tag_list.add('Monsters, Inc.')
+    @c1.save!
+    channel = Search::Channel.new(tag: 'Monsters, Inc.')
+    ret = channel.search
+    assert_equal [@c1], ret.to_a
+  end
+
+  test 'search by tag containing quotation marks' do
+    @c1.tag_list.add("i'm lovin' it")
+    @c1.save!
+    channel = Search::Channel.new(tag: "i'm lovin' it")
+    ret = channel.search
+    assert_equal [@c1], ret.to_a
+  end
 end
