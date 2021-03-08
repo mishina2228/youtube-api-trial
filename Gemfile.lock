@@ -130,7 +130,7 @@ GEM
       rexml
       signet (~> 0.14)
       webrick
-    google-apis-youtube_v3 (0.3.0)
+    google-apis-youtube_v3 (0.4.0)
       google-apis-core (~> 0.1)
     googleauth (0.16.0)
       faraday (>= 0.17.3, < 2.0)
@@ -384,7 +384,7 @@ DEPENDENCIES
   devise-i18n
   enum_help
   god
-  google-apis-youtube_v3 (~> 0.3.0)
+  google-apis-youtube_v3 (~> 0.4.0)
   i18n-js
   itamae
   jbuilder (~> 2.11)
