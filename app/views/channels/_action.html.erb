@@ -10,12 +10,12 @@
   <% end %>
   <% if can?(:update, Channel) && @channel.enabled? %>
     <%= button_to t('helpers.link.update_snippet'), update_snippet_channel_path,
-                method: :put, class: 'btn btn-success', role: :button,
+                method: :put, class: 'btn btn-success', role: :button, id: 'update-snippet-btn',
                 data: {disable_with: t('helpers.notice.processing')}, remote: true %>
   <% end %>
   <% if can?(:create, ChannelStatistic) && @channel.enabled? %>
     <%= button_to t('helpers.link.build_statistics'), build_statistics_channel_path,
-                method: :put, class: 'btn btn-success', role: :button,
+                method: :put, class: 'btn btn-success', role: :button, id: 'build-statistics-btn',
                 data: {disable_with: t('helpers.notice.processing')}, remote: true %>
   <% end %>
   <% if can?(:delete, Channel) %>

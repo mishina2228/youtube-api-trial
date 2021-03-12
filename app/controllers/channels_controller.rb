@@ -56,7 +56,7 @@ class ChannelsController < ApplicationController
     JobUtils.enqueue(Channel::BuildStatisticsJob, 'channel_id' => @channel.id)
     respond_to do |format|
       format.html {redirect_to @channel, notice: t('text.channel.build_statistics.start')}
-      format.js {render 'partials/toastr', locals: {message: t('text.channel.build_statistics.start')}}
+      format.json {render json: {message: t('text.channel.build_statistics.start')}.to_json}
     end
   end
 
@@ -64,7 +64,7 @@ class ChannelsController < ApplicationController
     JobUtils.enqueue(Channel::BuildAllStatisticsJob)
     respond_to do |format|
       format.html {redirect_to channels_url, notice: t('text.channel.build_all_statistics.start')}
-      format.js {render 'partials/toastr', locals: {message: t('text.channel.build_all_statistics.start')}}
+      format.json {render json: {message: t('text.channel.build_all_statistics.start')}.to_json}
     end
   end
 
@@ -72,7 +72,7 @@ class ChannelsController < ApplicationController
     JobUtils.enqueue(Channel::UpdateSnippetJob, 'channel_id' => @channel.id)
     respond_to do |format|
       format.html {redirect_to @channel, notice: t('text.channel.update_snippet.start')}
-      format.js {render 'partials/toastr', locals: {message: t('text.channel.update_snippet.start')}}
+      format.json {render json: {message: t('text.channel.update_snippet.start')}.to_json}
     end
   end
 
@@ -80,7 +80,7 @@ class ChannelsController < ApplicationController
     JobUtils.enqueue(Channel::UpdateAllSnippetsJob)
     respond_to do |format|
       format.html {redirect_to channels_url, notice: t('text.channel.update_all_snippets.start')}
-      format.js {render 'partials/toastr', locals: {message: t('text.channel.update_all_snippets.start')}}
+      format.json {render json: {message: t('text.channel.update_all_snippets.start')}.to_json}
     end
   end
 
@@ -88,10 +88,10 @@ class ChannelsController < ApplicationController
     respond_to do |format|
       if @channel.update(disabled: false)
         format.html {redirect_to @channel, notice: t('text.channel.enable.succeeded')}
-        format.js {render 'partials/toastr', locals: {message: t('text.channel.enable.succeeded')}}
+        format.json {render json: {message: t('text.channel.enable.succeeded')}.to_json}
       else
         format.html {redirect_to @channel, notice: t('text.channel.enable.failed')}
-        format.js {render 'partials/toastr', locals: {message: t('text.channel.enable.failed')}}
+        format.json {render json: {message: t('text.channel.enable.failed')}.to_json}
       end
     end
   end

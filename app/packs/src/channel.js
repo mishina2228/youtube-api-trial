@@ -1,4 +1,7 @@
 import emojione from 'emoji-toolkit'
+import iziToast from 'izitoast'
+import I18n from './i18n.js.erb'
+import { Shared } from './shared'
 
 $(document).on('turbolinks:load', () => {
   emojify()
@@ -15,6 +18,11 @@ $(document).on('turbolinks:load', () => {
   }).on('ajax:success', _event => {
     loaderBg.style.display = 'none'
   })
+  Shared.set_locale()
+  prepBuildStatistics()
+  prepUpdateSnippet()
+  prepUpdateAllSnippets()
+  prepBuildAllStatistics()
 })
 
 const emojify = () => {
@@ -30,4 +38,58 @@ const resetSearchForm = () => {
   $textFields.each((_, elem) => $(elem).val(''))
   const $selects = $form.find('select')
   $selects.each((_, elem) => $(elem).prop('selectedIndex', 0))
+}
+
+const prepUpdateSnippet = () => {
+  setEventToBtn('update-snippet-btn', I18n.t('text.channel.update_snippet.error'))
+}
+
+const prepBuildStatistics = () => {
+  setEventToBtn('build-statistics-btn', I18n.t('text.channel.build_statistics.error'))
+}
+
+const prepUpdateAllSnippets = () => {
+  setEventToBtn('update-all-snippets-btn', I18n.t('text.channel.update_snippet.error'))
+}
+
+const prepBuildAllStatistics = () => {
+  setEventToBtn('build-all-statistics-btn', I18n.t('text.channel.build_statistics.error'))
+}
+
+const setEventToBtn = (btnId, errorMessage = null) => {
+  const btn = document.getElementById(btnId)
+  if (!btn) {
+    return
+  }
+
+  triggerAndNotify(btn, errorMessage)
+}
+
+const triggerAndNotify = (btn, errorMessage = null) => {
+  btn.addEventListener('click', e => {
+    e.preventDefault()
+    const form = e.currentTarget.parentNode
+    const url = form.getAttribute('action')
+
+    window.fetch(url, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': Shared.getCsrfToken()
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`${response.status} ${response.statusText}`)
+        }
+        return response.json()
+      })
+      .then(json => {
+        iziToast.success({ title: json.message, position: 'bottomRight' })
+      })
+      .catch(err => {
+        iziToast.error({ message: errorMessage || err.message, position: 'bottomRight' })
+      })
+  })
 }

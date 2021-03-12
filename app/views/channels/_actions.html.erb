@@ -1,12 +1,12 @@
 <div>
   <% if can? :update, Channel %>
     <%= button_to t('helpers.link.update_all_snippets'), update_all_snippets_channels_path,
-                  method: :put, class: 'btn btn-success', role: :button,
+                  method: :put, class: 'btn btn-success', role: :button, id: 'update-all-snippets-btn',
                   data: {disable_with: t('helpers.notice.processing')}, remote: true %>
   <% end %>
   <% if can? :create, ChannelStatistic %>
     <%= button_to t('helpers.link.build_all_statistics'), build_all_statistics_channels_path,
-                  method: :put, class: 'btn btn-success', role: :button,
+                  method: :put, class: 'btn btn-success', role: :button, id: 'build-all-statistics-btn',
                   data: {disable_with: t('helpers.notice.processing')}, remote: true %>
   <% end %>
 </div>
