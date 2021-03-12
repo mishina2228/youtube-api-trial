@@ -1,4 +1,4 @@
-import I18n from '../src/i18n.js.erb'
+import I18n from './i18n.js.erb'
 
 const propSubmitButton = () => {
   I18n.locale = $('body').data('locale')
