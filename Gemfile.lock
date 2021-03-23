@@ -318,7 +318,7 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.1.0)
       tilt (~> 2.0)
-    specinfra (2.82.23)
+    specinfra (2.82.24)
       net-scp
       net-ssh (>= 2.7)
       net-telnet (= 0.1.1)
