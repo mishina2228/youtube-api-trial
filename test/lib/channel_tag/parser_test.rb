@@ -36,7 +36,7 @@ class ChannelTag::ParserTest < ActiveSupport::TestCase
 
   test 'empty values should be ignored' do
     @channel.tag_list.add([{value: nil}, {value: ''}].to_json, parser: ChannelTag::Parser)
-    assert_equal [], @channel.tag_list
+    assert_empty @channel.tag_list
   end
 
   test 'leading and trailing whitespaces should be ignored' do

@@ -6,7 +6,7 @@ class ChannelLists::SearchTest < ActiveSupport::TestCase
     response = service.search_channel('dummy_query', token: 'TEST_TOKEN', max_results: 10)
     search = ChannelLists::Search.new(response)
     assert search.channels.is_a?(Array)
-    assert(search.channels.all? {|c| c.is_a?(Channel)})
+    assert(search.channels.all?(Channel))
   end
 
   test 'search' do

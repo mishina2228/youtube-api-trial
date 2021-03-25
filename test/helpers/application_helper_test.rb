@@ -29,9 +29,9 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_nil print_diff_numbers(nil, 1)
     assert_nil print_diff_numbers(1, nil)
 
-    assert '+10,001', print_diff_numbers(10_000, 1)
-    assert '±0', print_diff_numbers(10_000, 10_000)
-    assert '-9,999', print_diff_numbers(1, 10_000)
+    assert_equal '+9,999', print_diff_numbers(10_000, 1)
+    assert_equal '±0', print_diff_numbers(10_000, 10_000)
+    assert_equal '-9,999', print_diff_numbers(1, 10_000)
   end
 
   test 'print_diff_datetimes' do
