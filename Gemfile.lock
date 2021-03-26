@@ -183,7 +183,7 @@ GEM
     minitest (5.14.4)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
-    mono_logger (1.1.0)
+    mono_logger (1.1.1)
     msgpack (1.4.2)
     multi_json (1.15.0)
     multipart-post (2.1.1)
