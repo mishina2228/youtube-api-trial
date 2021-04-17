@@ -69,21 +69,13 @@ const triggerAndNotify = (btn, errorMessage = null) => {
   btn.addEventListener('click', e => {
     e.preventDefault()
     const form = e.currentTarget.parentNode
-    const url = form.getAttribute('action')
 
-    window.fetch(url, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': Shared.getCsrfToken()
-      }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`${response.status} ${response.statusText}`)
+    Shared.sendAction(form)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`${res.status} ${res.statusText}`)
         }
-        return response.json()
+        return res.json()
       })
       .then(json => {
         iziToast.success({ title: json.message, position: 'bottomRight' })
