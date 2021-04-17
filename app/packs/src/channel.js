@@ -3,7 +3,7 @@ import iziToast from 'izitoast'
 import I18n from './i18n.js.erb'
 import { Shared } from './shared'
 
-$(document).on('turbolinks:load', () => {
+document.addEventListener('turbolinks:load', () => {
   emojify()
   $('[data-toggle="tooltip"]').tooltip()
   $('#reset-search').on('click', resetSearchForm)
