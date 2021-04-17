@@ -1,17 +1,8 @@
-<%= form_with(url: channel_tags_path, model: channel, method: :put) do |form| %>
+<%= form_with(url: channel_tags_path, model: channel, method: :put, local: true) do |form| %>
   <div class="input-group">
     <%= form.submit t('helpers.submit.send'), class: 'btn btn-sm btn-primary',
-                    data: {disable_with: t('helpers.notice.processing')}, remote: true %>
+                    data: {disable_with: t('helpers.notice.processing')} %>
     <%= form.text_field :tag_list, value: channel.tag_list_json, class: 'channel-tags',
                         'data-role' => 'tagsinput' %>
   </div>
 <% end %>
-
-<script>
-  $(() => {
-    const channelTags = document.querySelector('input.channel-tags')
-    new Tagify(channelTags, {
-      delimiters: null
-    })
-  })
-</script>

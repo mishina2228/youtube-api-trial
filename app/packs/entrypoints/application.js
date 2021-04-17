@@ -11,8 +11,8 @@ import 'bootstrap'
 
 import '../src/channel'
 import '../src/channel_list'
+import '../src/channel_tag'
 import '../src/system_setting'
-import '../src/tagify'
 import '../src/theme_changer'
 
 import './application.scss'

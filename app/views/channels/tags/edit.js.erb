@@ -1,7 +1,0 @@
-<% if defined?(error_message) %>
-toastr.options = {"positionClass": "toast-bottom-right"};
-toastr.error("<%= error_message %>");
-<% end %>
-
-$('.channel.tag-list')
-  .html("<%= j(render partial: 'form_tag_list', locals: {channel: @channel}) %>")
