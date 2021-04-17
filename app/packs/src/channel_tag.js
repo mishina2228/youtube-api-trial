@@ -22,12 +22,11 @@ const prepEditChannelTag = btn => {
       .then(html => {
         document.querySelector('.channel.tag-list').innerHTML = html
         const channelTags = document.querySelector('input.channel-tags')
-        // const tagify = new Tagify(channelTags, {
-        new Tagify(channelTags, { // eslint-disable-line no-new
+        const tagify = new Tagify(channelTags, {
           delimiters: null,
           whitelist: []
         })
-        // tagify.on('input', e => { tagNameWhiteList(e, tagify) })
+        tagify.on('input', e => { tagNameWhiteList(e, tagify) })
       })
       .catch(err => {
         console.error(err.message)
@@ -35,20 +34,15 @@ const prepEditChannelTag = btn => {
   })
 }
 
-// const tagNameWhiteList = (e, tagify) => {
-//   const value = e.detail.value
-//   tagify.settings.whitelist.lenth = 0 // reset current whitelist
-//   // show loading animation and hide the suggestions dropdown
-//   tagify.loading(true).dropdown.hide.call(tagify)
-//   window.fetch(`/tags?tag_name=${value}`)
-//     .then(response => response.json())
-//     .then(tagNames => {
-//       console.log(tagNames)
-//       console.log(tagify.settings.whitelist)
-//       tagify.settings.whitelist.splice(0, tagNames.length, ...tagNames)
-//       // tagify.settings.whitelist.push(...tagNames, ...tagify.value)
-//       console.log(tagify.settings.whitelist)
-//       // tagify.loading(false).dropdown.show.call(tagify, value) // render the suggestions dropdown
-//       tagify.loading(false).dropdown.show.call(tagify, value) // render the suggestions dropdown
-//     })
-// }
+const tagNameWhiteList = (e, tagify) => {
+  const value = e.detail.value
+  tagify.settings.whitelist.length = 0 // reset current whitelist
+  // show loading animation and hide the suggestions dropdown
+  tagify.loading(true).dropdown.hide.call(tagify)
+  window.fetch(`/tags?tag_name=${value}`)
+    .then(response => response.json())
+    .then(tagNames => {
+      tagify.settings.whitelist.splice(0, tagNames.length, ...tagNames)
+      tagify.loading(false).dropdown.show.call(tagify, value) // render the suggestions dropdown
+    })
+}
