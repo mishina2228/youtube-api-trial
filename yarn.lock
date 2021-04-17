@@ -1090,9 +1090,9 @@
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
 "@yaireo/tagify@^4.0.4":
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-4.0.4.tgz#998f80b31c0fc98b76523c6dbfb8a728a1c19ae2"
-  integrity sha512-7m9ssiYFobrMVLhjzfuDtP0s4eZaL564pGEvEFTw6mJ22nT1FzWA0FqhYri4mcOGW3iRkWz9tf92UUJmBWMLRQ==
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-4.0.5.tgz#476bbbeaa08d53f6cc469b6309ea1540dbdad2a8"
+  integrity sha512-HCIn2bCQ114SBDHafUR+jDutKFDbxDIjlWygg3eQBVpmJIcavKdYX6MdW5Jeh0QEcuDP4Ihby9QnZVNbv3z43Q==
 
 abbrev@1:
   version "1.1.1"
