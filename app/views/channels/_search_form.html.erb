@@ -10,7 +10,7 @@
     <div class="form-row">
       <div class="form-group col-6">
         <%= form.label :per %>
-        <%= form.select :per, [5, 10, 20], class: 'form-control' %>
+        <%= form.select :per, Channel::PER_LIST, class: 'form-control' %>
       </div>
       <div class="form-group col-6">
         <%= form.label :disabled %>

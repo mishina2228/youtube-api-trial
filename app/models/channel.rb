@@ -14,6 +14,10 @@ class Channel < ApplicationRecord
 
   acts_as_taggable_on :tags
 
+  DEFAULT_PER = 50
+  MAX_PER = 100
+  PER_LIST = [5, 10, 20, DEFAULT_PER, 75, MAX_PER].freeze
+
   def self.with_channel_statistics
     cs = ChannelStatistic.select(:channel_id, :view_count, :subscriber_count, :video_count)
                          .select('max(channel_statistics.created_at) as latest_acquired_at')

@@ -11,9 +11,9 @@ class ApplicationRecord < ActiveRecord::Base
   def self.proper_per(per)
     per = per.to_i
     if per <= 0
-      DEFAULT_PER
-    elsif per > MAX_PER
-      MAX_PER
+      const_get(:DEFAULT_PER)
+    elsif per > const_get(:MAX_PER)
+      const_get(:MAX_PER)
     else
       per
     end
