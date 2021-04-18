@@ -113,8 +113,15 @@ class ChannelsController < ApplicationController
   end
 
   def search_params
-    ret = params.permit(:order, :direction)
-    ret.merge(params.fetch(:search_channel, {}).permit(:title, :per, :disabled, :tag))
+    search_channel = params.fetch(:search_channel, {})
+    {
+      order: params[:order],
+      direction: params[:direction],
+      title: search_channel[:title],
+      per: search_channel[:per],
+      disabled: search_channel[:disabled],
+      tag: search_channel[:tag]
+    }.compact
   end
 
   def search_condition
