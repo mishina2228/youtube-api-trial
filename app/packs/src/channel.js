@@ -18,6 +18,7 @@ document.addEventListener('turbolinks:load', () => {
   }).on('ajax:success', _event => {
     loaderBg.style.display = 'none'
   })
+  displayLoaderImg()
   Shared.set_locale()
   prepBuildStatistics()
   prepUpdateSnippet()
@@ -38,6 +39,18 @@ const resetSearchForm = () => {
   $textFields.each((_, elem) => $(elem).val(''))
   const $selects = $form.find('select')
   $selects.each((_, elem) => $(elem).prop('selectedIndex', 0))
+}
+
+const displayLoaderImg = () => {
+  const loaderBg = document.querySelector('.loader-bg')
+  document.querySelectorAll('form.search').forEach(element => {
+    element.addEventListener('ajax:beforeSend', _event => {
+      loaderBg.style.display = 'block'
+    })
+    element.addEventListener('ajax:success', _event => {
+      loaderBg.style.display = 'none'
+    })
+  })
 }
 
 const prepUpdateSnippet = () => {
