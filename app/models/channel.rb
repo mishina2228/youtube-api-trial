@@ -45,7 +45,7 @@ class Channel < ApplicationRecord
     raise res.error if res.error.present?
 
     statistics = res.response
-    channel_statistics.build(channel_statistics_params(statistics)).save!
+    channel_statistics.create!(channel_statistics_params(statistics))
   end
 
   def update_snippet!
