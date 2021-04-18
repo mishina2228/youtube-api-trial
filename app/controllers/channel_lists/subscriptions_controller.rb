@@ -1,4 +1,4 @@
-class ChannelLists::SubscriptionsController < ApplicationController
+class ChannelLists::SubscriptionsController < ChannelListsController
   def index
     @condition = search_condition
     if request.xhr?
@@ -12,12 +12,6 @@ class ChannelLists::SubscriptionsController < ApplicationController
   end
 
   private
-
-  def search_condition
-    cond = ::Search::ChannelListCondition.new(search_params)
-    cond.per ||= ChannelList::DEFAULT_PER
-    cond
-  end
 
   def search_params
     params.fetch(:search_channel_list_condition, {})

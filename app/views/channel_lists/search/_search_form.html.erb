@@ -12,7 +12,7 @@
         <%= form.label :per %>
       </div>
       <div class="col-2 col-md-2">
-        <%= form.select :per, [5, 10, 20, 30, 50], class: 'form-control' %>
+        <%= form.select :per, ChannelList::PER_LIST, class: 'form-control' %>
       </div>
     </div>
     <%= button_tag t('helpers.button.reset'), type: :button, id: 'reset-search',
