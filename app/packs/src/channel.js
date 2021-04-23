@@ -8,6 +8,7 @@ document.addEventListener('turbolinks:load', () => {
   $('[data-toggle="tooltip"]').tooltip()
   $('#reset-search').on('click', resetSearchForm)
   const loaderBg = document.querySelector('.loader-bg')
+
   $('#search-result-pagination').on('ajax:beforeSend', _event => {
     document.querySelectorAll('nav ul .page-item').forEach(element => {
       element.classList.add('disabled')
@@ -18,7 +19,8 @@ document.addEventListener('turbolinks:load', () => {
   }).on('ajax:success', _event => {
     loaderBg.style.display = 'none'
   })
-  displayLoaderImg()
+
+  displayLoaderImg('form.search')
   Shared.set_locale()
   prepBuildStatistics()
   prepUpdateSnippet()
@@ -41,14 +43,19 @@ const resetSearchForm = () => {
   $selects.each((_, elem) => $(elem).prop('selectedIndex', 0))
 }
 
-const displayLoaderImg = () => {
+const displayLoaderImg = (query) => {
   const loaderBg = document.querySelector('.loader-bg')
-  document.querySelectorAll('form.search').forEach(element => {
+  document.querySelectorAll(query).forEach(element => {
     element.addEventListener('ajax:beforeSend', _event => {
       loaderBg.style.display = 'block'
     })
     element.addEventListener('ajax:success', _event => {
       loaderBg.style.display = 'none'
+    })
+    element.addEventListener('ajax:error', event => {
+      loaderBg.style.display = 'none'
+      iziToast.error({ message: I18n.t('text.common.error_message'), position: 'bottomRight' })
+      console.error(event)
     })
   })
 }

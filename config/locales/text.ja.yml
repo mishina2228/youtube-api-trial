@@ -35,6 +35,7 @@ ja:
         success: チャンネル情報の取得に成功しました
         error: チャンネル情報の取得に失敗しました
     common:
+      error_message: 不明なエラーが発生しました。
       failure_count: "失敗: %{count}件"
       success_count: "成功: %{count}件"
     devise:

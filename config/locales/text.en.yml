@@ -35,6 +35,7 @@ en:
         success: Acquiring a channel info was succeeded.
         error: Acquiring a channel info was failed.
     common:
+      error_message: Unknown error occurred.
       failure_count: "Failure: %{count}"
       success_count: "Success: %{count}"
     devise:
