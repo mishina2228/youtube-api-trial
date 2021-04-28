@@ -11,7 +11,7 @@ gem 'sqlite3'
 gem 'puma', '~> 5.2'
 gem 'puma_worker_killer'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.0'
+gem 'webpacker', '~> 5.3'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
