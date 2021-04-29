@@ -1,0 +1,76 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "20:00"
+  open-pull-requests-limit: 10
+  assignees:
+  - mishina2228
+  allow:
+  - dependency-type: direct
+  - dependency-type: indirect
+  ignore:
+  - dependency-name: faraday-net_http_persistent
+    versions:
+    - 1.1.0
+  - dependency-name: faraday-excon
+    versions:
+    - 1.1.0
+  - dependency-name: representable
+    versions:
+    - 3.1.0
+  - dependency-name: rexml
+    versions:
+    - 3.2.5
+  - dependency-name: mini_mime
+    versions:
+    - 1.0.3
+  - dependency-name: mimemagic
+    versions:
+    - 0.3.10
+    - 0.3.6
+    - 0.3.8
+  - dependency-name: nio4r
+    versions:
+    - 2.5.7
+  - dependency-name: declarative-option
+    versions:
+    - 0.1.1
+  - dependency-name: semantic_range
+    versions:
+    - 3.0.0
+  - dependency-name: signet
+    versions:
+    - 0.15.0
+  - dependency-name: codecov
+    versions:
+    - 0.5.0
+  - dependency-name: rubocop-performance
+    versions:
+    - 1.10.0
+  - dependency-name: uniform_notifier
+    versions:
+    - 1.14.0
+  - dependency-name: regexp_parser
+    versions:
+    - 2.1.0
+  - dependency-name: google-apis-youtube_v3
+    versions:
+    - 0.2.0
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "20:00"
+  open-pull-requests-limit: 10
+  assignees:
+  - mishina2228
+  ignore:
+  - dependency-name: "@yaireo/tagify"
+    versions:
+    - 3.25.0
+    - 4.0.0
+    - 4.0.1
+    - 4.0.3
