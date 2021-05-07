@@ -25,7 +25,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "resolutions": {
-    "hosted-git-info": "^3.0.8"
+    "hosted-git-info": "^3.0.8",
+    "is-svg": "^4.2.2"
   },
   "standard": {
     "globals": [
