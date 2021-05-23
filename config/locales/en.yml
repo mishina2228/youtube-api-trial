@@ -30,7 +30,7 @@ en:
         tags: Tags
         thumbnail_url: Thumbnail URL
       channel_snippet:
-        created_at: Info acquisition date
+        created_at: Acquired at
       channel_statistic:
         channel_id: Channel ID
         created_at: Acquired at
