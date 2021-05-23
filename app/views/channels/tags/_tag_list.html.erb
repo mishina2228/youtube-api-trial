@@ -3,5 +3,5 @@
                 method: :get, class: 'btn btn-sm btn-success', id: 'edit-channel-tag-btn', role: :button, remote: true %>
 <% end %>
 <% channel.tag_list.each do |tag| %>
-  <%= link_to(tag, channels_path(search_channel: {tag: tag}), class: 'badge badge-pill badge-secondary') %>
+  <%= link_to(tag, channels_path(search_channel: {tag: tag}), class: 'badge rounded-pill bg-secondary') %>
 <% end %>

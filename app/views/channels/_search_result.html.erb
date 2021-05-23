@@ -39,13 +39,13 @@
           <%= print_link(c.title, channel_path(c, take_params), t('text.channel.title.missing')) %>
           <div>
             <% c.tags.each do |tag| %>
-              <%= link_to(tag.name, channels_path(search_channel: {tag: tag.name}), class: 'badge badge-pill badge-secondary', remote: true) %>
+              <%= link_to(tag.name, channels_path(search_channel: {tag: tag.name}), class: 'badge rounded-pill bg-secondary', remote: true) %>
             <% end %>
           </div>
         </td>
         <td class="d-none d-md-table-cell"><%= print_datetime(c.published_at, format: :date) %></td>
         <td>
-          <div class="vertical text-right text-nowrap">
+          <div class="vertical text-end text-nowrap">
           <span>
             <%= print_number(c.subscriber_count) %>
           </span>
@@ -55,7 +55,7 @@
           </div>
         </td>
         <td class="d-none d-md-table-cell">
-          <div class="vertical text-right text-nowrap">
+          <div class="vertical text-end text-nowrap">
           <span>
             <%= print_number(c.view_count) %>
           </span>
@@ -65,7 +65,7 @@
           </div>
         </td>
         <td class="d-none d-md-table-cell">
-          <div class="vertical text-right text-nowrap">
+          <div class="vertical text-end text-nowrap">
           <span>
             <%= print_number(c.video_count) %>
           </span>
@@ -75,7 +75,7 @@
           </div>
         </td>
         <td class="d-none d-xl-table-cell">
-          <div class="vertical text-right text-nowrap">
+          <div class="vertical text-end text-nowrap">
           <span>
             <%= print_acquired_at(c.latest_acquired_at, format: :date) %>
           </span>

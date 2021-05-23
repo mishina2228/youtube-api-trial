@@ -1,18 +1,18 @@
 <%= form_with(model: condition, url: channel_lists_search_index_path, method: :get,
               class: 'search') do |form| %>
   <div class="container box_radius">
-    <div class="form-group row">
+    <div class="row mb-3">
       <div class="col-3 col-md-2">
         <%= form.label :query %>
       </div>
-      <div class="col-8 col-md-4">
+      <div class="col-9 col-md-4">
         <%= form.text_field :query, class: 'form-control', required: true %>
       </div>
       <div class="col-5 col-md-3">
         <%= form.label :per %>
       </div>
-      <div class="col-2 col-md-2">
-        <%= form.select :per, ChannelList::PER_LIST, class: 'form-control' %>
+      <div class="col-3 col-md-3">
+        <%= form.select :per, ChannelList::PER_LIST, {}, class: 'form-control form-select' %>
       </div>
     </div>
     <%= button_tag t('helpers.button.reset'), type: :button, id: 'reset-search',

@@ -1,4 +1,4 @@
-<div class="container text-right">
+<div class="container text-end">
   <% I18n.available_locales.reject {|l| l == I18n.locale}.each do |locale| %>
     <%= link_to image_pack_tag("#{locale}.png", size: '36x36'),
                 url_for(params.permit(:locale).merge(locale: locale)) %>

@@ -1,12 +1,12 @@
 const toggleAuthMethod = button => {
-  propFields($('.auth-field').find('.form-group'), false)
+  propFields($('.auth-field').find('.auth-field-group'), false)
 
   const authMethod = button.val()
   switch (authMethod) {
     case 'api_key':
     case 'oauth2': {
       const checked = button.is(':checked')
-      propFields($('.' + authMethod).find('.form-group'), checked)
+      propFields($('.' + authMethod).find('.auth-field-group'), checked)
       break
     }
     default: {
@@ -31,7 +31,7 @@ const changePassword = link => {
 
 $(document).on('turbolinks:load', () => {
   if (document.URL.match(/system_setting\/(edit|new)/)) {
-    propFields($('.auth-field').find('.form-group'), false)
+    propFields($('.auth-field').find('.auth-field-group'), false)
     $('.auth-methods input[type="radio"]').on('change', event =>
       toggleAuthMethod($(event.currentTarget))
     )
