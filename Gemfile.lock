@@ -182,7 +182,7 @@ GEM
     memoist (0.16.2)
     method_source (1.0.0)
     mini_mime (1.0.3)
-    mini_portile2 (2.5.1)
+    mini_portile2 (2.5.3)
     minitest (5.14.4)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
