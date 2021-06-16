@@ -1327,10 +1327,10 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@yaireo/tagify@^4.3.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-4.3.0.tgz#eeb6755cbadde215aa9c34684e557373b535217d"
-  integrity sha512-KYDFQMAtcOJZ5fH8QiQPbQVmLfJPwR48ZeRBPN/IqWQtDym6N7s8yYFjGaIYdAIjorJnPeCLO1cDbIpD7278TA==
+"@yaireo/tagify@^4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-4.3.1.tgz#dd30faa75db921cc6504dd11d1324efe93771c5f"
+  integrity sha512-IaHoYFrGdpH5CJi/Xikf2vfFQBhqAvVurIbCIWmon8t238O46THLett5szS1EKEh2nU9UVP3dgISci6czQVJQw==
 
 accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.7:
   version "1.3.7"
