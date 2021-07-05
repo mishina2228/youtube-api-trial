@@ -297,7 +297,7 @@ GEM
       rubocop (>= 1.7.0, < 2.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.4)
-    rubyzip (2.3.0)
+    rubyzip (2.3.1)
     rufus-scheduler (3.7.0)
       fugit (~> 1.1, >= 1.1.6)
     schash (0.1.2)
