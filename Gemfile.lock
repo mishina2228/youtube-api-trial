@@ -254,7 +254,7 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     rainbow (3.0.0)
-    rake (13.0.4)
+    rake (13.0.6)
     redis (4.3.1)
     redis-namespace (1.8.1)
       redis (>= 3.0.4)
