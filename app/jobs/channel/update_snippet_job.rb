@@ -20,15 +20,15 @@ class Channel::UpdateSnippetJob
       channel.transaction do
         channel.update_snippet!
       end
-    rescue Google::Apis::TransmissionError, HTTPClient::TimeoutError => e
+    rescue Mishina::Youtube::NoChannelError => e
+      channel.update!(disabled: true)
+      raise e
+    rescue => e
       retry_count = options['retry'].to_i
       raise e unless retry_count < Consts::Job::RETRY_MAX_COUNT
 
       seconds = 3 * 10**retry_count
       JobUtils.enqueue_in(seconds, self, options.merge('retry' => retry_count + 1))
-    rescue Mishina::Youtube::NoChannelError => e
-      channel.update!(disabled: true)
-      raise e
     end
 
     Rails.logger.info %(Updated information of channel "#{channel.title}")
