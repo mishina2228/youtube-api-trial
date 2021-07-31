@@ -12,14 +12,9 @@ executors:
   node-14:
     docker:
       - image: circleci/node:14
-  ruby-2-7:
+  ruby-latest:
     docker:
-      - image: circleci/ruby:2.7
-    environment:
-      <<: *common_env
-  node-browsers-2-5:
-    docker:
-      - image: circleci/ruby:2.5-node-browsers
+      - image: circleci/ruby:latest
     environment:
       <<: *common_env
   node-browsers-2-6:
@@ -143,17 +138,17 @@ commands:
 
 jobs: # a collection of steps
   brakeman:
-    executor: ruby-2-7
+    executor: ruby-latest
     steps:
       - checkout
       - update_rubygems
       - which_bundler
       - which_ruby
       - restore_gems:
-          ruby-version: '2.7'
+          ruby-version: 'latest'
       - install_gems
       - save_gems:
-          ruby-version: '2.7'
+          ruby-version: 'latest'
       - run:
           name: Run Brakeman
           command: |-
@@ -171,45 +166,6 @@ jobs: # a collection of steps
           name: Run Standard
           command: |-
             yarn standard
-  minitest-2-5:
-    executor: node-browsers-2-5
-    steps:
-      - checkout
-      - update_rubygems
-      - which_bundler
-      - which_ruby
-      - which_nodejs
-      - restore_gems:
-          ruby-version: '2.5'
-      - install_gems
-      - save_gems:
-          ruby-version: '2.5'
-      - restore_packages
-      - install_packages
-      - save_packages
-      - setup_database
-      - minitest
-      - store_test_reports
-  system-test-2-5:
-    executor: node-browsers-2-5
-    steps:
-      - checkout
-      - update_rubygems
-      - which_bundler
-      - which_ruby
-      - which_nodejs
-      - restore_gems:
-          ruby-version: '2.5'
-      - install_gems
-      - save_gems:
-          ruby-version: '2.5'
-      - restore_packages
-      - install_packages
-      - save_packages
-      - setup_database
-      - webpack
-      - system_test
-      - store_test_reports
   minitest-2-6:
     executor: node-browsers-2-6
     steps:
@@ -335,10 +291,6 @@ workflows:
   standard_style:
     jobs:
       - standard_style
-  ruby-2.5-test:
-    jobs:
-      - minitest-2-5
-      - system-test-2-5
   ruby-2.6-test:
     jobs:
       - minitest-2-6
