@@ -2,7 +2,7 @@
   "name": "youtube-api-trial",
   "private": true,
   "dependencies": {
-    "@popperjs/core": "^2.9.2",
+    "@popperjs/core": "^2.9.3",
     "@rails/ujs": "^6.1.4",
     "@rails/webpacker": "^5.4.0",
     "@yaireo/tagify": "^4.6.0",
