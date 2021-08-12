@@ -35,19 +35,15 @@ class Mishina::Youtube::Service
 
   private
 
+  # @return [Array(Integer, Google::Apis::YoutubeV3::ListChannelsResponse, StandardError)]
   def get_channel(part, channel_id)
-    response = nil
-    begin
-      response = service.list_channels(part, id: channel_id)
-      status, error = if response.items.blank?
-                        [Consts::Statuses::BLANK, Mishina::Youtube::NoChannelError.new(channel_id)]
-                      else
-                        [Consts::Statuses::OK, nil]
-                      end
-    rescue Google::Apis::ClientError => e
-      status = Consts::Statuses::ERROR
-      error = e
+    response = service.list_channels(part, id: channel_id)
+    if response.items.blank?
+      [Consts::Statuses::BLANK, response, Mishina::Youtube::NoChannelError.new(channel_id)]
+    else
+      [Consts::Statuses::OK, response, nil]
     end
-    [status, response, error]
+  rescue Google::Apis::ClientError => e
+    [Consts::Statuses::ERROR, nil, e]
   end
 end
