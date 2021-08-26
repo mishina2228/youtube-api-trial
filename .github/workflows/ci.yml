@@ -1,0 +1,84 @@
+name: ci
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    strategy:
+      fail-fast: true
+      matrix:
+        ruby_version:
+          - '3.0'
+          - '2.7'
+          - '2.6'
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_CLEAN: 'true'
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: vendor/bundle
+      RAILS_ENV: test
+      NODE_ENV: test
+      TZ: 'Asia/Tokyo'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - run: yarn install
+      - name: Database setup
+        run: bin/rails db:schema:load --trace
+      - name: Build assets in advance
+        run: bin/webpack
+      - name: Run unit tests
+        run: bin/rails test
+      - name: Run system test
+        run: bin/rails test:system
+      - name: Archive system test result screenshots
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: system test result screenshots
+          path: tmp/screenshots/
+  brakeman:
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_CLEAN: 'true'
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: vendor/bundle
+      RAILS_ENV: test
+      TZ: 'Asia/Tokyo'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+      - name: Run Brakeman
+        run: bundle exec brakeman
+  standard:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - run: yarn install
+      - name: Run Standard
+        run: yarn standard
