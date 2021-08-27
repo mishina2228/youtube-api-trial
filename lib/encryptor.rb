@@ -1,5 +1,6 @@
 module Encryptor
   CIPHER = 'aes-256-cbc'.freeze
+  TEST_SECRET = 'c0b469b8a1c0baf224c837bec3acafe6'.freeze
 
   private
 
@@ -12,7 +13,14 @@ module Encryptor
   end
 
   def encryptor
-    secure = Rails.application.credentials.config[:secret_key_base][0..31]
-    ActiveSupport::MessageEncryptor.new(secure, CIPHER)
+    ActiveSupport::MessageEncryptor.new(secret, CIPHER)
+  end
+
+  def secret
+    if Rails.env.test?
+      TEST_SECRET
+    else
+      Rails.application.credentials.config[:secret_key_base][0..31]
+    end
   end
 end
