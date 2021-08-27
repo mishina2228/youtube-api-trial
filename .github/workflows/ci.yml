@@ -22,7 +22,6 @@ jobs:
       RAILS_ENV: test
       NODE_ENV: test
       TZ: 'Asia/Tokyo'
-      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
