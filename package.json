@@ -6,7 +6,7 @@
     "@rails/ujs": "^6.1.4",
     "@rails/webpacker": "^5.4.2",
     "@yaireo/tagify": "^4.7.2",
-    "bootstrap": "^5.0.2",
+    "bootstrap": "^5.1.0",
     "emoji-toolkit": "^6.6.0",
     "i18n-js": "^3.8.0",
     "import-glob-loader": "^1.1.0",
