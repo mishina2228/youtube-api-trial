@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/mishina2228/youtube-api-trial.svg?style=svg)](https://circleci.com/gh/mishina2228/youtube-api-trial)
+[![CI](https://github.com/mishina2228/youtube-api-trial/workflows/ci/badge.svg)](https://github.com/mishina2228/youtube-api-trial/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b80a05b702d4a8ee5b13/maintainability)](https://codeclimate.com/github/mishina2228/youtube-api-trial/maintainability)
 [![codecov](https://codecov.io/gh/mishina2228/youtube-api-trial/branch/master/graph/badge.svg)](https://codecov.io/gh/mishina2228/youtube-api-trial)
 
