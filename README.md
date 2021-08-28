@@ -23,7 +23,7 @@ yarn
 ```
 Next, execute the database migrations/schema setup:
 ```
-bundle exec rails db:setup
+bin/rails db:setup
 ```
 
 
@@ -53,9 +53,15 @@ god stop youtube_api_trial
 
 ### Start the app
 
+#### development
 ```
-bundle exec rails assets:precompile RAILS_ENV=[RAILS_ENV]
-bundle exec pumactl start -e [RAILS_ENV]
+bin/rails start
+```
+
+#### production
+```
+bin/rails assets:precompile RAILS_ENV=production
+bin/rails s -e production
 ```
 
 ## Configuration Files
