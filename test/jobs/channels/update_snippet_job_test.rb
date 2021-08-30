@@ -1,14 +1,13 @@
 require 'test_helper'
-require 'google/apis/errors'
 
-module Channel
-  class BuildStatisticsJobTest < ActiveSupport::TestCase
+module Channels
+  class UpdateSnippetJobTest < ActiveSupport::TestCase
     test 'before_enqueue' do
-      assert Channel::BuildStatisticsJob.before_enqueue
+      assert Channels::UpdateSnippetJob.before_enqueue
 
       jobs = [
         {
-          'class' => Channel::BuildStatisticsJob.name,
+          'class' => Channels::UpdateSnippetJob.name,
           'args' => [
             {
               'channel_id' => 'test_channel_id'
@@ -18,43 +17,43 @@ module Channel
       ]
       JobUtils.stub(:peek, jobs) do
         params = {'channel_id' => 'test_channel_id'}
-        assert_not Channel::BuildStatisticsJob.before_enqueue(params)
+        assert_not Channels::UpdateSnippetJob.before_enqueue(params)
       end
     end
 
-    test 'channel statistics increases by one' do
+    test 'channel snippet should be updated' do
       channel = channels(:channel1)
+      before_description = channel.description
       assert_nothing_raised do
-        assert_difference -> {channel.channel_statistics.count} do
-          Channel::BuildStatisticsJob.perform('channel_id' => channel.id)
-        end
+        Channels::UpdateSnippetJob.perform('channel_id' => channel.id)
       end
+      assert_not_equal channel.reload.description, before_description
     end
 
     test 'fail if the channel is not existed' do
       channel = channels(:non_existing_channel)
+      assert_nil channel.description
       assert_not channel.disabled?
-      assert_no_difference -> {channel.channel_statistics.count} do
-        e = assert_raise Mishina::Youtube::NoChannelError do
-          Channel::BuildStatisticsJob.perform('channel_id' => channel.id)
-        end
-        assert_includes e.message, "title = #{channel.title}"
+      e = assert_raise Mishina::Youtube::NoChannelError do
+        Channels::UpdateSnippetJob.perform('channel_id' => channel.id)
       end
+      assert_includes e.message, "title = #{channel.title}"
 
-      assert channel.reload.disabled?, 'the channel is disabled if it does not exist'
+      assert_nil channel.reload.description
+      assert channel.disabled?, 'the channel is disabled if it does not exist'
       e = assert_raise Mishina::Youtube::DisabledChannelError do
-        Channel::BuildStatisticsJob.perform('channel_id' => channel.id)
+        Channels::UpdateSnippetJob.perform('channel_id' => channel.id)
       end
       assert_includes e.message, "title = #{channel.title}"
     end
 
-    test 'fail if the client error occurred' do
+    test 'fail if client error occurred' do
       channel = channels(:error_channel)
-      assert_no_difference -> {channel.channel_statistics.count} do
-        assert_raise Google::Apis::ClientError do
-          Channel::BuildStatisticsJob.perform('channel_id' => channel.id)
-        end
+      assert_nil channel.description
+      assert_raise Google::Apis::ClientError do
+        Channels::UpdateSnippetJob.perform('channel_id' => channel.id)
       end
+      assert_nil channel.reload.description
     end
 
     test 'retry this job if the transmission error occurred' do
@@ -62,15 +61,15 @@ module Channel
       job_utils_mock = MiniTest::Mock.new
       job_utils_mock.expect(:call, nil) do |seconds_from_now, klass, options|
         assert_equal 3 * 10**0, seconds_from_now
-        assert_equal Channel::BuildStatisticsJob, klass
+        assert_equal Channels::UpdateSnippetJob, klass
         assert_equal 1, options['retry']
       end
       expected_error = -> {raise Google::Apis::TransmissionError, 'mock error'}
 
       Channel.stub(:find, ->(_channel_id) {channel}) do
-        channel.stub(:build_statistics!, expected_error) do
+        channel.stub(:update_snippet!, expected_error) do
           JobUtils.stub(:enqueue_in, job_utils_mock) do
-            Channel::BuildStatisticsJob.perform('channel_id' => channel.id)
+            Channels::UpdateSnippetJob.perform('channel_id' => channel.id)
           end
         end
       end
@@ -83,9 +82,9 @@ module Channel
       expected_error = -> {raise Google::Apis::TransmissionError, 'mock error'}
 
       Channel.stub(:find, ->(_channel_id) {channel}) do
-        channel.stub(:build_statistics!, expected_error) do
+        channel.stub(:update_snippet!, expected_error) do
           assert_raise Google::Apis::TransmissionError do
-            Channel::BuildStatisticsJob.perform(
+            Channels::UpdateSnippetJob.perform(
               'channel_id' => channel.id, 'retry' => Consts::Job::RETRY_MAX_COUNT
             )
           end

@@ -1,13 +1,13 @@
 require 'test_helper'
 
-module Channel
+module Channels
   class BuildAllStatisticsJobTest < ActiveSupport::TestCase
     def test_before_enqueue
-      assert Channel::BuildAllStatisticsJob.before_enqueue
+      assert Channels::BuildAllStatisticsJob.before_enqueue
 
-      jobs = [{'class' => Channel::BuildAllStatisticsJob.name}]
+      jobs = [{'class' => Channels::BuildAllStatisticsJob.name}]
       JobUtils.stub(:peek, jobs) do
-        assert_not Channel::BuildAllStatisticsJob.before_enqueue
+        assert_not Channels::BuildAllStatisticsJob.before_enqueue
       end
     end
 
@@ -15,7 +15,7 @@ module Channel
       [channels(:error_channel), channels(:non_existing_channel)].each(&:destroy)
 
       assert_nothing_raised do
-        Channel::BuildAllStatisticsJob.perform
+        Channels::BuildAllStatisticsJob.perform
       end
     end
   end

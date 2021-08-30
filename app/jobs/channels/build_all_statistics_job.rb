@@ -1,5 +1,5 @@
-module Channel
-  class UpdateAllSnippetsJob
+module Channels
+  class BuildAllStatisticsJob
     @queue = :normal
 
     def self.before_enqueue(_params = {})
@@ -12,7 +12,7 @@ module Channel
 
     def self.perform(_options = {})
       Channel.where(disabled: false).find_each do |channel|
-        JobUtils.enqueue(Channel::UpdateSnippetJob, 'channel_id' => channel.id)
+        JobUtils.enqueue(Channels::BuildStatisticsJob, 'channel_id' => channel.id)
       end
     end
   end

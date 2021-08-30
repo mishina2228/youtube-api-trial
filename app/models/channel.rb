@@ -35,8 +35,8 @@ class Channel < ApplicationRecord
   def save_and_set_job
     return false unless save
 
-    JobUtils.enqueue(Channel::BuildStatisticsJob, 'channel_id' => id)
-    JobUtils.enqueue(Channel::UpdateSnippetJob, 'channel_id' => id)
+    JobUtils.enqueue(Channels::BuildStatisticsJob, 'channel_id' => id)
+    JobUtils.enqueue(Channels::UpdateSnippetJob, 'channel_id' => id)
     true
   end
 

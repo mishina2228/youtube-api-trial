@@ -1,4 +1,4 @@
-module Channel
+module Channels
   class BuildStatisticsJob
     @queue = :normal
 

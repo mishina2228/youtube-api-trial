@@ -53,7 +53,7 @@ class ChannelsController < ApplicationController
   end
 
   def build_statistics
-    JobUtils.enqueue(Channel::BuildStatisticsJob, 'channel_id' => @channel.id)
+    JobUtils.enqueue(Channels::BuildStatisticsJob, 'channel_id' => @channel.id)
     respond_to do |format|
       format.html {redirect_to @channel, notice: t('text.channel.build_statistics.start')}
       format.json {render json: {message: t('text.channel.build_statistics.start')}.to_json}
@@ -61,7 +61,7 @@ class ChannelsController < ApplicationController
   end
 
   def build_all_statistics
-    JobUtils.enqueue(Channel::BuildAllStatisticsJob)
+    JobUtils.enqueue(Channels::BuildAllStatisticsJob)
     respond_to do |format|
       format.html {redirect_to channels_url, notice: t('text.channel.build_all_statistics.start')}
       format.json {render json: {message: t('text.channel.build_all_statistics.start')}.to_json}
@@ -69,7 +69,7 @@ class ChannelsController < ApplicationController
   end
 
   def update_snippet
-    JobUtils.enqueue(Channel::UpdateSnippetJob, 'channel_id' => @channel.id)
+    JobUtils.enqueue(Channels::UpdateSnippetJob, 'channel_id' => @channel.id)
     respond_to do |format|
       format.html {redirect_to @channel, notice: t('text.channel.update_snippet.start')}
       format.json {render json: {message: t('text.channel.update_snippet.start')}.to_json}
@@ -77,7 +77,7 @@ class ChannelsController < ApplicationController
   end
 
   def update_all_snippets
-    JobUtils.enqueue(Channel::UpdateAllSnippetsJob)
+    JobUtils.enqueue(Channels::UpdateAllSnippetsJob)
     respond_to do |format|
       format.html {redirect_to channels_url, notice: t('text.channel.update_all_snippets.start')}
       format.json {render json: {message: t('text.channel.update_all_snippets.start')}.to_json}
