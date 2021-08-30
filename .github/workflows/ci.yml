@@ -15,10 +15,6 @@ jobs:
           - '2.6'
     runs-on: ubuntu-latest
     env:
-      BUNDLE_CLEAN: 'true'
-      BUNDLE_JOBS: 3
-      BUNDLE_RETRY: 3
-      BUNDLE_PATH: vendor/bundle
       RAILS_ENV: test
       NODE_ENV: test
       TZ: 'Asia/Tokyo'
@@ -51,13 +47,6 @@ jobs:
           path: tmp/screenshots/
   brakeman:
     runs-on: ubuntu-latest
-    env:
-      BUNDLE_CLEAN: 'true'
-      BUNDLE_JOBS: 3
-      BUNDLE_RETRY: 3
-      BUNDLE_PATH: vendor/bundle
-      RAILS_ENV: test
-      TZ: 'Asia/Tokyo'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
