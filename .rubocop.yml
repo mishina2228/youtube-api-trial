@@ -87,10 +87,6 @@ Style/ArrayCoercion:
   Enabled: true
 Style/AsciiComments:
   Enabled: false
-Style/ClassAndModuleChildren:
-  EnforcedStyle: compact
-  Exclude:
-    - 'config/application.rb'
 Style/Documentation:
   Enabled: false
 Style/EmptyMethod:

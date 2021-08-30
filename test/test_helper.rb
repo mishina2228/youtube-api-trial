@@ -10,20 +10,26 @@ require_relative '../config/environment'
 require 'rails/test_help'
 require 'minitest/autorun'
 
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+module ActiveSupport
+  class TestCase
+    # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+    fixtures :all
 
-  Dir.glob(Rails.root.join('test/support/*.rb')).sort.each do |filename|
-    require filename
-    include File.basename(filename).split('.').first.camelize.constantize if filename.end_with?('_support.rb')
+    Dir.glob(Rails.root.join('test/support/*.rb')).sort.each do |filename|
+      require filename
+      include File.basename(filename).split('.').first.camelize.constantize if filename.end_with?('_support.rb')
+    end
   end
 end
 
-class ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
+module ActionDispatch
+  class IntegrationTest
+    include Devise::Test::IntegrationHelpers
+  end
 end
 
-class ActionController::TestCase
-  include Devise::Test::ControllerHelpers
+module ActionController
+  class TestCase
+    include Devise::Test::ControllerHelpers
+  end
 end
