@@ -6,13 +6,13 @@ module Channels
       render partial: 'form_tag_list', locals: {channel: @channel}
     end
 
-  def update
-    if set_tag_list(@channel) && @channel.save
-      redirect_to @channel, notice: t('text.channel.update_tags.success')
-    else
-      redirect_to @channel, alert: t('text.channel.update_tags.error')
+    def update
+      if set_tag_list(@channel) && @channel.save
+        redirect_to @channel, notice: t('text.channel.update_tags.success')
+      else
+        redirect_to @channel, alert: t('text.channel.update_tags.error')
+      end
     end
-  end
 
     private
 
