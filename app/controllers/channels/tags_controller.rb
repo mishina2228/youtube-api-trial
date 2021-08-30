@@ -23,7 +23,7 @@ class Channels::TagsController < ApplicationController
     params.require(:channel).permit(:tag_list)
   end
 
-  def set_tag_list(channel)
+  def set_tag_list(channel) # rubocop:disable Naming/AccessorMethodName
     tag_list_was = channel.tag_list
     channel.tag_list = [] # clear existing tags
     begin

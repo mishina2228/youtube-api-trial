@@ -21,13 +21,23 @@ Layout/SpaceInsideBlockBraces:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
+Metrics/AbcSize:
+  Enabled: false
 Metrics/BlockLength:
   Exclude:
     - 'config/environments/*.rb'
     - 'config/routes.rb'
 Metrics/ClassLength:
-  Exclude:
-    - 'test/**/*.rb'
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Minitest/MultipleAssertions:
+  Enabled: false
 
 Rails/ActiveRecordCallbacksOrder:
   Enabled: true
@@ -43,6 +53,9 @@ Rails/MatchRoute:
   Enabled: true
 Rails/NegateInclude:
   Enabled: true
+Rails/Output:
+  Exclude:
+    - 'lib/resque/failure/email_notification.rb'
 Rails/Pluck:
   Enabled: true
 Rails/PluckId:
