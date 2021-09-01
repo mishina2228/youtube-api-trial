@@ -12,7 +12,7 @@
     "import-glob-loader": "^1.1.0",
     "izitoast": "^1.4.0",
     "jquery": "^3.6.0",
-    "js-cookie": "^3.0.0",
+    "js-cookie": "^3.0.1",
     "rails-erb-loader": "^5.5.2",
     "resolve-url-loader": "^4.0.0",
     "three-dots": "^0.2.1",
