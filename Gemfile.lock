@@ -142,7 +142,7 @@ GEM
       retriable (>= 2.0, < 4.a)
       rexml
       webrick
-    google-apis-youtube_v3 (0.9.0)
+    google-apis-youtube_v3 (0.10.0)
       google-apis-core (>= 0.4, < 2.a)
     googleauth (0.17.1)
       faraday (>= 0.17.3, < 2.0)
@@ -312,8 +312,8 @@ GEM
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     sfl (2.3)
-    signet (0.15.0)
-      addressable (~> 2.3)
+    signet (0.16.0)
+      addressable (~> 2.8)
       faraday (>= 0.17.3, < 2.0)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
@@ -395,7 +395,7 @@ DEPENDENCIES
   devise-i18n
   enum_help
   god
-  google-apis-youtube_v3 (~> 0.9.0)
+  google-apis-youtube_v3 (~> 0.10.0)
   i18n-js
   itamae
   jbuilder (~> 2.11)
