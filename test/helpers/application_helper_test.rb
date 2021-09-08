@@ -56,4 +56,10 @@ class ApplicationHelperTest < ActionView::TestCase
     expected = %{My URL: <a target="_blank" rel="noopener noreferrer" href="https://example.com">https://example.com</a>}
     assert_dom_equal expected, text_url_to_link(input)
   end
+
+  test 'text_url_to_link does not break the argument' do
+    input = 'https://example.com'
+    text_url_to_link(input)
+    assert_equal 'https://example.com', input
+  end
 end
