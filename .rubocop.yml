@@ -82,8 +82,6 @@ Rails/WhereExists:
 Rails/WhereNot:
   Enabled: true
 
-Style/AccessorGrouping:
-  Enabled: false
 Style/ArrayCoercion:
   Enabled: true
 Style/AsciiComments:
@@ -92,19 +90,11 @@ Style/Documentation:
   Enabled: false
 Style/EmptyMethod:
   EnforcedStyle: expanded
-Style/ExplicitBlockArgument:
-  Enabled: false
-Style/ExponentialNotation:
-  Enabled: false
 Style/FrozenStringLiteralComment:
-  Enabled: false
-Style/HashLikeCase:
   Enabled: false
 Style/PercentLiteralDelimiters:
   Enabled: false
 Style/RescueStandardError:
   EnforcedStyle: implicit
-Style/SlicingWithRange:
-  Enabled: false
 Style/SymbolArray:
-  Enabled: false
+  EnforcedStyle: brackets
