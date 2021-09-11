@@ -37,6 +37,15 @@ module Search
       assert_includes ret, @c2
     end
 
+    test 'search by from_date - a wrong argument should be ignored' do
+      [nil, false, true, '', 'test', '2018-13-20'].each do |arg|
+        channel = Search::Channel.new(from_date: arg)
+        ret = channel.search
+        assert_includes ret, @c1
+        assert_includes ret, @c2
+      end
+    end
+
     test 'search by to_date' do
       channel = Search::Channel.new(to_date: '2018-12-21')
       ret = channel.search
@@ -46,13 +55,21 @@ module Search
       channel = Search::Channel.new(to_date: '2018-12-20')
       ret = channel.search
       assert_includes ret, @c1
-      # TODO: improve date handling
-      # assert_includes ret, @c2
+      assert_includes ret, @c2
 
       channel = Search::Channel.new(to_date: '2018-12-19')
       ret = channel.search
       assert_includes ret, @c1
       assert_not_includes ret, @c2
+    end
+
+    test 'search by to_date - a wrong argument should be ignored' do
+      [nil, false, true, '', 'test', '2018-13-20'].each do |arg|
+        channel = Search::Channel.new(to_date: arg)
+        ret = channel.search
+        assert_includes ret, @c1
+        assert_includes ret, @c2
+      end
     end
 
     test 'search by order and direction' do
@@ -118,6 +135,36 @@ module Search
       channel = Search::Channel.new(tag: "i'm lovin' it")
       ret = channel.search
       assert_equal [@c1], ret.to_a
+    end
+
+    test 'from_date returns beginning of the day' do
+      expected = Date.new(2018, 10, 20).beginning_of_day
+      ['2018-10-20', '2018-10-20 01:23:45', '2018-10-20T01:23:45+0900'].each do |arg|
+        channel = Search::Channel.new(from_date: arg)
+        assert_equal expected, channel.from_date
+      end
+    end
+
+    test 'from_date returns nil when passing a wrong argument' do
+      [nil, false, true, '', 'test', '2018-13-20'].each do |arg|
+        channel = Search::Channel.new(from_date: arg)
+        assert_nil channel.from_date
+      end
+    end
+
+    test 'to_date returns end of the day' do
+      expected = Date.new(2018, 12, 20).end_of_day
+      ['2018-12-20', '2018-12-20 01:23:45', '2018-12-20T01:23:45+0900'].each do |arg|
+        channel = Search::Channel.new(to_date: arg)
+        assert_equal expected, channel.to_date
+      end
+    end
+
+    test 'to_date returns nil when passing a wrong argument' do
+      [nil, false, true, '', 'test', '2018-13-20'].each do |arg|
+        channel = Search::Channel.new(to_date: arg)
+        assert_nil channel.to_date
+      end
     end
   end
 end

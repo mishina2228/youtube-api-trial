@@ -1,16 +1,16 @@
 module Search
   class Channel < Search::Base
-    attr_accessor :ids, :title, :from_date, :to_date,
+    attr_accessor :ids, :title,
                   :subscriber_count, :video_count, :view_count, :tag
-    attr_writer :disabled
+    attr_writer :disabled, :from_date, :to_date
 
     def search
       ret = ::Channel.preload(:channel_statistics).preload(:tags)
       ret = ret.with_channel_statistics
       ret = ret.where(id: ids) if ids.present?
       ret = ret.where('title LIKE ?', "%#{title}%") if title.present?
-      ret = ret.where('published_at >= ?', from_date) if from_date.present?
-      ret = ret.where('published_at <= ?', to_date) if to_date.present?
+      ret = ret.where(published_at: from_date..) if from_date.present?
+      ret = ret.where(published_at: ..to_date) if to_date.present?
       ret = ret.where(disabled: disabled) unless disabled.nil?
       ret = ret.tagged_with("'#{tag}'") if tag.present?
       ret = ret.order(sort_column)
@@ -22,6 +22,18 @@ module Search
       return if @disabled.nil? || @disabled == ''
 
       @disabled
+    end
+
+    def from_date
+      Date.parse(@from_date).beginning_of_day
+    rescue TypeError, Date::Error
+      nil
+    end
+
+    def to_date
+      Date.parse(@to_date).end_of_day
+    rescue TypeError, Date::Error
+      nil
     end
 
     def self.disabled_options
