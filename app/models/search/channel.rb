@@ -37,7 +37,7 @@ module Search
     def sort_column
       case order
       when 'title', 'published_at'
-        order
+        order.to_sym
       when 'view_count', 'subscriber_count', 'video_count', 'latest_acquired_at'
         "cs.#{order}"
       else
