@@ -12,7 +12,6 @@ jobs:
         ruby_version:
           - '3.0'
           - '2.7'
-          - '2.6'
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
