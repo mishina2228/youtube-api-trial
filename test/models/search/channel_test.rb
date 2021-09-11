@@ -25,13 +25,25 @@ module Search
       assert_not_includes ret, @c2
     end
 
-    test 'search by from_date' do
+    test 'search by from_date passing a String' do
       channel = Search::Channel.new(from_date: '2018-10-20')
       ret = channel.search
       assert_includes ret, @c1
       assert_includes ret, @c2
 
       channel = Search::Channel.new(from_date: '2018-10-21')
+      ret = channel.search
+      assert_not_includes ret, @c1
+      assert_includes ret, @c2
+    end
+
+    test 'search by from_date passing a Date' do
+      channel = Search::Channel.new(from_date: Date.parse('2018-10-20'))
+      ret = channel.search
+      assert_includes ret, @c1
+      assert_includes ret, @c2
+
+      channel = Search::Channel.new(from_date: Date.parse('2018-10-21'))
       ret = channel.search
       assert_not_includes ret, @c1
       assert_includes ret, @c2
@@ -46,7 +58,7 @@ module Search
       end
     end
 
-    test 'search by to_date' do
+    test 'search by to_date passing a String' do
       channel = Search::Channel.new(to_date: '2018-12-21')
       ret = channel.search
       assert_includes ret, @c1
@@ -58,6 +70,23 @@ module Search
       assert_includes ret, @c2
 
       channel = Search::Channel.new(to_date: '2018-12-19')
+      ret = channel.search
+      assert_includes ret, @c1
+      assert_not_includes ret, @c2
+    end
+
+    test 'search by to_date passing a Date' do
+      channel = Search::Channel.new(to_date: Date.parse('2018-12-21'))
+      ret = channel.search
+      assert_includes ret, @c1
+      assert_includes ret, @c2
+
+      channel = Search::Channel.new(to_date: Date.parse('2018-12-20'))
+      ret = channel.search
+      assert_includes ret, @c1
+      assert_includes ret, @c2
+
+      channel = Search::Channel.new(to_date: Date.parse('2018-12-19'))
       ret = channel.search
       assert_includes ret, @c1
       assert_not_includes ret, @c2

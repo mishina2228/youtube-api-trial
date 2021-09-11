@@ -25,13 +25,13 @@ module Search
     end
 
     def from_date
-      Date.parse(@from_date).beginning_of_day
+      Date.parse(@from_date.to_s).beginning_of_day
     rescue TypeError, Date::Error
       nil
     end
 
     def to_date
-      Date.parse(@to_date).end_of_day
+      Date.parse(@to_date.to_s).end_of_day
     rescue TypeError, Date::Error
       nil
     end
