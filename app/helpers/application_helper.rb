@@ -61,9 +61,9 @@ module ApplicationHelper
     return if text.blank?
 
     text = text.dup
-    URI.extract(text, %w(http https)).uniq.each do |url|
+    URI.extract(text, %w[http https]).uniq.each do |url|
       text.gsub!(url, link_to(url, url, target: '_blank', rel: 'noopener noreferrer'))
     end
-    sanitize(text, attributes: %w(href title target rel))
+    sanitize(text, attributes: %w[href title target rel])
   end
 end

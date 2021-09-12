@@ -6,15 +6,15 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test 'print_link' do
-    assert_dom_equal %{<a href="https://example.com">body</a>},
+    assert_dom_equal %(<a href="https://example.com">body</a>),
                      print_link('body', 'https://example.com')
-    assert_dom_equal %{<a href="https://example.com">alternate</a>},
+    assert_dom_equal %(<a href="https://example.com">alternate</a>),
                      print_link('', 'https://example.com', 'alternate')
-    assert_dom_equal %{<a href="https://example.com">body is missing</a>},
+    assert_dom_equal %(<a href="https://example.com">body is missing</a>),
                      print_link('', 'https://example.com')
-    assert_dom_equal %{<a target="_blank" href="https://example.com">body</a>},
+    assert_dom_equal %(<a target="_blank" href="https://example.com">body</a>),
                      print_link('body', 'https://example.com', nil, target: '_blank')
-    assert_dom_equal %{<a target="_blank" rel="noopener noreferrer" href="https://example.com">body</a>},
+    assert_dom_equal %(<a target="_blank" rel="noopener noreferrer" href="https://example.com">body</a>),
                      print_link('body', 'https://example.com', nil, target: '_blank', rel: 'noopener noreferrer')
   end
 
@@ -50,10 +50,10 @@ class ApplicationHelperTest < ActionView::TestCase
 
     assert_equal 'abc', text_url_to_link('abc')
     input = 'https://example.com'
-    expected = %{<a target="_blank" rel="noopener noreferrer" href="https://example.com">https://example.com</a>}
+    expected = %(<a target="_blank" rel="noopener noreferrer" href="https://example.com">https://example.com</a>)
     assert_dom_equal expected, text_url_to_link(input)
     input = 'My URL: https://example.com'
-    expected = %{My URL: <a target="_blank" rel="noopener noreferrer" href="https://example.com">https://example.com</a>}
+    expected = %(My URL: <a target="_blank" rel="noopener noreferrer" href="https://example.com">https://example.com</a>)
     assert_dom_equal expected, text_url_to_link(input)
   end
 

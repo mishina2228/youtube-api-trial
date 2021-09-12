@@ -9,7 +9,7 @@ class Channel < ApplicationRecord
 
   validates :channel_id, presence: {message: proc {I18n.t('text.channel.channel_id.invalid')}}
   validates :channel_id, uniqueness: true
-  validates :thumbnail_url, format: URI::DEFAULT_PARSER.make_regexp(%w(http https)),
+  validates :thumbnail_url, format: URI::DEFAULT_PARSER.make_regexp(%w[http https]),
                             allow_blank: true
 
   acts_as_taggable_on :tags

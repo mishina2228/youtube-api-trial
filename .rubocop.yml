@@ -92,8 +92,6 @@ Style/EmptyMethod:
   EnforcedStyle: expanded
 Style/FrozenStringLiteralComment:
   Enabled: false
-Style/PercentLiteralDelimiters:
-  Enabled: false
 Style/RescueStandardError:
   EnforcedStyle: implicit
 Style/SymbolArray:
