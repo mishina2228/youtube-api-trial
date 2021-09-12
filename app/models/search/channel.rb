@@ -9,8 +9,7 @@ module Search
       ret = ret.with_channel_statistics
       ret = ret.where(id: ids) if ids.present?
       ret = ret.where('title LIKE ?', "%#{title}%") if title.present?
-      ret = ret.where(published_at: from_date..) if from_date.present?
-      ret = ret.where(published_at: ..to_date) if to_date.present?
+      ret = ret.where(published_at: published_at) if published_at.present?
       ret = ret.where(disabled: disabled) unless disabled.nil?
       ret = ret.tagged_with("'#{tag}'") if tag.present?
       ret = ret.order(sort_column)
@@ -34,6 +33,12 @@ module Search
       Date.parse(@to_date.to_s).end_of_day
     rescue TypeError, Date::Error
       nil
+    end
+
+    def published_at
+      return if from_date.nil? && to_date.nil?
+
+      from_date..to_date
     end
 
     def self.disabled_options

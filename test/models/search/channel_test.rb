@@ -101,6 +101,20 @@ module Search
       end
     end
 
+    test 'published_at' do
+      channel = Search::Channel.new
+      assert_nil channel.published_at
+
+      channel = Search::Channel.new(from_date: '2018-10-19')
+      assert_equal channel.from_date.., channel.published_at
+
+      channel = Search::Channel.new(to_date: '2018-12-19')
+      assert_equal (..channel.to_date), channel.published_at
+
+      channel = Search::Channel.new(from_date: '2018-10-19', to_date: '2018-12-19')
+      assert_equal channel.from_date..channel.to_date, channel.published_at
+    end
+
     test 'search by order and direction' do
       channel = Search::Channel.new(order: 'title', direction: nil)
       ret = channel.search
