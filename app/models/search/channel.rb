@@ -1,8 +1,8 @@
 module Search
   class Channel < Search::Base
     attr_accessor :ids, :title,
-                  :subscriber_count, :video_count, :view_count, :tag
-    attr_writer :disabled, :from_date, :to_date
+                  :video_count, :view_count, :tag
+    attr_writer :disabled, :from_date, :to_date, :subscriber_count_from, :subscriber_count_to
 
     def search
       ret = ::Channel.preload(:channel_statistics).preload(:tags)
@@ -11,6 +11,7 @@ module Search
       ret = ret.where('title LIKE ?', "%#{title}%") if title.present?
       ret = ret.where(published_at: published_at) if published_at.present?
       ret = ret.where(disabled: disabled) unless disabled.nil?
+      ret = ret.where(cs: {subscriber_count: subscriber_count}) if subscriber_count.present?
       ret = ret.tagged_with("'#{tag}'") if tag.present?
       ret = ret.order(sort_column)
       ret = ret.reverse_order if direction == 'desc' || direction.nil?
@@ -39,6 +40,20 @@ module Search
       return if from_date.nil? && to_date.nil?
 
       from_date..to_date
+    end
+
+    def subscriber_count_from
+      @subscriber_count_from.presence&.to_i
+    end
+
+    def subscriber_count_to
+      @subscriber_count_to.presence&.to_i
+    end
+
+    def subscriber_count
+      return if subscriber_count_from.nil? && subscriber_count_to.nil?
+
+      subscriber_count_from..subscriber_count_to
     end
 
     def self.disabled_options

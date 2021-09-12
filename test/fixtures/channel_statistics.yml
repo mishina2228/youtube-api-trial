@@ -1,11 +1,27 @@
-statistics1:
+channel1_statistics1:
   channel: channel1
   view_count: 1_000_000
   subscriber_count: 1_000_000
   video_count: 1_000_000
+  created_at: <%= 2.days.ago %>
 
-statistics2:
+channel1_statistics2:
+  channel: channel1
+  view_count: 1_000_003
+  subscriber_count: 1_000_002
+  video_count: 1_000_001
+  created_at: <%= 1.day.ago %>
+
+channel2_statistics1:
   channel: channel2
   view_count: 2_000_000
   subscriber_count: 2_000_000
   video_count: 2_000_000
+  created_at: <%= 2.days.ago %>
+
+channel2_statistics2:
+  channel: channel2
+  view_count: 1_999_997
+  subscriber_count: 1_999_998
+  video_count: 1_999_999
+  created_at: <%= 1.day.ago %>
