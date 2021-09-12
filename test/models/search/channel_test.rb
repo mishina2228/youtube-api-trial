@@ -25,25 +25,13 @@ module Search
       assert_not_includes ret, @c2
     end
 
-    test 'search by from_date passing a String' do
+    test 'search by from_date' do
       channel = Search::Channel.new(from_date: '2018-10-20')
       ret = channel.search
       assert_includes ret, @c1
       assert_includes ret, @c2
 
       channel = Search::Channel.new(from_date: '2018-10-21')
-      ret = channel.search
-      assert_not_includes ret, @c1
-      assert_includes ret, @c2
-    end
-
-    test 'search by from_date passing a Date' do
-      channel = Search::Channel.new(from_date: Date.parse('2018-10-20'))
-      ret = channel.search
-      assert_includes ret, @c1
-      assert_includes ret, @c2
-
-      channel = Search::Channel.new(from_date: Date.parse('2018-10-21'))
       ret = channel.search
       assert_not_includes ret, @c1
       assert_includes ret, @c2
@@ -58,7 +46,7 @@ module Search
       end
     end
 
-    test 'search by to_date passing a String' do
+    test 'search by to_date' do
       channel = Search::Channel.new(to_date: '2018-12-21')
       ret = channel.search
       assert_includes ret, @c1
@@ -70,23 +58,6 @@ module Search
       assert_includes ret, @c2
 
       channel = Search::Channel.new(to_date: '2018-12-19')
-      ret = channel.search
-      assert_includes ret, @c1
-      assert_not_includes ret, @c2
-    end
-
-    test 'search by to_date passing a Date' do
-      channel = Search::Channel.new(to_date: Date.parse('2018-12-21'))
-      ret = channel.search
-      assert_includes ret, @c1
-      assert_includes ret, @c2
-
-      channel = Search::Channel.new(to_date: Date.parse('2018-12-20'))
-      ret = channel.search
-      assert_includes ret, @c1
-      assert_includes ret, @c2
-
-      channel = Search::Channel.new(to_date: Date.parse('2018-12-19'))
       ret = channel.search
       assert_includes ret, @c1
       assert_not_includes ret, @c2
@@ -174,6 +145,14 @@ module Search
       end
     end
 
+    test 'from_date accepts Date or Time' do
+      expected = Date.new(2018, 10, 20).beginning_of_day
+      [Date.parse('2018-10-20'), Time.zone.parse('2018-10-20T01:23:45+0900')].each do |arg|
+        channel = Search::Channel.new(from_date: arg)
+        assert_equal expected, channel.from_date
+      end
+    end
+
     test 'from_date returns nil when passing a wrong argument' do
       [nil, false, true, '', 'test', '2018-13-20'].each do |arg|
         channel = Search::Channel.new(from_date: arg)
@@ -184,6 +163,14 @@ module Search
     test 'to_date returns end of the day' do
       expected = Date.new(2018, 12, 20).end_of_day
       ['2018-12-20', '2018-12-20 01:23:45', '2018-12-20T01:23:45+0900'].each do |arg|
+        channel = Search::Channel.new(to_date: arg)
+        assert_equal expected, channel.to_date
+      end
+    end
+
+    test 'to_date accepts Date or Time' do
+      expected = Date.new(2018, 12, 20).end_of_day
+      [Date.parse('2018-12-20'), Time.zone.parse('2018-12-20T01:23:45+0900')].each do |arg|
         channel = Search::Channel.new(to_date: arg)
         assert_equal expected, channel.to_date
       end
