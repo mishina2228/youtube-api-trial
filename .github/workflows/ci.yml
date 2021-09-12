@@ -55,7 +55,7 @@ jobs:
           ruby-version: '3.0'
           bundler-cache: true
       - name: Run Brakeman
-        run: bundle exec brakeman --skip-files app/models/search/channel.rb
+        run: bundle exec brakeman
   standard:
     runs-on: ubuntu-latest
     env:
