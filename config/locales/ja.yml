@@ -25,19 +25,19 @@ ja:
       channel:
         channel_id: チャンネルID
         channel_snippets: 過去のチャンネル情報
-        title: チャンネル名
         description: 説明
         published_at: 登録日
         tags: タグ
         thumbnail_url: サムネイルURL
+        title: チャンネル名
       channel_snippet:
         created_at: 情報取得日時
       channel_statistic:
         channel_id: チャンネルID
         created_at: 統計取得日時
-        view_count: 総視聴回数
         subscriber_count: 登録者数
         video_count: 動画数
+        view_count: 総視聴回数
       system_setting:
         api_key: APIキー
         auth_method: 認証方式

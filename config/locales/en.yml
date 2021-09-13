@@ -25,19 +25,19 @@ en:
       channel:
         channel_id: Channel ID
         channel_snippets: Channel info histories
-        title: Title
         description: Description
         published_at: Published at
         tags: Tags
         thumbnail_url: Thumbnail URL
+        title: Title
       channel_snippet:
         created_at: Acquired at
       channel_statistic:
         channel_id: Channel ID
         created_at: Acquired at
-        view_count: Views
         subscriber_count: Subscribers
         video_count: Videos
+        view_count: Views
       system_setting:
         api_key: API Key
         auth_method: Auth method
