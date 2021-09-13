@@ -1,8 +1,8 @@
 module Search
   class Channel < Search::Base
-    attr_accessor :ids, :title,
-                  :video_count, :view_count, :tag
-    attr_writer :disabled, :from_date, :to_date, :subscriber_count_from, :subscriber_count_to
+    attr_accessor :ids, :title, :tag
+    attr_writer :disabled, :from_date, :to_date, :subscriber_count_from, :subscriber_count_to,
+                :video_count_from, :video_count_to, :view_count_from, :view_count_to
 
     def search
       ret = ::Channel.preload(:channel_statistics).preload(:tags)
@@ -12,6 +12,8 @@ module Search
       ret = ret.where(published_at: published_at) if published_at.present?
       ret = ret.where(disabled: disabled) unless disabled.nil?
       ret = ret.where(cs: {subscriber_count: subscriber_count}) if subscriber_count.present?
+      ret = ret.where(cs: {video_count: video_count}) if video_count.present?
+      ret = ret.where(cs: {view_count: view_count}) if view_count.present?
       ret = ret.tagged_with("'#{tag}'") if tag.present?
       ret = ret.order(sort_column)
       ret = ret.reverse_order if direction == 'desc' || direction.nil?
@@ -54,6 +56,34 @@ module Search
       return if subscriber_count_from.nil? && subscriber_count_to.nil?
 
       subscriber_count_from..subscriber_count_to
+    end
+
+    def video_count_from
+      @video_count_from.presence&.to_i
+    end
+
+    def video_count_to
+      @video_count_to.presence&.to_i
+    end
+
+    def video_count
+      return if video_count_from.nil? && video_count_to.nil?
+
+      video_count_from..video_count_to
+    end
+
+    def view_count_from
+      @view_count_from.presence&.to_i
+    end
+
+    def view_count_to
+      @view_count_to.presence&.to_i
+    end
+
+    def view_count
+      return if view_count_from.nil? && view_count_to.nil?
+
+      view_count_from..view_count_to
     end
 
     def self.disabled_options

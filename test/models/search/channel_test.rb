@@ -96,6 +96,54 @@ module Search
       assert_not_includes ret, @c2
     end
 
+    test 'search by video_count_from' do
+      channel = Search::Channel.new(video_count_from: 1_000_001)
+      ret = channel.search
+      assert_includes ret, @c1
+      assert_includes ret, @c2
+
+      channel = Search::Channel.new(video_count_from: 1_000_002)
+      ret = channel.search
+      assert_not_includes ret, @c1
+      assert_includes ret, @c2
+    end
+
+    test 'search by video_count_to' do
+      channel = Search::Channel.new(video_count_to: 1_999_999)
+      ret = channel.search
+      assert_includes ret, @c1
+      assert_includes ret, @c2
+
+      channel = Search::Channel.new(video_count_to: 1_999_998)
+      ret = channel.search
+      assert_includes ret, @c1
+      assert_not_includes ret, @c2
+    end
+
+    test 'search by view_count_from' do
+      channel = Search::Channel.new(view_count_from: 1_000_003)
+      ret = channel.search
+      assert_includes ret, @c1
+      assert_includes ret, @c2
+
+      channel = Search::Channel.new(view_count_from: 1_000_004)
+      ret = channel.search
+      assert_not_includes ret, @c1
+      assert_includes ret, @c2
+    end
+
+    test 'search by view_count_to' do
+      channel = Search::Channel.new(view_count_to: 1_999_997)
+      ret = channel.search
+      assert_includes ret, @c1
+      assert_includes ret, @c2
+
+      channel = Search::Channel.new(view_count_to: 1_999_996)
+      ret = channel.search
+      assert_includes ret, @c1
+      assert_not_includes ret, @c2
+    end
+
     test 'search by order and direction' do
       channel = Search::Channel.new(order: 'title', direction: nil)
       ret = channel.search
@@ -269,6 +317,106 @@ module Search
 
       channel = Search::Channel.new(subscriber_count_from: 100, subscriber_count_to: 200)
       assert_equal (100..200), channel.subscriber_count
+    end
+
+    test 'video_count_from returns Integer' do
+      [100, '100'].each do |arg|
+        channel = Search::Channel.new(video_count_from: arg)
+        assert_equal 100, channel.video_count_from
+      end
+      [0, '0'].each do |arg|
+        channel = Search::Channel.new(video_count_from: arg)
+        assert_equal 0, channel.video_count_from
+      end
+    end
+
+    test 'video_count_from returns nil when passing a blank argument' do
+      [nil, false, ''].each do |arg|
+        channel = Search::Channel.new(video_count_from: arg)
+        assert_nil channel.video_count_from
+      end
+    end
+
+    test 'video_count_to returns Integer' do
+      [100, '100'].each do |arg|
+        channel = Search::Channel.new(video_count_to: arg)
+        assert_equal 100, channel.video_count_to
+      end
+      [0, '0'].each do |arg|
+        channel = Search::Channel.new(video_count_to: arg)
+        assert_equal 0, channel.video_count_to
+      end
+    end
+
+    test 'video_count_to returns nil when passing a blank argument' do
+      [nil, false, ''].each do |arg|
+        channel = Search::Channel.new(video_count_to: arg)
+        assert_nil channel.video_count_to
+      end
+    end
+
+    test 'video_count returns nil or Range' do
+      channel = Search::Channel.new
+      assert_nil channel.video_count
+
+      channel = Search::Channel.new(video_count_from: 100)
+      assert_equal 100.., channel.video_count
+
+      channel = Search::Channel.new(video_count_to: 200)
+      assert_equal (..200), channel.video_count
+
+      channel = Search::Channel.new(video_count_from: 100, video_count_to: 200)
+      assert_equal (100..200), channel.video_count
+    end
+
+    test 'view_count_from returns Integer' do
+      [100, '100'].each do |arg|
+        channel = Search::Channel.new(view_count_from: arg)
+        assert_equal 100, channel.view_count_from
+      end
+      [0, '0'].each do |arg|
+        channel = Search::Channel.new(view_count_from: arg)
+        assert_equal 0, channel.view_count_from
+      end
+    end
+
+    test 'view_count_from returns nil when passing a blank argument' do
+      [nil, false, ''].each do |arg|
+        channel = Search::Channel.new(view_count_from: arg)
+        assert_nil channel.view_count_from
+      end
+    end
+
+    test 'view_count_to returns Integer' do
+      [100, '100'].each do |arg|
+        channel = Search::Channel.new(view_count_to: arg)
+        assert_equal 100, channel.view_count_to
+      end
+      [0, '0'].each do |arg|
+        channel = Search::Channel.new(view_count_to: arg)
+        assert_equal 0, channel.view_count_to
+      end
+    end
+
+    test 'view_count_to returns nil when passing a blank argument' do
+      [nil, false, ''].each do |arg|
+        channel = Search::Channel.new(view_count_to: arg)
+        assert_nil channel.view_count_to
+      end
+    end
+
+    test 'view_count returns nil or Range' do
+      channel = Search::Channel.new
+      assert_nil channel.view_count
+
+      channel = Search::Channel.new(view_count_from: 100)
+      assert_equal 100.., channel.view_count
+
+      channel = Search::Channel.new(view_count_to: 200)
+      assert_equal (..200), channel.view_count
+
+      channel = Search::Channel.new(view_count_from: 100, view_count_to: 200)
+      assert_equal (100..200), channel.view_count
     end
   end
 end
