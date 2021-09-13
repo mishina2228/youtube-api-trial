@@ -7,6 +7,16 @@
         <%= form.text_field :title, class: 'form-control' %>
       </div>
     </div>
+    <div class="row">
+      <%= form.label :subscriber_count %>
+      <div class="col-5 col-md-3">
+        <%= form.number_field :subscriber_count_from, class: 'form-control', min: 0 %>
+      </div>
+      <div class="col-2 col-md-1 text-center">～</div>
+      <div class="col-5 col-md-3">
+        <%= form.number_field :subscriber_count_to, class: 'form-control', min: 0 %>
+      </div>
+    </div>
     <div class="row mb-3">
       <div class="col-6">
         <%= form.label :per %>

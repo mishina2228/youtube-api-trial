@@ -11,6 +11,7 @@ ja:
         per: 1ページあたりの件数
       search/channel:
         <<: *search
+        subscriber_count: 登録者数
         title: タイトル
       search/channel_list_condition:
         <<: *search

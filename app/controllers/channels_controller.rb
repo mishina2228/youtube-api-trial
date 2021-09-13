@@ -118,10 +118,12 @@ class ChannelsController < ApplicationController
       order: params[:order],
       direction: params[:direction],
       title: search_channel[:title],
+      subscriber_count_from: search_channel[:subscriber_count_from],
+      subscriber_count_to: search_channel[:subscriber_count_to],
       per: search_channel[:per],
       disabled: search_channel[:disabled],
       tag: search_channel[:tag]
-    }.compact
+    }.compact_blank
   end
 
   def search_condition

@@ -11,6 +11,7 @@ en:
         per: Page size
       search/channel:
         <<: *search
+        subscriber_count: Subscribers
         title: Title
       search/channel_list_condition:
         <<: *search
