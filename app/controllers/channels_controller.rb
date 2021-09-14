@@ -114,20 +114,12 @@ class ChannelsController < ApplicationController
 
   def search_params
     search_channel = params.fetch(:search_channel, {})
-    {
-      order: params[:order],
-      direction: params[:direction],
-      title: search_channel[:title],
-      subscriber_count_from: search_channel[:subscriber_count_from],
-      subscriber_count_to: search_channel[:subscriber_count_to],
-      video_count_from: search_channel[:video_count_from],
-      video_count_to: search_channel[:video_count_to],
-      view_count_from: search_channel[:view_count_from],
-      view_count_to: search_channel[:view_count_to],
-      per: search_channel[:per],
-      disabled: search_channel[:disabled],
-      tag: search_channel[:tag]
-    }.compact_blank
+    hash = {order: params[:order], direction: params[:direction]}
+    attributes = [
+      :title, :subscriber_count_from, :subscriber_count_to, :video_count_from, :video_count_to,
+      :view_count_from, :view_count_to, :per, :disabled, :tag
+    ]
+    attributes.each_with_object(hash) {|attr, h| h[attr] = search_channel[attr]}.compact_blank
   end
 
   def search_condition
