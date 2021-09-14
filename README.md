@@ -1,6 +1,7 @@
 [![CI](https://github.com/mishina2228/youtube-api-trial/workflows/ci/badge.svg)](https://github.com/mishina2228/youtube-api-trial/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b80a05b702d4a8ee5b13/maintainability)](https://codeclimate.com/github/mishina2228/youtube-api-trial/maintainability)
 [![codecov](https://codecov.io/gh/mishina2228/youtube-api-trial/branch/master/graph/badge.svg)](https://codecov.io/gh/mishina2228/youtube-api-trial)
+[![GitHub license](https://img.shields.io/github/license/mishina2228/youtube-api-trial)](https://github.com/mishina2228/youtube-api-trial/blob/master/LICENSE)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 # YouTube API Trial
