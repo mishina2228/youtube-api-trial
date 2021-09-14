@@ -8,27 +8,59 @@
       </div>
     </div>
     <div class="row">
-      <%= form.label :subscriber_count %>
-      <div class="col-5 col-md-3">
-        <%= form.number_field :subscriber_count_from, class: 'form-control', min: 0 %>
+      <div class="col-12 col-lg-6">
+        <div class="row">
+          <%= form.label :subscriber_count %>
+          <div class="col-5">
+            <%= form.number_field :subscriber_count_from, class: 'form-control', min: 0 %>
+          </div>
+          <div class="col-2 text-center">～</div>
+          <div class="col-5">
+            <%= form.number_field :subscriber_count_to, class: 'form-control', min: 0 %>
+          </div>
+        </div>
       </div>
-      <div class="col-2 col-md-1 text-center">～</div>
-      <div class="col-5 col-md-3">
-        <%= form.number_field :subscriber_count_to, class: 'form-control', min: 0 %>
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <div class="row">
+          <%= form.label :view_count %>
+          <div class="col-5">
+            <%= form.number_field :view_count_from, class: 'form-control', min: 0 %>
+          </div>
+          <div class="col-2 text-center">～</div>
+          <div class="col-5">
+            <%= form.number_field :view_count_to, class: 'form-control', min: 0 %>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="row">
+          <%= form.label :video_count %>
+          <div class="col-5">
+            <%= form.number_field :video_count_from, class: 'form-control', min: 0 %>
+          </div>
+          <div class="col-2 text-center">～</div>
+          <div class="col-5">
+            <%= form.number_field :video_count_to, class: 'form-control', min: 0 %>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row mb-3">
-      <div class="col-6">
+      <div class="col-6 col-md-3">
         <%= form.label :per %>
         <%= form.select :per, Channel::PER_LIST, {}, class: 'form-control form-select' %>
       </div>
-      <div class="col-6">
+      <div class="col-6 col-md-3">
         <%= form.label :disabled %>
         <%= form.select :disabled, Search::Channel.disabled_options, {}, class: 'form-control form-select' %>
       </div>
     </div>
-    <%= button_tag t('helpers.button.reset'), type: :button, id: 'reset-search',
-                   class: 'btn btn-secondary' %>
-    <%= form.submit t('helpers.submit.search'), class: 'btn btn-success', name: nil %>
+    <div class="text-end">
+      <%= button_tag t('helpers.button.reset'), type: :button, id: 'reset-search',
+                     class: 'btn btn-secondary' %>
+      <%= form.submit t('helpers.submit.search'), class: 'btn btn-success', name: nil %>
+    </div>
   </div>
 <% end %>
