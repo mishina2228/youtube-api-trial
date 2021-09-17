@@ -116,8 +116,9 @@ class ChannelsController < ApplicationController
     search_channel = params.fetch(:search_channel, {})
     hash = {order: params[:order], direction: params[:direction]}
     attributes = [
-      :title, :subscriber_count_from, :subscriber_count_to, :video_count_from, :video_count_to,
-      :view_count_from, :view_count_to, :per, :disabled, :tag
+      :title, :subscriber_count_from, :subscriber_count_to, :from_date, :to_date,
+      :view_count_from, :view_count_to, :video_count_from, :video_count_to,
+      :per, :disabled, :tag
     ]
     attributes.each_with_object(hash) {|attr, h| h[attr] = search_channel[attr]}.compact_blank
   end

@@ -11,6 +11,7 @@ ja:
         per: 1ページあたりの件数
       search/channel:
         <<: *search
+        published_at: 登録日
         subscriber_count: 登録者数
         video_count: 動画数
         view_count: 総視聴回数

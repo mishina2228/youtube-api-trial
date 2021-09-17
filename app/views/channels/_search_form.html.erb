@@ -20,6 +20,28 @@
           </div>
         </div>
       </div>
+      <div class="col-12 col-lg-6">
+        <div class="row">
+          <%= form.label :published_at %>
+          <div class="col-5">
+            <div class="input-group date-picker" data-wrap="true">
+              <%= form.text_field :from_date, class: 'form-control', data: {input: true} %>
+              <div class="input-group-text" data-clear>
+                <span class="fa fa-times"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-2 text-center">～</div>
+          <div class="col-5">
+            <div class="input-group date-picker" data-wrap="true">
+              <%= form.text_field :to_date, class: 'form-control', data: {input: true} %>
+              <div class="input-group-text" data-clear>
+                <span class="fa fa-times"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="col-12 col-lg-6">

@@ -12,6 +12,8 @@ import 'bootstrap'
 import '../src/channel'
 import '../src/channel_list'
 import '../src/channel_tag'
+import '../src/datepicker_loader'
+import '../src/fontawesome'
 import '../src/system_setting'
 import '../src/theme_changer'
 
