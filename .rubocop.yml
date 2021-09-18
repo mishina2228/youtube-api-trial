@@ -22,6 +22,9 @@ Layout/SpaceInsideBlockBraces:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
+Lint/AmbiguousOperatorPrecedence:
+  Enabled: false
+
 Metrics/AbcSize:
   Enabled: false
 Metrics/BlockLength:
