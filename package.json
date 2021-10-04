@@ -23,7 +23,7 @@
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "standard": "^16.0.3",
+    "standard": "^16.0.4",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-dev-server": "^3.11.2"
   },
