@@ -1,16 +1,23 @@
 channel1:
   channel_id: channel_id1
-  title: Channel1
+  title: 'Channel1 100% POWER'
   description: description1
   thumbnail_url: https://example.com/thumbnail/1
   published_at: '2018-10-20T01:23:34'
 
 channel2:
   channel_id: channel_id2
-  title: Channel2
+  title: 'Channel2_100_POWER'
   description: description2
   thumbnail_url: https://example.com/thumbnail/2
   published_at: '2018-12-20T01:23:34'
+
+channel3:
+  channel_id: channel_id3
+  title: 'Other Chan 100\\POWER'
+  description: description3
+  thumbnail_url: https://example.com/thumbnail/3
+  published_at: '2021-10-09T01:23:34'
 
 error_channel:
   channel_id: error_channel_id

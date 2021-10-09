@@ -5,6 +5,7 @@ module Search
     setup do
       @c1 = channels(:channel1)
       @c2 = channels(:channel2)
+      @c3 = channels(:channel3)
     end
 
     test 'search by id' do
@@ -23,6 +24,26 @@ module Search
       ret = channel.search
       assert_includes ret, @c1
       assert_not_includes ret, @c2
+    end
+
+    test 'search by title which includes wild cards' do
+      channel = Search::Channel.new(title: '100%')
+      ret = channel.search
+      assert_includes ret, @c1
+      assert_not_includes ret, @c2
+      assert_not_includes ret, @c3
+
+      channel = Search::Channel.new(title: '100_')
+      ret = channel.search
+      assert_not_includes ret, @c1
+      assert_includes ret, @c2
+      assert_not_includes ret, @c3
+
+      channel = Search::Channel.new(title: '100\\')
+      ret = channel.search
+      assert_not_includes ret, @c1
+      assert_not_includes ret, @c2
+      assert_includes ret, @c3
     end
 
     test 'search by from_date' do

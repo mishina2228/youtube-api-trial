@@ -8,7 +8,7 @@ module Search
       ret = ::Channel.preload(:channel_statistics).preload(:tags)
       ret = ret.with_channel_statistics
       ret = ret.where(id: ids) if ids.present?
-      ret = ret.where('title LIKE ?', "%#{title}%") if title.present?
+      ret = ret.where("title LIKE ? ESCAPE '\\'", "%#{::Channel.sanitize_sql_like(title)}%") if title.present?
       ret = ret.where(published_at: published_at) if published_at.present?
       ret = ret.where(disabled: disabled) unless disabled.nil?
       ret = ret.where(cs: {subscriber_count: subscriber_count}) if subscriber_count.present?

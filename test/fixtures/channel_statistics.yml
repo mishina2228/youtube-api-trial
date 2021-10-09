@@ -25,3 +25,10 @@ channel2_statistics2:
   subscriber_count: 1_999_998
   video_count: 1_999_999
   created_at: <%= 1.day.ago %>
+
+channel3_statistics1:
+  channel: channel3
+  view_count: 100
+  subscriber_count: 10
+  video_count: 5
+  created_at: <%= 1.day.ago %>
