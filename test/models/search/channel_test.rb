@@ -171,19 +171,23 @@ module Search
 
       channel = Search::Channel.new(disabled: nil)
       ret = channel.search
-      assert_equal [@c2, @c1], ret.to_a
+      assert_includes ret, @c1
+      assert_includes ret, @c2
 
       channel = Search::Channel.new(disabled: '')
       ret = channel.search
-      assert_equal [@c2, @c1], ret.to_a
+      assert_includes ret, @c1
+      assert_includes ret, @c2
 
       channel = Search::Channel.new(disabled: false)
       ret = channel.search
-      assert_equal [@c1], ret.to_a
+      assert_includes ret, @c1
+      assert_not_includes ret, @c2
 
       channel = Search::Channel.new(disabled: true)
       ret = channel.search
-      assert_equal [@c2], ret.to_a
+      assert_not_includes ret, @c1
+      assert_includes ret, @c2
     end
 
     test 'search by tag' do
