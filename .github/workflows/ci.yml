@@ -40,7 +40,7 @@ jobs:
         run: bin/rails test:system
       - name: Archive system test result screenshots
         if: failure()
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: system test result screenshots
           path: tmp/screenshots/
