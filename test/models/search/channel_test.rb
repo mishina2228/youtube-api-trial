@@ -147,23 +147,23 @@ module Search
     test 'search by order and direction' do
       channel = Search::Channel.new(order: 'title', direction: nil)
       ret = channel.search
-      assert_equal [@c2, @c1], ret.to_a
+      assert_operator ret.index(@c2), :<, ret.index(@c1)
 
       channel = Search::Channel.new(order: 'title', direction: 'desc')
       ret = channel.search
-      assert_equal [@c2, @c1], ret.to_a
+      assert_operator ret.index(@c2), :<, ret.index(@c1)
 
       channel = Search::Channel.new(order: 'title', direction: 'asc')
       ret = channel.search
-      assert_equal [@c1, @c2], ret.to_a
+      assert_operator ret.index(@c1), :<, ret.index(@c2)
 
       channel = Search::Channel.new(order: 'view_count', direction: 'desc')
       ret = channel.search
-      assert_equal [@c2, @c1], ret.to_a
+      assert_operator ret.index(@c2), :<, ret.index(@c1)
 
       channel = Search::Channel.new(order: nil, direction: nil)
       ret = channel.search
-      assert_equal [@c2, @c1], ret.to_a, 'default order is descending number of subscribers'
+      assert_operator ret.index(@c2), :<, ret.index(@c1), 'default order is descending number of subscribers'
     end
 
     test 'search by disabled' do
