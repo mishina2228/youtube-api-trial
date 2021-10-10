@@ -17,6 +17,7 @@ jobs:
       RAILS_ENV: test
       NODE_ENV: test
       TZ: 'Asia/Tokyo'
+      RUBYOPT: '--enable-frozen-string-literal --debug=frozen-string-literal'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
