@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "standard": "^16.0.4",
-    "webpack-bundle-analyzer": "^4.4.2",
+    "webpack-bundle-analyzer": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
   },
   "resolutions": {
