@@ -36,6 +36,8 @@ jobs:
         run: bin/webpack
       - name: Run unit tests
         run: bin/rails test
+      - name: Upload unit test coverage report
+        uses: codecov/codecov-action@v2
       - name: Run system test
         run: bin/rails test:system
       - name: Archive system test result screenshots
