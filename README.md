@@ -1,11 +1,11 @@
+# YouTube API Trial
+
 [![CI](https://github.com/mishina2228/youtube-api-trial/workflows/ci/badge.svg)](https://github.com/mishina2228/youtube-api-trial/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b80a05b702d4a8ee5b13/maintainability)](https://codeclimate.com/github/mishina2228/youtube-api-trial/maintainability)
 [![codecov](https://codecov.io/gh/mishina2228/youtube-api-trial/branch/master/graph/badge.svg)](https://codecov.io/gh/mishina2228/youtube-api-trial)
 [![GitHub license](https://img.shields.io/github/license/mishina2228/youtube-api-trial)](https://github.com/mishina2228/youtube-api-trial/blob/master/LICENSE)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
-
-# YouTube API Trial
 
 Ruby on Rails application to get information of YouTube channel
 
@@ -20,33 +20,41 @@ Ruby on Rails application to get information of YouTube channel
 ### Set up Rails app
 
 First, install the gems and javascript packages required by the application:
+
 ```sh
 bundle
 yarn
 ```
+
 Next, execute the database migrations/schema setup:
+
 ```sh
 bin/rails db:setup
 ```
 
-
 ### Resque settings
 
-Create a configuration file to manage [Resque](https://github.com/resque/resque) and [resque-scheduler](https://github.com/resque/resque-scheduler) with [God](http://godrb.com/)
+Create a configuration file to manage [Resque](https://github.com/resque/resque)
+and [resque-scheduler](https://github.com/resque/resque-scheduler)
+with [God](http://godrb.com/)
+
 ```sh
 RAILS_ENV=[RAILS_ENV] bundle exec itamae local config/itamae/resque.rb
 ```
 
 Load configuration file
+
 ```sh
 god -c /etc/god/master.conf
 ```
 
 Resque, resque-scheduler operation with God
-* check the status
-* start
-* restart
-* stop
+
+- check the status
+- start
+- restart
+- stop
+
 ```sh
 god status youtube_api_trial
 god start youtube_api_trial
@@ -57,11 +65,13 @@ god stop youtube_api_trial
 ### Start the app
 
 #### development
+
 ```sh
 bin/rails start
 ```
 
 #### production
+
 ```sh
 bin/rails assets:precompile RAILS_ENV=production
 bin/rails s -e production
