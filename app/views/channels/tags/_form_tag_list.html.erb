@@ -3,6 +3,6 @@
     <%= form.submit t('helpers.submit.send'),
                     class: 'btn btn-sm btn-primary', data: {disable_with: t('helpers.notice.processing')} %>
     <%= form.text_field :tag_list,
-                        value: channel.tag_list_json, class: 'channel-tags', 'data-role' => 'tagsinput' %>
+                        value: channel.tag_list_json, class: 'channel-tags', data: {role: 'tagsinput'} %>
   </div>
 <% end %>
