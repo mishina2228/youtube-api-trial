@@ -7,8 +7,8 @@
         <% else %>
           <%= form_with(model: channel, format: :json, class: 'create-channel') do |form| %>
             <%= form.hidden_field :channel_id %>
-            <%= form.submit t('helpers.submit.create_channel'), class: 'btn btn-primary btn-sm',
-                            data: {disable_with: false} %>
+            <%= form.submit t('helpers.submit.create_channel'),
+                            class: 'btn btn-primary btn-sm', data: {disable_with: false} %>
           <% end %>
         <% end %>
       </div>

@@ -3,12 +3,15 @@
 
 <h2><%= title %></h2>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: {method: :post}) do |f| %>
   <%= render 'devise/shared/error_messages', resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: 'email', value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'form-control', required: true %>
+    <%= f.label :email %><br>
+    <%= f.email_field :email,
+                      autofocus: true, autocomplete: 'email',
+                      value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                      class: 'form-control', required: true %>
   </div>
 
   <div class="actions">

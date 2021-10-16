@@ -10,17 +10,17 @@
   <% end %>
   <% if can?(:update, Channel) && @channel.enabled? %>
     <%= button_to t('helpers.link.update_snippet'), update_snippet_channel_path,
-                method: :put, class: 'btn btn-success', role: :button, id: 'update-snippet-btn',
-                data: {disable_with: t('helpers.notice.processing')}, remote: true %>
+                  method: :put, class: 'btn btn-success', role: :button, id: 'update-snippet-btn',
+                  data: {disable_with: t('helpers.notice.processing')}, remote: true %>
   <% end %>
   <% if can?(:create, ChannelStatistic) && @channel.enabled? %>
     <%= button_to t('helpers.link.build_statistics'), build_statistics_channel_path,
-                method: :put, class: 'btn btn-success', role: :button, id: 'build-statistics-btn',
-                data: {disable_with: t('helpers.notice.processing')}, remote: true %>
+                  method: :put, class: 'btn btn-success', role: :button, id: 'build-statistics-btn',
+                  data: {disable_with: t('helpers.notice.processing')}, remote: true %>
   <% end %>
   <% if can?(:delete, Channel) %>
-    <%= button_to t('helpers.link.delete'), channel_path(@channel), method: :delete,
-                data: {confirm: t('helpers.notice.delete_confirm')},
-                class: 'btn btn-danger', role: :button %>
+    <%= button_to t('helpers.link.delete'), channel_path(@channel),
+                  method: :delete, data: {confirm: t('helpers.notice.delete_confirm')},
+                  class: 'btn btn-danger', role: :button %>
   <% end %>
 <% end %>

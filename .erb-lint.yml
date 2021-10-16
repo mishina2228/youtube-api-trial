@@ -1,0 +1,28 @@
+exclude:
+  - '**/vendor/bundle/**/*'
+linters:
+  DeprecatedClasses:
+    enabled: true
+  ErbSafety:
+    enabled: true
+    exclude:
+      - '**/app/views/channel_lists/search/_channels_pagination.html.erb'
+      - '**/app/views/channel_lists/subscriptions/_channels_pagination.html.erb'
+      - '**/app/views/kaminari/*'
+  Rubocop:
+    enabled: true
+    rubocop_config:
+      inherit_from:
+        - .rubocop.yml
+      Layout/InitialIndentation:
+        Enabled: false
+      Layout/LineLength:
+        Max: 140
+      Layout/TrailingEmptyLines:
+        Enabled: false
+      Layout/TrailingWhitespace:
+        Enabled: false
+      Lint/UselessAssignment:
+        Enabled: false
+      Rails/OutputSafety:
+        Enabled: false
