@@ -21,7 +21,7 @@ body {
       }
     }
 
-    td, th, div, span {
+    td, th, div {
       a {
         color: #44b9d6;
       }
@@ -29,7 +29,7 @@ body {
       color: whitesmoke;
     }
 
-    .table {
+    span:not(.flatpickr-day), table {
       color: whitesmoke;
     }
 
