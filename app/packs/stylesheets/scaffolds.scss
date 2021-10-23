@@ -21,11 +21,15 @@ body {
       }
     }
 
-    td, th, div {
+    td, th, div, span {
       a {
         color: #44b9d6;
       }
 
+      color: whitesmoke;
+    }
+
+    .table {
       color: whitesmoke;
     }
 
@@ -60,6 +64,7 @@ body {
         tr {
           &:nth-of-type(odd) {
             background: #404040;
+            color: whitesmoke;
 
             &:hover {
               background: #585858;
@@ -140,6 +145,10 @@ body {
 
     &.fixed-top {
       border-width: 0 0 1px;
+    }
+
+    .fa-icon {
+      color: black;
     }
   }
 

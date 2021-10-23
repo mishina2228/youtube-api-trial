@@ -16,10 +16,10 @@
     <tbody>
     <% channel_statistics.each do |cs| %>
       <tr>
-        <td><%= print_number(cs.subscriber_count) %></td>
-        <td><%= print_number(cs.view_count) %></td>
-        <td><%= print_number(cs.video_count) %></td>
-        <td><%= print_datetime(cs.created_at) %></td>
+        <td><%= tag.span print_number(cs.subscriber_count) %></td>
+        <td><%= tag.span print_number(cs.view_count) %></td>
+        <td><%= tag.span print_number(cs.video_count) %></td>
+        <td><%= tag.span print_datetime(cs.created_at) %></td>
       </tr>
     <% end %>
     </tbody>

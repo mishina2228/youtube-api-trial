@@ -43,7 +43,9 @@
             <% end %>
           </div>
         </td>
-        <td class="d-none d-md-table-cell"><%= print_datetime(c.published_at, format: :date) %></td>
+        <td class="d-none d-md-table-cell">
+          <%= tag.span print_datetime(c.published_at, format: :date) %>
+        </td>
         <td>
           <div class="vertical text-end text-nowrap">
             <span>

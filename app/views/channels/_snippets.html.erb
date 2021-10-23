@@ -16,10 +16,10 @@
     <tr class="click-btn" data-snippet-modal-id="<%= cs.id %>">
       <td>
         <%= image_tag(cs.thumbnail_url, width: '30px') %>
-        <%= cs.title %>
+        <%= tag.span cs.title %>
       </td>
-      <td><%= cs.description.truncate(80) %></td>
-      <td><%= print_datetime(cs.created_at) %></td>
+      <td><%= tag.span cs.description.truncate(80) %></td>
+      <td><%= tag.span print_datetime(cs.created_at) %></td>
     </tr>
   <% end %>
   </tbody>
