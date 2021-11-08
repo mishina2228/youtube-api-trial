@@ -166,7 +166,7 @@ GEM
       multi_json (~> 1.11)
       os (>= 0.9, < 2.0)
       signet (>= 0.16, < 2.a)
-    hashie (4.1.0)
+    hashie (5.0.0)
     html_tokenizer (0.0.7)
     httpclient (2.8.3)
     i18n (1.8.11)
