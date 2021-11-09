@@ -5,7 +5,6 @@ const sassLoader = environment.loaders.get('sass')
 sassLoader.use.splice(-1, 0, {
   loader: 'resolve-url-loader'
 })
-sassLoader.use.push('import-glob-loader')
 environment.loaders.prepend('erb', erb)
 
 const webpack = require('webpack')
