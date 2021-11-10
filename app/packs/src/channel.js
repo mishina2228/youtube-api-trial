@@ -2,10 +2,12 @@ import emojione from 'emoji-toolkit'
 import iziToast from 'izitoast'
 import I18n from './i18n.js.erb'
 import { Shared } from './shared'
+import { Tooltip } from 'bootstrap'
 
 document.addEventListener('turbolinks:load', () => {
   emojify()
-  $('[data-toggle="tooltip"]').tooltip()
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+  tooltipTriggerList.map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
   $('#reset-search').on('click', resetSearchForm)
   const loaderBg = document.querySelector('.loader-bg')
 
