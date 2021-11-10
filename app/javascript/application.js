@@ -9,13 +9,13 @@
 
 import 'bootstrap'
 
-import '../src/channel'
-import '../src/channel_list'
-import '../src/channel_tag'
-import '../src/datepicker_loader'
-import '../src/fontawesome'
-import '../src/system_setting'
-import '../src/theme_changer'
+import '../packs/src/channel'
+import '../packs/src/channel_list'
+import '../packs/src/channel_tag'
+import '../packs/src/datepicker_loader'
+import '../packs/src/fontawesome'
+import '../packs/src/system_setting'
+import '../packs/src/theme_changer'
 
 import './application.scss'
 
@@ -27,4 +27,4 @@ Turbolinks.start()
 global.$ = require('jquery')
 global.toastr = require('toastr')
 
-require.context('../images', true)
+require.context('../packs/images', true)

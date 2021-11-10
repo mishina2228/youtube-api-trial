@@ -1,14 +1,7 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
-const environment = require('./environment')
+const { merge } = require('@rails/webpacker')
+const webpackConfig = require('./base')
+const webpackBundlerAnalyzer = require('./loaders/webpack_bundle_analyzer')
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-environment.plugins.append(
-  'BundleAnalyzer',
-  new BundleAnalyzerPlugin({
-    openAnalyzer: false,
-    analyzerMode: 'static'
-  })
-)
-
-module.exports = environment.toWebpackConfig()
+module.exports = merge(webpackConfig, webpackBundlerAnalyzer)
