@@ -28,11 +28,6 @@ document.addEventListener('turbolinks:load', () => {
   prepUpdateSnippet()
   prepUpdateAllSnippets()
   prepBuildAllStatistics()
-
-  $('.click-btn').on('click', event => {
-    const snippetModalId = event.currentTarget.getAttribute('data-snippet-modal-id')
-    $(`.snippet-modal-box[data-snippet-modal-id=${snippetModalId}]`).modal('show')
-  })
 })
 
 const getOffset = (id) => {
