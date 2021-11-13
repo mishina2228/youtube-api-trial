@@ -13,7 +13,7 @@
 
   <tbody>
   <% channel_snippets.each do |cs| %>
-    <tr class="click-btn" data-snippet-modal-id="<%= cs.id %>">
+    <tr class="click-btn" data-bs-toggle="modal" data-bs-target="#snippetModal<%= cs.id %>">
       <td>
         <%= image_tag(cs.thumbnail_url, width: '30px') %>
         <%= tag.span cs.title %>
