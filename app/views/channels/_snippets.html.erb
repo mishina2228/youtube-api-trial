@@ -28,12 +28,3 @@
 <% channel_snippets.each do |cs| %>
   <%= render 'snippet_modal', snippet: cs %>
 <% end %>
-
-<script>
-  $(document).on('turbolinks:load', () => {
-    $('.click-btn').on('click', event => {
-      const snippet_modal_id = $(event.currentTarget).data('snippet-modal-id');
-      $('.snippet-modal-box[data-snippet-modal-id=' + snippet_modal_id + ']').modal('show');
-    });
-  });
-</script>

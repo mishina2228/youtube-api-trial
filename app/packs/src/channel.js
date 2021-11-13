@@ -2,10 +2,12 @@ import emojione from 'emoji-toolkit'
 import iziToast from 'izitoast'
 import I18n from './i18n.js.erb'
 import { Shared } from './shared'
+import { Tooltip } from 'bootstrap'
 
 document.addEventListener('turbolinks:load', () => {
   emojify()
-  $('[data-toggle="tooltip"]').tooltip()
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+  tooltipTriggerList.map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
   $('#reset-search').on('click', resetSearchForm)
   const loaderBg = document.querySelector('.loader-bg')
 
@@ -14,8 +16,8 @@ document.addEventListener('turbolinks:load', () => {
       element.classList.add('disabled')
     })
     loaderBg.style.display = 'block'
-    const margin = $('div.fixed-top').height()
-    $('html, body').animate({ scrollTop: $('#search-result').offset().top - margin })
+    const margin = document.querySelector('div.fixed-top').clientHeight
+    $('html, body').animate({ scrollTop: getOffset('search-result') - margin })
   }).on('ajax:success', _event => {
     loaderBg.style.display = 'none'
   })
@@ -26,21 +28,32 @@ document.addEventListener('turbolinks:load', () => {
   prepUpdateSnippet()
   prepUpdateAllSnippets()
   prepBuildAllStatistics()
+
+  $('.click-btn').on('click', event => {
+    const snippetModalId = event.currentTarget.getAttribute('data-snippet-modal-id')
+    $(`.snippet-modal-box[data-snippet-modal-id=${snippetModalId}]`).modal('show')
+  })
 })
 
+const getOffset = (id) => {
+  const elem = document.getElementById(id)
+  const rectangle = elem.getBoundingClientRect()
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+  return rectangle.top + scrollTop
+}
+
 const emojify = () => {
-  $('.emojify').each((_, elem) => {
-    const emojified = emojione.toImage($(elem).html())
-    $(elem).html(emojified)
+  document.querySelectorAll('.emojify').forEach(elem => {
+    elem.innerHTML = emojione.toImage(elem.innerHTML)
   })
 }
 
 const resetSearchForm = () => {
-  const $form = $('form.search')
-  const $textFields = $form.find('input[type="text"]')
-  $textFields.each((_, elem) => $(elem).val(''))
-  const $selects = $form.find('select')
-  $selects.each((_, elem) => $(elem).prop('selectedIndex', 0))
+  const form = document.querySelector('form.search')
+  const inputFields = form.querySelectorAll('input[type="text"], input[type="number"]')
+  inputFields.forEach(elem => { elem.value = '' })
+  const selects = form.querySelectorAll('select')
+  selects.forEach(elem => { elem.selectedIndex = 0 })
 }
 
 const displayLoaderImg = (query) => {

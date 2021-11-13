@@ -1,12 +1,11 @@
 const toggleAuthMethod = button => {
-  propFields($('.auth-field').find('.auth-field-group'), false)
+  propFields(document.querySelectorAll('.auth-field .auth-field-group'), false)
 
-  const authMethod = button.val()
+  const authMethod = button.value
   switch (authMethod) {
     case 'api_key':
     case 'oauth2': {
-      const checked = button.is(':checked')
-      propFields($('.' + authMethod).find('.auth-field-group'), checked)
+      propFields(document.querySelectorAll(`.auth-field.${authMethod} .auth-field-group`), button.checked)
       break
     }
     default: {
@@ -16,28 +15,31 @@ const toggleAuthMethod = button => {
 }
 
 const propFields = (fields, enable) => {
-  fields.each((_, formGroup) => {
-    $(formGroup).find('input').each((_, field) => {
-      $(field).prop('disabled', !enable)
+  fields.forEach(formGroup => {
+    formGroup.querySelectorAll('input').forEach(field => {
+      enable ? field.removeAttribute('disabled') : field.setAttribute('disabled', 'disabled')
     })
-    enable ? $(formGroup).show() : $(formGroup).hide()
+    enable ? formGroup.style.display = '' : formGroup.style.display = 'none'
   })
 }
 
 const changePassword = link => {
-  link.hide()
-  link.next('input[type="password"]').show()
+  link.style.display = 'none'
+  link.nextElementSibling.style.display = ''
 }
 
-$(document).on('turbolinks:load', () => {
+document.addEventListener('turbolinks:load', () => {
   if (document.URL.match(/system_setting\/(edit|new)/)) {
-    propFields($('.auth-field').find('.auth-field-group'), false)
-    $('.auth-methods input[type="radio"]').on('change', event =>
-      toggleAuthMethod($(event.currentTarget))
-    )
-    $('.auth-methods input[type="radio"]:checked').change()
-    $('.change-client-secret').on('click', event =>
-      changePassword($(event.currentTarget))
-    )
+    propFields(document.querySelectorAll('.auth-field .auth-field-group'), false)
+    document.querySelectorAll('.auth-methods input[type="radio"]').forEach(elem => {
+      elem.addEventListener('change', event => {
+        toggleAuthMethod(event.currentTarget)
+      })
+    })
+    document.querySelector('.auth-methods input[type="radio"]:checked')
+      .dispatchEvent(new window.Event('change'))
+    document.querySelector('.change-client-secret').addEventListener('click', event => {
+      changePassword(event.currentTarget)
+    })
   }
 })

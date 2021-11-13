@@ -5,7 +5,7 @@
         <% if channel.persisted? %>
           <%= button_tag t('helpers.link.channel_created'), type: 'button', disabled: true, class: 'btn btn-secondary btn-sm' %>
         <% else %>
-          <%= form_with(model: channel, format: :json, class: 'create-channel') do |form| %>
+          <%= form_with(model: channel, format: :json, class: 'create-channel', local: false) do |form| %>
             <%= form.hidden_field :channel_id %>
             <%= form.submit t('helpers.submit.create_channel'),
                             class: 'btn btn-primary btn-sm', data: {disable_with: false} %>
