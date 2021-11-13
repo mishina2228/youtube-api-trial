@@ -1,7 +1,7 @@
 import I18n from './i18n.js.erb'
 
 const propSubmitButton = () => {
-  I18n.locale = $('body').data('locale')
+  I18n.locale = document.getElementsByTagName('body')[0].getAttribute('data-locale')
   $('form.create-channel').on('ajax:beforeSend', event => {
     const button = $(event.currentTarget).find('input[type="submit"]')
     button.prop('disabled', true)
