@@ -28,10 +28,7 @@ webpackConfig.plugins.unshift(
   new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',
-    jquery: 'jquery',
-    'window.jQuery': 'jquery',
-    Popper: ['popper.js', 'default'],
-    Tooltip: 'exports-loader?Tooltip!bootstrap/js/dist/tooltip'
+    jquery: 'jquery'
   })
 )
 
