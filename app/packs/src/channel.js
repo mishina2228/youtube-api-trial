@@ -8,7 +8,7 @@ document.addEventListener('turbolinks:load', () => {
   emojify()
   const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
   tooltipTriggerList.map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
-  $('#reset-search').on('click', resetSearchForm)
+  document.getElementById('reset-search')?.addEventListener('click', resetSearchForm)
   const loaderBg = document.querySelector('.loader-bg')
 
   $('#search-result-pagination').on('ajax:beforeSend', _event => {
