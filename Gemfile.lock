@@ -144,7 +144,7 @@ GEM
       raabro (~> 1.4)
     get_process_mem (0.2.7)
       ffi (~> 1.0)
-    globalid (0.5.2)
+    globalid (1.0.0)
       activesupport (>= 5.0)
     god (0.13.7)
     google-apis-core (0.4.1)
