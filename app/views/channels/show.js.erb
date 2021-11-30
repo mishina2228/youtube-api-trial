@@ -1,3 +1,5 @@
-$('#search-statistics')
-  .html("<%= j(render 'statistics', channel_statistics: @channel_statistics ) %>")
-  .trigger('ajax:success');
+{
+  const statistics = document.getElementById('search-statistics')
+  statistics.innerHTML = "<%= j(render 'statistics', channel_statistics: @channel_statistics ) %>"
+  statistics.dispatchEvent(new window.Event('ajax:success'))
+}
