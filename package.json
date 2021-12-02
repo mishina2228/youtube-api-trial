@@ -17,7 +17,7 @@
     "js-cookie": "^3.0.1",
     "rails-erb-loader": "^5.5.2",
     "resolve-url-loader": "^4.0.0",
-    "three-dots": "^0.2.2",
+    "three-dots": "^0.2.3",
     "toastr": "^2.1.4",
     "turbolinks": "^5.2.0"
   },
