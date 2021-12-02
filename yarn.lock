@@ -7768,10 +7768,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three-dots@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/three-dots/-/three-dots-0.2.2.tgz#8549d69eeeb0d2cca3dc358e3356a5dac2efc8f0"
-  integrity sha512-oPGIGXVc/JnM7BzYh+pbfm76VHxKJf9Z7unY6agRBPia1w9JHSVp4UzAXS4FbrjmkdxxHWuBvZVzN5Wn0F9byg==
+three-dots@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/three-dots/-/three-dots-0.2.3.tgz#46749f5923a7186f405b9f1cc292a357813a1c24"
+  integrity sha512-lbHq4a1/YC1Lo6JNopkyj2qShdc9SxpGVfYp6P4kmCUiGJx1Q3jnX/icsLjo/aQaD9WfcSq+X6pouDpXBXQ1Og==
 
 through2@^2.0.0:
   version "2.0.5"
