@@ -178,7 +178,7 @@ GEM
       schash (~> 0.1.0)
       specinfra (>= 2.64.0, < 3.0.0)
       thor
-    jbuilder (2.11.3)
+    jbuilder (2.11.4)
       activesupport (>= 5.0.0)
     jwt (2.3.0)
     kaminari (1.2.1)
