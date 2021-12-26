@@ -87,7 +87,7 @@ The following is an example when sending from Gmail:
 
 ```yml
 production:
-  delivery_method: :smtp
+  delivery_method: 'smtp'
   smtp_settings:
     address: 'smtp.gmail.com'
     port: 587
