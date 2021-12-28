@@ -39,8 +39,8 @@ class ApplicationHelperTest < ActionView::TestCase
     print_diff_datetimes(nil, Time.zone.now)
     print_diff_datetimes(Time.zone.now, nil)
 
-    actual = print_diff_datetimes(Time.zone.now - 3.days, Time.zone.now)
-    expected = distance_of_time_in_words(Time.zone.now - 3.days, Time.zone.now)
+    actual = print_diff_datetimes(3.days.ago, Time.zone.now)
+    expected = distance_of_time_in_words(3.days.ago, Time.zone.now)
     assert_equal expected, actual
   end
 

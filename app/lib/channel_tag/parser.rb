@@ -3,7 +3,7 @@ module ChannelTag
     def parse
       ActsAsTaggableOn::TagList.new.tap do |tag_list|
         json = parse_json_string(@tag_list.to_s)
-        tag_list.add(json.map {|h| h['value']}.reject(&:blank?).map(&:strip))
+        tag_list.add(json.map {|h| h['value']}.compact_blank.map(&:strip))
       end
     end
 
