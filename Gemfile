@@ -26,7 +26,7 @@ gem 'cancancan'
 gem 'devise', '~> 4.8.1'
 gem 'devise-i18n'
 
-gem 'acts-as-taggable-on', '~> 8.1'
+gem 'acts-as-taggable-on', '~> 9.0'
 gem 'enum_help'
 gem 'google-apis-youtube_v3', '~> 0.13.0'
 gem 'i18n-js'
