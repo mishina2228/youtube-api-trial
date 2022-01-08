@@ -444,7 +444,6 @@ DEPENDENCIES
   jbuilder (~> 2.11)
   kaminari (~> 1.2.2)
   minitest-ci
-  net-smtp
   paranoia (~> 2.5)
   puma (~> 5.5)
   puma_worker_killer
