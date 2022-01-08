@@ -30,7 +30,7 @@ module ApplicationHelper
   end
 
   def print_number(number)
-    number&.to_s(:delimited)
+    number&.to_formatted_s(:delimited)
   end
 
   def print_diff_numbers(num1, num2)
