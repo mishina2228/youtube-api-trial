@@ -1,7 +1,8 @@
 import I18n from './i18n.js.erb'
+import { Shared } from './shared'
 
 const propSubmitButton = () => {
-  I18n.locale = document.getElementsByTagName('body')[0].getAttribute('data-locale')
+  Shared.set_locale()
   $('form.create-channel').on('ajax:beforeSend', event => {
     const button = event.currentTarget.querySelector('input[type="submit"]')
     button.setAttribute('disabled', 'disabled')
