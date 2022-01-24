@@ -28,7 +28,7 @@ const changePassword = link => {
   link.nextElementSibling.style.display = ''
 }
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbo:load', () => {
   if (document.URL.match(/system_setting\/(edit|new)/)) {
     propFields(document.querySelectorAll('.auth-field .auth-field-group'), false)
     document.querySelectorAll('.auth-methods input[type="radio"]').forEach(elem => {

@@ -4,7 +4,7 @@ import I18n from './i18n.js.erb'
 import { Shared } from './shared'
 import { Tooltip } from 'bootstrap'
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbo:load', () => {
   emojify()
   const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
   tooltipTriggerList.map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))

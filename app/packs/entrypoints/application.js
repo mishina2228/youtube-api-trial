@@ -20,10 +20,9 @@ import '../src/theme_changer'
 import './application.scss'
 
 import Rails from '@rails/ujs'
-import Turbolinks from 'turbolinks'
+import '@hotwired/turbo-rails'
 
 Rails.start()
-Turbolinks.start()
 global.$ = require('jquery')
 global.toastr = require('toastr')
 
