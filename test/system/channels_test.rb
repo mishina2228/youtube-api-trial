@@ -8,7 +8,7 @@ class ChannelsTest < ApplicationSystemTestCase
     end
   end
 
-  test 'visiting the index as an user not logged in' do
+  test 'visit the index as an user not logged in' do
     visit channels_url
     text = I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
     assert_selector 'h1', text: text
@@ -17,7 +17,7 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_no_button I18n.t('helpers.link.build_all_statistics')
   end
 
-  test 'visiting the index as an user' do
+  test 'visit the index as an user' do
     sign_in user
     visit channels_url
     text = I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
@@ -27,7 +27,7 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_no_button I18n.t('helpers.link.build_all_statistics')
   end
 
-  test 'visiting the index as an admin' do
+  test 'visit the index as an admin' do
     sign_in admin
     visit channels_url
     text = I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
@@ -52,14 +52,14 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_selector('#search-result table tbody tr', count: Channel::DEFAULT_PER)
   end
 
-  test 'visiting a Channel as an user not logged in' do
+  test 'visit a channel as an user not logged in' do
     visit channel_url(id: @channel.id)
     assert_no_button I18n.t('helpers.link.update_snippet')
     assert_no_button I18n.t('helpers.link.build_statistics')
     assert_no_button I18n.t('helpers.link.delete')
   end
 
-  test 'visiting a Channel as an user' do
+  test 'visit a channel as an user' do
     sign_in user
     visit channel_url(id: @channel.id)
     assert_no_button I18n.t('helpers.link.update_snippet')
@@ -67,7 +67,7 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_no_button I18n.t('helpers.link.delete')
   end
 
-  test 'visiting a Channel as an admin' do
+  test 'visit a channel as an admin' do
     sign_in admin
     visit channel_url(id: @channel.id)
     assert_button I18n.t('helpers.link.update_snippet')
@@ -75,7 +75,7 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_button I18n.t('helpers.link.delete')
   end
 
-  test 'creating a Channel' do
+  test 'create a channel' do
     sign_in admin
     visit channels_url
     click_on I18n.t('helpers.link.new'), match: :first
@@ -95,7 +95,7 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_selector 'a', text: @channel.reload.title
   end
 
-  test 'destroying a Channel' do
+  test 'destroy a channel' do
     assert @channel.channel_statistics.present?
 
     sign_in admin
