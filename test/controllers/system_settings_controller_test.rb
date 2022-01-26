@@ -42,7 +42,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to system_setting_url
   end
 
-  test 'should not create system_setting if parameters are invalid - auth_method1' do
+  test 'should not create system_setting if auth_method is nil' do
     sign_in admin
 
     assert_no_difference -> {SystemSetting.count} do
@@ -52,7 +52,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not create system_setting if parameters are invalid - auth_method2' do
+  test 'should not create system_setting if auth_method is blank' do
     sign_in admin
 
     assert_no_difference -> {SystemSetting.count} do
@@ -76,7 +76,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert ss.nothing?
   end
 
-  test 'should not create system_setting if parameters are invalid - api_key1' do
+  test 'should not create system_setting if api_key is nil' do
     sign_in admin
 
     assert_no_difference -> {SystemSetting.count} do
@@ -86,7 +86,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not create system_setting if parameters are invalid - api_key2' do
+  test 'should not create system_setting if api_key is blank' do
     sign_in admin
 
     assert_no_difference -> {SystemSetting.count} do
@@ -96,7 +96,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not create system_setting if parameters are invalid - api_key3' do
+  test 'should not create system_setting if parameter "api_key" is missing' do
     sign_in admin
 
     assert_no_difference -> {SystemSetting.count} do
@@ -108,7 +108,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not create system_setting if parameters are invalid - client_id1' do
+  test 'should not create system_setting if client_id is nil' do
     sign_in admin
 
     assert_no_difference -> {SystemSetting.count} do
@@ -118,7 +118,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not create system_setting if parameters are invalid - client_id2' do
+  test 'should not create system_setting if client_id is blank' do
     sign_in admin
 
     assert_no_difference -> {SystemSetting.count} do
@@ -128,7 +128,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not create system_setting if parameters are invalid - client_id3' do
+  test 'should not create system_setting if parameter "client_id" is missing' do
     sign_in admin
 
     assert_no_difference -> {SystemSetting.count} do
@@ -140,7 +140,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not create system_setting if parameters are invalid - client_secret1' do
+  test 'should not create system_setting if client_secret is nil' do
     sign_in admin
 
     assert_no_difference -> {SystemSetting.count} do
@@ -150,7 +150,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not create system_setting if parameters are invalid - client_secret2' do
+  test 'should not create system_setting if client_secret is blank' do
     sign_in admin
 
     assert_no_difference -> {SystemSetting.count} do
@@ -160,7 +160,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not create system_setting if parameters are invalid - client_secret3' do
+  test 'should not create system_setting if parameter "client_secret" is missing' do
     sign_in admin
 
     assert_no_difference -> {SystemSetting.count} do
@@ -238,7 +238,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to system_setting_url
   end
 
-  test 'should not update system_setting if parameters are invalid - auth_method1' do
+  test 'should not update system_setting if auth_method is nil' do
     sign_in admin
 
     patch system_setting_url,
@@ -246,7 +246,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not update system_setting if parameters are invalid - auth_method2' do
+  test 'should not update system_setting if auth_method is blank' do
     sign_in admin
 
     patch system_setting_url,
@@ -264,7 +264,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to system_setting_url
   end
 
-  test 'should not update system_setting if parameters are invalid - api_key1' do
+  test 'should not update system_setting if api_key is nil' do
     sign_in admin
 
     patch system_setting_url,
@@ -272,7 +272,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not update system_setting if parameters are invalid - api_key2' do
+  test 'should not update system_setting if api_key is blank' do
     sign_in admin
 
     patch system_setting_url,
@@ -290,7 +290,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to system_setting_url
   end
 
-  test 'should not update system_setting if parameters are invalid - client_id1' do
+  test 'should not update system_setting if client_id is nil' do
     sign_in admin
 
     patch system_setting_url,
@@ -298,7 +298,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not update system_setting if parameters are invalid - client_id2' do
+  test 'should not update system_setting if client_id is blank' do
     sign_in admin
 
     patch system_setting_url,
@@ -316,7 +316,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to system_setting_url
   end
 
-  test 'should update system_setting if client_secret is blank1' do
+  test 'should update system_setting if client_secret is nil' do
     sign_in admin
 
     patch system_setting_url,
@@ -324,7 +324,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to system_setting_url
   end
 
-  test 'should update system_setting if client_secret is blank2' do
+  test 'should update system_setting if client_secret is blank' do
     sign_in admin
 
     patch system_setting_url,
@@ -332,7 +332,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to system_setting_url
   end
 
-  test 'should update system_setting if client_secret is blank3' do
+  test 'should update system_setting if parameter "client_secret" is missing' do
     sign_in admin
 
     params = oauth2_params
