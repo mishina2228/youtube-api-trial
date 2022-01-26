@@ -5,18 +5,18 @@ class SystemSettingsTest < ApplicationSystemTestCase
     @system_setting = system_setting
   end
 
-  test 'visiting a System setting as an user not logged in' do
+  test 'visit a system setting as an user not logged in' do
     visit root_path
     assert_no_selector 'a', text: SystemSetting.model_name.human
   end
 
-  test 'visiting a System setting as an user' do
+  test 'visit a system setting as an user' do
     sign_in user
     visit root_path
     assert_no_selector 'a', text: SystemSetting.model_name.human
   end
 
-  test 'visiting a System setting as an admin' do
+  test 'visit a system setting as an admin' do
     sign_in admin
     visit root_path
     assert_selector 'a', text: SystemSetting.model_name.human
@@ -26,7 +26,7 @@ class SystemSettingsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: I18n.t('helpers.title.show', model: SystemSetting.model_name.human)
   end
 
-  test 'creating a System setting api_key' do
+  test 'create a system setting api_key' do
     SystemSetting.destroy_all
 
     sign_in admin
@@ -41,7 +41,7 @@ class SystemSettingsTest < ApplicationSystemTestCase
     assert_current_path(system_setting_path)
   end
 
-  test 'creating a System setting oauth2' do
+  test 'create a system setting oauth2' do
     SystemSetting.destroy_all
 
     sign_in admin
@@ -57,7 +57,7 @@ class SystemSettingsTest < ApplicationSystemTestCase
     assert_current_path(system_setting_path)
   end
 
-  test 'updating a System setting' do
+  test 'update a system setting' do
     sign_in admin
     visit system_setting_path
     click_on I18n.t('helpers.link.edit')
