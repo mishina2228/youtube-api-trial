@@ -179,7 +179,7 @@ GEM
     hashie (5.0.0)
     html_tokenizer (0.0.7)
     httpclient (2.8.3)
-    i18n (1.8.11)
+    i18n (1.9.0)
       concurrent-ruby (~> 1.0)
     i18n-js (3.9.0)
       i18n (>= 0.6.6)
