@@ -21,15 +21,13 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
   test 'should not get new if logged in as an user' do
     sign_in user
 
-    assert_raise CanCan::AccessDenied do
-      get new_system_setting_url
-    end
+    get new_system_setting_url
+    assert_redirected_to root_path
   end
 
   test 'should not get new unless logged in' do
-    assert_raise CanCan::AccessDenied do
-      get new_system_setting_url
-    end
+    get new_system_setting_url
+    assert_redirected_to root_path
   end
 
   test 'should create system_setting' do
@@ -175,17 +173,15 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
   test 'should not create system_setting if logged in as an user' do
     sign_in user
 
-    assert_raise CanCan::AccessDenied do
-      post system_setting_url,
-           params: api_key_params
-    end
+    post system_setting_url,
+         params: api_key_params
+    assert_redirected_to root_path
   end
 
   test 'should not create system_setting unless logged in' do
-    assert_raise CanCan::AccessDenied do
-      post system_setting_url,
-           params: api_key_params
-    end
+    post system_setting_url,
+         params: api_key_params
+    assert_redirected_to root_path
   end
 
   test 'should show system_setting' do
@@ -198,15 +194,13 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
   test 'should not show system_setting if logged in as an user' do
     sign_in user
 
-    assert_raise CanCan::AccessDenied do
-      get system_setting_url
-    end
+    get system_setting_url
+    assert_redirected_to root_path
   end
 
   test 'should not show system_setting unless not logged in' do
-    assert_raise CanCan::AccessDenied do
-      get system_setting_url
-    end
+    get system_setting_url
+    assert_redirected_to root_path
   end
 
   test 'should get edit' do
@@ -219,15 +213,13 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
   test 'should not get edit if logged in as an user' do
     sign_in user
 
-    assert_raise CanCan::AccessDenied do
-      get edit_system_setting_url
-    end
+    get edit_system_setting_url
+    assert_redirected_to root_path
   end
 
   test 'should not get edit unless not logged in' do
-    assert_raise CanCan::AccessDenied do
-      get edit_system_setting_url
-    end
+    get edit_system_setting_url
+    assert_redirected_to root_path
   end
 
   test 'should update system_setting' do
@@ -345,17 +337,15 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
   test 'should not update system_setting if logged in as an user' do
     sign_in user
 
-    assert_raise CanCan::AccessDenied do
-      patch system_setting_url,
-            params: api_key_params
-    end
+    patch system_setting_url,
+          params: api_key_params
+    assert_redirected_to root_path
   end
 
   test 'should not update system_setting unless not logged in' do
-    assert_raise CanCan::AccessDenied do
-      patch system_setting_url,
-            params: api_key_params
-    end
+    patch system_setting_url,
+          params: api_key_params
+    assert_redirected_to root_path
   end
 
   test 'should get oauth2 auth url' do
@@ -406,29 +396,25 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
   test 'should not get oauth2 auth url if logged in as an user' do
     sign_in user
 
-    assert_raise CanCan::AccessDenied do
-      put oauth2_authorize_system_setting_url
-    end
+    put oauth2_authorize_system_setting_url
+    assert_redirected_to root_path
   end
 
   test 'should not get oauth2 auth url unless not logged in' do
-    assert_raise CanCan::AccessDenied do
-      put oauth2_authorize_system_setting_url
-    end
+    put oauth2_authorize_system_setting_url
+    assert_redirected_to root_path
   end
 
   test 'should not store oauth2 credential if logged in as an user' do
     sign_in user
 
-    assert_raise CanCan::AccessDenied do
-      put oauth2_store_credential_system_setting_url
-    end
+    put oauth2_store_credential_system_setting_url
+    assert_redirected_to root_path
   end
 
   test 'should not store oauth2 credential unless not logged in' do
-    assert_raise CanCan::AccessDenied do
-      put oauth2_store_credential_system_setting_url
-    end
+    put oauth2_store_credential_system_setting_url
+    assert_redirected_to root_path
   end
 
   def api_key_params

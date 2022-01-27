@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale
+  rescue_from CanCan::AccessDenied do
+    redirect_to :root
+  end
 
   protected
 
