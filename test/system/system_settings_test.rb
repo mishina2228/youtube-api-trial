@@ -5,12 +5,12 @@ class SystemSettingsTest < ApplicationSystemTestCase
     @system_setting = system_setting
   end
 
-  test 'visit a system setting as an user not logged in' do
+  test 'visit the top page as an user not logged in' do
     visit root_path
     assert_no_selector 'a', text: SystemSetting.model_name.human
   end
 
-  test 'visit a system setting as an user' do
+  test 'visit the top page as an user' do
     sign_in user
     visit root_path
     assert_no_selector 'a', text: SystemSetting.model_name.human
