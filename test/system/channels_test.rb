@@ -95,6 +95,20 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_selector 'a', text: @channel.reload.title
   end
 
+  test 'create a channel with invalid parameters' do
+    sign_in admin
+    visit channels_url
+    click_on I18n.t('helpers.link.new'), match: :first
+    assert_current_path(new_channel_path)
+
+    channel_id = @channel.channel_id
+    fill_in Channel.human_attribute_name(:channel_id), with: channel_id
+    click_on I18n.t('helpers.submit.create')
+
+    assert_text I18n.t('errors.messages.taken')
+    assert_current_path(new_channel_path)
+  end
+
   test 'destroy a channel' do
     assert @channel.channel_statistics.present?
 

@@ -25,7 +25,7 @@ class SystemSettingsController < ApplicationController
         format.html {redirect_to system_setting_path, notice: t('helpers.notice.create')}
         format.json {render :show, status: :created, location: @system_setting}
       else
-        format.html {render :new}
+        format.html {render :new, status: :unprocessable_entity}
         format.json {render json: @system_setting.errors, status: :unprocessable_entity}
       end
     end
@@ -37,7 +37,7 @@ class SystemSettingsController < ApplicationController
         format.html {redirect_to system_setting_path, notice: t('helpers.notice.update')}
         format.json {render :show, status: :ok, location: @system_setting}
       else
-        format.html {render :edit}
+        format.html {render :edit, status: :unprocessable_entity}
         format.json {render json: @system_setting.errors, status: :unprocessable_entity}
       end
     end
