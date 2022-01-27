@@ -49,7 +49,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
       post system_setting_url,
            params: api_key_params.deep_merge(system_setting: {auth_method: nil})
     end
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should not create system_setting if auth_method is blank' do
@@ -59,7 +59,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
       post system_setting_url,
            params: api_key_params.deep_merge(system_setting: {auth_method: ''})
     end
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should create system_setting if parameter "auth_method" is missing' do
@@ -83,7 +83,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
       post system_setting_url,
            params: api_key_params.deep_merge(system_setting: {api_key: nil})
     end
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should not create system_setting if api_key is blank' do
@@ -93,7 +93,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
       post system_setting_url,
            params: api_key_params.deep_merge(system_setting: {api_key: ''})
     end
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should not create system_setting if parameter "api_key" is missing' do
@@ -105,7 +105,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
       post system_setting_url,
            params: params
     end
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should not create system_setting if client_id is nil' do
@@ -115,7 +115,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
       post system_setting_url,
            params: oauth2_params.deep_merge(system_setting: {client_id: nil})
     end
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should not create system_setting if client_id is blank' do
@@ -125,7 +125,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
       post system_setting_url,
            params: oauth2_params.deep_merge(system_setting: {client_id: ''})
     end
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should not create system_setting if parameter "client_id" is missing' do
@@ -137,7 +137,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
       post system_setting_url,
            params: params
     end
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should not create system_setting if client_secret is nil' do
@@ -147,7 +147,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
       post system_setting_url,
            params: oauth2_params.deep_merge(system_setting: {client_secret: nil})
     end
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should not create system_setting if client_secret is blank' do
@@ -157,7 +157,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
       post system_setting_url,
            params: oauth2_params.deep_merge(system_setting: {client_secret: ''})
     end
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should not create system_setting if parameter "client_secret" is missing' do
@@ -169,7 +169,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
       post system_setting_url,
            params: params
     end
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should not create system_setting if logged in as an user' do
@@ -237,7 +237,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
 
     patch system_setting_url,
           params: api_key_params.deep_merge(system_setting: {auth_method: nil})
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should not update system_setting if auth_method is blank' do
@@ -245,7 +245,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
 
     patch system_setting_url,
           params: api_key_params.deep_merge(system_setting: {auth_method: ''})
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should update system_setting if parameter "auth_method" is missing' do
@@ -263,7 +263,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
 
     patch system_setting_url,
           params: api_key_params.deep_merge(system_setting: {api_key: nil})
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should not update system_setting if api_key is blank' do
@@ -271,7 +271,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
 
     patch system_setting_url,
           params: api_key_params.deep_merge(system_setting: {api_key: ''})
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should update system_setting if parameter "api_key" is missing' do
@@ -289,7 +289,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
 
     patch system_setting_url,
           params: oauth2_params.deep_merge(system_setting: {client_id: nil})
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should not update system_setting if client_id is blank' do
@@ -297,7 +297,7 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
 
     patch system_setting_url,
           params: oauth2_params.deep_merge(system_setting: {client_id: ''})
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should update system_setting if parameter "client_id" is missing' do

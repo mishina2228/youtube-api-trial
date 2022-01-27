@@ -61,7 +61,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should not create a channel if logged in as an user' do
