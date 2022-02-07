@@ -1,4 +1,4 @@
-import { Shared } from './shared'
+import { Shared } from 'controllers/shared'
 import Tagify from '@yaireo/tagify'
 
 document.addEventListener('turbolinks:load', () => {

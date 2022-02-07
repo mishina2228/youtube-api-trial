@@ -7,9 +7,11 @@
   <%= csp_meta_tag %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <%= javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_packs_with_chunks_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= favicon_pack_tag 'favicon.ico' %>
+  <%= javascript_importmap_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= javascript_include_tag 'i18n' %>
+  <%= javascript_include_tag 'translations', skip_pipeline: true %>
+  <%= favicon_link_tag 'favicon.ico' %>
 </head>
 
 <body class="<%= 'dark_mode' if cookies['dark_mode'] == 'isActive' %>" data-locale="<%= I18n.locale %>">

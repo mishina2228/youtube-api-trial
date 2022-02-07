@@ -10,8 +10,11 @@ gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 5.6'
 gem 'puma_worker_killer'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.4'
+# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem 'importmap-rails'
+
+gem 'cssbundling-rails'
+gem 'propshaft'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'

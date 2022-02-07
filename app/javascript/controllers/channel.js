@@ -1,11 +1,11 @@
-import emojione from 'emoji-toolkit'
+// import emojione from 'emoji-toolkit'
 import iziToast from 'izitoast'
-import I18n from './i18n.js.erb'
-import { Shared } from './shared'
+import I18n from 'i18n-js'
+import { Shared } from 'controllers/shared'
 import { Tooltip } from 'bootstrap'
 
 document.addEventListener('turbolinks:load', () => {
-  emojify()
+  // emojify()
   const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
   tooltipTriggerList.map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
   document.getElementById('reset-search')?.addEventListener('click', resetSearchForm)
