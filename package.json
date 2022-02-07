@@ -21,7 +21,7 @@
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "markdownlint-cli": "^0.30.0",
+    "markdownlint-cli": "^0.31.0",
     "standard": "^16.0.4",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-dev-server": "^3.11.3"
