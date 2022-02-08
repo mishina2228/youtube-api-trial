@@ -1,4 +1,4 @@
-import I18n from 'i18n-js'
+import I18n from 'i18n-js/translations'
 
 const Shared = {}
 Shared.set_locale = () => {

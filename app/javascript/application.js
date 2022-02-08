@@ -12,8 +12,6 @@ import 'controllers/theme_changer'
 import Rails from '@rails/ujs'
 import Turbolinks from 'turbolinks'
 
-import I18n from 'i18n-js'
-
 Rails.start()
 Turbolinks.start()
 import $ from 'jquery'
