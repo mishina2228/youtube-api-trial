@@ -11,7 +11,6 @@ pin "i18n-js", to: "https://ga.jspm.io/npm:i18n-js@3.8.0/app/assets/javascripts/
 pin "izitoast", to: "https://ga.jspm.io/npm:izitoast@1.4.0/dist/js/iziToast.js"
 pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.2/lib/index.js"
 pin "js-cookie", to: "https://ga.jspm.io/npm:js-cookie@3.0.1/dist/js.cookie.mjs"
-pin "three-dots", to: "https://ga.jspm.io/npm:three-dots@0.2.3/dist/three-dots.css"
 pin "turbolinks", to: "https://ga.jspm.io/npm:turbolinks@5.2.0/dist/turbolinks.js"
 pin "@rails/ujs", to: "https://ga.jspm.io/npm:@rails/ujs@7.0.1/lib/assets/compiled/rails-ujs.js"
 pin "jquery", to: "https://ga.jspm.io/npm:jquery@3.6.0/dist/jquery.js"
