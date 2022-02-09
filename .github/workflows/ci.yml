@@ -34,7 +34,7 @@ jobs:
       - name: Database setup
         run: bin/rails db:schema:load --trace
       - name: Build assets in advance
-        run: bin/webpack
+        run: yarn build:css
       - name: Run unit tests
         run: bin/rails test
       - name: Upload unit test coverage report
