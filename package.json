@@ -17,7 +17,6 @@
     "rails-erb-loader": "^5.5.2",
     "sass": "^1.49.7",
     "three-dots": "^0.2.3",
-    "toastr": "^2.1.4",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
