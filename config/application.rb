@@ -27,6 +27,8 @@ module YoutubeApiTrial
 
     config.paths.add 'lib', eager_load: true
 
+    config.active_record.sqlite3_production_warning = false
+
     config.middleware.use I18n::JS::Middleware
   end
 end
