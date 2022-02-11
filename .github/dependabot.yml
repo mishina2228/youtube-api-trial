@@ -19,3 +19,14 @@ updates:
   open-pull-requests-limit: 10
   assignees:
   - mishina2228
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "20:00"
+  target-branch: yarn-dependabot
+  open-pull-requests-limit: 10
+  assignees:
+    - mishina2228
+  labels:
+    - "yarn-dependabot"
