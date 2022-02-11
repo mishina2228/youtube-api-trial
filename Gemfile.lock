@@ -102,6 +102,8 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    cssbundling-rails (1.0.0)
+      railties (>= 6.0.0)
     declarative (0.0.20)
     devise (4.8.1)
       bcrypt (~> 3.0)
@@ -183,6 +185,9 @@ GEM
       concurrent-ruby (~> 1.0)
     i18n-js (3.9.0)
       i18n (>= 0.6.6)
+    importmap-rails (1.0.2)
+      actionpack (>= 6.0.0)
+      railties (>= 6.0.0)
     io-wait (0.2.1)
     itamae (1.12.5)
       ansi
@@ -256,6 +261,11 @@ GEM
       activerecord (>= 5.1, < 7.1)
     parser (3.1.0.0)
       ast (~> 2.4.1)
+    propshaft (0.5.0)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
+      railties (>= 7.0.0)
     public_suffix (4.0.6)
     puma (5.6.1)
       nio4r (~> 2.0)
@@ -268,8 +278,6 @@ GEM
     rack-mini-profiler (2.3.3)
       rack (>= 1.2.0)
     rack-protection (2.1.0)
-      rack
-    rack-proxy (0.7.2)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -355,7 +363,6 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
-    semantic_range (3.0.0)
     sfl (2.3)
     signet (0.16.0)
       addressable (~> 2.8)
@@ -409,11 +416,6 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (~> 4.0)
-    webpacker (5.4.3)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     webrick (1.7.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -432,6 +434,7 @@ DEPENDENCIES
   bullet
   cancancan
   capybara (>= 2.15)
+  cssbundling-rails
   devise (~> 4.8.1)
   devise-i18n
   enum_help
@@ -439,11 +442,13 @@ DEPENDENCIES
   god
   google-apis-youtube_v3 (~> 0.14.0)
   i18n-js
+  importmap-rails
   itamae
   jbuilder (~> 2.11)
   kaminari (~> 1.2.2)
   minitest-ci
   paranoia (~> 2.5)
+  propshaft
   puma (~> 5.6)
   puma_worker_killer
   rack-mini-profiler (~> 2.3)
@@ -461,7 +466,6 @@ DEPENDENCIES
   turbolinks (~> 5)
   web-console (>= 3.3.0)
   webdrivers
-  webpacker (~> 5.4)
 
 RUBY VERSION
    ruby 3.0.2p107

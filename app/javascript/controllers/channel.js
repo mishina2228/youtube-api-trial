@@ -1,11 +1,9 @@
-import emojione from 'emoji-toolkit'
 import iziToast from 'izitoast'
-import I18n from './i18n.js.erb'
-import { Shared } from './shared'
+import I18n from 'i18n-js/translations'
+import { Shared } from 'lib/shared'
 import { Tooltip } from 'bootstrap'
 
 document.addEventListener('turbolinks:load', () => {
-  emojify()
   const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
   tooltipTriggerList.map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
   document.getElementById('reset-search')?.addEventListener('click', resetSearchForm)
@@ -35,12 +33,6 @@ const getOffset = (id) => {
   const rectangle = elem.getBoundingClientRect()
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop
   return rectangle.top + scrollTop
-}
-
-const emojify = () => {
-  document.querySelectorAll('.emojify').forEach(elem => {
-    elem.innerHTML = emojione.toImage(elem.innerHTML)
-  })
 }
 
 const resetSearchForm = () => {

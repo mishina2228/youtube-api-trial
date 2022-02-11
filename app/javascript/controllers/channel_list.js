@@ -1,5 +1,5 @@
-import I18n from './i18n.js.erb'
-import { Shared } from './shared'
+import I18n from 'i18n-js/translations'
+import { Shared } from 'lib/shared'
 
 const propSubmitButton = () => {
   Shared.set_locale()
@@ -20,4 +20,4 @@ const propSubmitButton = () => {
   })
 }
 
-global.propSubmitButton = propSubmitButton
+window.propSubmitButton = propSubmitButton

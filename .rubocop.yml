@@ -66,5 +66,8 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 Style/RescueStandardError:
   EnforcedStyle: implicit
+Style/StringLiterals:
+  Exclude:
+    - 'config/importmap.rb'
 Style/SymbolArray:
   EnforcedStyle: brackets
