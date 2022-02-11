@@ -15,4 +15,5 @@ pin "turbolinks", to: "https://ga.jspm.io/npm:turbolinks@5.2.0/dist/turbolinks.j
 pin "@rails/ujs", to: "https://ga.jspm.io/npm:@rails/ujs@7.0.1/lib/assets/compiled/rails-ujs.js"
 pin "jquery", to: "https://ga.jspm.io/npm:jquery@3.6.0/dist/jquery.js"
 pin_all_from "app/javascript/i18n-js", under: "i18n-js"
+pin_all_from "app/javascript/lib", under: "lib"
 pin_all_from "app/javascript/controllers", under: "controllers"

@@ -1,6 +1,6 @@
 import iziToast from 'izitoast'
 import I18n from 'i18n-js/translations'
-import { Shared } from 'controllers/shared'
+import { Shared } from 'lib/shared'
 import { Tooltip } from 'bootstrap'
 
 document.addEventListener('turbolinks:load', () => {
