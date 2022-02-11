@@ -243,7 +243,7 @@ ja:
     alert:
       error_backtrace: 'バックトレース'
       error_summary: 'エラー概要'
-      subject: '[YoutubeApiTrial] ジョブが失敗しました'
+      subject: '[YouTubeApiTrial] ジョブが失敗しました'
   number:
     currency:
       format:

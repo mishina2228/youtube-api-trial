@@ -249,7 +249,7 @@ en:
     alert:
       error_backtrace: 'Backtrace'
       error_summary: 'Error Summary'
-      subject: '[YoutubeApiTrial] Job Failed!'
+      subject: '[YouTubeApiTrial] Job Failed!'
   number:
     currency:
       format:
