@@ -4,8 +4,7 @@ import { Shared } from 'lib/shared'
 import { Tooltip } from 'bootstrap'
 
 document.addEventListener('turbolinks:load', () => {
-  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
-  tooltipTriggerList.map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
+  initializeTooltips()
   document.getElementById('reset-search')?.addEventListener('click', resetSearchForm)
   const loaderBg = document.querySelector('.loader-bg')
   const searchResult = document.getElementById('search-result')
@@ -29,6 +28,7 @@ document.addEventListener('turbolinks:load', () => {
       window.scroll(0, getOffset('search-result') - margin)
     }
     scrollTop = false // reset variable
+    initializeTooltips()
   })
 
   displayLoaderImg('form.search')
@@ -115,4 +115,9 @@ const triggerAndNotify = (btn, errorMessage = null) => {
         iziToast.error({ message: errorMessage || err.message, position: 'bottomRight' })
       })
   })
+}
+
+const initializeTooltips = () => {
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+  tooltipTriggerList.map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
 }
