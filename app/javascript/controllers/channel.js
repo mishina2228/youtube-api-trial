@@ -8,16 +8,27 @@ document.addEventListener('turbolinks:load', () => {
   tooltipTriggerList.map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
   document.getElementById('reset-search')?.addEventListener('click', resetSearchForm)
   const loaderBg = document.querySelector('.loader-bg')
+  const searchResult = document.getElementById('search-result')
+  let scrollTop = false
 
-  $('#search-result-pagination').on('ajax:beforeSend', _event => {
+  const searchResultPagination = document.getElementById('search-result-pagination')
+  searchResultPagination?.addEventListener('ajax:beforeSend', () => {
     document.querySelectorAll('nav ul .page-item').forEach(element => {
       element.classList.add('disabled')
     })
     loaderBg.style.display = 'block'
-    const margin = document.querySelector('div.fixed-top').clientHeight
-    $('html, body').animate({ scrollTop: getOffset('search-result') - margin })
-  }).on('ajax:success', _event => {
+    searchResult.style.opacity = '0.3'
+    scrollTop = true // scroll to the top of table if paginated
+  })
+  searchResultPagination?.addEventListener('ajax:success', () => {
     loaderBg.style.display = 'none'
+    searchResult.style.opacity = '1'
+    searchResult.animate({ opacity: [0, 1] }, { duration: 500 })
+    if (scrollTop) {
+      const margin = document.querySelector('div.fixed-top').clientHeight
+      window.scroll(0, getOffset('search-result') - margin)
+    }
+    scrollTop = false // reset variable
   })
 
   displayLoaderImg('form.search')
