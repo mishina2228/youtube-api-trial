@@ -2,7 +2,7 @@ import I18n from 'i18n-js/translations'
 import { Shared } from 'lib/shared'
 
 const propSubmitButton = () => {
-  Shared.set_locale()
+  Shared.setLocale()
   document.querySelectorAll('form.create-channel').forEach(elem => {
     elem.addEventListener('ajax:beforeSend', event => {
       const button = event.currentTarget.querySelector('input[type="submit"]')

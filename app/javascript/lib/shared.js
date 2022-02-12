@@ -1,7 +1,7 @@
 import I18n from 'i18n-js/translations'
 
 const Shared = {}
-Shared.set_locale = () => {
+Shared.setLocale = () => {
   I18n.locale = document.getElementsByTagName('body')[0].getAttribute('data-locale')
 }
 Shared.getCsrfToken = () => {

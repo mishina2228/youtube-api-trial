@@ -32,7 +32,7 @@ document.addEventListener('turbolinks:load', () => {
   })
 
   displayLoaderImg('form.search')
-  Shared.set_locale()
+  Shared.setLocale()
   prepBuildStatistics()
   prepUpdateSnippet()
   prepUpdateAllSnippets()
