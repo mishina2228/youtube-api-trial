@@ -8,6 +8,22 @@ document.addEventListener('turbolinks:load', () => {
   document.getElementById('reset-search')?.addEventListener('click', resetSearchForm)
   let scrollTop = false
 
+  const form = document.querySelector('form.search')
+  form?.addEventListener('ajax:beforeSend', () => {
+    document.querySelectorAll('nav ul .page-item').forEach(element => {
+      element.classList.add('disabled')
+    })
+    showLoaderImg()
+    fadeOutSearchResult()
+    scrollTop = false // do not scroll to the top of table
+  })
+  form?.addEventListener('ajax:error', event => {
+    hideLoaderImg()
+    fadeInSearchResult()
+    iziToast.error({ message: I18n.t('text.common.error_message'), position: 'bottomRight' })
+    console.error(event)
+  })
+
   const searchResultPagination = document.getElementById('search-result-pagination')
   searchResultPagination?.addEventListener('ajax:beforeSend', () => {
     document.querySelectorAll('nav ul .page-item').forEach(element => {
@@ -27,8 +43,13 @@ document.addEventListener('turbolinks:load', () => {
     scrollTop = false // reset variable
     initializeTooltips()
   })
+  searchResultPagination?.addEventListener('ajax:error', event => {
+    hideLoaderImg()
+    fadeInSearchResult()
+    iziToast.error({ message: I18n.t('text.common.error_message'), position: 'bottomRight' })
+    console.error(event)
+  })
 
-  displayLoaderImg('form.search')
   Shared.setLocale()
   prepBuildStatistics()
   prepUpdateSnippet()
@@ -70,23 +91,6 @@ const fadeInSearchResult = () => {
   const searchResult = document.getElementById('search-result')
   searchResult.style.opacity = '1'
   searchResult.animate({ opacity: [0, 1] }, { duration: 500 })
-}
-
-const displayLoaderImg = (query) => {
-  const loaderBg = document.querySelector('.loader-bg')
-  document.querySelectorAll(query).forEach(element => {
-    element.addEventListener('ajax:beforeSend', _event => {
-      loaderBg.style.display = 'block'
-    })
-    element.addEventListener('ajax:success', _event => {
-      loaderBg.style.display = 'none'
-    })
-    element.addEventListener('ajax:error', event => {
-      loaderBg.style.display = 'none'
-      iziToast.error({ message: I18n.t('text.common.error_message'), position: 'bottomRight' })
-      console.error(event)
-    })
-  })
 }
 
 const prepUpdateSnippet = () => {
