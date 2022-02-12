@@ -6,8 +6,6 @@ import { Tooltip } from 'bootstrap'
 document.addEventListener('turbolinks:load', () => {
   initializeTooltips()
   document.getElementById('reset-search')?.addEventListener('click', resetSearchForm)
-  const loaderBg = document.querySelector('.loader-bg')
-  const searchResult = document.getElementById('search-result')
   let scrollTop = false
 
   const searchResultPagination = document.getElementById('search-result-pagination')
@@ -15,14 +13,13 @@ document.addEventListener('turbolinks:load', () => {
     document.querySelectorAll('nav ul .page-item').forEach(element => {
       element.classList.add('disabled')
     })
-    loaderBg.style.display = 'block'
-    searchResult.style.opacity = '0.3'
+    showLoaderImg()
+    fadeOutSearchResult()
     scrollTop = true // scroll to the top of table if paginated
   })
   searchResultPagination?.addEventListener('ajax:success', () => {
-    loaderBg.style.display = 'none'
-    searchResult.style.opacity = '1'
-    searchResult.animate({ opacity: [0, 1] }, { duration: 500 })
+    hideLoaderImg()
+    fadeInSearchResult()
     if (scrollTop) {
       const margin = document.querySelector('div.fixed-top').clientHeight
       window.scroll(0, getOffset('search-result') - margin)
@@ -52,6 +49,27 @@ const resetSearchForm = () => {
   inputFields.forEach(elem => { elem.value = '' })
   const selects = form.querySelectorAll('select')
   selects.forEach(elem => { elem.selectedIndex = 0 })
+}
+
+const hideLoaderImg = () => {
+  const loaderBg = document.querySelector('.loader-bg')
+  loaderBg.style.display = 'none'
+}
+
+const showLoaderImg = () => {
+  const loaderBg = document.querySelector('.loader-bg')
+  loaderBg.style.display = 'block'
+}
+
+const fadeOutSearchResult = () => {
+  const searchResult = document.getElementById('search-result')
+  searchResult.style.opacity = '0.3'
+}
+
+const fadeInSearchResult = () => {
+  const searchResult = document.getElementById('search-result')
+  searchResult.style.opacity = '1'
+  searchResult.animate({ opacity: [0, 1] }, { duration: 500 })
 }
 
 const displayLoaderImg = (query) => {
