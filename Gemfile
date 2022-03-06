@@ -65,6 +65,6 @@ group :test do
 end
 
 group :itamae do
-  gem 'god'
   gem 'itamae'
+  gem 'resurrected_god'
 end

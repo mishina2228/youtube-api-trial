@@ -140,7 +140,6 @@ GEM
       ffi (~> 1.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    god (0.13.7)
     google-apis-core (0.4.2)
       addressable (~> 2.5, >= 2.5.1)
       googleauth (>= 0.16.2, < 2.a)
@@ -311,6 +310,7 @@ GEM
       redis (>= 3.3)
       resque (>= 1.26)
       rufus-scheduler (~> 3.2)
+    resurrected_god (0.14.0)
     retriable (3.1.2)
     rexml (3.2.5)
     rubocop (1.25.1)
@@ -419,7 +419,6 @@ DEPENDENCIES
   devise-i18n
   enum_help
   erb_lint
-  god
   google-apis-youtube_v3 (~> 0.14.0)
   i18n-js
   importmap-rails
@@ -435,6 +434,7 @@ DEPENDENCIES
   rails (~> 7.0.2)
   resque
   resque-scheduler
+  resurrected_god
   rubocop
   rubocop-minitest
   rubocop-performance
