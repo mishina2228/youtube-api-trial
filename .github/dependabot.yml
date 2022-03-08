@@ -30,3 +30,11 @@ updates:
       - mishina2228
     labels:
       - "yarn-dependabot"
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "20:00"
+    open-pull-requests-limit: 10
+    assignees:
+      - mishina2228
