@@ -1,32 +1,32 @@
 version: 2
 updates:
-- package-ecosystem: bundler
-  directory: "/"
-  schedule:
-    interval: daily
-    time: "20:00"
-  open-pull-requests-limit: 10
-  assignees:
-  - mishina2228
-  allow:
-  - dependency-type: direct
-  - dependency-type: indirect
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-    time: "20:00"
-  open-pull-requests-limit: 10
-  assignees:
-  - mishina2228
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-    time: "20:00"
-  target-branch: yarn-dependabot
-  open-pull-requests-limit: 10
-  assignees:
-    - mishina2228
-  labels:
-    - "yarn-dependabot"
+  - package-ecosystem: bundler
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "20:00"
+    open-pull-requests-limit: 10
+    assignees:
+      - mishina2228
+    allow:
+      - dependency-type: direct
+      - dependency-type: indirect
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "20:00"
+    open-pull-requests-limit: 10
+    assignees:
+      - mishina2228
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "20:00"
+    target-branch: yarn-dependabot
+    open-pull-requests-limit: 10
+    assignees:
+      - mishina2228
+    labels:
+      - "yarn-dependabot"
