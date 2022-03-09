@@ -126,7 +126,7 @@ GEM
       rubocop
       smart_properties
     erubi (1.10.0)
-    et-orbi (1.2.6)
+    et-orbi (1.2.7)
       tzinfo
     faraday (2.2.0)
       faraday-net_http (~> 2.0)
