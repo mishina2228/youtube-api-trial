@@ -419,7 +419,7 @@ DEPENDENCIES
   devise-i18n
   enum_help
   erb_lint
-  google-apis-youtube_v3 (~> 0.15.0)
+  google-apis-youtube_v3 (~> 0.15)
   i18n-js
   importmap-rails
   itamae
