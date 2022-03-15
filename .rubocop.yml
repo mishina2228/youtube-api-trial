@@ -39,6 +39,8 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Enabled: false
 
+Minitest/AssertPredicate:
+  Enabled: false
 Minitest/MultipleAssertions:
   Enabled: false
 
