@@ -24,9 +24,7 @@ module Channels
     test 'channel snippet should be updated' do
       channel = channels(:channel1)
       before_description = channel.description
-      assert_nothing_raised do
-        Channels::UpdateSnippetJob.perform('channel_id' => channel.id)
-      end
+      Channels::UpdateSnippetJob.perform('channel_id' => channel.id)
       assert_not_equal channel.reload.description, before_description
     end
 

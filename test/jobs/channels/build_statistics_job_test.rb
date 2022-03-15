@@ -24,10 +24,8 @@ module Channels
 
     test 'channel statistics increases by one' do
       channel = channels(:channel1)
-      assert_nothing_raised do
-        assert_difference -> {channel.channel_statistics.count} do
-          Channels::BuildStatisticsJob.perform('channel_id' => channel.id)
-        end
+      assert_difference -> {channel.channel_statistics.count} do
+        Channels::BuildStatisticsJob.perform('channel_id' => channel.id)
       end
     end
 
