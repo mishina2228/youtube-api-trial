@@ -77,7 +77,7 @@ class ChannelTest < ActiveSupport::TestCase
   test 'youtube_service should return mock in the test environment' do
     channel = channels(:channel1)
     ret = channel.youtube_service
-    assert ret.is_a?(Mishina::Youtube::Mock::Service), 'use mock in the test environment'
+    assert_instance_of Mishina::Youtube::Mock::Service, ret, 'use mock in the test environment'
   end
 
   test "calling youtube_service without any SystemSetting's records should raise error" do
