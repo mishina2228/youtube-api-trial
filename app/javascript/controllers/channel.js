@@ -17,6 +17,10 @@ document.addEventListener('turbolinks:load', () => {
     fadeOutSearchResult()
     scrollTop = false // do not scroll to the top of table
   })
+  form?.addEventListener('ajax:success', event => {
+    const newURL = Shared.urlWithCleanParams(event.detail[2].responseURL)
+    window.history.replaceState({ turbolinks: true, url: newURL }, '', newURL)
+  })
   form?.addEventListener('ajax:error', event => {
     hideLoaderImg()
     fadeInSearchResult()

@@ -29,5 +29,15 @@ Shared.sendAction = (form, accept = 'application/json') => {
     }
   })
 }
+Shared.urlWithCleanParams = urlString => {
+  const url = new URL(urlString)
+
+  const paramsArray = []
+  url.searchParams.forEach((value, key) => {
+    if (value === '') { return }
+    paramsArray.push([key, value])
+  })
+  return `${url.origin}${url.pathname}?${(new URLSearchParams(paramsArray)).toString()}`
+}
 
 export { Shared }
