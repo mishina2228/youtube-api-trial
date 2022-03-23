@@ -34,7 +34,7 @@ gem 'enum_help'
 gem 'google-apis-youtube_v3', '~> 0.16'
 gem 'i18n-js'
 gem 'kaminari', '~> 1.2.2'
-gem 'paranoia', '~> 2.5'
+gem 'paranoia', '~> 2.6'
 
 gem 'resque'
 gem 'resque-scheduler'
