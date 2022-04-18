@@ -168,7 +168,7 @@ GEM
     importmap-rails (1.0.3)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    itamae (1.12.5)
+    itamae (1.12.6)
       ansi
       hashie
       schash (~> 0.1.0)
