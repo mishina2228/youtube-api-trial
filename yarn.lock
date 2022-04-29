@@ -36,10 +36,10 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
-"@yaireo/tagify@^4.11.0":
-  version "4.11.0"
-  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-4.11.0.tgz#e7c4e886d74476fa64d4c23706d59179a61f220b"
-  integrity sha512-J70gWNNlgHw+60azyJTsu0YHPsH7qXowQIi7PGMuhDQAfjTGNUH/Tx2TCzruTDocOTcoD6ol/iZXpNm8+VOg7g==
+"@yaireo/tagify@^4.12.0":
+  version "4.12.0"
+  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-4.12.0.tgz#4e5cd6d37fa80cb70f029dce879843b047844e3d"
+  integrity sha512-3PErDt0dWGsrpxFcfoCXiCKJDil4J8hdts2GApS7z6KAKkkBMYxD9pSyF28TdkdehcuC/E64TMVwU9e2TdjTxw==
 
 acorn-jsx@^5.3.1:
   version "5.3.1"
