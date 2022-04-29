@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 directory '/etc/god' do
   user 'root'
   owner 'root'

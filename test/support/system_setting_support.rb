@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SystemSettingSupport
   def system_setting
     return @system_setting if @system_setting

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Search
   class Channel < Search::Base
     attr_accessor :ids, :title, :tag

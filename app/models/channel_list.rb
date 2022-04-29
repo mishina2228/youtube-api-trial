@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChannelList
   attr_accessor :channels, :next_page_token, :prev_page_token, :total_results
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'googleauth/user_refresh'
 
 module Mishina

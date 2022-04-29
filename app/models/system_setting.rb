@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SystemSetting < ApplicationRecord
   include Encryptor
   include Mishina::Youtube::Oauth2Factory

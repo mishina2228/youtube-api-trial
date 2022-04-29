@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Channels
   class BuildStatisticsJob
     @queue = :normal

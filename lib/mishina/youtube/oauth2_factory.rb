@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mishina
   module Youtube
     module Oauth2Factory

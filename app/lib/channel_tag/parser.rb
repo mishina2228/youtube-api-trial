@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ChannelTag
   class Parser < ActsAsTaggableOn::GenericParser
     def parse
