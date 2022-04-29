@@ -24,7 +24,11 @@ const prepEditChannelTag = btn => {
         const channelTags = document.querySelector('input.channel-tags')
         const tagify = new Tagify(channelTags, {
           delimiters: null,
-          whitelist: []
+          whitelist: [],
+          dropdown: {
+            classname: 'tags-look',
+            closeOnSelect: false
+          }
         })
         tagify.on('input', e => { tagNameWhiteList(e, tagify) })
       })
