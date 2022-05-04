@@ -48,6 +48,10 @@ ja:
     subscription:
       total_results: 登録チャンネルの総数
     system_setting:
+      auth_method_description: 説明
+      auth_method_descriptions:
+        api_key: 認証方式に APIキー を選択した場合、登録済みのチャンネルを表示する機能は使用できません。
+        oauth2: 認証方式に OAuth2 を選択した場合、登録済みのチャンネルを表示する機能を含む、全ての機能を使用できます。
       change_client_secret: クライアント シークレットを変更する
       missing: システム設定が作成されていません
       missing_auth_method: 認証方式が未設定です。編集画面から認証方式を設定してください。

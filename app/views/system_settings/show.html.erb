@@ -52,7 +52,7 @@
         <% if @system_setting.oauth2_configured? %>
           <%= t('text.system_setting.oauth2_setting_configured.true') %>
         <% else %>
-          <%= t('text.system_setting.oauth2_setting_configured.false') %>
+          <span class="font-weight-bold"><%= t('text.system_setting.oauth2_setting_configured.false') %></span>
           <div class="oauth2-authorize-url">
             <%= button_to t('helpers.link.oauth2_setting'), oauth2_authorize_system_setting_path,
                           method: :put, remote: true, class: 'btn btn-success',

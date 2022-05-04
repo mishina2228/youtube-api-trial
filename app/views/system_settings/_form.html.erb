@@ -12,7 +12,7 @@
   <div class="container">
     <div class="row">
       <div class="col-4">
-        <%= form.label :auth_method %>
+        <%= form.label :auth_method, class: 'font-weight-bold' %>
       </div>
       <div class="col-8">
         <div class="row auth-methods">
@@ -26,38 +26,58 @@
       </div>
     </div>
     <div class="api_key auth-field">
-      <div class="auth-field-group row">
-        <div class="col-4">
-          <%= form.label :api_key %>
+      <div class="auth-field-group">
+        <div class="row">
+          <div class="col-4">
+            <span class="font-weight-bold"><%= t('text.system_setting.auth_method_description') %></span>
+          </div>
+          <div class="col-8">
+            <%= t('text.system_setting.auth_method_descriptions.api_key') %>
+          </div>
         </div>
-        <div class="col-8">
-          <%= form.text_field :api_key, class: 'form-control', required: true %>
+        <div class="row">
+          <div class="col-4">
+            <%= form.label :api_key, class: 'font-weight-bold' %>
+          </div>
+          <div class="col-8">
+            <%= form.text_field :api_key, class: 'form-control', required: true %>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="oauth2 auth-field">
-      <div class="auth-field-group row">
-        <div class="col-4">
-          <%= form.label :client_id %>
+      <div class="auth-field-group">
+        <div class="row">
+          <div class="col-4">
+            <span class="font-weight-bold"><%= t('text.system_setting.auth_method_description') %></span>
+          </div>
+          <div class="col-8">
+            <%= t('text.system_setting.auth_method_descriptions.oauth2') %>
+          </div>
         </div>
-        <div class="col-8">
-          <%= form.text_field :client_id, class: 'form-control', required: true, autocomplete: 'username' %>
+        <div class="row">
+          <div class="col-4">
+            <%= form.label :client_id, class: 'font-weight-bold' %>
+          </div>
+          <div class="col-8">
+            <%= form.text_field :client_id, class: 'form-control', required: true, autocomplete: 'username' %>
+          </div>
         </div>
-      </div>
-      <div class="auth-field-group row">
-        <div class="col-4">
-          <%= form.label :client_secret %>
-        </div>
-        <div class="col-8">
-          <% if system_setting.client_secret.present? %>
-            <a href="javascript:void(0);" class="change-client-secret">
-              <%= t('text.system_setting.change_client_secret') %>
-            </a>
-            <%= form.password_field :client_secret, class: 'form-control', style: 'display: none', autocomplete: 'new-password' %>
-          <% else %>
-            <%= form.password_field :client_secret, class: 'form-control', autocomplete: 'new-password' %>
-          <% end %>
+        <div class="row">
+          <div class="col-4">
+            <%= form.label :client_secret, class: 'font-weight-bold' %>
+          </div>
+          <div class="col-8">
+            <% if system_setting.client_secret.present? %>
+              <a href="javascript:void(0);" class="change-client-secret">
+                <%= t('text.system_setting.change_client_secret') %>
+              </a>
+              <%= form.password_field :client_secret, class: 'form-control', style: 'display: none', autocomplete: 'new-password' %>
+            <% else %>
+              <%= form.password_field :client_secret, class: 'form-control', autocomplete: 'new-password' %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

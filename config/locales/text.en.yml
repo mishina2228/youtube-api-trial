@@ -48,6 +48,10 @@ en:
     subscription:
       total_results: Total Subscriptions
     system_setting:
+      auth_method_description: description
+      auth_method_descriptions:
+        api_key: If API Key is selected, "Create from Subscription" function is not available.
+        oauth2: If OAuth2 is selected, all functions are available, including "Create from Subscription" function.
       change_client_secret: Change the Client Secret
       missing: The system setting has not been created
       missing_auth_method: The authentication method is not set. Please set the authentication method.
