@@ -3,30 +3,6 @@
 require 'test_helper'
 
 class ChannelTest < ActiveSupport::TestCase
-  test 'use_oauth2?' do
-    assert ss = system_setting
-
-    SystemSetting.destroy_all
-    assert_not Channel.use_oauth2?
-
-    assert ss.update(auth_method: :api_key)
-    assert_not Channel.use_oauth2?
-
-    assert ss.update(auth_method: :oauth2)
-    assert ss.oauth2?
-
-    Channel.stub(:system_setting, ss) do
-      ss.stub(:oauth2_configured?, false) do
-        assert_not ss.oauth2_configured?
-        assert_not Channel.use_oauth2?
-      end
-      ss.stub(:oauth2_configured?, true) do
-        assert ss.oauth2_configured?
-        assert Channel.use_oauth2?
-      end
-    end
-  end
-
   test 'validation' do
     channel = Channel.new(valid_params)
     assert channel.valid?

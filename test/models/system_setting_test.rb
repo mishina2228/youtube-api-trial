@@ -32,6 +32,57 @@ class SystemSettingTest < ActiveSupport::TestCase
     assert SystemSetting.new(valid_params_oauth2.merge(client_secret: nil)).invalid?
   end
 
+  test 'use_oauth2? returns false when there is no SystemSetting' do
+    SystemSetting.destroy_all
+    assert_not SystemSetting.use_oauth2?
+  end
+
+  test 'use_oauth2? returns false when api_key is selected' do
+    assert ss = system_setting
+
+    assert ss.update(auth_method: :api_key)
+    assert_not SystemSetting.use_oauth2?
+  end
+
+  test 'use_oauth2? returns true when oauth2 is selected and oauth2 credential is set' do
+    assert ss = system_setting
+
+    assert ss.update(auth_method: :oauth2)
+    assert ss.oauth2?
+
+    SystemSetting.stub(:system_setting, ss) do
+      ss.stub(:oauth2_configured?, false) do
+        assert_not SystemSetting.use_oauth2?
+      end
+      ss.stub(:oauth2_configured?, true) do
+        assert SystemSetting.use_oauth2?
+      end
+    end
+  end
+
+  test 'auth_configured? returns false when there is no SystemSetting' do
+    SystemSetting.destroy_all
+    assert_not SystemSetting.auth_configured?
+  end
+
+  test 'auth_configured? returns true if api_key is selected' do
+    assert ss = system_setting
+
+    assert ss.update(auth_method: :api_key)
+    assert SystemSetting.auth_configured?
+  end
+
+  test 'auth_configured? returns true when oauth2 is selected and oauth2 credential is set' do
+    assert ss = system_setting
+
+    assert ss.update(auth_method: :oauth2)
+    SystemSetting.stub(:system_setting, ss) do
+      ss.stub(:oauth2_configured?, true) do
+        assert SystemSetting.auth_configured?
+      end
+    end
+  end
+
   test 'oauth2_configured?' do
     ss = SystemSetting.new(valid_params_oauth2)
     assert_not_nil ss.credential

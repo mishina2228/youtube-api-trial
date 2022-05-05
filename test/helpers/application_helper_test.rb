@@ -3,6 +3,38 @@
 require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
+  test 'button_to_if_enabled returns enabled button when `enabled` is true' do
+    expected = <<~HTML.chomp
+      <form class="button_to" method="post" action="/channels"><button type="submit">Submit</button></form>
+    HTML
+    assert_dom_equal expected, button_to_if_enabled(true, 'Submit', channels_path)
+
+    expected = <<~HTML.chomp
+      <form class="button_to" method="post" action="/channels"><button class="button" type="submit">Submit</button></form>
+    HTML
+    assert_dom_equal expected, button_to_if_enabled(true, 'Submit', channels_path, {class: 'button'})
+  end
+
+  test 'button_to_if_enabled returns disabled button when `enabled` is false' do
+    expected = <<~HTML.chomp
+      <form class="button_to" method="post" action="#"><button type="submit" disabled="disabled">Submit</button></form>
+    HTML
+    assert_dom_equal expected, button_to_if_enabled(false, 'Submit', channels_path)
+
+    expected = <<~HTML.chomp
+      <form class="button_to" method="post" action="#"><button class="button" type="submit" disabled="disabled">Submit</button></form>
+    HTML
+    assert_dom_equal expected, button_to_if_enabled(false, 'Submit', channels_path, {class: 'button'})
+  end
+
+  test 'button_to_if_enabled raises error if block given' do
+    assert_raise RuntimeError do
+      button_to_if_enabled(true, channels_path, {class: 'button'}) do
+        'Submit'
+      end
+    end
+  end
+
   def test_sortable
     # TODO: refactor
   end

@@ -3,6 +3,7 @@
 class SystemSetting < ApplicationRecord
   include Encryptor
   include Mishina::Youtube::Oauth2Factory
+  extend SystemSettingAware
 
   attr_accessor :client_secret
 
@@ -18,6 +19,22 @@ class SystemSetting < ApplicationRecord
 
   def self.auth_methods_i18n_without_nothing
     auth_methods_i18n.reject {|k, _v| k.to_sym == :nothing}
+  end
+
+  def self.use_oauth2?
+    return false unless system_setting
+
+    system_setting.use_oauth2?
+  end
+
+  def self.auth_configured?
+    return false unless system_setting
+
+    system_setting.api_key? || system_setting.use_oauth2?
+  end
+
+  def use_oauth2?
+    oauth2? && oauth2_configured?
   end
 
   def oauth2_configured?

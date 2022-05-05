@@ -2,7 +2,6 @@
 
 class Channel < ApplicationRecord
   include SystemSettingAware
-  extend SystemSettingAware
 
   has_many :channel_statistics, -> {order(created_at: :desc)},
            dependent: :destroy, inverse_of: :channel
@@ -26,12 +25,6 @@ class Channel < ApplicationRecord
                          .group(:channel_id)
     Channel.joins("INNER JOIN (#{cs.to_sql}) as cs ON channels.id = cs.channel_id")
            .select('"channels".*, cs.subscriber_count, cs.view_count, cs.video_count, cs.latest_acquired_at')
-  end
-
-  def self.use_oauth2?
-    return false unless system_setting
-
-    system_setting.oauth2? && system_setting.oauth2_configured?
   end
 
   def save_and_set_job

@@ -1,24 +1,27 @@
+<% authenticated = SystemSetting.auth_configured? %>
 <div>
   <% if can? :update, Channel %>
-    <%= button_to t('helpers.link.update_all_snippets'), update_all_snippets_channels_path,
-                  method: :put, class: 'btn btn-success', role: :button, id: 'update-all-snippets-btn',
-                  data: {disable_with: t('helpers.notice.processing')}, remote: true %>
+    <%= button_to_if_enabled authenticated, t('helpers.link.update_all_snippets'), update_all_snippets_channels_path,
+                             method: :put, class: 'btn btn-success', role: :button, id: 'update-all-snippets-btn',
+                             data: {disable_with: t('helpers.notice.processing')}, remote: true %>
   <% end %>
   <% if can? :create, ChannelStatistic %>
-    <%= button_to t('helpers.link.build_all_statistics'), build_all_statistics_channels_path,
-                  method: :put, class: 'btn btn-success', role: :button, id: 'build-all-statistics-btn',
-                  data: {disable_with: t('helpers.notice.processing')}, remote: true %>
+    <%= button_to_if_enabled authenticated, t('helpers.link.build_all_statistics'), build_all_statistics_channels_path,
+                             method: :put, class: 'btn btn-success', role: :button, id: 'build-all-statistics-btn',
+                             data: {disable_with: t('helpers.notice.processing')}, remote: true %>
   <% end %>
 </div>
 <div style="margin-top: 5px">
   <% if can? :create, Channel %>
-    <%= button_to t('helpers.link.new'), new_channel_path,
-                  method: :get, class: 'btn btn-info', role: :button %>
-    <% if Channel.use_oauth2? %>
-      <%= button_to t('helpers.link.create_from_subscription'), channel_lists_subscriptions_path,
-                    method: :get, class: 'btn btn-info', role: :button %>
+    <%= button_to_if_enabled authenticated, t('helpers.link.new'), new_channel_path,
+                             method: :get, class: 'btn btn-info', role: :button %>
+    <% use_oauth2 = SystemSetting.use_oauth2?
+       options = use_oauth2 ? {} : {data: {toggle: 'tooltip', 'bs-placement': 'bottom'}, title: t('helpers.notice.oauth2_required')} %>
+    <%= tag.span(**options) do %>
+      <%= button_to_if_enabled use_oauth2, t('helpers.link.create_from_subscription'), channel_lists_subscriptions_path,
+                               method: :get, class: 'btn btn-info', role: :button %>
     <% end %>
-    <%= button_to t('helpers.link.create_from_search'), channel_lists_search_index_path,
-                  method: :get, class: 'btn btn-info', role: :button %>
+    <%= button_to_if_enabled authenticated, t('helpers.link.create_from_search'), channel_lists_search_index_path,
+                             method: :get, class: 'btn btn-info', role: :button %>
   <% end %>
 </div>

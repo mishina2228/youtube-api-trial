@@ -52,6 +52,8 @@ en:
       auth_method_descriptions:
         api_key: If API Key is selected, "Create from Subscription" function is not available.
         oauth2: If OAuth2 is selected, all functions are available, including "Create from Subscription" function.
+      auth_not_configured_html: Please complete %{href} first
+      auth_not_configured_href: the authentication setup
       change_client_secret: Change the Client Secret
       missing: The system setting has not been created
       missing_auth_method: The authentication method is not set. Please set the authentication method.

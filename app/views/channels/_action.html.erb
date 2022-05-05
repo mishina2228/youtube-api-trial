@@ -8,15 +8,16 @@
                   data: {disable_with: t('helpers.notice.processing'),
                          confirm: t('helpers.notice.enable_confirm')} %>
   <% end %>
+  <% authenticated = SystemSetting.auth_configured? %>
   <% if can?(:update, Channel) && @channel.enabled? %>
-    <%= button_to t('helpers.link.update_snippet'), update_snippet_channel_path,
-                  method: :put, class: 'btn btn-success', role: :button, id: 'update-snippet-btn',
-                  data: {disable_with: t('helpers.notice.processing')}, remote: true %>
+    <%= button_to_if_enabled authenticated, t('helpers.link.update_snippet'), update_snippet_channel_path,
+                             method: :put, class: 'btn btn-success', role: :button, id: 'update-snippet-btn',
+                             data: {disable_with: t('helpers.notice.processing')}, remote: true %>
   <% end %>
   <% if can?(:create, ChannelStatistic) && @channel.enabled? %>
-    <%= button_to t('helpers.link.build_statistics'), build_statistics_channel_path,
-                  method: :put, class: 'btn btn-success', role: :button, id: 'build-statistics-btn',
-                  data: {disable_with: t('helpers.notice.processing')}, remote: true %>
+    <%= button_to_if_enabled authenticated, t('helpers.link.build_statistics'), build_statistics_channel_path,
+                             method: :put, class: 'btn btn-success', role: :button, id: 'build-statistics-btn',
+                             data: {disable_with: t('helpers.notice.processing')}, remote: true %>
   <% end %>
   <% if can?(:delete, Channel) %>
     <%= button_to t('helpers.link.delete'), channel_path(@channel),
