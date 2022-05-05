@@ -29,7 +29,7 @@ const changePassword = link => {
 }
 
 document.addEventListener('turbolinks:load', () => {
-  if (document.URL.match(/system_setting\/(edit|new)/)) {
+  if (document.URL.match(/system_setting/)) {
     propFields(document.querySelectorAll('.auth-field .auth-field-group'), false)
     document.querySelectorAll('.auth-methods input[type="radio"]').forEach(elem => {
       elem.addEventListener('change', event => {
@@ -37,8 +37,8 @@ document.addEventListener('turbolinks:load', () => {
       })
     })
     document.querySelector('.auth-methods input[type="radio"]:checked')
-      .dispatchEvent(new window.Event('change'))
-    document.querySelector('.change-client-secret').addEventListener('click', event => {
+      ?.dispatchEvent(new window.Event('change'))
+    document.querySelector('.change-client-secret')?.addEventListener('click', event => {
       changePassword(event.currentTarget)
     })
   }
