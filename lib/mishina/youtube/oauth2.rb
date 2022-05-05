@@ -5,7 +5,6 @@ require 'googleauth/stores/file_token_store'
 module Mishina
   module Youtube
     module Oauth2
-      OOB_URI = 'http://localhost:3001'
       SCOPE = Google::Apis::YoutubeV3::AUTH_YOUTUBE_READONLY # View your YouTube account
 
       def credential
@@ -13,11 +12,11 @@ module Mishina
       end
 
       def authorization_url
-        authorizer.get_authorization_url(base_url: OOB_URI)
+        authorizer.get_authorization_url(base_url: redirect_uri)
       end
 
       def store_credential(code)
-        authorizer.get_and_store_credentials_from_code(user_id: 'default', code: code, base_url: OOB_URI)
+        authorizer.get_and_store_credentials_from_code(user_id: 'default', code: code, base_url: redirect_uri)
       end
 
       private
