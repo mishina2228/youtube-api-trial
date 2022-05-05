@@ -61,6 +61,3 @@ ja:
       oauth2_setting_configured:
         true: 設定済み
         false: 未設定
-      oauth2_setting_description_html:
-        上記のURLにアクセスすると、Googleのログイン画面が表示されます。<br>
-        ログイン後に表示されるコードを以下に入力して送信ボタンを押してください。

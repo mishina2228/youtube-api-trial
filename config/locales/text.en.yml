@@ -61,6 +61,3 @@ en:
       oauth2_setting_configured:
         true: configured
         false: not configured yet
-      oauth2_setting_description_html:
-        When you access the above URL, the Google login screen is displayed.<br>
-        Enter the code displayed after login and press the Send button.

@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
     resource :system_setting, except: :destroy do
       member do
-        put :oauth2_authorize
         put :oauth2_store_credential
       end
     end
