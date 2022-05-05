@@ -1,11 +1,4 @@
-<% unless SystemSetting.auth_configured? %>
-  <span class="fs-3 fw-bold text-danger">
-    ⚠️
-    <%= t('text.system_setting.auth_not_configured_html',
-          href: link_to(t('text.system_setting.auth_not_configured_href'), system_setting_path)) %>
-    ⚠️
-  </span>
-<% end %>
+<%= render partial: 'warning_auth_not_configured' %>
 <% title = t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale)) %>
 <% content_for(:html_title) {title} %>
 
