@@ -32,6 +32,23 @@ class SystemSettingTest < ActiveSupport::TestCase
     assert SystemSetting.new(valid_params_oauth2.merge(client_secret: nil)).invalid?
   end
 
+  test 'redirect_uri should not be blank when auth_method is oauth2' do
+    ss = SystemSetting.new(valid_params_oauth2)
+    assert ss.redirect_uri.present?
+    assert ss.valid?
+
+    assert SystemSetting.new(valid_params_oauth2.merge(redirect_uri: nil)).invalid?
+    assert SystemSetting.new(valid_params_oauth2.merge(redirect_uri: '')).invalid?
+  end
+
+  test 'redirect_uri should start with http or https' do
+    assert SystemSetting.new(valid_params_oauth2.merge(redirect_uri: 'http://localhost')).valid?
+    assert SystemSetting.new(valid_params_oauth2.merge(redirect_uri: 'https://localhost')).valid?
+
+    assert SystemSetting.new(valid_params_oauth2.merge(redirect_uri: 'ftp://localhost')).invalid?
+    assert SystemSetting.new(valid_params_oauth2.merge(redirect_uri: 'file://etc/hosts')).invalid?
+  end
+
   test 'use_oauth2? returns false when there is no SystemSetting' do
     SystemSetting.destroy_all
     assert_not SystemSetting.use_oauth2?
@@ -104,7 +121,8 @@ class SystemSettingTest < ActiveSupport::TestCase
     {
       auth_method: :oauth2,
       client_id: 'test_client_id',
-      client_secret: 'test_client_secret'
+      client_secret: 'test_client_secret',
+      redirect_uri: 'http://localhost:3001'
     }
   end
 end

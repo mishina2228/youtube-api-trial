@@ -46,6 +46,14 @@
     </div>
     <div class="row">
       <div class="col-4 font-weight-bold">
+        <%= SystemSetting.human_attribute_name :redirect_uri %>
+      </div>
+      <div class="col-8 text-break">
+        <%= @system_setting.redirect_uri %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 font-weight-bold">
         <%= t('text.system_setting.oauth2_setting') %>
       </div>
       <div class="col-8">

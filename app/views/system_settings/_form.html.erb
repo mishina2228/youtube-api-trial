@@ -79,6 +79,14 @@
             <% end %>
           </div>
         </div>
+        <div class="row">
+          <div class="col-4">
+            <%= form.label :redirect_uri, class: 'font-weight-bold' %>
+          </div>
+          <div class="col-8">
+            <%= form.text_field :redirect_uri, class: 'form-control', required: true %>
+          </div>
+        </div>
       </div>
     </div>
 

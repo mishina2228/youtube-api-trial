@@ -46,6 +46,7 @@ en:
         auth_method: Auth method
         client_id: Client ID
         client_secret: Client Secret
+        redirect_uri: Redirect URL
     errors:
       messages:
         record_invalid: "Validation failed: %{errors}"
@@ -190,6 +191,7 @@ en:
         one: is the wrong length (should be 1 character)
         other: is the wrong length (should be %{count} characters)
       other_than: must be other than %{count}
+      url_invalid: must be a valid URL
     template:
       body: 'There were problems with the following fields:'
       header:
