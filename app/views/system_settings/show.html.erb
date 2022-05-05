@@ -54,9 +54,9 @@
         <% else %>
           <span class="font-weight-bold"><%= t('text.system_setting.oauth2_setting_configured.false') %></span>
           <div class="oauth2-authorize-url">
-            <%= button_to t('helpers.link.oauth2_setting'), oauth2_authorize_system_setting_path,
-                          method: :put, remote: true, class: 'btn btn-success',
-                          role: :button, data: {disable_with: t('helpers.notice.processing')} %>
+            <%= link_to t('helpers.link.oauth2_setting'), @system_setting.authorization_url,
+                        class: 'btn btn-success', onclick: 'this.classList.add("disabled")',
+                        data: {disable_with: t('helpers.notice.processing')} %>
           </div>
         <% end %>
       </div>

@@ -56,7 +56,7 @@ class SystemSettingsController < ApplicationController
 
   def oauth2_store_credential
     if @system_setting.oauth2?
-      @system_setting.store_credential(oauth2_code_params[:code])
+      @system_setting.store_credential(params[:code])
       redirect_to system_setting_path, notice: t('helpers.notice.oauth2_credential_stored')
     else
       redirect_to system_setting_path, notice: t('helpers.notice.oauth2_required')

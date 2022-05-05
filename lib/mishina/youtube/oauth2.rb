@@ -5,7 +5,7 @@ require 'googleauth/stores/file_token_store'
 module Mishina
   module Youtube
     module Oauth2
-      OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'
+      OOB_URI = 'http://localhost:3001'
       SCOPE = Google::Apis::YoutubeV3::AUTH_YOUTUBE_READONLY # View your YouTube account
 
       def credential
