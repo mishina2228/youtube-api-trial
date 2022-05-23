@@ -165,7 +165,7 @@ GEM
       concurrent-ruby (~> 1.0)
     i18n-js (3.9.2)
       i18n (>= 0.6.6)
-    importmap-rails (1.0.3)
+    importmap-rails (1.1.0)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     itamae (1.12.6)
