@@ -168,12 +168,12 @@ GEM
     importmap-rails (1.1.0)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    itamae (1.12.6)
+    itamae (1.13.0)
       ansi
       hashie
       schash (~> 0.1.0)
       specinfra (>= 2.64.0, < 3.0.0)
-      thor
+      thor (>= 1.0.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
