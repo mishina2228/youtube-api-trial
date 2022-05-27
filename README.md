@@ -7,7 +7,7 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
 
-Ruby on Rails application to get information of YouTube channel
+YouTube channels info collector
 
 ## Prerequisites
 
