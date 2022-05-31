@@ -1,7 +1,7 @@
 import { Shared } from 'lib/shared'
 import Tagify from '@yaireo/tagify'
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbo:load', () => {
   const btn = document.getElementById('edit-channel-tag-btn')
   if (btn) {
     prepEditChannelTag(btn)

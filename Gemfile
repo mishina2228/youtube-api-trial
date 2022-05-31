@@ -18,8 +18,7 @@ gem 'importmap-rails'
 gem 'dartsass-rails', git: 'https://github.com/mishina2228/dartsass-rails', branch: 'arm-linux'
 gem 'propshaft'
 
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+gem 'turbo-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.11'
 
