@@ -3,7 +3,7 @@ import I18n from 'i18n-js/translations'
 import { Shared } from 'lib/shared'
 import { Tooltip } from 'bootstrap'
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbo:load', () => {
   initializeTooltips()
   document.getElementById('reset-search')?.addEventListener('click', resetSearchForm)
   let scrollTop = false
@@ -19,7 +19,7 @@ document.addEventListener('turbolinks:load', () => {
   })
   form?.addEventListener('ajax:success', event => {
     const newURL = Shared.urlWithCleanParams(event.detail[2].responseURL)
-    window.history.replaceState({ turbolinks: true, url: newURL }, '', newURL)
+    window.history.replaceState({ turbo: true, url: newURL }, '', newURL)
   })
   form?.addEventListener('ajax:error', event => {
     hideLoaderImg()

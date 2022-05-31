@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-window.addEventListener('turbolinks:load', () => {
+window.addEventListener('turbo:load', () => {
   const darkModeBtn = document.querySelector('button.dark-mode-toggle')
   darkModeBtn.addEventListener('click', () => {
     changeTheme()
