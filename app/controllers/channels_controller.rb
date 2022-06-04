@@ -4,7 +4,7 @@ class ChannelsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   before_action :set_channel, only: [
-    :show, :destroy, :build_statistics, :update_snippet, :enable
+    :show, :destroy, :build_statistics, :update_snippet, :enable, :disable
   ]
   before_action -> {require_data(channels_url, Channel)}, only: [:build_all_statistics, :update_all_snippets]
   authorize_resource
@@ -94,6 +94,18 @@ class ChannelsController < ApplicationController
       else
         format.html {redirect_to @channel, notice: t('text.channel.enable.failed')}
         format.json {render json: {message: t('text.channel.enable.failed')}.to_json}
+      end
+    end
+  end
+
+  def disable
+    respond_to do |format|
+      if @channel.update(disabled: true)
+        format.html {redirect_to @channel, notice: t('text.channel.disable.succeeded')}
+        format.json {render json: {message: t('text.channel.disable.succeeded')}.to_json}
+      else
+        format.html {redirect_to @channel, notice: t('text.channel.disable.failed')}
+        format.json {render json: {message: t('text.channel.disable.failed')}.to_json}
       end
     end
   end

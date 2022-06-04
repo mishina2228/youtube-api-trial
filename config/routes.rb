@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         put :build_statistics
         put :update_snippet
         put :enable
+        put :disable
       end
       collection do
         put :build_all_statistics

@@ -209,6 +209,7 @@ en:
       create_from_search: Create from Search
       create_from_subscription: Create from Subscription
       delete: Delete
+      disable: Disable
       edit: Edit
       enable: Enable
       index: List
@@ -223,6 +224,7 @@ en:
       create: Created successfully
       delete: Deleted successfully
       delete_confirm: Are you sure you want to delete it?
+      disable_confirm: Are you sure you want to disable it?
       enable_confirm: Are you sure you want to enable it?
       loading: loading...
       oauth2_credential_stored: OAuth2 authentication setup is complete

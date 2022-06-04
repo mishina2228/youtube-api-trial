@@ -24,4 +24,10 @@
                   method: :delete, data: {confirm: t('helpers.notice.delete_confirm')},
                   class: 'btn btn-danger', role: :button %>
   <% end %>
+  <% if can?(:update, Channel) && @channel.enabled? %>
+    <%= button_to t('helpers.link.disable'), disable_channel_path,
+                  method: :put, class: 'btn btn-danger', role: :button,
+                  data: {disable_with: t('helpers.notice.processing'),
+                         confirm: t('helpers.notice.disable_confirm')} %>
+  <% end %>
 <% end %>

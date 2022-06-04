@@ -327,4 +327,67 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
     assert @channel.reload.disabled?
   end
+
+  test 'should disable a channel' do
+    assert @channel.update(disabled: false)
+    sign_in admin
+
+    put disable_channel_path(id: @channel)
+
+    assert_response :redirect
+    assert_redirected_to channel_url(@channel)
+    assert @channel.reload.disabled?
+  end
+
+  test 'should disable a channel and results should be returned in json format' do
+    assert @channel.update(disabled: false)
+    sign_in admin
+
+    put disable_channel_path(id: @channel), as: :json
+
+    assert_response :success
+    assert @channel.reload.disabled?
+    json = JSON.parse(body)
+    assert_equal I18n.t('text.channel.disable.succeeded'), json['message']
+  end
+
+  test 'should not disable a channel if a record is invalid' do
+    assert @channel.update_columns(disabled: false, channel_id: '')
+    sign_in admin
+
+    put disable_channel_path(id: @channel)
+
+    assert_response :redirect
+    assert_redirected_to channel_url(@channel)
+    assert @channel.reload.enabled?
+  end
+
+  test 'should not disable a channel and results should be returned in json format if a record is invalid' do
+    assert @channel.update_columns(disabled: false, channel_id: '')
+    sign_in admin
+
+    put disable_channel_path(id: @channel), as: :json
+
+    assert_response :success
+    assert @channel.reload.enabled?
+    json = JSON.parse(body)
+    assert_equal I18n.t('text.channel.disable.failed'), json['message']
+  end
+
+  test 'should not disable a channel if logged in as an user' do
+    assert @channel.update(disabled: false)
+    sign_in user
+
+    put disable_channel_path(id: @channel)
+    assert_redirected_to root_path
+    assert @channel.reload.enabled?
+  end
+
+  test 'should not disable a channel unless logged in' do
+    assert @channel.update(disabled: false)
+
+    put disable_channel_path(id: @channel)
+    assert_redirected_to root_path
+    assert @channel.reload.enabled?
+  end
 end

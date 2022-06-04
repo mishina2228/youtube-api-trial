@@ -11,8 +11,11 @@ ja:
       channel_id:
         description: チャンネルID か チャンネルURLを入力
         invalid: が未入力、あるいは無効な値です
+      disable:
+        succeeded: 無効化しました
+        failed: 無効化に失敗しました
       disabled_html:
-        このチャンネルは現在YouTube上に存在しないため、無効化されています。
+        このチャンネルは無効化されています。情報更新と統計取得は停止中です。
       enable:
         succeeded: 有効化しました
         failed: 有効化に失敗しました

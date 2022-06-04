@@ -110,4 +110,32 @@ class ChannelsTest < ApplicationSystemTestCase
 
     assert_text I18n.t('helpers.notice.delete')
   end
+
+  test 'enable a channel' do
+    assert @channel.update(disabled: true)
+
+    sign_in admin
+    visit channels_url
+    assert_selector 'a', text: @channel.title
+    click_on @channel.title, match: :first
+    accept_confirm do
+      click_on I18n.t('helpers.link.enable')
+    end
+
+    assert_text I18n.t('text.channel.enable.succeeded')
+  end
+
+  test 'disable a channel' do
+    assert @channel.update(disabled: false)
+
+    sign_in admin
+    visit channels_url
+    assert_selector 'a', text: @channel.title
+    click_on @channel.title, match: :first
+    accept_confirm do
+      click_on I18n.t('helpers.link.disable')
+    end
+
+    assert_text I18n.t('text.channel.disable.succeeded')
+  end
 end
