@@ -234,8 +234,6 @@ GEM
     orm_adapter (0.5.0)
     os (1.1.4)
     parallel (1.22.1)
-    paranoia (2.6.0)
-      activerecord (>= 5.1, < 7.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
     propshaft (0.6.4)
@@ -423,7 +421,6 @@ DEPENDENCIES
   jbuilder (~> 2.11)
   kaminari (~> 1.2.2)
   minitest-ci
-  paranoia (~> 2.6)
   propshaft
   puma (~> 5.6)
   puma_worker_killer
