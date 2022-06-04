@@ -58,7 +58,7 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channel_url(id: @channel.id)
     assert_no_button I18n.t('helpers.link.update_snippet')
     assert_no_button I18n.t('helpers.link.build_statistics')
-    assert_no_button I18n.t('helpers.link.delete')
+    assert_no_button I18n.t('helpers.link.disable')
   end
 
   test 'visit a channel as an user' do
@@ -66,7 +66,7 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channel_url(id: @channel.id)
     assert_no_button I18n.t('helpers.link.update_snippet')
     assert_no_button I18n.t('helpers.link.build_statistics')
-    assert_no_button I18n.t('helpers.link.delete')
+    assert_no_button I18n.t('helpers.link.disable')
   end
 
   test 'visit a channel as an admin' do
@@ -74,7 +74,7 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channel_url(id: @channel.id)
     assert_button I18n.t('helpers.link.update_snippet')
     assert_button I18n.t('helpers.link.build_statistics')
-    assert_button I18n.t('helpers.link.delete')
+    assert_button I18n.t('helpers.link.disable')
   end
 
   test 'create a channel' do
@@ -95,20 +95,6 @@ class ChannelsTest < ApplicationSystemTestCase
     # The registered channel will be displayed in the index page after BuildStatisticsJob ends.
     # The job ends immediately in the test environment, so it should be displayed.
     assert_selector 'a', text: @channel.reload.title
-  end
-
-  test 'destroy a channel' do
-    assert @channel.channel_statistics.present?
-
-    sign_in admin
-    visit channels_url
-    assert_selector 'a', text: @channel.title
-    click_on @channel.title, match: :first
-    accept_confirm do
-      click_on I18n.t('helpers.link.delete')
-    end
-
-    assert_text I18n.t('helpers.notice.delete')
   end
 
   test 'enable a channel' do

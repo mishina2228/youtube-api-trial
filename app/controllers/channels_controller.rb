@@ -4,7 +4,7 @@ class ChannelsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   before_action :set_channel, only: [
-    :show, :destroy, :build_statistics, :update_snippet, :enable, :disable
+    :show, :build_statistics, :update_snippet, :enable, :disable
   ]
   before_action -> {require_data(channels_url, Channel)}, only: [:build_all_statistics, :update_all_snippets]
   authorize_resource
@@ -43,14 +43,6 @@ class ChannelsController < ApplicationController
         format.html {render :new}
         format.json {render json: @channel.errors, status: :unprocessable_entity}
       end
-    end
-  end
-
-  def destroy
-    @channel.destroy
-    respond_to do |format|
-      format.html {redirect_to channels_url, notice: t('helpers.notice.delete')}
-      format.json {head :no_content}
     end
   end
 

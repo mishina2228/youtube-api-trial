@@ -91,29 +91,6 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should destroy a channel' do
-    sign_in admin
-
-    assert_difference -> {Channel.count}, -1 do
-      delete channel_url(id: @channel)
-    end
-
-    assert_response :redirect
-    assert_redirected_to channels_url
-  end
-
-  test 'should not destroy a channel if logged in as an user' do
-    sign_in user
-
-    delete channel_url(id: @channel)
-    assert_response :not_found
-  end
-
-  test 'should not destroy a channel unless logged in' do
-    delete channel_url(id: @channel)
-    assert_response :not_found
-  end
-
   test 'should build statistics' do
     sign_in admin
 
