@@ -5,8 +5,8 @@
   <% if can?(:update, Channel) && @channel.disabled? %>
     <%= button_to t('helpers.link.enable'), enable_channel_path,
                   method: :put, class: 'btn btn-success', role: :button,
-                  data: {disable_with: t('helpers.notice.processing'),
-                         confirm: t('helpers.notice.enable_confirm')} %>
+                  form: {data: {disable_with: t('helpers.notice.processing'),
+                                turbo_confirm: t('helpers.notice.enable_confirm')}} %>
   <% end %>
   <% authenticated = SystemSetting.auth_configured? %>
   <% if can?(:update, Channel) && @channel.enabled? %>
@@ -22,7 +22,7 @@
   <% if can?(:update, Channel) && @channel.enabled? %>
     <%= button_to t('helpers.link.disable'), disable_channel_path,
                   method: :put, class: 'btn btn-danger', role: :button,
-                  data: {disable_with: t('helpers.notice.processing'),
-                         confirm: t('helpers.notice.disable_confirm')} %>
+                  form: {data: {disable_with: t('helpers.notice.processing'),
+                                turbo_confirm: t('helpers.notice.disable_confirm')}} %>
   <% end %>
 <% end %>
