@@ -19,7 +19,7 @@ Rails.application.routes.draw do
         put :oauth2_store_credential
       end
     end
-    resources :channels, except: [:edit, :update] do
+    resources :channels, except: [:edit, :update, :destroy] do
       member do
         put :build_statistics
         put :update_snippet
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
         resources :subscriptions, only: :index
       end
 
-      resources :channels do
+      resources :channels, only: [] do
         scope module: :channels do
           resource :tags, only: [:edit, :update]
         end
