@@ -23,12 +23,12 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     get new_channel_url
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not get new unless logged in' do
     get new_channel_url
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should create a channel' do
@@ -73,7 +73,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
              channel_id: @channel.channel_id + Time.current.usec.to_s
            }
          }
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not create a channel unless logged in' do
@@ -83,7 +83,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
              channel_id: @channel.channel_id + Time.current.usec.to_s
            }
          }
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should show a channel' do
@@ -106,12 +106,12 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     delete channel_url(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not destroy a channel unless logged in' do
     delete channel_url(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should build statistics' do
@@ -137,12 +137,12 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     put build_statistics_channel_url(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not build statistics unless logged in' do
     put build_statistics_channel_url(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should build all statistics' do
@@ -172,12 +172,12 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     put build_all_statistics_channels_path
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not build all statistics unless logged in' do
     put build_all_statistics_channels_path
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should redirect to index when trying to build all statistics if no channel' do
@@ -213,12 +213,12 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     put update_snippet_channel_path(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not update a snippet unless logged in' do
     put update_snippet_channel_path(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should update all snippets' do
@@ -246,12 +246,12 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     put update_all_snippets_channels_path
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not update all snippets unless logged in' do
     put update_all_snippets_channels_path
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should redirect to index when trying to update all snippets if no channel' do
@@ -316,7 +316,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     put enable_channel_path(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
     assert @channel.reload.disabled?
   end
 
@@ -324,7 +324,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert @channel.update(disabled: true)
 
     put enable_channel_path(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
     assert @channel.reload.disabled?
   end
 
@@ -379,7 +379,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     put disable_channel_path(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
     assert @channel.reload.enabled?
   end
 
@@ -387,7 +387,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert @channel.update(disabled: false)
 
     put disable_channel_path(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
     assert @channel.reload.enabled?
   end
 end

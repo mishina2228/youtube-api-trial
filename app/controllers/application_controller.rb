@@ -2,9 +2,7 @@
 
 class ApplicationController < ActionController::Base
   before_action :set_locale
-  rescue_from CanCan::AccessDenied do
-    redirect_to :root
-  end
+  rescue_from CanCan::AccessDenied, with: :render_not_found
 
   protected
 
@@ -39,4 +37,8 @@ class ApplicationController < ActionController::Base
     }
   end
   helper_method :take_params
+
+  def render_not_found
+    render file: Rails.root.join('public/404.html'), status: :not_found, layout: false, content_type: 'text/html'
+  end
 end
