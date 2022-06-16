@@ -39,6 +39,6 @@ class ApplicationController < ActionController::Base
   helper_method :take_params
 
   def render_not_found
-    render file: Rails.root.join('public/404.html'), status: :not_found, layout: false, content_type: 'text/html'
+    render file: Rails.public_path.join('404.html'), status: :not_found, layout: false, content_type: 'text/html'
   end
 end
