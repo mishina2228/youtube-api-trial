@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def print_number(number)
-    number&.to_formatted_s(:delimited)
+    number&.to_fs(:delimited)
   end
 
   def print_diff_numbers(num1, num2)
