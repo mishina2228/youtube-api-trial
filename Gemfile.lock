@@ -117,7 +117,7 @@ GEM
     docile (1.4.0)
     enum_help (0.0.19)
       activesupport (>= 3.0.0)
-    erb_lint (0.1.1)
+    erb_lint (0.1.2)
       activesupport
       better_html (~> 1.0.7)
       html_tokenizer
@@ -201,7 +201,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.15.0)
+    minitest (5.16.0)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     mono_logger (1.1.1)
