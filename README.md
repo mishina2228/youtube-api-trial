@@ -82,7 +82,7 @@ bin/rails s -e production
 ### Notify when Resque job failed
 
 If a Resque job fails, a notification email will be sent.  
-Please fill in the settings of email to config/mail.yml .  
+Please fill in the settings of email to `config/mail.yml`.  
 The following is an example when sending from Gmail:
 
 ```yml
