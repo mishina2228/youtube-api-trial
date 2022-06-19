@@ -24,7 +24,8 @@ module Channels
           channel.build_statistics!
         end
       rescue Mishina::Youtube::NoChannelError => e
-        channel.update!(disabled: true)
+        # No need to retry
+        # NOTE: YouTube API sometimes returns incorrect results though...
         raise e
       rescue => e
         retry_count = options['retry'].to_i

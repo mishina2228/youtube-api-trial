@@ -27,3 +27,12 @@ non_existing_channel:
 
 hidden_subscriber_channel:
   channel_id: hidden_subscriber_channel_id
+
+disabled_channel:
+  channel_id: channel_id4
+  title: 'Disabled Channel'
+  description: description4
+  thumbnail_url: https://example.com/thumbnail/4
+  published_at: '2022-06-19T01:23:34'
+  disabled: true
+
