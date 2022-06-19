@@ -9,6 +9,9 @@
 
 YouTube channels info collector
 
+![List](docs/list.png)
+![Show](docs/show.png)
+
 ## Prerequisites
 
 - Ruby 2.7+
