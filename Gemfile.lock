@@ -102,7 +102,7 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
-    cssbundling-rails (1.1.0)
+    cssbundling-rails (1.1.1)
       railties (>= 6.0.0)
     declarative (0.0.20)
     devise (4.8.1)
