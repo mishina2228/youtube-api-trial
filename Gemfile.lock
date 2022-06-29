@@ -306,7 +306,7 @@ GEM
       redis (>= 3.3)
       resque (>= 1.27)
       rufus-scheduler (~> 3.2, < 3.7)
-    resurrected_god (1.0.0)
+    resurrected_god (1.1.0)
     retriable (3.1.2)
     rexml (3.2.5)
     rubocop (1.31.1)
