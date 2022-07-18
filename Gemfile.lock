@@ -208,7 +208,7 @@ GEM
     mono_logger (1.1.1)
     msgpack (1.5.3)
     multi_json (1.15.0)
-    mustermann (1.1.1)
+    mustermann (1.1.2)
       ruby2_keywords (~> 0.0.1)
     net-imap (0.2.3)
       digest
