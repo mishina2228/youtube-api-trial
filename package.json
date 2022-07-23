@@ -2,7 +2,7 @@
   "name": "youtube-api-trial",
   "private": true,
   "dependencies": {
-    "@yaireo/tagify": "^4.12.0",
+    "@yaireo/tagify": "^4.14.0",
     "bootstrap": "^5.2.0",
     "flatpickr": "^4.6.13",
     "izitoast": "^1.4.0",
