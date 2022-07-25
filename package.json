@@ -2,7 +2,7 @@
   "name": "youtube-api-trial",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@popperjs/core": "^2.11.5",
     "@rails/ujs": "^7.0.3",
