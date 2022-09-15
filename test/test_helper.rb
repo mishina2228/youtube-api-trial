@@ -17,9 +17,9 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    Dir.glob(Rails.root.join('test/support/*.rb')).sort.each do |filename|
+    Rails.root.glob('test/support/*.rb').sort.each do |filename|
       require filename
-      include File.basename(filename).split('.').first.camelize.constantize if filename.end_with?('_support.rb')
+      include File.basename(filename).split('.').first.camelize.constantize if filename.to_s.end_with?('_support.rb')
     end
   end
 end
