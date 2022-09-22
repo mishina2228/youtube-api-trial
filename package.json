@@ -6,7 +6,7 @@
     "bootstrap": "^5.2.1",
     "flatpickr": "^4.6.13",
     "izitoast": "^1.4.0",
-    "sass": "^1.54.9",
+    "sass": "^1.55.0",
     "three-dots": "^0.2.3"
   },
   "devDependencies": {
