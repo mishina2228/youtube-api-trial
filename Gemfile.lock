@@ -212,10 +212,8 @@ GEM
       digest
       net-protocol
       strscan
-    net-pop (0.1.1)
-      digest
+    net-pop (0.1.2)
       net-protocol
-      timeout
     net-protocol (0.1.3)
       timeout
     net-scp (3.0.0)
