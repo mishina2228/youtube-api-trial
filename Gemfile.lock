@@ -208,10 +208,8 @@ GEM
     multi_json (1.15.0)
     mustermann (2.0.2)
       ruby2_keywords (~> 0.0.1)
-    net-imap (0.2.3)
-      digest
+    net-imap (0.3.0)
       net-protocol
-      strscan
     net-pop (0.1.1)
       digest
       net-protocol
@@ -370,7 +368,6 @@ GEM
       sfl
     sqlite3 (1.5.0)
       mini_portile2 (~> 2.8.0)
-    strscan (3.0.4)
     thor (1.2.1)
     tilt (2.0.11)
     timeout (0.3.0)
