@@ -116,7 +116,7 @@ GEM
     docile (1.4.0)
     enum_help (0.0.19)
       activesupport (>= 3.0.0)
-    erb_lint (0.2.0)
+    erb_lint (0.3.0)
       activesupport
       better_html (>= 2.0.1)
       parser (>= 2.7.1.4)
