@@ -41,6 +41,8 @@ Metrics/PerceivedComplexity:
 
 Minitest/AssertPredicate:
   Enabled: false
+Minitest/EmptyLineBeforeAssertionMethods:
+  Enabled: false
 Minitest/MultipleAssertions:
   Enabled: false
 
