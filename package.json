@@ -7,7 +7,7 @@
     "@popperjs/core": "^2.11.6",
     "@rails/ujs": "^7.0.4",
     "@yaireo/tagify": "^4.16.4",
-    "bootstrap": "^5.2.2",
+    "bootstrap": "^5.2.3",
     "flatpickr": "^4.6.13",
     "i18n-js": "^3.9.2",
     "izitoast": "^1.4.0",
