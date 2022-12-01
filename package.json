@@ -7,7 +7,7 @@
     "flatpickr": "^4.6.13",
     "izitoast": "^1.4.0",
     "sass": "^1.56.1",
-    "three-dots": "^0.2.3"
+    "three-dots": "^0.3.2"
   },
   "devDependencies": {
     "markdownlint-cli": "^0.32.2",

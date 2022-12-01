@@ -1669,10 +1669,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three-dots@^0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/three-dots/-/three-dots-0.2.3.tgz#46749f5923a7186f405b9f1cc292a357813a1c24"
-  integrity sha512-lbHq4a1/YC1Lo6JNopkyj2qShdc9SxpGVfYp6P4kmCUiGJx1Q3jnX/icsLjo/aQaD9WfcSq+X6pouDpXBXQ1Og==
+three-dots@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/three-dots/-/three-dots-0.3.2.tgz#02ec1193d60d9cf4901cb3918b483459da0b3d8d"
+  integrity sha512-N7JMhoCX+4mhgGWy4Hqy4PZ27shKwLRvaADn3YsK9+bImK5U/xA/woCUavehoHGrkNG3yyAzwQ6UnuFH0/yLVQ==
 
 to-regex-range@^5.0.1:
   version "5.0.1"
