@@ -66,6 +66,8 @@ Style/Documentation:
   Enabled: false
 Style/EmptyMethod:
   EnforcedStyle: expanded
+Style/RedundantConstantBase:
+  Enabled: false
 Style/RescueStandardError:
   EnforcedStyle: implicit
 Style/StringLiterals:
