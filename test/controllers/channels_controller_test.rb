@@ -106,8 +106,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     put build_statistics_channel_url(id: @channel), as: :json
 
     assert_response :success
-    json = JSON.parse(body)
-    assert_equal I18n.t('text.channel.build_statistics.start'), json['message']
+    assert_equal I18n.t('text.channel.build_statistics.start'), JSON.parse(body)['message']
   end
 
   test 'should not build statistics if logged in as an user' do
@@ -141,8 +140,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     put build_all_statistics_channels_url, as: :json
 
     assert_response :success
-    json = JSON.parse(body)
-    assert_equal I18n.t('text.channel.build_all_statistics.start'), json['message']
+    assert_equal I18n.t('text.channel.build_all_statistics.start'), JSON.parse(body)['message']
   end
 
   test 'should not build all statistics if logged in as an user' do
@@ -182,8 +180,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     put update_snippet_channel_path(id: @channel), as: :json
 
     assert_response :success
-    json = JSON.parse(body)
-    assert_equal I18n.t('text.channel.update_snippet.start'), json['message']
+    assert_equal I18n.t('text.channel.update_snippet.start'), JSON.parse(body)['message']
   end
 
   test 'should not update a snippet if logged in as an user' do
@@ -215,8 +212,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     put update_all_snippets_channels_path, as: :json
 
     assert_response :success
-    json = JSON.parse(body)
-    assert_equal I18n.t('text.channel.update_all_snippets.start'), json['message']
+    assert_equal I18n.t('text.channel.update_all_snippets.start'), JSON.parse(body)['message']
   end
 
   test 'should not update all snippets if logged in as an user' do
@@ -261,8 +257,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert @channel.reload.enabled?
-    json = JSON.parse(body)
-    assert_equal I18n.t('text.channel.enable.succeeded'), json['message']
+    assert_equal I18n.t('text.channel.enable.succeeded'), JSON.parse(body)['message']
   end
 
   test 'should not re-enable a channel if a record is invalid' do
@@ -284,8 +279,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert @channel.reload.disabled?
-    json = JSON.parse(body)
-    assert_equal I18n.t('text.channel.enable.failed'), json['message']
+    assert_equal I18n.t('text.channel.enable.failed'), JSON.parse(body)['message']
   end
 
   test 'should not re-enable a channel if logged in as an user' do
@@ -324,8 +318,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert @channel.reload.disabled?
-    json = JSON.parse(body)
-    assert_equal I18n.t('text.channel.disable.succeeded'), json['message']
+    assert_equal I18n.t('text.channel.disable.succeeded'), JSON.parse(body)['message']
   end
 
   test 'should not disable a channel if a record is invalid' do
@@ -347,8 +340,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert @channel.reload.enabled?
-    json = JSON.parse(body)
-    assert_equal I18n.t('text.channel.disable.failed'), json['message']
+    assert_equal I18n.t('text.channel.disable.failed'), JSON.parse(body)['message']
   end
 
   test 'should not disable a channel if logged in as an user' do
