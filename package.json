@@ -1,6 +1,7 @@
 {
   "name": "youtube-api-trial",
   "private": true,
+  "license": "MIT",
   "dependencies": {
     "@yaireo/tagify": "^4.16.4",
     "bootstrap": "^5.2.3",
