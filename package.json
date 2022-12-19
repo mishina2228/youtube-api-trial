@@ -12,7 +12,7 @@
     "i18n-js": "^3.9.2",
     "izitoast": "^1.4.0",
     "js-cookie": "^3.0.1",
-    "sass": "^1.56.1",
+    "sass": "^1.57.0",
     "three-dots": "^0.3.2",
     "turbolinks": "^5.2.0"
   },
