@@ -277,9 +277,9 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
-    redis (5.0.5)
+    redis (5.0.6)
       redis-client (>= 0.9.0)
-    redis-client (0.12.0)
+    redis-client (0.12.1)
       connection_pool
     redis-namespace (1.10.0)
       redis (>= 4)
