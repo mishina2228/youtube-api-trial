@@ -416,6 +416,7 @@ DEPENDENCIES
   itamae
   jbuilder (~> 2.11)
   kaminari (~> 1.2.2)
+  mail (~> 2.7.1)
   minitest-ci
   net-scp (>= 3.0.0)
   propshaft
