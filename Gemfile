@@ -40,7 +40,7 @@ gem 'kaminari', '~> 1.2.2'
 gem 'resque'
 gem 'resque-scheduler'
 
-gem 'mail', '~> 2.7.1' # Staying at 2.7.x until 2.8.1 is released
+gem 'mail', '~> 2.8.1' # Staying at 2.7.x until 2.8.1 is released
 
 group :development do
   gem 'brakeman'
