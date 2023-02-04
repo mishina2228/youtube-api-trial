@@ -1,4 +1,6 @@
 <% {notice: notice, alert: alert}.each do |key, val| %>
+  <% next unless val %>
+
   <div class="<%= key %>">
     <% if val.is_a?(Array) %>
       <ul>

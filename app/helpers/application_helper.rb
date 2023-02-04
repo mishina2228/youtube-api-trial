@@ -1,4 +1,18 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
+  def button_to_if_enabled(enabled, name = nil, options = nil, html_options = nil)
+    raise 'Passing block is not supported' if block_given?
+
+    html_options ||= {}
+    unless enabled
+      html_options[:disabled] = 'disabled'
+      options = '#'
+    end
+
+    button_to(name, options, html_options)
+  end
+
   def render_notices
     render partial: 'partials/notices'
   end
@@ -30,7 +44,7 @@ module ApplicationHelper
   end
 
   def print_number(number)
-    number&.to_formatted_s(:delimited)
+    number&.to_fs(:delimited)
   end
 
   def print_diff_numbers(num1, num2)

@@ -11,8 +11,6 @@ import 'controllers/theme_changer'
 
 import Rails from '@rails/ujs'
 import Turbolinks from 'turbolinks'
-import $ from 'jquery'
 
 Rails.start()
 Turbolinks.start()
-window.$ = $

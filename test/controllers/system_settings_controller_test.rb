@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
@@ -22,12 +24,12 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     get new_system_setting_url
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not get new unless logged in' do
     get new_system_setting_url
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should create system_setting' do
@@ -175,13 +177,13 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
 
     post system_setting_url,
          params: api_key_params
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not create system_setting unless logged in' do
     post system_setting_url,
          params: api_key_params
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should show system_setting' do
@@ -195,12 +197,12 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     get system_setting_url
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not show system_setting unless not logged in' do
     get system_setting_url
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should get edit' do
@@ -214,12 +216,12 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     get edit_system_setting_url
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not get edit unless not logged in' do
     get edit_system_setting_url
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should update system_setting' do
@@ -339,33 +341,13 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
 
     patch system_setting_url,
           params: api_key_params
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not update system_setting unless not logged in' do
     patch system_setting_url,
           params: api_key_params
-    assert_redirected_to root_path
-  end
-
-  test 'should get oauth2 auth url' do
-    assert system_setting.update(auth_method: :oauth2)
-    assert system_setting.oauth2?
-    sign_in admin
-
-    put oauth2_authorize_system_setting_url, xhr: true
-
-    assert_response :success
-  end
-
-  test 'should reload if auth method is not oauth2' do
-    assert_not system_setting.oauth2?
-    sign_in admin
-
-    put oauth2_authorize_system_setting_url, xhr: true
-
-    assert_response :success
-    assert_equal I18n.t('helpers.notice.oauth2_required'), flash[:notice]
+    assert_response :not_found
   end
 
   test 'should redirect to system setting if auth method is oauth2' do
@@ -393,28 +375,16 @@ class SystemSettingsControllerTest < ActionDispatch::IntegrationTest
     assert_equal I18n.t('helpers.notice.oauth2_required'), flash[:notice]
   end
 
-  test 'should not get oauth2 auth url if logged in as an user' do
-    sign_in user
-
-    put oauth2_authorize_system_setting_url
-    assert_redirected_to root_path
-  end
-
-  test 'should not get oauth2 auth url unless not logged in' do
-    put oauth2_authorize_system_setting_url
-    assert_redirected_to root_path
-  end
-
   test 'should not store oauth2 credential if logged in as an user' do
     sign_in user
 
     put oauth2_store_credential_system_setting_url
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not store oauth2 credential unless not logged in' do
     put oauth2_store_credential_system_setting_url
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   def api_key_params

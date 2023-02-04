@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 require 'google/apis/errors'
 
@@ -24,10 +26,8 @@ module Channels
 
     test 'channel statistics increases by one' do
       channel = channels(:channel1)
-      assert_nothing_raised do
-        assert_difference -> {channel.channel_statistics.count} do
-          Channels::BuildStatisticsJob.perform('channel_id' => channel.id)
-        end
+      assert_difference -> {channel.channel_statistics.count} do
+        Channels::BuildStatisticsJob.perform('channel_id' => channel.id)
       end
     end
 
@@ -40,8 +40,11 @@ module Channels
         end
         assert_includes e.message, "title = #{channel.title}"
       end
+      assert_not channel.reload.disabled?, 'the channel is not disabled even if it does not exist'
+    end
 
-      assert channel.reload.disabled?, 'the channel is disabled if it does not exist'
+    test 'fail if the channel is disabled' do
+      channel = channels(:disabled_channel)
       e = assert_raise Mishina::Youtube::DisabledChannelError do
         Channels::BuildStatisticsJob.perform('channel_id' => channel.id)
       end

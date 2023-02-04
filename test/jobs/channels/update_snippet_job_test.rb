@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 module Channels
@@ -24,9 +26,7 @@ module Channels
     test 'channel snippet should be updated' do
       channel = channels(:channel1)
       before_description = channel.description
-      assert_nothing_raised do
-        Channels::UpdateSnippetJob.perform('channel_id' => channel.id)
-      end
+      Channels::UpdateSnippetJob.perform('channel_id' => channel.id)
       assert_not_equal channel.reload.description, before_description
     end
 
@@ -38,9 +38,12 @@ module Channels
         Channels::UpdateSnippetJob.perform('channel_id' => channel.id)
       end
       assert_includes e.message, "title = #{channel.title}"
-
       assert_nil channel.reload.description
-      assert channel.disabled?, 'the channel is disabled if it does not exist'
+      assert_not channel.disabled?, 'the channel is not disabled even if it does not exist'
+    end
+
+    test 'fail if the channel is disabled' do
+      channel = channels(:disabled_channel)
       e = assert_raise Mishina::Youtube::DisabledChannelError do
         Channels::UpdateSnippetJob.perform('channel_id' => channel.id)
       end

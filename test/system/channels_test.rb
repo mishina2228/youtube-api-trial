@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'application_system_test_case'
 
 class ChannelsTest < ApplicationSystemTestCase
@@ -56,7 +58,7 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channel_url(id: @channel.id)
     assert_no_button I18n.t('helpers.link.update_snippet')
     assert_no_button I18n.t('helpers.link.build_statistics')
-    assert_no_button I18n.t('helpers.link.delete')
+    assert_no_button I18n.t('helpers.link.disable')
   end
 
   test 'visit a channel as an user' do
@@ -64,7 +66,7 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channel_url(id: @channel.id)
     assert_no_button I18n.t('helpers.link.update_snippet')
     assert_no_button I18n.t('helpers.link.build_statistics')
-    assert_no_button I18n.t('helpers.link.delete')
+    assert_no_button I18n.t('helpers.link.disable')
   end
 
   test 'visit a channel as an admin' do
@@ -72,7 +74,7 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channel_url(id: @channel.id)
     assert_button I18n.t('helpers.link.update_snippet')
     assert_button I18n.t('helpers.link.build_statistics')
-    assert_button I18n.t('helpers.link.delete')
+    assert_button I18n.t('helpers.link.disable')
   end
 
   test 'create a channel' do
@@ -95,17 +97,31 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_selector 'a', text: @channel.reload.title
   end
 
-  test 'destroy a channel' do
-    assert @channel.channel_statistics.present?
+  test 'enable a channel' do
+    assert @channel.update(disabled: true)
 
     sign_in admin
     visit channels_url
     assert_selector 'a', text: @channel.title
     click_on @channel.title, match: :first
     accept_confirm do
-      click_on I18n.t('helpers.link.delete')
+      click_on I18n.t('helpers.link.enable')
     end
 
-    assert_text I18n.t('helpers.notice.delete')
+    assert_text I18n.t('text.channel.enable.succeeded')
+  end
+
+  test 'disable a channel' do
+    assert @channel.update(disabled: false)
+
+    sign_in admin
+    visit channels_url
+    assert_selector 'a', text: @channel.title
+    click_on @channel.title, match: :first
+    accept_confirm do
+      click_on I18n.t('helpers.link.disable')
+    end
+
+    assert_text I18n.t('text.channel.disable.succeeded')
   end
 end

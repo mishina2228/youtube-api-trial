@@ -1,30 +1,8 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class ChannelTest < ActiveSupport::TestCase
-  test 'use_oauth2?' do
-    assert ss = system_setting
-
-    SystemSetting.destroy_all
-    assert_not Channel.use_oauth2?
-
-    assert ss.update(auth_method: :api_key)
-    assert_not Channel.use_oauth2?
-
-    assert ss.update(auth_method: :oauth2)
-    assert ss.oauth2?
-
-    Channel.stub(:system_setting, ss) do
-      ss.stub(:oauth2_configured?, false) do
-        assert_not ss.oauth2_configured?
-        assert_not Channel.use_oauth2?
-      end
-      ss.stub(:oauth2_configured?, true) do
-        assert ss.oauth2_configured?
-        assert Channel.use_oauth2?
-      end
-    end
-  end
-
   test 'validation' do
     channel = Channel.new(valid_params)
     assert channel.valid?
@@ -77,7 +55,7 @@ class ChannelTest < ActiveSupport::TestCase
   test 'youtube_service should return mock in the test environment' do
     channel = channels(:channel1)
     ret = channel.youtube_service
-    assert ret.is_a?(Mishina::Youtube::Mock::Service), 'use mock in the test environment'
+    assert_instance_of Mishina::Youtube::Mock::Service, ret, 'use mock in the test environment'
   end
 
   test "calling youtube_service without any SystemSetting's records should raise error" do

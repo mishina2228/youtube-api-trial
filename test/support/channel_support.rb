@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ChannelSupport
   def build_channel_with_statistics
     c = Channel.new(valid_channel_params)

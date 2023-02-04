@@ -46,17 +46,25 @@
     </div>
     <div class="row">
       <div class="col-4 font-weight-bold">
+        <%= SystemSetting.human_attribute_name :redirect_uri %>
+      </div>
+      <div class="col-8 text-break">
+        <%= @system_setting.redirect_uri %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 font-weight-bold">
         <%= t('text.system_setting.oauth2_setting') %>
       </div>
       <div class="col-8">
         <% if @system_setting.oauth2_configured? %>
           <%= t('text.system_setting.oauth2_setting_configured.true') %>
         <% else %>
-          <%= t('text.system_setting.oauth2_setting_configured.false') %>
+          <span class="font-weight-bold"><%= t('text.system_setting.oauth2_setting_configured.false') %></span>
           <div class="oauth2-authorize-url">
-            <%= button_to t('helpers.link.oauth2_setting'), oauth2_authorize_system_setting_path,
-                          method: :put, remote: true, class: 'btn btn-success',
-                          role: :button, data: {disable_with: t('helpers.notice.processing')} %>
+            <%= link_to t('helpers.link.oauth2_setting'), @system_setting.authorization_url,
+                        class: 'btn btn-success', onclick: 'this.classList.add("disabled")',
+                        data: {disable_with: t('helpers.notice.processing')} %>
           </div>
         <% end %>
       </div>

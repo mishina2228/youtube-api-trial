@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class ChannelsControllerTest < ActionDispatch::IntegrationTest
@@ -21,12 +23,12 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     get new_channel_url
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not get new unless logged in' do
     get new_channel_url
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should create a channel' do
@@ -71,7 +73,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
              channel_id: @channel.channel_id + Time.current.usec.to_s
            }
          }
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not create a channel unless logged in' do
@@ -81,35 +83,12 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
              channel_id: @channel.channel_id + Time.current.usec.to_s
            }
          }
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should show a channel' do
     get channel_url(id: @channel)
     assert_response :success
-  end
-
-  test 'should destroy a channel' do
-    sign_in admin
-
-    assert_difference -> {Channel.count}, -1 do
-      delete channel_url(id: @channel)
-    end
-
-    assert_response :redirect
-    assert_redirected_to channels_url
-  end
-
-  test 'should not destroy a channel if logged in as an user' do
-    sign_in user
-
-    delete channel_url(id: @channel)
-    assert_redirected_to root_path
-  end
-
-  test 'should not destroy a channel unless logged in' do
-    delete channel_url(id: @channel)
-    assert_redirected_to root_path
   end
 
   test 'should build statistics' do
@@ -127,20 +106,19 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     put build_statistics_channel_url(id: @channel), as: :json
 
     assert_response :success
-    json = JSON.parse(body)
-    assert_equal I18n.t('text.channel.build_statistics.start'), json['message']
+    assert_equal I18n.t('text.channel.build_statistics.start'), JSON.parse(body)['message']
   end
 
   test 'should not build statistics if logged in as an user' do
     sign_in user
 
     put build_statistics_channel_url(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not build statistics unless logged in' do
     put build_statistics_channel_url(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should build all statistics' do
@@ -162,20 +140,19 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     put build_all_statistics_channels_url, as: :json
 
     assert_response :success
-    json = JSON.parse(body)
-    assert_equal I18n.t('text.channel.build_all_statistics.start'), json['message']
+    assert_equal I18n.t('text.channel.build_all_statistics.start'), JSON.parse(body)['message']
   end
 
   test 'should not build all statistics if logged in as an user' do
     sign_in user
 
     put build_all_statistics_channels_path
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not build all statistics unless logged in' do
     put build_all_statistics_channels_path
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should redirect to index when trying to build all statistics if no channel' do
@@ -203,20 +180,19 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     put update_snippet_channel_path(id: @channel), as: :json
 
     assert_response :success
-    json = JSON.parse(body)
-    assert_equal I18n.t('text.channel.update_snippet.start'), json['message']
+    assert_equal I18n.t('text.channel.update_snippet.start'), JSON.parse(body)['message']
   end
 
   test 'should not update a snippet if logged in as an user' do
     sign_in user
 
     put update_snippet_channel_path(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not update a snippet unless logged in' do
     put update_snippet_channel_path(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should update all snippets' do
@@ -236,20 +212,19 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     put update_all_snippets_channels_path, as: :json
 
     assert_response :success
-    json = JSON.parse(body)
-    assert_equal I18n.t('text.channel.update_all_snippets.start'), json['message']
+    assert_equal I18n.t('text.channel.update_all_snippets.start'), JSON.parse(body)['message']
   end
 
   test 'should not update all snippets if logged in as an user' do
     sign_in user
 
     put update_all_snippets_channels_path
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should not update all snippets unless logged in' do
     put update_all_snippets_channels_path
-    assert_redirected_to root_path
+    assert_response :not_found
   end
 
   test 'should redirect to index when trying to update all snippets if no channel' do
@@ -282,8 +257,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert @channel.reload.enabled?
-    json = JSON.parse(body)
-    assert_equal I18n.t('text.channel.enable.succeeded'), json['message']
+    assert_equal I18n.t('text.channel.enable.succeeded'), JSON.parse(body)['message']
   end
 
   test 'should not re-enable a channel if a record is invalid' do
@@ -305,8 +279,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert @channel.reload.disabled?
-    json = JSON.parse(body)
-    assert_equal I18n.t('text.channel.enable.failed'), json['message']
+    assert_equal I18n.t('text.channel.enable.failed'), JSON.parse(body)['message']
   end
 
   test 'should not re-enable a channel if logged in as an user' do
@@ -314,7 +287,7 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
 
     put enable_channel_path(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
     assert @channel.reload.disabled?
   end
 
@@ -322,7 +295,68 @@ class ChannelsControllerTest < ActionDispatch::IntegrationTest
     assert @channel.update(disabled: true)
 
     put enable_channel_path(id: @channel)
-    assert_redirected_to root_path
+    assert_response :not_found
     assert @channel.reload.disabled?
+  end
+
+  test 'should disable a channel' do
+    assert @channel.update(disabled: false)
+    sign_in admin
+
+    put disable_channel_path(id: @channel)
+
+    assert_response :redirect
+    assert_redirected_to channel_url(@channel)
+    assert @channel.reload.disabled?
+  end
+
+  test 'should disable a channel and results should be returned in json format' do
+    assert @channel.update(disabled: false)
+    sign_in admin
+
+    put disable_channel_path(id: @channel), as: :json
+
+    assert_response :success
+    assert @channel.reload.disabled?
+    assert_equal I18n.t('text.channel.disable.succeeded'), JSON.parse(body)['message']
+  end
+
+  test 'should not disable a channel if a record is invalid' do
+    assert @channel.update_columns(disabled: false, channel_id: '')
+    sign_in admin
+
+    put disable_channel_path(id: @channel)
+
+    assert_response :redirect
+    assert_redirected_to channel_url(@channel)
+    assert @channel.reload.enabled?
+  end
+
+  test 'should not disable a channel and results should be returned in json format if a record is invalid' do
+    assert @channel.update_columns(disabled: false, channel_id: '')
+    sign_in admin
+
+    put disable_channel_path(id: @channel), as: :json
+
+    assert_response :success
+    assert @channel.reload.enabled?
+    assert_equal I18n.t('text.channel.disable.failed'), JSON.parse(body)['message']
+  end
+
+  test 'should not disable a channel if logged in as an user' do
+    assert @channel.update(disabled: false)
+    sign_in user
+
+    put disable_channel_path(id: @channel)
+    assert_response :not_found
+    assert @channel.reload.enabled?
+  end
+
+  test 'should not disable a channel unless logged in' do
+    assert @channel.update(disabled: false)
+
+    put disable_channel_path(id: @channel)
+    assert_response :not_found
+    assert @channel.reload.enabled?
   end
 end

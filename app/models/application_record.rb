@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
@@ -12,10 +14,8 @@ class ApplicationRecord < ActiveRecord::Base
     per = per.to_i
     if per <= 0
       const_get(:DEFAULT_PER)
-    elsif per > const_get(:MAX_PER)
-      const_get(:MAX_PER)
     else
-      per
+      [per, const_get(:MAX_PER)].min
     end
   end
 end

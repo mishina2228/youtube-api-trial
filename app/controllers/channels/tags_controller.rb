@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Channels
   class TagsController < ApplicationController
     before_action :set_channel

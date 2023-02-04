@@ -7,12 +7,15 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
 
-Ruby on Rails application to get information of YouTube channel
+YouTube channels info collector
+
+![List](docs/list.png)
+![Show](docs/show.png)
 
 ## Prerequisites
 
 - Ruby 2.7+
-- Node.js 10.22.1+ || 12+ || 14+
+- Node.js 12.22.0+ || 14.17.0+ || 16.0.0+
 - Yarn 1.x+
 
 ## Installation
@@ -67,7 +70,7 @@ god stop youtube_api_trial
 #### development
 
 ```sh
-bin/rails start
+bin/dev
 ```
 
 #### production
@@ -82,12 +85,12 @@ bin/rails s -e production
 ### Notify when Resque job failed
 
 If a Resque job fails, a notification email will be sent.  
-Please fill in the settings of email to config/mail.yml .  
+Please fill in the settings of email to `config/mail.yml`.  
 The following is an example when sending from Gmail:
 
 ```yml
 production:
-  delivery_method: 'smtp'
+  delivery_method: :smtp
   smtp_settings:
     address: 'smtp.gmail.com'
     port: 587

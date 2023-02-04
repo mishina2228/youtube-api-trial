@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ChannelTag
   class ParseError < StandardError
     DEFAULT_MESSAGE = <<~MSG.strip.freeze

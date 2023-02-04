@@ -1,0 +1,37 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "5320fa5989622eac79b9b7d5edeef3ac33f410f2f4a1bfd6da63b0bb7960a90c",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/system_settings/show.html.erb",
+      "line": 65,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(t(\"helpers.link.oauth2_setting\"), SystemSetting.new(system_setting_params).authorization_url, :class => \"btn btn-success\", :onclick => \"this.classList.add(\\\"disabled\\\")\", :data => ({ :disable_with => t(\"helpers.notice.processing\") }))",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "SystemSettingsController",
+          "method": "create",
+          "line": 28,
+          "file": "app/controllers/system_settings_controller.rb",
+          "rendered": {
+            "name": "system_settings/show",
+            "file": "app/views/system_settings/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "system_settings/show"
+      },
+      "user_input": "SystemSetting.new(system_setting_params).authorization_url",
+      "confidence": "Weak",
+      "note": "Passed value by user is validated before."
+    }
+  ],
+  "updated": "2022-05-05 21:49:46 +0900",
+  "brakeman_version": "5.2.3"
+}

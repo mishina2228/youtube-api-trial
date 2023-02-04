@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module JobFailureNoticeMailerSupport
   def sample_exception
     exception = Mishina::Youtube::NoChannelError.new('test_channel_id')

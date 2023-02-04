@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ChannelLists
   class SubscriptionsController < ChannelListsController
     def index

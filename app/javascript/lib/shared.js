@@ -1,7 +1,7 @@
 import I18n from 'i18n-js/translations'
 
 const Shared = {}
-Shared.set_locale = () => {
+Shared.setLocale = () => {
   I18n.locale = document.getElementsByTagName('body')[0].getAttribute('data-locale')
 }
 Shared.getCsrfToken = () => {
@@ -28,6 +28,16 @@ Shared.sendAction = (form, accept = 'application/json') => {
       'X-CSRF-Token': Shared.getCsrfToken()
     }
   })
+}
+Shared.urlWithCleanParams = urlString => {
+  const url = new URL(urlString)
+
+  const paramsArray = []
+  url.searchParams.forEach((value, key) => {
+    if (value === '') { return }
+    paramsArray.push([key, value])
+  })
+  return `${url.origin}${url.pathname}?${(new URLSearchParams(paramsArray)).toString()}`
 }
 
 export { Shared }

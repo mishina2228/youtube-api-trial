@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SystemSettingsController < ApplicationController
   include SystemSettingAware
 
@@ -43,18 +45,9 @@ class SystemSettingsController < ApplicationController
     end
   end
 
-  def oauth2_authorize
-    if @system_setting.oauth2?
-      @url = @system_setting.authorization_url
-    else
-      flash[:notice] = t('helpers.notice.oauth2_required')
-      render js: 'window.location.reload();'
-    end
-  end
-
   def oauth2_store_credential
     if @system_setting.oauth2?
-      @system_setting.store_credential(oauth2_code_params[:code])
+      @system_setting.store_credential(params[:code])
       redirect_to system_setting_path, notice: t('helpers.notice.oauth2_credential_stored')
     else
       redirect_to system_setting_path, notice: t('helpers.notice.oauth2_required')
@@ -71,12 +64,8 @@ class SystemSettingsController < ApplicationController
   end
 
   def system_setting_params
-    ret = params.require(:system_setting).permit(:api_key, :auth_method, :client_id, :client_secret)
+    ret = params.require(:system_setting).permit(:api_key, :auth_method, :client_id, :client_secret, :redirect_uri)
     ret = ret.except(:client_secret) if ret[:client_secret].blank?
     ret
-  end
-
-  def oauth2_code_params
-    params.require(:system_setting).permit(:code)
   end
 end

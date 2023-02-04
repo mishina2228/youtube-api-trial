@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class JobUtils
   class << self
     def enqueue(klass, options = {})

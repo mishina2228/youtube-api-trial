@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module ChannelTag
   class Parser < ActsAsTaggableOn::GenericParser
     def parse
       ActsAsTaggableOn::TagList.new.tap do |tag_list|
         json = parse_json_string(@tag_list.to_s)
-        tag_list.add(json.map {|h| h['value']}.compact_blank.map(&:strip))
+        tag_list.add(json.pluck('value').compact_blank.map(&:strip))
       end
     end
 

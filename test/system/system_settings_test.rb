@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'application_system_test_case'
 
 class SystemSettingsTest < ApplicationSystemTestCase
@@ -51,6 +53,7 @@ class SystemSettingsTest < ApplicationSystemTestCase
     choose SystemSetting.auth_methods_i18n['oauth2']
     fill_in SystemSetting.human_attribute_name(:client_id), with: @system_setting.client_id
     fill_in SystemSetting.human_attribute_name(:client_secret), with: @system_setting.client_secret
+    fill_in SystemSetting.human_attribute_name(:redirect_uri), with: @system_setting.redirect_uri
     click_on I18n.t('helpers.submit.create')
 
     assert_text I18n.t('helpers.notice.create')

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChannelStatistic < ApplicationRecord
   belongs_to :channel, inverse_of: :channel_statistics
 

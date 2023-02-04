@@ -11,11 +11,14 @@ en:
       channel_id:
         description: Input the channel ID or the URL of the channel.
         invalid: is blank, or invalid.
+      disable:
+        succeeded: Successfully disabled.
+        failed: Disable failed.
       disabled_html:
-        This channel is disabled because it does not currently exist on YouTube.
+        This channel is disabled. Acquiring channel info and statistics are suspended.
       enable:
         succeeded: Successfully enabled.
-        failed: Failed to enable.
+        failed: Enable failed.
       search:
         not_found: Search results were not found.
       statistics:
@@ -48,6 +51,12 @@ en:
     subscription:
       total_results: Total Subscriptions
     system_setting:
+      auth_method_description: description
+      auth_method_descriptions:
+        api_key: If API Key is selected, "Create from Subscription" function is not available.
+        oauth2: If OAuth2 is selected, all functions are available, including "Create from Subscription" function.
+      auth_not_configured_html: Please complete %{href} first
+      auth_not_configured_href: the authentication setup
       change_client_secret: Change the Client Secret
       missing: The system setting has not been created
       missing_auth_method: The authentication method is not set. Please set the authentication method.
@@ -55,6 +64,3 @@ en:
       oauth2_setting_configured:
         true: configured
         false: not configured yet
-      oauth2_setting_description_html:
-        When you access the above URL, the Google login screen is displayed.<br>
-        Enter the code displayed after login and press the Send button.

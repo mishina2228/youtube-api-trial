@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'resque/failure/notification_recipient'
 
 module Resque

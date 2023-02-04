@@ -4,24 +4,57 @@ import { Shared } from 'lib/shared'
 import { Tooltip } from 'bootstrap'
 
 document.addEventListener('turbolinks:load', () => {
-  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
-  tooltipTriggerList.map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
+  initializeTooltips()
   document.getElementById('reset-search')?.addEventListener('click', resetSearchForm)
-  const loaderBg = document.querySelector('.loader-bg')
+  let scrollTop = false
 
-  $('#search-result-pagination').on('ajax:beforeSend', _event => {
+  const form = document.querySelector('form.search')
+  form?.addEventListener('ajax:beforeSend', () => {
     document.querySelectorAll('nav ul .page-item').forEach(element => {
       element.classList.add('disabled')
     })
-    loaderBg.style.display = 'block'
-    const margin = document.querySelector('div.fixed-top').clientHeight
-    $('html, body').animate({ scrollTop: getOffset('search-result') - margin })
-  }).on('ajax:success', _event => {
-    loaderBg.style.display = 'none'
+    showLoaderImg()
+    fadeOutSearchResult()
+    scrollTop = false // do not scroll to the top of table
+  })
+  form?.addEventListener('ajax:success', event => {
+    const newURL = Shared.urlWithCleanParams(event.detail[2].responseURL)
+    window.history.replaceState({ turbolinks: true, url: newURL }, '', newURL)
+  })
+  form?.addEventListener('ajax:error', event => {
+    hideLoaderImg()
+    fadeInSearchResult()
+    iziToast.error({ message: I18n.t('text.common.error_message'), position: 'bottomRight' })
+    console.error(event)
   })
 
-  displayLoaderImg('form.search')
-  Shared.set_locale()
+  const searchResultPagination = document.getElementById('search-result-pagination')
+  searchResultPagination?.addEventListener('ajax:beforeSend', () => {
+    document.querySelectorAll('nav ul .page-item').forEach(element => {
+      element.classList.add('disabled')
+    })
+    showLoaderImg()
+    fadeOutSearchResult()
+    scrollTop = true // scroll to the top of table if paginated
+  })
+  searchResultPagination?.addEventListener('ajax:success', () => {
+    hideLoaderImg()
+    fadeInSearchResult()
+    if (scrollTop) {
+      const margin = document.querySelector('div.fixed-top').clientHeight
+      window.scroll(0, getOffset('search-result') - margin)
+    }
+    scrollTop = false // reset variable
+    initializeTooltips()
+  })
+  searchResultPagination?.addEventListener('ajax:error', event => {
+    hideLoaderImg()
+    fadeInSearchResult()
+    iziToast.error({ message: I18n.t('text.common.error_message'), position: 'bottomRight' })
+    console.error(event)
+  })
+
+  Shared.setLocale()
   prepBuildStatistics()
   prepUpdateSnippet()
   prepUpdateAllSnippets()
@@ -43,21 +76,25 @@ const resetSearchForm = () => {
   selects.forEach(elem => { elem.selectedIndex = 0 })
 }
 
-const displayLoaderImg = (query) => {
+const hideLoaderImg = () => {
   const loaderBg = document.querySelector('.loader-bg')
-  document.querySelectorAll(query).forEach(element => {
-    element.addEventListener('ajax:beforeSend', _event => {
-      loaderBg.style.display = 'block'
-    })
-    element.addEventListener('ajax:success', _event => {
-      loaderBg.style.display = 'none'
-    })
-    element.addEventListener('ajax:error', event => {
-      loaderBg.style.display = 'none'
-      iziToast.error({ message: I18n.t('text.common.error_message'), position: 'bottomRight' })
-      console.error(event)
-    })
-  })
+  loaderBg.style.display = 'none'
+}
+
+const showLoaderImg = () => {
+  const loaderBg = document.querySelector('.loader-bg')
+  loaderBg.style.display = 'block'
+}
+
+const fadeOutSearchResult = () => {
+  const searchResult = document.getElementById('search-result')
+  searchResult.style.opacity = '0.3'
+}
+
+const fadeInSearchResult = () => {
+  const searchResult = document.getElementById('search-result')
+  searchResult.style.opacity = '1'
+  searchResult.animate({ opacity: [0, 1] }, { duration: 500 })
 }
 
 const prepUpdateSnippet = () => {
@@ -104,4 +141,9 @@ const triggerAndNotify = (btn, errorMessage = null) => {
         iziToast.error({ message: errorMessage || err.message, position: 'bottomRight' })
       })
   })
+}
+
+const initializeTooltips = () => {
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+  tooltipTriggerList.map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
 }

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Encryptor
-  CIPHER = 'aes-256-cbc'.freeze
-  TEST_SECRET = 'c0b469b8a1c0baf224c837bec3acafe6'.freeze
+  CIPHER = 'aes-256-cbc'
+  TEST_SECRET = 'c0b469b8a1c0baf224c837bec3acafe6'
 
   private
 

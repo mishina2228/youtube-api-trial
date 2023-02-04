@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UserSupport
   def user
     User.find_by!(admin: false)

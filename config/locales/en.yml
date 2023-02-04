@@ -46,6 +46,7 @@ en:
         auth_method: Auth method
         client_id: Client ID
         client_secret: Client Secret
+        redirect_uri: Redirect URL
     errors:
       messages:
         record_invalid: "Validation failed: %{errors}"
@@ -190,6 +191,7 @@ en:
         one: is the wrong length (should be 1 character)
         other: is the wrong length (should be %{count} characters)
       other_than: must be other than %{count}
+      url_invalid: must be a valid URL
     template:
       body: 'There were problems with the following fields:'
       header:
@@ -207,6 +209,7 @@ en:
       create_from_search: Create from Search
       create_from_subscription: Create from Subscription
       delete: Delete
+      disable: Disable
       edit: Edit
       enable: Enable
       index: List
@@ -221,6 +224,7 @@ en:
       create: Created successfully
       delete: Deleted successfully
       delete_confirm: Are you sure you want to delete it?
+      disable_confirm: Are you sure you want to disable it?
       enable_confirm: Are you sure you want to enable it?
       loading: loading...
       oauth2_credential_stored: OAuth2 authentication setup is complete
@@ -249,7 +253,7 @@ en:
     alert:
       error_backtrace: 'Backtrace'
       error_summary: 'Error Summary'
-      subject: '[YoutubeApiTrial] Job Failed!'
+      subject: '[YouTubeApiTrial] Job Failed!'
   number:
     currency:
       format:

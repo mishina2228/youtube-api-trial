@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 unless Rails.env.test?
   require 'resque'
   require 'resque-scheduler'
