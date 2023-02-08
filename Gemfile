@@ -15,7 +15,7 @@ gem 'puma_worker_killer'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 
-gem 'cssbundling-rails'
+gem 'dartsass-rails', '~> 0.4.1'
 gem 'propshaft'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -33,14 +33,14 @@ gem 'devise-i18n'
 
 gem 'acts-as-taggable-on', '~> 9.0'
 gem 'enum_help'
-gem 'google-apis-youtube_v3', '~> 0.25'
+gem 'google-apis-youtube_v3', '~> 0.26'
 gem 'i18n-js'
 gem 'kaminari', '~> 1.2.2'
 
 gem 'resque'
 gem 'resque-scheduler'
 
-gem 'mail', '~> 2.7.1' # Staying at 2.7.x until 2.8.1 is released
+gem 'mail', '~> 2.8.1' # Staying at 2.7.x until 2.8.1 is released
 
 group :development do
   gem 'brakeman'
