@@ -103,6 +103,8 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
+    dartsass-rails (0.4.1)
+      railties (>= 6.0.0)
     date (3.3.3)
     declarative (0.0.20)
     devise (4.8.1)
@@ -409,6 +411,7 @@ DEPENDENCIES
   cancancan
   capybara (>= 2.15)
   cssbundling-rails
+  dartsass-rails (~> 0.4.1)
   devise (~> 4.8.1)
   devise-i18n
   enum_help

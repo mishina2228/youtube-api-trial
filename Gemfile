@@ -16,6 +16,7 @@ gem 'puma_worker_killer'
 gem 'importmap-rails'
 
 gem 'cssbundling-rails'
+gem 'dartsass-rails', '~> 0.4.1'
 gem 'propshaft'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

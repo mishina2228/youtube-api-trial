@@ -7,14 +7,10 @@
     "bootstrap": "^5.2.3",
     "flatpickr": "^4.6.13",
     "izitoast": "^1.4.0",
-    "sass": "^1.57.1",
     "three-dots": "^0.3.2"
   },
   "devDependencies": {
     "markdownlint-cli": "^0.33.0",
     "standard": "^17.0.0"
-  },
-  "scripts": {
-    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }
