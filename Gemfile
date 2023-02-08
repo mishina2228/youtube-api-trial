@@ -15,7 +15,6 @@ gem 'puma_worker_killer'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 
-gem 'cssbundling-rails'
 gem 'dartsass-rails', '~> 0.4.1'
 gem 'propshaft'
 
