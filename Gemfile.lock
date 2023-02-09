@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/mishina2228/dartsass-rails
+  revision: 3951caf8fff83dd7fd11990b1ed65649adea0805
+  branch: arm-linux
+  specs:
+    dartsass-rails (0.4.1)
+      railties (>= 6.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -101,8 +109,6 @@ GEM
     concurrent-ruby (1.2.0)
     connection_pool (2.3.0)
     crass (1.0.6)
-    dartsass-rails (0.4.1)
-      railties (>= 6.0.0)
     date (3.3.3)
     declarative (0.0.20)
     devise (4.8.1)
@@ -408,7 +414,7 @@ DEPENDENCIES
   bullet
   cancancan
   capybara (>= 2.15)
-  dartsass-rails (~> 0.4.1)
+  dartsass-rails!
   devise (~> 4.8.1)
   devise-i18n
   enum_help

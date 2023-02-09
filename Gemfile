@@ -15,7 +15,7 @@ gem 'puma_worker_killer'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 
-gem 'dartsass-rails', '~> 0.4.1'
+gem 'dartsass-rails', git: 'https://github.com/mishina2228/dartsass-rails', branch: 'arm-linux'
 gem 'propshaft'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
