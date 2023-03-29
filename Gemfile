@@ -28,7 +28,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # User Authorization
 gem 'cancancan'
-gem 'devise', '~> 4.8.1'
+gem 'devise'
 gem 'devise-i18n'
 
 gem 'acts-as-taggable-on', '~> 9.0'
