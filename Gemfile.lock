@@ -229,7 +229,7 @@ GEM
       net-protocol
     net-ssh (7.1.0)
     net-telnet (0.1.1)
-    nio4r (2.5.8)
+    nio4r (2.5.9)
     nokogiri (1.14.2)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
