@@ -76,7 +76,7 @@ GEM
       tzinfo (~> 2.0)
     acts-as-taggable-on (9.0.1)
       activerecord (>= 6.0, < 7.1)
-    addressable (2.8.3)
+    addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     ansi (1.5.0)
     ast (2.4.2)
@@ -155,7 +155,7 @@ GEM
       webrick
     google-apis-youtube_v3 (0.28.0)
       google-apis-core (>= 0.11.0, < 2.a)
-    googleauth (1.5.0)
+    googleauth (1.5.1)
       faraday (>= 0.17.3, < 3.a)
       jwt (>= 1.4, < 3.0)
       memoist (~> 0.16)
