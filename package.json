@@ -3,7 +3,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@yaireo/tagify": "^4.17.7",
+    "@yaireo/tagify": "^4.17.8",
     "bootstrap": "^5.2.3",
     "flatpickr": "^4.6.13",
     "izitoast": "^1.4.0",
