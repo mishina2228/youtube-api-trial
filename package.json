@@ -12,7 +12,7 @@
     "flatpickr": "^4.6.13",
     "i18n-js": "^3.9.2",
     "izitoast": "^1.4.0",
-    "js-cookie": "^3.0.1",
+    "js-cookie": "^3.0.5",
     "three-dots": "^0.3.2",
     "turbolinks": "^5.2.0"
   },
