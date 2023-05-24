@@ -365,7 +365,7 @@ GEM
       rack-protection (= 3.0.6)
       tilt (~> 2.0)
     smart_properties (1.17.0)
-    specinfra (2.85.0)
+    specinfra (2.85.1)
       net-scp
       net-ssh (>= 2.7)
       net-telnet (= 0.1.1)
