@@ -6,7 +6,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@popperjs/core": "^2.11.7",
-    "@rails/ujs": "^7.0.4",
+    "@rails/ujs": "^7.0.5",
     "@yaireo/tagify": "^4.17.8",
     "bootstrap": "^5.2.3",
     "flatpickr": "^4.6.13",
