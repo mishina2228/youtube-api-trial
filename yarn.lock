@@ -86,11 +86,6 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.7.tgz#ccab5c8f7dc557a52ca3288c10075c9ccd37fff7"
   integrity sha512-Cr4OjIkipTtcXKjAsm8agyleBuDHvxzeBoa1v543lbv1YaIwQjESsVcmjiWiPEbC1FIeHOG/Op9kdCmAmiS3Kw==
 
-"@rails/ujs@^7.0.4":
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-7.0.4.tgz#7fe5387d2d82b0547fdfc6667b424ec119c86b1e"
-  integrity sha512-UY9yQxBvtqXzXScslgPwZoQd16T0+z3P6BQS4lZDJFg5xVuMIgHkHQI6dhyWEt5l/qwbGaYX+YiZu6J+oxWPOw==
-
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
@@ -250,7 +245,6 @@ chalk@^4.0.0:
 
 "cliui@github:isaacs/cliui#isaacs/esm-cjs-consistency":
   version "8.0.1"
-  uid "9f97090165675fdda63a79c29bc36bb1033506b0"
   resolved "https://codeload.github.com/isaacs/cliui/tar.gz/9f97090165675fdda63a79c29bc36bb1033506b0"
   dependencies:
     string-width "^5.1.2"
