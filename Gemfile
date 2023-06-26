@@ -15,7 +15,7 @@ gem 'puma_worker_killer'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 
-gem 'dartsass-rails', git: 'https://github.com/mishina2228/dartsass-rails', branch: 'arm-linux'
+gem 'dartsass-rails'
 gem 'propshaft'
 
 gem 'turbo-rails'
