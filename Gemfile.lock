@@ -150,7 +150,7 @@ GEM
       webrick
     google-apis-youtube_v3 (0.29.0)
       google-apis-core (>= 0.11.0, < 2.a)
-    google-protobuf (3.23.3)
+    google-protobuf (3.23.4)
     googleauth (1.6.0)
       faraday (>= 0.17.3, < 3.a)
       jwt (>= 1.4, < 3.0)
