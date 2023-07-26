@@ -4,7 +4,7 @@
   "license": "MIT",
   "dependencies": {
     "@yaireo/tagify": "^4.17.8",
-    "bootstrap": "^5.3.0",
+    "bootstrap": "^5.3.1",
     "flatpickr": "^4.6.13",
     "izitoast": "^1.4.0",
     "three-dots": "^0.3.2"
