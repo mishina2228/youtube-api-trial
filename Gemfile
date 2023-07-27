@@ -63,7 +63,6 @@ group :test do
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
   gem 'simplecov-cobertura', require: false
-  gem 'webdrivers'
 end
 
 group :itamae do
