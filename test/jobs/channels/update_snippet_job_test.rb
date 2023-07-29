@@ -61,7 +61,7 @@ module Channels
 
     test 'retry this job if the transmission error occurred' do
       channel = channels(:channel1)
-      job_utils_mock = MiniTest::Mock.new
+      job_utils_mock = Minitest::Mock.new
       job_utils_mock.expect(:call, nil) do |seconds_from_now, klass, options|
         assert_equal 3 * 10**0, seconds_from_now
         assert_equal Channels::UpdateSnippetJob, klass
