@@ -9,8 +9,4 @@ import 'controllers/fontawesome'
 import 'controllers/system_setting'
 import 'controllers/theme_changer'
 
-import Rails from '@rails/ujs'
-import Turbolinks from 'turbolinks'
-
-Rails.start()
-Turbolinks.start()
+import '@hotwired/turbo-rails'

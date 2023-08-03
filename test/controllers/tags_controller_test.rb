@@ -8,13 +8,13 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
 
     get tags_path(tag_name: 'c'), xhr: true
     assert_response :success
-    tag_names = JSON.parse(response.body)
+    tag_names = response.parsed_body
     assert_includes tag_names, 'science'
     assert_includes tag_names, 'technology'
 
     get tags_path(tag_name: 'science'), xhr: true
     assert_response :success
-    tag_names = JSON.parse(response.body)
+    tag_names = response.parsed_body
     assert_includes tag_names, 'science'
     assert_not_includes tag_names, 'technology'
   end
@@ -24,7 +24,7 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
 
     get tags_path, xhr: true
     assert_response :success
-    tag_names = JSON.parse(response.body)
+    tag_names = response.parsed_body
     assert tag_names.present?
     expected = ActsAsTaggableOn::Tag.all.order(:name).pluck(:name)
     assert_equal expected, tag_names.sort
@@ -36,7 +36,7 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
     [nil, ''].each do |param|
       get tags_path(tag_name: param), xhr: true
       assert_response :success
-      tag_names = JSON.parse(response.body)
+      tag_names = response.parsed_body
       assert tag_names.present?
       expected = ActsAsTaggableOn::Tag.all.order(:name).pluck(:name)
       assert_equal expected, tag_names.sort

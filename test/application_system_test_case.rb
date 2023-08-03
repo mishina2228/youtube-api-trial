@@ -5,8 +5,15 @@ require 'test_helper'
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   include Devise::Test::IntegrationHelpers
 
-  driven_by :selenium, using: :headless_chrome do |options|
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--no-sandbox')
+  # Register a custom driver to suppress the following deprecation warning.
+  #
+  #   The :capabilities parameter for Selenium::WebDriver::Chrome::Driver is deprecated.
+  #   Use :options argument with an instance of Selenium::WebDriver::Chrome::Driver instead.
+  #
+  # See more info: https://stackoverflow.com/a/70948645
+  Capybara.register_driver :headless_chrome do |app|
+    options = Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-dev-shm-usage no-sandbox])
+    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
   end
+  driven_by(:headless_chrome)
 end

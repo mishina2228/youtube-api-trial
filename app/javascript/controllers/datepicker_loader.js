@@ -6,7 +6,7 @@ const localeDict = {
   ja: Japanese
 }
 
-window.addEventListener('turbolinks:load', () => {
+window.addEventListener('turbo:load', () => {
   const locale = document.getElementsByTagName('body')[0].getAttribute('data-locale')
   flatpickr('.date-picker', {
     allowInput: true,
