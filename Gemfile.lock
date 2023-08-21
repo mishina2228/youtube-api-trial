@@ -151,7 +151,7 @@ GEM
       webrick
     google-apis-youtube_v3 (0.30.0)
       google-apis-core (>= 0.11.0, < 2.a)
-    google-protobuf (3.24.0)
+    google-protobuf (3.24.1)
     googleauth (1.7.0)
       faraday (>= 0.17.3, < 3.a)
       jwt (>= 1.4, < 3.0)
@@ -342,7 +342,7 @@ GEM
     rubyzip (2.3.2)
     rufus-scheduler (3.9.1)
       fugit (~> 1.1, >= 1.1.6)
-    sass-embedded (1.64.2)
+    sass-embedded (1.66.1)
       google-protobuf (~> 3.23)
       rake (>= 13.0.0)
     schash (0.1.2)
