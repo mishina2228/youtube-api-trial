@@ -26,7 +26,7 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     tag_names = response.parsed_body
     assert tag_names.present?
-    expected = ActsAsTaggableOn::Tag.all.order(:name).pluck(:name)
+    expected = ActsAsTaggableOn::Tag.order(:name).pluck(:name)
     assert_equal expected, tag_names.sort
   end
 
@@ -38,7 +38,7 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
       tag_names = response.parsed_body
       assert tag_names.present?
-      expected = ActsAsTaggableOn::Tag.all.order(:name).pluck(:name)
+      expected = ActsAsTaggableOn::Tag.order(:name).pluck(:name)
       assert_equal expected, tag_names.sort
     end
   end
