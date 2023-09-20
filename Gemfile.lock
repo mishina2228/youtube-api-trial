@@ -153,7 +153,7 @@ GEM
     google-apis-youtube_v3 (0.33.0)
       google-apis-core (>= 0.11.0, < 2.a)
     google-protobuf (3.24.3)
-    googleauth (1.8.0)
+    googleauth (1.8.1)
       faraday (>= 0.17.3, < 3.a)
       jwt (>= 1.4, < 3.0)
       multi_json (~> 1.11)
