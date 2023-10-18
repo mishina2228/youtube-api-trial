@@ -377,7 +377,7 @@ GEM
       sfl
     sqlite3 (1.6.7)
       mini_portile2 (~> 2.8.0)
-    thor (1.2.2)
+    thor (1.3.0)
     tilt (2.3.0)
     timeout (0.4.0)
     trailblazer-option (0.1.2)
