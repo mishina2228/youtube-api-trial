@@ -7,6 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   scope :admin, -> {where(admin: true)}
-  scope :genuine, -> {where('email not like "%@example.com"')}
+  scope :genuine, -> {where("email not like '%@example.com'")}
   scope :should_notify, -> {admin.genuine}
 end
