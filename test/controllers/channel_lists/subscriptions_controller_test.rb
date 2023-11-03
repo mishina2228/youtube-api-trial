@@ -14,15 +14,13 @@ module ChannelLists
     test 'should not get index if logged in as an user' do
       sign_in user
 
-      assert_raise ActionController::RoutingError do
-        get channel_lists_subscriptions_url
-      end
+      get channel_lists_subscriptions_url
+      assert_response :not_found
     end
 
     test 'should not get index unless logged in' do
-      assert_raise ActionController::RoutingError do
-        get channel_lists_subscriptions_url
-      end
+      get channel_lists_subscriptions_url
+      assert_response :not_found
     end
 
     test 'should get index via ajax as js' do
@@ -36,15 +34,13 @@ module ChannelLists
     test 'should not get index via ajax as js if logged in as an user' do
       sign_in user
 
-      assert_raise ActionController::RoutingError do
-        get channel_lists_subscriptions_url, xhr: true
-      end
+      get channel_lists_subscriptions_url, xhr: true
+      assert_response :not_found
     end
 
     test 'should not get index via ajax as js unless logged in' do
-      assert_raise ActionController::RoutingError do
-        get channel_lists_subscriptions_url, xhr: true
-      end
+      get channel_lists_subscriptions_url, xhr: true
+      assert_response :not_found
     end
   end
 end

@@ -15,14 +15,12 @@ class ResqueControllerTest < ActionDispatch::IntegrationTest
   test 'should not get /resque if logged in as an user' do
     sign_in user
 
-    assert_raise ActionController::RoutingError do
-      get '/resque'
-    end
+    get '/resque'
+    assert_response :not_found
   end
 
   test 'should not get /resque unless logged in' do
-    assert_raise ActionController::RoutingError do
-      get '/resque'
-    end
+    get '/resque'
+    assert_response :not_found
   end
 end
