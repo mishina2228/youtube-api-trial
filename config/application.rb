@@ -35,5 +35,8 @@ module YoutubeApiTrial
     config.active_record.sqlite3_production_warning = false
 
     config.middleware.use I18n::JS::Middleware
+
+    # Change the format of the cache entry.
+    # config.active_support.cache_format_version = 7.1
   end
 end
