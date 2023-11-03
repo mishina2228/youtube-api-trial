@@ -18,15 +18,13 @@ module Channels
     test 'should not edit tags if logged in as an user' do
       sign_in user
 
-      assert_raise ActionController::RoutingError do
-        get edit_channel_tags_path(channel_id: @channel.id)
-      end
+      get edit_channel_tags_path(channel_id: @channel.id)
+      assert_response :not_found
     end
 
     test 'should not edit tags unless logged in' do
-      assert_raise ActionController::RoutingError do
-        get edit_channel_tags_path(channel_id: @channel.id)
-      end
+      get edit_channel_tags_path(channel_id: @channel.id)
+      assert_response :not_found
     end
 
     test 'should not update tags with passing tag_list as an array' do
@@ -101,15 +99,13 @@ module Channels
     test 'should not update tags if logged in as an user' do
       sign_in user
 
-      assert_raise ActionController::RoutingError do
-        put channel_tags_path(channel_id: @channel.id)
-      end
+      put channel_tags_path(channel_id: @channel.id)
+      assert_response :not_found
     end
 
     test 'should not update tags unless logged in' do
-      assert_raise ActionController::RoutingError do
-        put channel_tags_path(channel_id: @channel.id)
-      end
+      put channel_tags_path(channel_id: @channel.id)
+      assert_response :not_found
     end
   end
 end

@@ -44,16 +44,14 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not get tag names unless logged in' do
-    assert_raise ActionController::RoutingError do
-      get tags_path, xhr: true
-    end
+    get tags_path, xhr: true
+    assert_response :not_found
   end
 
   test 'should not get tag names if logged in as an user' do
     sign_in user
 
-    assert_raise ActionController::RoutingError do
-      get tags_path, xhr: true
-    end
+    get tags_path, xhr: true
+    assert_response :not_found
   end
 end
