@@ -17,6 +17,7 @@ Bundler.require(*Rails.groups)
 module YoutubeApiTrial
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    # TODO: Set 7.1
     config.load_defaults 7.0
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
