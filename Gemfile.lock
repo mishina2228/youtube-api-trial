@@ -473,6 +473,7 @@ DEPENDENCIES
   selenium-webdriver
   simplecov
   simplecov-cobertura
+  sinatra (~> 3.1.0)
   sqlite3
   turbo-rails
   web-console (>= 3.3.0)
