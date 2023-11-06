@@ -4,14 +4,10 @@ module ChannelLists
   class SearchController < ChannelListsController
     def index
       @condition = search_condition
-      if request.xhr?
-        response = ChannelLists::Search.search(@condition.query, token: @condition.token, max_results: @condition.per)
-        @search_results = ChannelLists::Search.new(response)
-      end
-      respond_to do |format|
-        format.html
-        format.js
-      end
+      return if @condition.query.blank?
+
+      response = ChannelLists::Search.search(@condition.query, token: @condition.token, max_results: @condition.per)
+      @search_results = ChannelLists::Search.new(response)
     end
 
     private
