@@ -2,7 +2,7 @@
 
 class ChannelListsController < ApplicationController
   def create
-    return redirect_to :index unless turbo_frame_request?
+    return redirect_to action: :index unless turbo_frame_request?
 
     @channel = Channel.new(channel_params)
     if @channel.save_and_set_job
