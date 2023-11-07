@@ -5,6 +5,8 @@ require 'test_helper'
 module ChannelLists
   class SubscriptionsControllerTest < ActionDispatch::IntegrationTest
     test 'should get index as html' do
+      assert system_setting.update(auth_method: :oauth2)
+      assert system_setting.oauth2?
       sign_in admin
 
       get channel_lists_subscriptions_url
