@@ -21,7 +21,7 @@
     <%= image_tag channel.thumbnail_url %>
   </div>
   <div class="col-6 col-md-4">
-    <%= link_to channel.title, channel.url, target: '_blank', rel: 'noopener noreferrer' %>
+    <%= link_to channel.title, channel.url.to_s, target: '_blank', rel: 'noopener noreferrer' %>
   </div>
   <div class="d-none d-md-block col-md-4 break-word-wrap">
     <%= channel.description.truncate(100) %>
