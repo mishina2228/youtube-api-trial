@@ -2,7 +2,6 @@
 import 'bootstrap'
 
 import 'controllers/channel'
-import 'controllers/channel_list'
 import 'controllers/channel_tag'
 import 'controllers/datepicker_loader'
 import 'controllers/fontawesome'

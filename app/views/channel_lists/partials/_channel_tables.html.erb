@@ -1,26 +1,5 @@
 <div class="container kinda-table">
   <% channels.each do |channel| %>
-    <div class="row">
-      <div class="col-3 col-md-2">
-        <% if channel.persisted? %>
-          <%= button_tag t('helpers.link.channel_created'), type: 'button', disabled: true, class: 'btn btn-secondary btn-sm' %>
-        <% else %>
-          <%= form_with(model: channel, format: :json, class: 'create-channel', local: false) do |form| %>
-            <%= form.hidden_field :channel_id %>
-            <%= form.submit t('helpers.submit.create_channel'),
-                            class: 'btn btn-primary btn-sm', data: {disable_with: false} %>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="col-3 col-md-2">
-        <%= image_tag channel.thumbnail_url %>
-      </div>
-      <div class="col-6 col-md-4">
-        <%= link_to channel.title, channel.url, target: '_blank', rel: 'noopener noreferrer' %>
-      </div>
-      <div class="d-none d-md-block col-md-4 break-word-wrap">
-        <%= channel.description.truncate(100) %>
-      </div>
-    </div>
+    <%= render partial: 'channel_lists/partials/channel_row', locals: {channel: channel} %>
   <% end %>
 </div>
