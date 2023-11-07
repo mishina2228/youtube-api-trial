@@ -18,12 +18,12 @@
     <% end %>
   </div>
   <div class="col-3 col-md-2">
-    <%= image_tag channel.thumbnail_url if channel.thumbnail_url %>
+    <%= image_tag channel.thumbnail_url %>
   </div>
   <div class="col-6 col-md-4">
-    <%= link_to channel.title, channel.url, target: '_blank', rel: 'noopener noreferrer' if channel.title %>
+    <%= link_to channel.title, channel.url, target: '_blank', rel: 'noopener noreferrer' %>
   </div>
   <div class="d-none d-md-block col-md-4 break-word-wrap">
-    <%= channel.description.truncate(100) if channel.description %>
+    <%= channel.description.truncate(100) %>
   </div>
 </div>
