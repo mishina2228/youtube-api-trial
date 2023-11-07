@@ -1,7 +1,0 @@
-{
-  document.getElementById('search-result').innerHTML = "<%= j(render 'channels', search_results: @search_results) %>"
-  const paginator = document.getElementById('search-result-pagination')
-  paginator.innerHTML = "<%= j(render 'channels_pagination', search_results: @search_results, condition: @condition) %>"
-  paginator.dispatchEvent(new window.Event('ajax:success'))
-  propSubmitButton()
-}

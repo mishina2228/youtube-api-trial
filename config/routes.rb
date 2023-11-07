@@ -34,8 +34,8 @@ Rails.application.routes.draw do
 
     authenticated :user, ->(u) {u.admin?} do
       namespace :channel_lists do
-        resources :search, only: :index
-        resources :subscriptions, only: :index
+        resources :search, only: [:index, :create]
+        resources :subscriptions, only: [:index, :create]
       end
 
       resources :channels, only: [] do

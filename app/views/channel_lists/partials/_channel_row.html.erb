@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-3 col-md-2">
+    <%= turbo_frame_tag channel.channel_id do %>
+      <% if channel.persisted? %>
+        <%= button_tag t('helpers.link.channel_created'), type: 'button', disabled: true, class: 'btn btn-secondary btn-sm' %>
+      <% elsif channel.errors.present? %>
+        <%= button_tag t('helpers.link.channel_create_failed'), type: 'button', disabled: true, class: 'btn btn-danger btn-sm' %>
+      <% else %>
+        <%= form_with(url: channel_lists_search_index_path, model: channel, class: 'create-channel', local: false) do |form| %>
+          <%= form.hidden_field :channel_id %>
+          <%= form.hidden_field :thumbnail_url %>
+          <%= form.hidden_field :title %>
+          <%= form.hidden_field :description %>
+          <%= form.submit t('helpers.submit.create_channel'),
+                          class: 'btn btn-primary btn-sm', data: {disable_with: false} %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-3 col-md-2">
+    <%= image_tag channel.thumbnail_url if channel.thumbnail_url %>
+  </div>
+  <div class="col-6 col-md-4">
+    <%= link_to channel.title, channel.url, target: '_blank', rel: 'noopener noreferrer' if channel.title %>
+  </div>
+  <div class="d-none d-md-block col-md-4 break-word-wrap">
+    <%= channel.description.truncate(100) if channel.description %>
+  </div>
+</div>
