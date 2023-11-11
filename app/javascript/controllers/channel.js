@@ -13,7 +13,6 @@ document.addEventListener('turbo:load', () => {
     document.querySelectorAll('nav ul .page-item').forEach(element => {
       element.classList.add('disabled')
     })
-    fadeOutSearchResult()
     scrollTop = false // do not scroll to the top of table
   })
   form?.addEventListener('ajax:success', event => {
@@ -21,7 +20,6 @@ document.addEventListener('turbo:load', () => {
     window.history.replaceState({ turbo: true, url: newURL }, '', newURL)
   })
   form?.addEventListener('ajax:error', event => {
-    fadeInSearchResult()
     iziToast.error({ message: I18n.t('text.common.error_message'), position: 'bottomRight' })
     console.error(event)
   })
@@ -31,11 +29,9 @@ document.addEventListener('turbo:load', () => {
     document.querySelectorAll('nav ul .page-item').forEach(element => {
       element.classList.add('disabled')
     })
-    fadeOutSearchResult()
     scrollTop = true // scroll to the top of table if paginated
   })
   searchResultPagination?.addEventListener('ajax:success', () => {
-    fadeInSearchResult()
     if (scrollTop) {
       const margin = document.querySelector('div.fixed-top').clientHeight
       window.scroll(0, getOffset('search-result') - margin)
@@ -44,7 +40,6 @@ document.addEventListener('turbo:load', () => {
     initializeTooltips()
   })
   searchResultPagination?.addEventListener('ajax:error', event => {
-    fadeInSearchResult()
     iziToast.error({ message: I18n.t('text.common.error_message'), position: 'bottomRight' })
     console.error(event)
   })
@@ -69,17 +64,6 @@ const resetSearchForm = () => {
   inputFields.forEach(elem => { elem.value = '' })
   const selects = form.querySelectorAll('select')
   selects.forEach(elem => { elem.selectedIndex = 0 })
-}
-
-const fadeOutSearchResult = () => {
-  const searchResult = document.getElementById('search-result')
-  searchResult.style.opacity = '0.3'
-}
-
-const fadeInSearchResult = () => {
-  const searchResult = document.getElementById('search-result')
-  searchResult.style.opacity = '1'
-  searchResult.animate({ opacity: [0, 1] }, { duration: 500 })
 }
 
 const prepUpdateSnippet = () => {
