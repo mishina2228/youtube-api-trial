@@ -15,7 +15,6 @@ class ChannelsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js
     end
   end
 
@@ -24,7 +23,6 @@ class ChannelsController < ApplicationController
     @channel_snippets = @channel.channel_snippets.limit(5).offset(1)
     respond_to do |format|
       format.html
-      format.js
     end
   end
 

@@ -1,6 +1,0 @@
-{
-  document.getElementById('search-result').innerHTML = "<%= j(render 'search_result', channels: @channels ) %>"
-  const paginator = document.getElementById('search-result-pagination')
-  paginator.innerHTML = "<%= j(render 'search_result_pagination', channels: @channels ) %>"
-  paginator.dispatchEvent(new window.Event('ajax:success'))
-}
