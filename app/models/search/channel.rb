@@ -7,7 +7,7 @@ module Search
                 :video_count_from, :video_count_to, :view_count_from, :view_count_to
 
     def search
-      ret = ::Channel.preload(:channel_statistics).preload(:tags)
+      ret = ::Channel.preload(:tags)
       ret = ret.with_channel_statistics
       ret = ret.where(id: ids) if ids.present?
       ret = ret.where("title LIKE ? ESCAPE '\\'", "%#{::Channel.sanitize_sql_like(title)}%") if title.present?
