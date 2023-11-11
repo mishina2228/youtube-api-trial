@@ -13,7 +13,6 @@ document.addEventListener('turbo:load', () => {
     document.querySelectorAll('nav ul .page-item').forEach(element => {
       element.classList.add('disabled')
     })
-    showLoaderImg()
     fadeOutSearchResult()
     scrollTop = false // do not scroll to the top of table
   })
@@ -22,7 +21,6 @@ document.addEventListener('turbo:load', () => {
     window.history.replaceState({ turbo: true, url: newURL }, '', newURL)
   })
   form?.addEventListener('ajax:error', event => {
-    hideLoaderImg()
     fadeInSearchResult()
     iziToast.error({ message: I18n.t('text.common.error_message'), position: 'bottomRight' })
     console.error(event)
@@ -33,12 +31,10 @@ document.addEventListener('turbo:load', () => {
     document.querySelectorAll('nav ul .page-item').forEach(element => {
       element.classList.add('disabled')
     })
-    showLoaderImg()
     fadeOutSearchResult()
     scrollTop = true // scroll to the top of table if paginated
   })
   searchResultPagination?.addEventListener('ajax:success', () => {
-    hideLoaderImg()
     fadeInSearchResult()
     if (scrollTop) {
       const margin = document.querySelector('div.fixed-top').clientHeight
@@ -48,7 +44,6 @@ document.addEventListener('turbo:load', () => {
     initializeTooltips()
   })
   searchResultPagination?.addEventListener('ajax:error', event => {
-    hideLoaderImg()
     fadeInSearchResult()
     iziToast.error({ message: I18n.t('text.common.error_message'), position: 'bottomRight' })
     console.error(event)
@@ -74,16 +69,6 @@ const resetSearchForm = () => {
   inputFields.forEach(elem => { elem.value = '' })
   const selects = form.querySelectorAll('select')
   selects.forEach(elem => { elem.selectedIndex = 0 })
-}
-
-const hideLoaderImg = () => {
-  const loaderBg = document.querySelector('.loader-bg')
-  loaderBg.style.display = 'none'
-}
-
-const showLoaderImg = () => {
-  const loaderBg = document.querySelector('.loader-bg')
-  loaderBg.style.display = 'block'
 }
 
 const fadeOutSearchResult = () => {
