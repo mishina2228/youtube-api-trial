@@ -1,5 +1,4 @@
 .loader-bg {
-  display: none;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -14,4 +13,12 @@
     left: 50%;
     transform: scale(3, 3);
   }
+}
+
+.display-when-busy {
+  display: none
+}
+
+[aria-busy="true"] .display-when-busy {
+  display: block
 }

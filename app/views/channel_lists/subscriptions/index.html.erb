@@ -5,7 +5,6 @@
   <%= title %>
 </h1>
 
-<%= render partial: 'partials/loader' %>
 <%= render partial: 'actions' %>
 <%= render partial: 'search_form', locals: {condition: @condition} %>
 
@@ -16,4 +15,5 @@
   <div id="search-result-pagination">
     <%= render 'channels_pagination', subscription: @subscription, condition: @condition %>
   </div>
+  <%= render partial: 'partials/loader' %>
 <% end %>
