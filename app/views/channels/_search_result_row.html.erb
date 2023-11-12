@@ -11,7 +11,7 @@
     <%= print_link(channel.title, channel_path(channel, take_params), t('text.channel.title.missing')) %>
     <div>
       <% channel.tags.each do |tag| %>
-        <%= link_to(tag.name, channels_path(search_channel: { tag: tag.name }), class: 'badge rounded-pill bg-secondary', remote: true) %>
+        <%= link_to(tag.name, channels_path(search_channel: {tag: tag.name}), class: 'badge rounded-pill bg-secondary', remote: true) %>
       <% end %>
     </div>
   </td>
