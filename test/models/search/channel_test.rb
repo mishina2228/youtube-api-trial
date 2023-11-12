@@ -14,7 +14,7 @@ module Search
     test 'search by id' do
       channel = Search::Channel.new(ids: [@c1.id])
       ret = channel.search
-      assert_includes ret, @c1
+      assert_equal ret, [@c1]
     end
 
     test 'search by title' do
