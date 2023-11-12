@@ -26,67 +26,7 @@
 
     <tbody>
     <% channels.each do |c| %>
-      <tr>
-        <td>
-          <% if c.thumbnail_url.present? %>
-            <%= link_to(image_tag(c.thumbnail_url), channel_path(c, take_params)) %>
-          <% end %>
-        </td>
-        <td>
-          <% if c.disabled? %>
-            <span data-toggle="tooltip" title="<%= t('helpers.notice.channel_disabled') %>">⚠️</span>
-          <% end %>
-          <%= print_link(c.title, channel_path(c, take_params), t('text.channel.title.missing')) %>
-          <div>
-            <% c.tags.each do |tag| %>
-              <%= link_to(tag.name, channels_path(search_channel: {tag: tag.name}), class: 'badge rounded-pill bg-secondary', remote: true) %>
-            <% end %>
-          </div>
-        </td>
-        <td class="d-none d-md-table-cell">
-          <%= tag.span print_datetime(c.published_at, format: :date) %>
-        </td>
-        <td>
-          <div class="vertical text-end text-nowrap">
-            <span>
-              <%= print_number(c.subscriber_count) %>
-            </span>
-            <span>
-              <%= print_diff_numbers(c.subscriber_count, c.second_latest_subscriber_count) %>
-            </span>
-          </div>
-        </td>
-        <td class="d-none d-md-table-cell">
-          <div class="vertical text-end text-nowrap">
-            <span>
-              <%= print_number(c.view_count) %>
-            </span>
-            <span>
-              <%= print_diff_numbers(c.view_count, c.second_latest_view_count) %>
-            </span>
-          </div>
-        </td>
-        <td class="d-none d-md-table-cell">
-          <div class="vertical text-end text-nowrap">
-            <span>
-              <%= print_number(c.video_count) %>
-            </span>
-            <span>
-              <%= print_diff_numbers(c.video_count, c.second_latest_video_count) %>
-            </span>
-          </div>
-        </td>
-        <td class="d-none d-xl-table-cell">
-          <div class="vertical text-end text-nowrap">
-            <span>
-              <%= print_acquired_at(c.latest_acquired_at, format: :date) %>
-            </span>
-            <span>
-              <%= print_comparison_period(c.latest_acquired_at, c.second_latest_acquired_at) %>
-            </span>
-          </div>
-        </td>
-      </tr>
+      <%= render partial: 'search_result_row', locals: {channel: c} %>
     <% end %>
     </tbody>
   </table>
