@@ -36,3 +36,9 @@ disabled_channel:
   published_at: '2022-06-19T01:23:34'
   disabled: true
 
+no_statistics_channel:
+  channel_id: channel_id5
+  title: 'Channel4'
+  description: no statistics records
+  thumbnail_url: https://example.com/thumbnail/4
+  published_at: '2023-11-12T01:23:34'
