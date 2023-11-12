@@ -15,7 +15,7 @@
     </div>
     <div class="col-8 col-md-10">
       <% if @channel.thumbnail_url.present? %>
-        <%= link_to image_tag(@channel.thumbnail_url), @channel.url.to_s, target: '_blank', rel: 'noopener noreferrer' %>
+        <%= link_to image_tag(@channel.thumbnail_url), @channel.url, target: '_blank', rel: 'noopener noreferrer' %>
       <% end %>
       <% if @channel.disabled? %>
         <span data-toggle="tooltip" title="<%= t('helpers.notice.channel_disabled') %>">⚠️</span>
@@ -42,13 +42,13 @@
     </div>
     <% if @channel.thumbnail_url.present? %>
       <div class="col-2">
-        <%= link_to 'Small', @channel.thumbnail_url.to_s, target: '_blank', rel: 'noopener noreferrer' %>
+        <%= link_to 'Small', @channel.thumbnail_url, target: '_blank', rel: 'noopener noreferrer' %>
       </div>
       <div class="col-3" style="font-size: medium">
-        <%= link_to 'Medium', @channel.medium_thumbnail_url.to_s, target: '_blank', rel: 'noopener noreferrer' %>
+        <%= link_to 'Medium', @channel.medium_thumbnail_url, target: '_blank', rel: 'noopener noreferrer' %>
       </div>
       <div class="col-3" style="font-size: large">
-        <%= link_to 'Large', @channel.high_thumbnail_url.to_s, target: '_blank', rel: 'noopener noreferrer' %>
+        <%= link_to 'Large', @channel.high_thumbnail_url, target: '_blank', rel: 'noopener noreferrer' %>
       </div>
     <% end %>
   </div>
