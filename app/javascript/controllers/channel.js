@@ -6,43 +6,6 @@ import { Tooltip } from 'bootstrap'
 document.addEventListener('turbo:load', () => {
   initializeTooltips()
   document.getElementById('reset-search')?.addEventListener('click', resetSearchForm)
-  let scrollTop = false
-
-  const form = document.querySelector('form.search')
-  form?.addEventListener('ajax:beforeSend', () => {
-    document.querySelectorAll('nav ul .page-item').forEach(element => {
-      element.classList.add('disabled')
-    })
-    scrollTop = false // do not scroll to the top of table
-  })
-  form?.addEventListener('ajax:success', event => {
-    const newURL = Shared.urlWithCleanParams(event.detail[2].responseURL)
-    window.history.replaceState({ turbo: true, url: newURL }, '', newURL)
-  })
-  form?.addEventListener('ajax:error', event => {
-    iziToast.error({ message: I18n.t('text.common.error_message'), position: 'bottomRight' })
-    console.error(event)
-  })
-
-  const searchResultPagination = document.getElementById('search-result-pagination')
-  searchResultPagination?.addEventListener('ajax:beforeSend', () => {
-    document.querySelectorAll('nav ul .page-item').forEach(element => {
-      element.classList.add('disabled')
-    })
-    scrollTop = true // scroll to the top of table if paginated
-  })
-  searchResultPagination?.addEventListener('ajax:success', () => {
-    if (scrollTop) {
-      const margin = document.querySelector('div.fixed-top').clientHeight
-      window.scroll(0, getOffset('search-result') - margin)
-    }
-    scrollTop = false // reset variable
-    initializeTooltips()
-  })
-  searchResultPagination?.addEventListener('ajax:error', event => {
-    iziToast.error({ message: I18n.t('text.common.error_message'), position: 'bottomRight' })
-    console.error(event)
-  })
 
   Shared.setLocale()
   prepBuildStatistics()
@@ -50,13 +13,6 @@ document.addEventListener('turbo:load', () => {
   prepUpdateAllSnippets()
   prepBuildAllStatistics()
 })
-
-const getOffset = (id) => {
-  const elem = document.getElementById(id)
-  const rectangle = elem.getBoundingClientRect()
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-  return rectangle.top + scrollTop
-}
 
 const resetSearchForm = () => {
   const form = document.querySelector('form.search')
