@@ -3,6 +3,40 @@
     {
       "warning_type": "Cross-Site Scripting",
       "warning_code": 4,
+      "fingerprint": "272dd6eb2d15e39db93a28a9b976ac27f3009de9ec18b643e8414a2685508a71",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/channels/show.html.erb",
+      "line": 48,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(\"Medium\", Channel.new(channel_params).medium_thumbnail_url, :target => \"_blank\", :rel => \"noopener noreferrer\")",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "ChannelsController",
+          "method": "create",
+          "line": 41,
+          "file": "app/controllers/channels_controller.rb",
+          "rendered": {
+            "name": "channels/show",
+            "file": "app/views/channels/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "channels/show"
+      },
+      "user_input": "Channel.new(channel_params).medium_thumbnail_url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": "Passed value by user is validated before."
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
       "fingerprint": "5320fa5989622eac79b9b7d5edeef3ac33f410f2f4a1bfd6da63b0bb7960a90c",
       "check_name": "LinkToHref",
       "message": "Potentially unsafe model attribute in `link_to` href",
@@ -29,9 +63,148 @@
       },
       "user_input": "SystemSetting.new(system_setting_params).authorization_url",
       "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": "Passed value by user is validated before."
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "81de928ed3ed87eff8bf26d07d8812d0ceda3902fc59a2659e1f6e13359724ca",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/channels/show.html.erb",
+      "line": 45,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(\"Small\", Channel.new(channel_params).thumbnail_url, :target => \"_blank\", :rel => \"noopener noreferrer\")",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "ChannelsController",
+          "method": "create",
+          "line": 41,
+          "file": "app/controllers/channels_controller.rb",
+          "rendered": {
+            "name": "channels/show",
+            "file": "app/views/channels/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "channels/show"
+      },
+      "user_input": "Channel.new(channel_params).thumbnail_url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": "Passed value by user is validated before."
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "9dde3ef614dbbd694805d7ddafdcdffccd7dd2ee65271a357ffce473cbb82491",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/channel_lists/partials/_channel_row.html.erb",
+      "line": 24,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(Channel.new(channel_params).title, Channel.new(channel_params).url, :target => \"_blank\", :rel => \"noopener noreferrer\")",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "ChannelListsController",
+          "method": "create",
+          "line": 9,
+          "file": "app/controllers/channel_lists_controller.rb",
+          "rendered": {
+            "name": "channel_lists/partials/_channel_row",
+            "file": "app/views/channel_lists/partials/_channel_row.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "channel_lists/partials/_channel_row"
+      },
+      "user_input": "Channel.new(channel_params).url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": "Passed value by user is validated before."
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "ef423839102e5d0606fde7e5ae52d5d0ed7f64f87c26e047dfff88fdc8b2b532",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/channels/show.html.erb",
+      "line": 18,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(image_tag(Channel.new(channel_params).thumbnail_url), Channel.new(channel_params).url, :target => \"_blank\", :rel => \"noopener noreferrer\")",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "ChannelsController",
+          "method": "create",
+          "line": 41,
+          "file": "app/controllers/channels_controller.rb",
+          "rendered": {
+            "name": "channels/show",
+            "file": "app/views/channels/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "channels/show"
+      },
+      "user_input": "Channel.new(channel_params).url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": "Passed value by user is validated before."
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "fe49e75fe6b23098eddf178c7c79b88a4405434b3d7ad235ddc526269d2b081c",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/channels/show.html.erb",
+      "line": 51,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(\"Large\", Channel.new(channel_params).high_thumbnail_url, :target => \"_blank\", :rel => \"noopener noreferrer\")",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "ChannelsController",
+          "method": "create",
+          "line": 41,
+          "file": "app/controllers/channels_controller.rb",
+          "rendered": {
+            "name": "channels/show",
+            "file": "app/views/channels/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "channels/show"
+      },
+      "user_input": "Channel.new(channel_params).high_thumbnail_url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
       "note": "Passed value by user is validated before."
     }
   ],
-  "updated": "2022-05-05 21:49:46 +0900",
-  "brakeman_version": "5.2.3"
+  "updated": "2023-11-13 08:49:25 +0900",
+  "brakeman_version": "6.0.1"
 }
