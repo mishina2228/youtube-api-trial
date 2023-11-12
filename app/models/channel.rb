@@ -20,11 +20,24 @@ class Channel < ApplicationRecord
   PER_LIST = [5, 10, 20, DEFAULT_PER, 75, MAX_PER].freeze
 
   def self.with_channel_statistics
-    cs = ChannelStatistic.select(:channel_id, :view_count, :subscriber_count, :video_count)
-                         .select('max(channel_statistics.created_at) as latest_acquired_at')
-                         .group(:channel_id)
-    Channel.joins("INNER JOIN (#{cs.to_sql}) as cs ON channels.id = cs.channel_id")
-           .select('"channels".*, cs.subscriber_count, cs.view_count, cs.video_count, cs.latest_acquired_at')
+    with_rownum = ChannelStatistic.select(:channel_id, :view_count, :subscriber_count, :video_count, :created_at)
+                                  .select('row_number() over (partition by channel_id order by created_at desc) rownum')
+    statistics = ChannelStatistic.select(:channel_id, :view_count, :subscriber_count, :video_count, :created_at)
+                                 .from(with_rownum, :with_rownum)
+    latest_cs = statistics.where(with_rownum: {rownum: 1})
+    second_latest_cs = statistics.where(with_rownum: {rownum: 2})
+
+    columns = %w[channels.id channels.title channels.thumbnail_url channels.published_at channels.disabled]
+    columns += ['cs.subscriber_count', 'cs.view_count', 'cs.video_count', 'cs.created_at as latest_acquired_at']
+    columns += [
+      'second_cs.subscriber_count as second_latest_subscriber_count',
+      'second_cs.view_count as second_latest_view_count',
+      'second_cs.video_count as second_latest_video_count',
+      'second_cs.created_at as second_latest_acquired_at'
+    ]
+    Channel.joins("LEFT OUTER JOIN (#{latest_cs.to_sql}) as cs ON channels.id = cs.channel_id")
+           .joins("LEFT OUTER JOIN (#{second_latest_cs.to_sql}) as second_cs ON channels.id = second_cs.channel_id")
+           .select(*columns)
   end
 
   def save_and_set_job
@@ -71,27 +84,11 @@ class Channel < ApplicationRecord
   end
 
   def latest_acquired_at
-    Time.zone.parse self[:latest_acquired_at]
-  end
-
-  def second_latest_statistics
-    channel_statistics.second
-  end
-
-  def second_latest_view_count
-    second_latest_statistics&.view_count
-  end
-
-  def second_latest_subscriber_count
-    second_latest_statistics&.subscriber_count
-  end
-
-  def second_latest_video_count
-    second_latest_statistics&.video_count
+    Time.zone.parse(self[:latest_acquired_at]) if self[:latest_acquired_at]
   end
 
   def second_latest_acquired_at
-    second_latest_statistics&.created_at
+    Time.zone.parse(self[:second_latest_acquired_at]) if self[:second_latest_acquired_at]
   end
 
   def medium_thumbnail_url

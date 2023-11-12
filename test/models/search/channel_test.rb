@@ -8,6 +8,7 @@ module Search
       @c1 = channels(:channel1)
       @c2 = channels(:channel2)
       @c3 = channels(:channel3)
+      @no_statistics_channel = channels(:no_statistics_channel)
     end
 
     test 'search by id' do
@@ -234,6 +235,71 @@ module Search
       channel = Search::Channel.new(tag: "i'm lovin' it")
       ret = channel.search
       assert_equal [@c1], ret.to_a
+    end
+
+    test 'search results should include channels with only one statistics record' do
+      assert_equal 1, @c3.channel_statistics.count
+      channel = Search::Channel.new
+      ret = channel.search
+      assert_includes ret, @c3
+    end
+
+    test 'search results should include channels without statistics records' do
+      assert_empty @no_statistics_channel.channel_statistics
+      channel = Search::Channel.new
+      ret = channel.search
+      assert_includes ret, @no_statistics_channel
+    end
+
+    test 'search results should provide access to statistics info - channel with 2 or more statistics' do
+      assert_operator @c1.channel_statistics.count, :>=, 2
+      ret = Search::Channel.new(ids: [@c1.id]).search
+      c = ret.first
+      latest_statistics = c.channel_statistics.first
+      second_latest_statistics = c.channel_statistics.second
+
+      assert_equal latest_statistics.subscriber_count, c.subscriber_count
+      assert_equal latest_statistics.view_count, c.view_count
+      assert_equal latest_statistics.video_count, c.video_count
+      assert_equal latest_statistics.created_at, c.latest_acquired_at
+
+      assert_equal second_latest_statistics.subscriber_count, c.second_latest_subscriber_count
+      assert_equal second_latest_statistics.view_count, c.second_latest_view_count
+      assert_equal second_latest_statistics.video_count, c.second_latest_video_count
+      assert_equal second_latest_statistics.created_at, c.second_latest_acquired_at
+    end
+
+    test 'search results should provide access to statistics info - channel with 1 statistics' do
+      assert_equal 1, @c3.channel_statistics.count
+      ret = Search::Channel.new(ids: [@c3.id]).search
+      c = ret.first
+      latest_statistics = c.channel_statistics.first
+
+      assert_equal latest_statistics.subscriber_count, c.subscriber_count
+      assert_equal latest_statistics.view_count, c.view_count
+      assert_equal latest_statistics.video_count, c.video_count
+      assert_equal latest_statistics.created_at, c.latest_acquired_at
+
+      assert_nil c.second_latest_subscriber_count
+      assert_nil c.second_latest_view_count
+      assert_nil c.second_latest_video_count
+      assert_nil c.second_latest_acquired_at
+    end
+
+    test 'search results should provide access to statistics info - channel without statistics' do
+      assert_empty @no_statistics_channel.channel_statistics
+      ret = Search::Channel.new(ids: [@no_statistics_channel.id]).search
+      c = ret.first
+
+      assert_nil c.subscriber_count
+      assert_nil c.view_count
+      assert_nil c.video_count
+      assert_nil c.latest_acquired_at
+
+      assert_nil c.second_latest_subscriber_count
+      assert_nil c.second_latest_view_count
+      assert_nil c.second_latest_video_count
+      assert_nil c.second_latest_acquired_at
     end
 
     test 'from_date returns beginning of the day' do
