@@ -48,24 +48,27 @@ const setEventToBtn = (btnId, errorMessage = null) => {
 }
 
 const triggerAndNotify = (btn, errorMessage = null) => {
-  btn.addEventListener('click', e => {
-    e.preventDefault()
-    const form = e.currentTarget.parentNode
+  btn.errorMessage = errorMessage
+  btn.addEventListener('click', notify)
+}
 
-    Shared.sendAction(form)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(`${res.status} ${res.statusText}`)
-        }
-        return res.json()
-      })
-      .then(json => {
-        iziToast.success({ title: json.message, position: 'bottomRight' })
-      })
-      .catch(err => {
-        iziToast.error({ message: errorMessage || err.message, position: 'bottomRight' })
-      })
-  })
+const notify = event => {
+  event.preventDefault()
+  const form = event.currentTarget.parentNode
+
+  Shared.sendAction(form)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`${res.status} ${res.statusText}`)
+      }
+      return res.json()
+    })
+    .then(json => {
+      iziToast.success({ title: json.message, position: 'bottomRight' })
+    })
+    .catch(err => {
+      iziToast.error({ message: event.currentTarget.errorMessage || err.message, position: 'bottomRight' })
+    })
 }
 
 const initializeTooltips = () => {
