@@ -22,10 +22,8 @@ class Channel < ApplicationRecord
   def self.with_channel_statistics
     with_rownum = ChannelStatistic.select(:channel_id, :view_count, :subscriber_count, :video_count, :created_at)
                                   .select('row_number() over (partition by channel_id order by created_at desc) rownum')
-    statistics = ChannelStatistic.select(:channel_id, :view_count, :subscriber_count, :video_count, :created_at)
+    statistics = ChannelStatistic.select('*')
                                  .from(with_rownum, :with_rownum)
-    latest_cs = statistics.where(with_rownum: {rownum: 1})
-    second_latest_cs = statistics.where(with_rownum: {rownum: 2})
 
     columns = %w[channels.id channels.title channels.thumbnail_url channels.published_at channels.disabled]
     columns += ['cs.subscriber_count', 'cs.view_count', 'cs.video_count', 'cs.created_at as latest_acquired_at']
@@ -35,8 +33,9 @@ class Channel < ApplicationRecord
       'second_cs.video_count as second_latest_video_count',
       'second_cs.created_at as second_latest_acquired_at'
     ]
-    Channel.joins("LEFT OUTER JOIN (#{latest_cs.to_sql}) as cs ON channels.id = cs.channel_id")
-           .joins("LEFT OUTER JOIN (#{second_latest_cs.to_sql}) as second_cs ON channels.id = second_cs.channel_id")
+    Channel.with(with_rownum: statistics)
+           .joins('LEFT JOIN with_rownum as cs ON cs.rownum = 1 AND channels.id = cs.channel_id')
+           .joins('LEFT JOIN with_rownum as second_cs ON second_cs.rownum = 2 AND channels.id = second_cs.channel_id')
            .select(*columns)
   end
 
