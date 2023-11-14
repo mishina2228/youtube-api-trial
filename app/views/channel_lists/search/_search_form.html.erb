@@ -1,4 +1,5 @@
-<%= form_with(model: condition, url: channel_lists_search_index_path, method: :get, class: 'search', local: false) do |form| %>
+<%= form_with(model: condition, url: channel_lists_search_index_path, method: :get, class: 'search',
+              local: false, data: {turbo_frame: 'search-result'}) do |form| %>
   <div class="container box_radius">
     <div class="row mb-3">
       <div class="col-3 col-md-2">
