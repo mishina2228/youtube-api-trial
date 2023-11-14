@@ -8,14 +8,14 @@
 <%= render partial: 'actions' %>
 <%= render partial: 'search_form', locals: {condition: @condition} %>
 
-<% if @search_results %>
-  <%= turbo_frame_tag 'search-result', autoscroll: true, data: {autoscroll_block: :start, autoscroll_behavior: :smooth} do %>
+<%= turbo_frame_tag 'search-result', autoscroll: true, data: {autoscroll_block: :start, autoscroll_behavior: :smooth} do %>
+  <% if @search_results %>
     <div id="search-result">
       <%= render 'channels', search_results: @search_results %>
     </div>
     <div id="search-result-pagination">
       <%= render 'channels_pagination', search_results: @search_results, condition: @condition %>
     </div>
-    <%= render partial: 'partials/loader' %>
   <% end %>
+  <%= render partial: 'partials/loader' %>
 <% end %>
