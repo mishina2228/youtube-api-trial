@@ -141,4 +141,35 @@ class ChannelsTest < ApplicationSystemTestCase
 
     assert_text I18n.t('text.channel.disable.succeeded')
   end
+
+  test 'search by channel name' do
+    sign_in admin
+    visit channels_url
+
+    fill_in Channel.human_attribute_name(:title), with: @channel.title
+    click_on I18n.t('helpers.submit.search')
+
+    within('#search-result table') do
+      assert_text @channel.title
+      assert_no_text channels(:channel2).title
+    end
+  end
+
+  test 'pass the query as a request parameter to search' do
+    sign_in admin
+    visit channels_url(search_channel: {title: @channel.title})
+    scroll_to(:bottom)
+
+    within('#search-result table') do
+      assert_text @channel.title
+      assert_no_text channels(:channel2).title
+    end
+
+    visit channels_url(search_channel: {title: 'Non-existent channel'})
+    scroll_to(:bottom)
+
+    within('#search-result h4') do
+      assert_text I18n.t('text.channel.search.not_found')
+    end
+  end
 end
