@@ -11,10 +11,14 @@ class ChannelsController < ApplicationController
 
   def index
     @search_channel = search_condition
-    @channels = @search_channel.search
-
-    respond_to do |format|
-      format.html
+    if turbo_frame_request?
+      @channels = @search_channel.search
+      render partial: 'search_results_frame', locals: {channels: @channels}
+    else
+      @path = request.fullpath
+      respond_to do |format|
+        format.html
+      end
     end
   end
 

@@ -10,13 +10,9 @@
 <%= render partial: 'search_form', locals: {search_channel: @search_channel} %>
 
 <%= turbo_frame_tag 'search-result',
-                    autoscroll: true,
+                    autoscroll: true, src: @path, loading: :lazy,
                     data: {autoscroll_block: :start, autoscroll_behavior: :smooth, turbo_action: :advance} do %>
-  <div id="search-result">
-    <%= render partial: 'search_result', locals: {channels: @channels} %>
-  </div>
-  <div id="search-result-pagination">
-    <%= render partial: 'search_result_pagination', locals: {channels: @channels} %>
-  </div>
+  <div id="search-result"></div>
+  <div id="search-result-pagination"></div>
   <%= render partial: 'partials/loader' %>
 <% end %>
