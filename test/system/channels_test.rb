@@ -92,6 +92,7 @@ class ChannelsTest < ApplicationSystemTestCase
 
     click_on I18n.t('helpers.link.index')
     assert_current_path(channels_path)
+    scroll_to(:bottom)
     # The registered channel will be displayed in the index page after BuildStatisticsJob ends.
     # The job ends immediately in the test environment, so it should be displayed.
     assert_selector 'a', text: @channel.reload.title
@@ -116,6 +117,7 @@ class ChannelsTest < ApplicationSystemTestCase
 
     sign_in admin
     visit channels_url
+    scroll_to(:bottom)
     assert_selector 'a', text: @channel.title
     click_on @channel.title, match: :first
     accept_confirm do
@@ -130,6 +132,7 @@ class ChannelsTest < ApplicationSystemTestCase
 
     sign_in admin
     visit channels_url
+    scroll_to(:bottom)
     assert_selector 'a', text: @channel.title
     click_on @channel.title, match: :first
     accept_confirm do
