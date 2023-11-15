@@ -15,7 +15,7 @@ ja:
         subscriber_count: 登録者数
         video_count: 動画数
         view_count: 総視聴回数
-        title: タイトル
+        title: チャンネル名
       search/channel_list_condition:
         <<: *search
         query: 検索条件

@@ -15,7 +15,7 @@ en:
         subscriber_count: Subscribers
         video_count: Videos
         view_count: Views
-        title: Title
+        title: Channel Name
       search/channel_list_condition:
         <<: *search
         query: Query
@@ -32,7 +32,7 @@ en:
         published_at: Joined at
         tags: Tags
         thumbnail_url: Thumbnail URL
-        title: Title
+        title: Channel Name
       channel_snippet:
         created_at: Acquired at
       channel_statistic:
