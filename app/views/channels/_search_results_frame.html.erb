@@ -1,0 +1,9 @@
+<%= turbo_frame_tag 'search-result' do %>
+  <div id="search-result">
+    <%= render partial: 'search_result', locals: {channels: channels} %>
+  </div>
+  <div id="search-result-pagination">
+    <%= render partial: 'search_result_pagination', locals: {channels: channels} %>
+  </div>
+  <%= render partial: 'partials/loader' %>
+<% end %>
