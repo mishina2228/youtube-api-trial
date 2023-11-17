@@ -21,13 +21,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   # teardown do
   #   next unless passed?
   #
-  #   ignore_error_messages = [
-  #     'Failed to load resource: the server responded with a status of 404 ()',
-  #     'Failed to load resource: the server responded with a status of 422 (Unprocessable Content)'
-  #   ]
-  #   error_messages = javascript_errors.reject do |message|
-  #     ignore_error_messages.any? {|ignore| message.include?(ignore)}
-  #   end
+  #   error_messages = filtered_javascript_errors
   #   raise "Error with JavaScript: #{error_messages.join}" if error_messages.present?
   # end
 end
