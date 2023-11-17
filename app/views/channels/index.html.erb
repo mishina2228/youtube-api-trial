@@ -9,7 +9,7 @@
 <%= render partial: 'actions' %>
 <%= render partial: 'search_form', locals: {search_channel: @search_channel} %>
 
-<%= turbo_frame_tag 'search-result',
+<%= turbo_frame_tag 'search-result-frame',
                     autoscroll: true, src: @path, loading: :lazy,
                     data: {autoscroll_block: :start, autoscroll_behavior: :smooth, turbo_action: :advance} do %>
   <div id="search-result"></div>
