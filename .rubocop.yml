@@ -30,6 +30,7 @@ Metrics/BlockLength:
   Exclude:
     - 'config/environments/*.rb'
     - 'config/routes.rb'
+    - 'test/system/**/*.rb'
 Metrics/ClassLength:
   Enabled: false
 Metrics/CyclomaticComplexity:
