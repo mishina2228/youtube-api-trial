@@ -16,4 +16,18 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
   end
   driven_by(:headless_chrome)
+
+  # It's too flaky
+  # teardown do
+  #   next unless passed?
+  #
+  #   ignore_error_messages = [
+  #     'Failed to load resource: the server responded with a status of 404 ()',
+  #     'Failed to load resource: the server responded with a status of 422 (Unprocessable Content)'
+  #   ]
+  #   error_messages = javascript_errors.reject do |message|
+  #     ignore_error_messages.any? {|ignore| message.include?(ignore)}
+  #   end
+  #   raise "Error with JavaScript: #{error_messages.join}" if error_messages.present?
+  # end
 end

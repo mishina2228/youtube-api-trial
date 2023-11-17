@@ -7,4 +7,8 @@ module SystemTestSupport
     page.save_screenshot(path)
     puts "Saved screenshot to #{path}"
   end
+
+  def javascript_errors
+    page.driver.browser.logs.get(:browser).map(&:message)
+  end
 end
