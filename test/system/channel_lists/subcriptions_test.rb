@@ -67,5 +67,36 @@ module ChannelLists
 
       assert_select ::Search::ChannelListCondition.human_attribute_name(:per), selected: '5'
     end
+
+    test 'create channels from subscribed channels' do
+      assert_not Channel.exists?(channel_id: 'dummy_channel_id_0')
+      system_setting.update!(auth_method: :oauth2)
+      assert system_setting.oauth2?
+
+      sign_in admin
+      visit channel_lists_subscriptions_url
+
+      within('#search-result') do
+        assert_text 'dummy channel 0'
+        within('turbo-frame#dummy_channel_id_0') do
+          click_button I18n.t('helpers.submit.create_channel')
+          assert_text I18n.t('helpers.link.channel_created')
+        end
+      end
+      assert Channel.exists?(channel_id: 'dummy_channel_id_0')
+    end
+
+    test 'cannot create channels that has already been created' do
+      Channel.create!(valid_channel_params.merge(channel_id: 'dummy_channel_id_1'))
+      system_setting.update!(auth_method: :oauth2)
+      assert system_setting.oauth2?
+
+      sign_in admin
+      visit channel_lists_subscriptions_url
+
+      within('#search-result turbo-frame#dummy_channel_id_1') do
+        assert_button I18n.t('helpers.link.channel_created'), disabled: true
+      end
+    end
   end
 end
