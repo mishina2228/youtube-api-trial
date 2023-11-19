@@ -191,4 +191,40 @@ class ChannelsTest < ApplicationSystemTestCase
       assert_text I18n.t('text.channel.search.not_found')
     end
   end
+
+  test 'update snippet' do
+    sign_in admin
+    visit channel_url(id: @channel.id)
+
+    click_button I18n.t('helpers.link.update_snippet')
+    skip 'TODO: It seems like JS is not working.'
+    assert_text I18n.t('text.channel.update_snippet.start')
+  end
+
+  test 'build statistics' do
+    sign_in admin
+    visit channel_url(id: @channel.id)
+
+    click_button I18n.t('helpers.link.build_statistics')
+    skip 'TODO: It seems like JS is not working.'
+    assert_text I18n.t('text.channel.build_statistics.start')
+  end
+
+  test 'update all snippets' do
+    sign_in admin
+    visit channels_url
+
+    click_button I18n.t('helpers.link.update_all_snippets')
+    skip 'TODO: It seems like JS is not working.'
+    assert_text I18n.t('text.channel.update_all_snippets.start')
+  end
+
+  test 'build all statistics' do
+    sign_in admin
+    visit channels_url
+
+    click_button I18n.t('helpers.link.build_all_statistics')
+    skip 'TODO: It seems like JS is not working.'
+    assert_text I18n.t('text.channel.build_all_statistics.start')
+  end
 end
