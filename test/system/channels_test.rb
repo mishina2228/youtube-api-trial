@@ -165,6 +165,12 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channels_url
 
     fill_in Channel.human_attribute_name(:title), with: @channel.title
+
+    # FIXME: Workaround for Selenium::WebDriver::Error::ElementClickInterceptedError
+    sleep(1)
+    page.scroll_to(find('form.search'))
+    sleep(1) # Wait for scrolling to finish
+
     click_on I18n.t('helpers.submit.search')
 
     within('#search-result table') do
@@ -177,6 +183,12 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channels_url
 
     select 20, from: ::Search::ChannelListCondition.human_attribute_name(:per)
+
+    # FIXME: Workaround for Selenium::WebDriver::Error::ElementClickInterceptedError
+    sleep(1)
+    page.scroll_to(find('form.search'))
+    sleep(1) # Wait for scrolling to finish
+
     click_on I18n.t('helpers.submit.search')
 
     within('#search-result') do
