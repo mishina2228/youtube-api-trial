@@ -162,7 +162,6 @@ class ChannelsTest < ApplicationSystemTestCase
   end
 
   test 'search by channel name' do
-    sign_in admin
     visit channels_url
 
     fill_in Channel.human_attribute_name(:title), with: @channel.title
@@ -174,8 +173,33 @@ class ChannelsTest < ApplicationSystemTestCase
     end
   end
 
+  test 'specify page size' do
+    visit channels_url
+
+    select 20, from: ::Search::ChannelListCondition.human_attribute_name(:per)
+    click_on I18n.t('helpers.submit.search')
+
+    within('#search-result') do
+      assert_selector('table tbody tr', count: 20)
+    end
+  end
+
+  test 'reset form fields' do
+    visit channels_url
+
+    fill_in ::Search::Channel.human_attribute_name(:title), with: 'FOO'
+    select 20, from: ::Search::Channel.human_attribute_name(:per)
+    select I18n.t('activemodel.attributes.search.disabled_options.disabled_only'),
+           from: ::Search::Channel.human_attribute_name(:disabled)
+    click_on I18n.t('helpers.button.reset')
+
+    assert_field ::Search::Channel.human_attribute_name(:title), with: ''
+    assert_select ::Search::Channel.human_attribute_name(:per), selected: '5'
+    assert_select ::Search::Channel.human_attribute_name(:disabled),
+                  selected: I18n.t('activemodel.attributes.search.disabled_options.both')
+  end
+
   test 'pass the query as a request parameter to search' do
-    sign_in admin
     visit channels_url(search_channel: {title: @channel.title})
     scroll_to(:bottom)
 
