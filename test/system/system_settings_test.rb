@@ -9,13 +9,17 @@ class SystemSettingsTest < ApplicationSystemTestCase
 
   test 'visit the top page as an user not logged in' do
     visit root_path
-    assert_no_selector 'a', text: SystemSetting.model_name.human
+    assert_link I18n.t('text.top.top_page')
+    assert_no_link SystemSetting.model_name.human
+    assert_link I18n.t('text.devise.sign_in')
   end
 
   test 'visit the top page as an user' do
     sign_in user
     visit root_path
+    assert_link I18n.t('text.top.top_page')
     assert_no_selector 'a', text: SystemSetting.model_name.human
+    assert_link I18n.t('text.devise.sign_out')
   end
 
   test 'visit a system setting as an admin' do

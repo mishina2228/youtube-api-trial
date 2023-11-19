@@ -17,6 +17,9 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_no_button I18n.t('helpers.link.new')
     assert_no_button I18n.t('helpers.link.update_all_snippets')
     assert_no_button I18n.t('helpers.link.build_all_statistics')
+    within('#search-result table') do
+      assert_text @channel.title
+    end
   end
 
   test 'visit the index as an user' do
@@ -27,6 +30,9 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_no_button I18n.t('helpers.link.new')
     assert_no_button I18n.t('helpers.link.update_all_snippets')
     assert_no_button I18n.t('helpers.link.build_all_statistics')
+    within('#search-result table') do
+      assert_text @channel.title
+    end
   end
 
   test 'visit the index as an admin' do
@@ -37,6 +43,10 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_button I18n.t('helpers.link.new')
     assert_button I18n.t('helpers.link.update_all_snippets')
     assert_button I18n.t('helpers.link.build_all_statistics')
+    scroll_to(:bottom)
+    within('#search-result table') do
+      assert_text @channel.title
+    end
   end
 
   test 'get max number of channels when visit the index with per = MAX_PER + 1' do
@@ -56,6 +66,9 @@ class ChannelsTest < ApplicationSystemTestCase
 
   test 'visit a channel as an user not logged in' do
     visit channel_url(id: @channel.id)
+    assert_current_path(channel_url(id: @channel.id))
+
+    assert_link I18n.t('helpers.link.index')
     assert_no_button I18n.t('helpers.link.update_snippet')
     assert_no_button I18n.t('helpers.link.build_statistics')
     assert_no_button I18n.t('helpers.link.disable')
@@ -64,6 +77,9 @@ class ChannelsTest < ApplicationSystemTestCase
   test 'visit a channel as an user' do
     sign_in user
     visit channel_url(id: @channel.id)
+    assert_current_path(channel_url(id: @channel.id))
+
+    assert_link I18n.t('helpers.link.index')
     assert_no_button I18n.t('helpers.link.update_snippet')
     assert_no_button I18n.t('helpers.link.build_statistics')
     assert_no_button I18n.t('helpers.link.disable')
@@ -72,6 +88,9 @@ class ChannelsTest < ApplicationSystemTestCase
   test 'visit a channel as an admin' do
     sign_in admin
     visit channel_url(id: @channel.id)
+    assert_current_path(channel_url(id: @channel.id))
+
+    assert_link I18n.t('helpers.link.index')
     assert_button I18n.t('helpers.link.update_snippet')
     assert_button I18n.t('helpers.link.build_statistics')
     assert_button I18n.t('helpers.link.disable')
