@@ -163,11 +163,10 @@ class ChannelsTest < ApplicationSystemTestCase
 
   test 'search by channel name' do
     visit channels_url
+    wait_for_turbo_frame
 
     fill_in Channel.human_attribute_name(:title), with: @channel.title
-
     # FIXME: Workaround for Selenium::WebDriver::Error::ElementClickInterceptedError
-    sleep(1)
     page.scroll_to(find('form.search'))
     sleep(1) # Wait for scrolling to finish
 
@@ -181,11 +180,10 @@ class ChannelsTest < ApplicationSystemTestCase
 
   test 'specify page size' do
     visit channels_url
+    wait_for_turbo_frame
 
     select 20, from: ::Search::ChannelListCondition.human_attribute_name(:per)
-
     # FIXME: Workaround for Selenium::WebDriver::Error::ElementClickInterceptedError
-    sleep(1)
     page.scroll_to(find('form.search'))
     sleep(1) # Wait for scrolling to finish
 
