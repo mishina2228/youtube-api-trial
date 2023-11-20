@@ -231,7 +231,6 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channel_url(id: @channel.id)
 
     click_button I18n.t('helpers.link.update_snippet')
-    skip 'TODO: It seems like JS is not working.'
     assert_text I18n.t('text.channel.update_snippet.start')
   end
 
@@ -240,7 +239,6 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channel_url(id: @channel.id)
 
     click_button I18n.t('helpers.link.build_statistics')
-    skip 'TODO: It seems like JS is not working.'
     assert_text I18n.t('text.channel.build_statistics.start')
   end
 
@@ -248,17 +246,25 @@ class ChannelsTest < ApplicationSystemTestCase
     sign_in admin
     visit channels_url
 
-    click_button I18n.t('helpers.link.update_all_snippets')
-    skip 'TODO: It seems like JS is not working.'
-    assert_text I18n.t('text.channel.update_all_snippets.start')
+    job_utils_mock = Minitest::Mock.new.expect(:call, nil) do |klass|
+      assert_equal Channels::UpdateAllSnippetsJob, klass
+    end
+    JobUtils.stub(:enqueue, job_utils_mock) do
+      click_button I18n.t('helpers.link.update_all_snippets')
+      assert_text I18n.t('text.channel.update_all_snippets.start')
+    end
   end
 
   test 'build all statistics' do
     sign_in admin
     visit channels_url
 
-    click_button I18n.t('helpers.link.build_all_statistics')
-    skip 'TODO: It seems like JS is not working.'
-    assert_text I18n.t('text.channel.build_all_statistics.start')
+    job_utils_mock = Minitest::Mock.new.expect(:call, nil) do |klass|
+      assert_equal Channels::BuildAllStatisticsJob, klass
+    end
+    JobUtils.stub(:enqueue, job_utils_mock) do
+      click_button I18n.t('helpers.link.build_all_statistics')
+      assert_text I18n.t('text.channel.build_all_statistics.start')
+    end
   end
 end
