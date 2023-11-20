@@ -17,11 +17,17 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   end
   driven_by(:headless_chrome)
 
-  # It's too flaky
-  # teardown do
-  #   next unless passed?
-  #
-  #   error_messages = filtered_javascript_errors
-  #   raise "Error with JavaScript: #{error_messages.join}" if error_messages.present?
-  # end
+  # Generate csrf token to make the JS code work
+  setup do
+    ActionController::Base.allow_forgery_protection = true
+  end
+
+  teardown do
+    ActionController::Base.allow_forgery_protection = false
+    # It's too flaky
+    # next unless passed?
+    #
+    # error_messages = filtered_javascript_errors
+    # raise "Error with JavaScript: #{error_messages.join}" if error_messages.present?
+  end
 end
