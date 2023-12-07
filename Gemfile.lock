@@ -269,7 +269,7 @@ GEM
     raabro (1.4.0)
     racc (1.7.3)
     rack (2.2.8)
-    rack-mini-profiler (3.1.1)
+    rack-mini-profiler (3.3.0)
       rack (>= 1.2.0)
     rack-protection (3.1.0)
       rack (~> 2.2, >= 2.2.4)
@@ -463,7 +463,7 @@ DEPENDENCIES
   propshaft
   puma (~> 6.4)
   puma_worker_killer
-  rack-mini-profiler (~> 3.1)
+  rack-mini-profiler (~> 3.3)
   rails (~> 7.1.2)
   resque
   resque-scheduler
