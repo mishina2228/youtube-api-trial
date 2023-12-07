@@ -14,7 +14,6 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channels_url
     text = I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
     assert_selector 'h1', text: text
-    assert_no_button I18n.t('helpers.link.new')
     assert_no_button I18n.t('helpers.link.update_all_snippets')
     assert_no_button I18n.t('helpers.link.build_all_statistics')
     within('#search-result table') do
@@ -27,7 +26,6 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channels_url
     text = I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
     assert_selector 'h1', text: text
-    assert_no_button I18n.t('helpers.link.new')
     assert_no_button I18n.t('helpers.link.update_all_snippets')
     assert_no_button I18n.t('helpers.link.build_all_statistics')
     within('#search-result table') do
@@ -40,7 +38,6 @@ class ChannelsTest < ApplicationSystemTestCase
     visit channels_url
     text = I18n.t('helpers.title.list', models: Channel.model_name.human.pluralize(I18n.locale))
     assert_selector 'h1', text: text
-    assert_button I18n.t('helpers.link.new')
     assert_button I18n.t('helpers.link.update_all_snippets')
     assert_button I18n.t('helpers.link.build_all_statistics')
     scroll_to(:bottom)
@@ -94,41 +91,6 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_button I18n.t('helpers.link.update_snippet')
     assert_button I18n.t('helpers.link.build_statistics')
     assert_button I18n.t('helpers.link.disable')
-  end
-
-  test 'create a channel' do
-    sign_in admin
-    visit channels_url
-    click_on I18n.t('helpers.link.new'), match: :first
-    assert_current_path(new_channel_path)
-
-    channel_id = "#{@channel.channel_id}_other"
-    fill_in Channel.human_attribute_name(:channel_id), with: channel_id
-    click_on I18n.t('helpers.submit.create')
-
-    assert_text I18n.t('helpers.notice.create')
-    assert_selector 'h1', text: I18n.t('helpers.title.show', model: Channel.model_name.human)
-
-    click_on I18n.t('helpers.link.index')
-    assert_current_path(channels_path)
-    scroll_to(:bottom)
-    # The registered channel will be displayed in the index page after BuildStatisticsJob ends.
-    # The job ends immediately in the test environment, so it should be displayed.
-    assert_selector 'a', text: @channel.reload.title
-  end
-
-  test 'create a channel with invalid parameters' do
-    sign_in admin
-    visit channels_url
-    click_on I18n.t('helpers.link.new'), match: :first
-    assert_current_path(new_channel_path)
-
-    channel_id = @channel.channel_id
-    fill_in Channel.human_attribute_name(:channel_id), with: channel_id
-    click_on I18n.t('helpers.submit.create')
-
-    assert_text I18n.t('errors.messages.taken')
-    assert_current_path(new_channel_path)
   end
 
   test 'enable a channel' do
