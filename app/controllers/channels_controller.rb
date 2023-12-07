@@ -30,24 +30,6 @@ class ChannelsController < ApplicationController
     end
   end
 
-  def new
-    @channel = Channel.new
-  end
-
-  def create
-    @channel = Channel.new(channel_params)
-
-    respond_to do |format|
-      if @channel.save_and_set_job
-        format.html {redirect_to @channel, notice: t('helpers.notice.create')}
-        format.json {render :show, status: :created, location: @channel}
-      else
-        format.html {render :new, status: :unprocessable_entity}
-        format.json {render json: @channel.errors, status: :unprocessable_entity}
-      end
-    end
-  end
-
   def build_statistics
     JobUtils.enqueue(Channels::BuildStatisticsJob, 'channel_id' => @channel.id)
     respond_to do |format|

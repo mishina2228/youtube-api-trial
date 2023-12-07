@@ -9,7 +9,6 @@ en:
         success: Acquiring channel statistics were succeeded.
         error: Acquiring channel statistics were failed.
       channel_id:
-        description: Input the channel ID or the URL of the channel.
         invalid: is blank, or invalid.
       disable:
         succeeded: Successfully disabled.

@@ -13,8 +13,6 @@
 </div>
 <div style="margin-top: 5px">
   <% if can? :create, Channel %>
-    <%= button_to_if_enabled authenticated, t('helpers.link.new'), new_channel_path,
-                             method: :get, class: 'btn btn-info', role: :button %>
     <% use_oauth2 = SystemSetting.use_oauth2?
        options = use_oauth2 ? {} : {data: {toggle: 'tooltip', 'bs-placement': 'bottom'}, title: t('helpers.notice.oauth2_required')} %>
     <%= tag.span(**options) do %>

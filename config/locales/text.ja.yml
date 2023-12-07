@@ -9,7 +9,6 @@ ja:
         success: チャンネル統計の取得に成功しました
         error: チャンネル統計の取得に失敗しました
       channel_id:
-        description: チャンネルID か チャンネルURLを入力
         invalid: が未入力、あるいは無効な値です
       disable:
         succeeded: 無効化しました
