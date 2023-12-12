@@ -164,7 +164,7 @@ GEM
       webrick
     google-apis-youtube_v3 (0.34.0)
       google-apis-core (>= 0.11.0, < 2.a)
-    google-cloud-env (2.0.1)
+    google-cloud-env (2.1.0)
       faraday (>= 1.0, < 3.a)
     google-protobuf (3.25.1)
     googleauth (1.9.0)
