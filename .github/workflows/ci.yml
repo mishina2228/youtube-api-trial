@@ -14,8 +14,6 @@ jobs:
       matrix:
         ruby_version:
           - '3.2'
-          - '3.1'
-          - '3.0'
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
@@ -23,15 +21,16 @@ jobs:
       TZ: 'Asia/Tokyo'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
-      - uses: actions/setup-node@v3
+          cache-version: 1
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '18'
           cache: 'yarn'
       - run: yarn install
       - name: Database setup
@@ -54,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -68,10 +67,10 @@ jobs:
       NODE_ENV: test
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '18'
           cache: 'yarn'
       - run: yarn install
       - name: Run Standard
@@ -80,7 +79,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -92,7 +91,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -106,10 +105,10 @@ jobs:
       NODE_ENV: test
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '18'
           cache: 'yarn'
       - run: yarn install
       - name: Run markdownlint
