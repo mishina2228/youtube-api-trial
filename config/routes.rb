@@ -30,6 +30,9 @@ Rails.application.routes.draw do
         put :build_all_statistics
         put :update_all_snippets
       end
+      scope module: :channels do
+        resources :snippets, only: [:index]
+      end
     end
 
     authenticated :user, ->(u) {u.admin?} do
