@@ -25,7 +25,7 @@
       <% end %>
       </tbody>
     </table>
-    <%= paginate channel_statistics, remote: true, param_name: 'statics_page' %>
+    <%= paginate channel_statistics, remote: true %>
   <% else %>
     <%= t('text.channel.statistics.missing') %>
   <% end %>
