@@ -20,6 +20,8 @@ ja:
         failed: 有効化に失敗しました
       search:
         not_found: 条件に一致するチャンネルが見つかりませんでした。
+      snippets:
+        missing: 過去のチャンネル情報が未取得です
       statistics:
         comparison: 比較期間
         elapsed_time: "%{time}前"

@@ -24,7 +24,6 @@ class ChannelsController < ApplicationController
 
   def show
     @channel_statistics = @channel.channel_statistics.paginate(per: params[:statics_per], page: params[:statics_page])
-    @channel_snippets = @channel.channel_snippets.limit(5).offset(1)
     respond_to do |format|
       format.html
     end

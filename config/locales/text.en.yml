@@ -20,6 +20,8 @@ en:
         failed: Enable failed.
       search:
         not_found: Search results were not found.
+      snippets:
+        missing: Channel info histories are not yet acquired.
       statistics:
         comparison: Comparison period
         elapsed_time: "%{time} ago"

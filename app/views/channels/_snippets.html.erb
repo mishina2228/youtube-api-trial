@@ -2,29 +2,36 @@
   <%= Channel.human_attribute_name :channel_snippets %>
 </h3>
 
-<table class='table table-bordered table-hover table-striped'>
-  <thead>
-    <tr>
-      <th class="w-25"><%= Channel.human_attribute_name :title %></th>
-      <th class="w-58"><%= Channel.human_attribute_name :description %></th>
-      <th class="w-17"><%= ChannelSnippet.human_attribute_name :created_at %></th>
-    </tr>
-  </thead>
+<%= turbo_frame_tag 'channel-snippets' do %>
+  <% if channel_snippets.present? %>
+    <table class='table table-bordered table-hover table-striped'>
+      <thead>
+        <tr>
+          <th class="w-25"><%= Channel.human_attribute_name :title %></th>
+          <th class="w-58"><%= Channel.human_attribute_name :description %></th>
+          <th class="w-17"><%= ChannelSnippet.human_attribute_name :created_at %></th>
+        </tr>
+      </thead>
 
-  <tbody>
-  <% channel_snippets.each do |cs| %>
-    <tr class="click-btn" data-bs-toggle="modal" data-bs-target="#snippetModal<%= cs.id %>">
-      <td>
-        <%= image_tag(cs.thumbnail_url, width: '30px') %>
-        <%= tag.span cs.title %>
-      </td>
-      <td><%= tag.span cs.description.truncate(80) %></td>
-      <td><%= tag.span print_datetime(cs.created_at) %></td>
-    </tr>
+      <tbody>
+      <% channel_snippets.each do |cs| %>
+        <tr class="click-btn" data-bs-toggle="modal" data-bs-target="#snippetModal<%= cs.id %>">
+          <td>
+            <%= image_tag(cs.thumbnail_url, width: '30px') %>
+            <%= tag.span cs.title %>
+          </td>
+          <td><%= tag.span cs.description.truncate(80) %></td>
+          <td><%= tag.span print_datetime(cs.created_at) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <% channel_snippets.each do |cs| %>
+      <%= render 'channels/snippet_modal', snippet: cs %>
+    <% end %>
+    <%= paginate channel_snippets, remote: true %>
+  <% else %>
+    <%= t('text.channel.snippets.missing') %>
   <% end %>
-  </tbody>
-</table>
-
-<% channel_snippets.each do |cs| %>
-  <%= render 'snippet_modal', snippet: cs %>
 <% end %>
