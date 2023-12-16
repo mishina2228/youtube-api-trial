@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       end
       scope module: :channels do
         resources :snippets, only: [:index]
+        resources :statistics, only: [:index]
       end
     end
 

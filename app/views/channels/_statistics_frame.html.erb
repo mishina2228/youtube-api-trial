@@ -1,0 +1,5 @@
+<%= turbo_frame_tag 'statistics-frame' do %>
+  <div id="search-statistics">
+    <%= render partial: 'channels/statistics', locals: {channel_statistics: channel_statistics} %>
+  </div>
+<% end %>
