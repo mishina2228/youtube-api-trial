@@ -245,7 +245,7 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     net-ssh (7.2.1)
-    net-telnet (0.1.1)
+    net-telnet (0.2.0)
     nio4r (2.7.0)
     nokogiri (1.15.5)
       mini_portile2 (~> 2.8.2)
@@ -403,10 +403,10 @@ GEM
       rack-protection (= 3.1.0)
       tilt (~> 2.0)
     smart_properties (1.17.0)
-    specinfra (2.87.0)
+    specinfra (2.87.2)
       net-scp
       net-ssh (>= 2.7)
-      net-telnet (= 0.1.1)
+      net-telnet
       sfl
     sqlite3 (1.6.9)
       mini_portile2 (~> 2.8.0)
