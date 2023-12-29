@@ -38,7 +38,7 @@ gem 'kaminari', '~> 1.2.2'
 
 gem 'resque'
 gem 'resque-scheduler'
-gem 'sinatra', '~> 3.1.0' # Suppress Dependabot's PR
+gem 'sinatra', '~> 3.2.0' # Suppress Dependabot's PR
 
 gem 'mail', '~> 2.8.1'
 
