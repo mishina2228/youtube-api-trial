@@ -50,10 +50,6 @@ state_path "#{Dir.pwd}/tmp/pids/puma.state"
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
 
-# Workaround for `uninitialized constant Puma::DSL::LogWriter` issue
-# https://github.com/puma/puma/issues/3186
-silence_fork_callback_warning
-
 before_fork do
   PumaWorkerKiller.config do |config|
     config.ram = 1024
