@@ -14,7 +14,7 @@ YouTube channels info collector
 
 ## Prerequisites
 
-- Ruby 3.0+
+- Ruby 3.1+
 - Node.js 14.17.0+ || 16.0.0+
 - Yarn 1.x+
 

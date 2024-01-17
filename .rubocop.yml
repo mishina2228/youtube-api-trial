@@ -9,7 +9,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'vendor/bundle/**/*'
   NewCops: enable
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.1
 
 Layout/BeginEndAlignment:
   EnforcedStyleAlignWith: begin
@@ -67,6 +67,8 @@ Style/Documentation:
   Enabled: false
 Style/EmptyMethod:
   EnforcedStyle: expanded
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never # TODO: Pending until I get used to 3.1 syntax
 Style/RedundantConstantBase:
   Enabled: false
 Style/RescueStandardError:
