@@ -161,7 +161,7 @@ GEM
       representable (~> 3.0)
       retriable (>= 2.0, < 4.a)
       rexml
-    google-apis-youtube_v3 (0.36.0)
+    google-apis-youtube_v3 (0.37.0)
       google-apis-core (>= 0.12.0, < 2.a)
     google-cloud-env (2.1.1)
       faraday (>= 1.0, < 3.a)
@@ -464,7 +464,7 @@ DEPENDENCIES
   devise-i18n
   enum_help
   erb_lint
-  google-apis-youtube_v3 (~> 0.36)
+  google-apis-youtube_v3 (~> 0.37)
   i18n-js
   importmap-rails
   itamae
