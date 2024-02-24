@@ -9,7 +9,7 @@
     "@yaireo/tagify": "^4.21.1",
     "bootstrap": "^5.3.3",
     "flatpickr": "^4.6.13",
-    "i18n-js": "^3.9.2",
+    "i18n-js": "^4.4.3",
     "izitoast": "^1.4.0",
     "js-cookie": "^3.0.5",
     "three-dots": "^0.3.2"
