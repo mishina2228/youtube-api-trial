@@ -7,7 +7,9 @@ module Channels
     def index
       return redirect_to channel_path(@channel) unless turbo_frame_request?
 
-      channel_snippets = @channel.channel_snippets.paginate(page: params[:page], per: 5).padding(1)
+      channel_snippets = @channel.channel_snippets
+                                 .paginate(page: params[:page], per: 5)
+                                 .padding(1) # Do not fetch the latest one
       render partial: 'channels/snippets_frame', locals: {channel_snippets: channel_snippets}
     end
 
