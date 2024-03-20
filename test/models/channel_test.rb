@@ -103,6 +103,32 @@ class ChannelTest < ActiveSupport::TestCase
     end
   end
 
+  test 'update_latest_statistics! should update columns with the value of the passed statistics' do
+    channel = channels(:channel1)
+    statistics = channel.channel_statistics.create!(valid_statistics_params)
+    channel.update_latest_statistics!(statistics)
+
+    assert_equal statistics.view_count, channel.latest_view_count
+    assert_equal statistics.subscriber_count, channel.latest_subscriber_count
+    assert_equal statistics.video_count, channel.latest_video_count
+    assert_equal statistics.created_at.strftime('%FT%T%:z'), channel.latest_acquired_at.strftime('%FT%T%:z')
+  end
+
+  test 'update_latest_statistics! should copy the previous statistics to the second-latest columns' do
+    channel = channels(:channel1)
+    assert view_count = channel.latest_view_count
+    assert subscriber_count = channel.latest_subscriber_count
+    assert video_count = channel.latest_video_count
+    assert acquired_at = channel.latest_acquired_at
+    statistics = channel.channel_statistics.create!(valid_statistics_params)
+    channel.update_latest_statistics!(statistics)
+
+    assert_equal view_count, channel.second_latest_view_count
+    assert_equal subscriber_count, channel.second_latest_subscriber_count
+    assert_equal video_count, channel.second_latest_video_count
+    assert_equal acquired_at, channel.second_latest_acquired_at
+  end
+
   test 'update_snippet should update attributes of a channel' do
     channel = channels(:channel1)
     before_channel = channel.dup

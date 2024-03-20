@@ -21,7 +21,8 @@ module Channels
 
       begin
         channel.transaction do
-          channel.build_statistics!
+          cs = channel.build_statistics!
+          channel.update_latest_statistics!(cs)
         end
       rescue Mishina::Youtube::NoChannelError => e
         # No need to retry

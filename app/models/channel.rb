@@ -47,6 +47,23 @@ class Channel < ApplicationRecord
     channel_statistics.create!(channel_statistics_params(statistics))
   end
 
+  def update_latest_statistics!(channel_statistics)
+    prev_view_count = latest_view_count
+    prev_subscriber_count = latest_subscriber_count
+    prev_video_count = latest_video_count
+    prev_acquired_at = latest_acquired_at
+    update!(
+      second_latest_view_count: prev_view_count,
+      second_latest_subscriber_count: prev_subscriber_count,
+      second_latest_video_count: prev_video_count,
+      second_latest_acquired_at: prev_acquired_at,
+      latest_view_count: channel_statistics.view_count,
+      latest_subscriber_count: channel_statistics.subscriber_count,
+      latest_video_count: channel_statistics.video_count,
+      latest_acquired_at: channel_statistics.created_at
+    )
+  end
+
   def update_snippet!
     res = youtube_service.snippet(channel_id)
     raise res.error if res.error.present?
@@ -68,31 +85,6 @@ class Channel < ApplicationRecord
 
   def channel_id=(val)
     super(parse_channel_id(val))
-  end
-
-  # TODO: Remove
-  def latest_acquired_at
-    self[:latest_acquired_at]&.to_time
-  end
-
-  def second_latest_statistics
-    channel_statistics.second
-  end
-
-  def second_latest_view_count
-    second_latest_statistics&.view_count
-  end
-
-  def second_latest_subscriber_count
-    second_latest_statistics&.subscriber_count
-  end
-
-  def second_latest_video_count
-    second_latest_statistics&.video_count
-  end
-
-  def second_latest_acquired_at
-    second_latest_statistics&.created_at
   end
 
   def medium_thumbnail_url

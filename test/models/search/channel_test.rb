@@ -251,39 +251,19 @@ module Search
       assert_includes ret, @no_statistics_channel
     end
 
-    test 'search results should provide access to statistics info - channel with 2 or more statistics' do
-      assert_operator @c1.channel_statistics.count, :>=, 2
+    test 'search results should provide access to statistics info' do
       ret = Search::Channel.new(ids: [@c1.id]).search
       c = ret.first
-      latest_statistics = c.channel_statistics.first
-      second_latest_statistics = c.channel_statistics.second
 
-      assert_equal latest_statistics.subscriber_count, c.subscriber_count
-      assert_equal latest_statistics.view_count, c.view_count
-      assert_equal latest_statistics.video_count, c.video_count
-      assert_equal latest_statistics.created_at, c.latest_acquired_at
+      assert_equal @c1.latest_subscriber_count, c.latest_subscriber_count
+      assert_equal @c1.latest_view_count, c.latest_view_count
+      assert_equal @c1.latest_video_count, c.latest_video_count
+      assert_equal @c1.latest_acquired_at, c.latest_acquired_at
 
-      assert_equal second_latest_statistics.subscriber_count, c.second_latest_subscriber_count
-      assert_equal second_latest_statistics.view_count, c.second_latest_view_count
-      assert_equal second_latest_statistics.video_count, c.second_latest_video_count
-      assert_equal second_latest_statistics.created_at, c.second_latest_acquired_at
-    end
-
-    test 'search results should provide access to statistics info - channel with 1 statistics' do
-      assert_equal 1, @c3.channel_statistics.count
-      ret = Search::Channel.new(ids: [@c3.id]).search
-      c = ret.first
-      latest_statistics = c.channel_statistics.first
-
-      assert_equal latest_statistics.subscriber_count, c.subscriber_count
-      assert_equal latest_statistics.view_count, c.view_count
-      assert_equal latest_statistics.video_count, c.video_count
-      assert_equal latest_statistics.created_at, c.latest_acquired_at
-
-      assert_nil c.second_latest_subscriber_count
-      assert_nil c.second_latest_view_count
-      assert_nil c.second_latest_video_count
-      assert_nil c.second_latest_acquired_at
+      assert_equal @c1.second_latest_subscriber_count, c.second_latest_subscriber_count
+      assert_equal @c1.second_latest_view_count, c.second_latest_view_count
+      assert_equal @c1.second_latest_video_count, c.second_latest_video_count
+      assert_equal @c1.second_latest_acquired_at, c.second_latest_acquired_at
     end
 
     test 'search results should provide access to statistics info - channel without statistics' do
