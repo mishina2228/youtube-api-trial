@@ -19,6 +19,10 @@ channel2:
   description: description2
   thumbnail_url: https://example.com/thumbnail/2
   published_at: '2018-12-20T01:23:34'
+  latest_view_count: 1_999_997
+  latest_subscriber_count: 1_999_998
+  latest_video_count: 1_999_999
+  latest_acquired_at: <%= 1.day.ago %>
 
 channel3:
   channel_id: channel_id3

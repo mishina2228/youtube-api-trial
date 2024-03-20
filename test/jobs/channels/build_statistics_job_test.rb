@@ -31,6 +31,46 @@ module Channels
       end
     end
 
+    test 'both latest and second-latest channel statistics should be recorded if latest one have previously recorded' do
+      channel = channels(:channel2)
+      assert prev_latest_view_count = channel.latest_view_count
+      assert prev_latest_subscriber_count = channel.latest_subscriber_count
+      assert prev_latest_video_count = channel.latest_video_count
+      assert prev_latest_acquired_at = channel.latest_acquired_at
+
+      Channels::BuildStatisticsJob.perform('channel_id' => channel.id)
+
+      latest_statistics = channel.channel_statistics.first
+      assert_equal latest_statistics.view_count, channel.reload.latest_view_count
+      assert_equal latest_statistics.subscriber_count, channel.latest_subscriber_count
+      assert_equal latest_statistics.video_count, channel.latest_video_count
+      assert_equal latest_statistics.created_at, channel.latest_acquired_at
+      assert_equal prev_latest_view_count, channel.second_latest_view_count
+      assert_equal prev_latest_subscriber_count, channel.second_latest_subscriber_count
+      assert_equal prev_latest_video_count, channel.second_latest_video_count
+      assert_equal prev_latest_acquired_at, channel.second_latest_acquired_at
+    end
+
+    test 'only latest channel statistics should be recorded if latest one have not been previously recorded' do
+      channel = channels(:channel3)
+      assert_nil channel.latest_view_count
+      assert_nil channel.latest_subscriber_count
+      assert_nil channel.latest_video_count
+      assert_nil channel.latest_acquired_at
+
+      Channels::BuildStatisticsJob.perform('channel_id' => channel.id)
+
+      latest_statistics = channel.channel_statistics.first
+      assert_equal latest_statistics.view_count, channel.reload.latest_view_count
+      assert_equal latest_statistics.subscriber_count, channel.latest_subscriber_count
+      assert_equal latest_statistics.video_count, channel.latest_video_count
+      assert_equal latest_statistics.created_at, channel.latest_acquired_at
+      assert_nil channel.second_latest_view_count
+      assert_nil channel.second_latest_subscriber_count
+      assert_nil channel.second_latest_video_count
+      assert_nil channel.second_latest_acquired_at
+    end
+
     test 'fail if the channel is not existed' do
       channel = channels(:non_existing_channel)
       assert_not channel.disabled?
