@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_05_092712) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_16_013426) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -68,6 +68,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_092712) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "disabled", default: false, null: false
+    t.integer "latest_view_count"
+    t.integer "latest_subscriber_count"
+    t.integer "latest_video_count"
+    t.datetime "latest_acquired_at"
+    t.integer "second_latest_view_count"
+    t.integer "second_latest_subscriber_count"
+    t.integer "second_latest_video_count"
+    t.datetime "second_latest_acquired_at"
     t.index ["channel_id"], name: "index_channels_on_channel_id", unique: true
     t.index ["disabled"], name: "index_channels_on_disabled"
   end
