@@ -70,8 +70,9 @@ class Channel < ApplicationRecord
     super(parse_channel_id(val))
   end
 
+  # TODO: Remove
   def latest_acquired_at
-    Time.zone.parse(self[:latest_acquired_at]) if self[:latest_acquired_at]
+    self[:latest_acquired_at]&.to_time
   end
 
   def second_latest_statistics
