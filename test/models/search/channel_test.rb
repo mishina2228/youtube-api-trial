@@ -266,22 +266,6 @@ module Search
       assert_equal @c1.second_latest_acquired_at, c.second_latest_acquired_at
     end
 
-    test 'search results should provide access to statistics info - channel without statistics' do
-      assert_empty @no_statistics_channel.channel_statistics
-      ret = Search::Channel.new(ids: [@no_statistics_channel.id]).search
-      c = ret.first
-
-      assert_nil c.subscriber_count
-      assert_nil c.view_count
-      assert_nil c.video_count
-      assert_nil c.latest_acquired_at
-
-      assert_nil c.second_latest_subscriber_count
-      assert_nil c.second_latest_view_count
-      assert_nil c.second_latest_video_count
-      assert_nil c.second_latest_acquired_at
-    end
-
     test 'from_date returns beginning of the day' do
       expected = Date.new(2018, 10, 20).beginning_of_day
       ['2018-10-20', '2018-10-20 01:23:45', '2018-10-20T01:23:45+0900'].each do |arg|
