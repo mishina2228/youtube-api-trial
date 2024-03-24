@@ -21,30 +21,30 @@
   <td>
     <div class="vertical text-end text-nowrap">
       <span>
-        <%= print_number(channel.subscriber_count) %>
+        <%= print_number(channel.latest_subscriber_count) %>
       </span>
       <span>
-        <%= print_diff_numbers(channel.subscriber_count, channel.second_latest_subscriber_count) %>
-      </span>
-    </div>
-  </td>
-  <td class="d-none d-md-table-cell">
-    <div class="vertical text-end text-nowrap">
-      <span>
-        <%= print_number(channel.view_count) %>
-      </span>
-      <span>
-        <%= print_diff_numbers(channel.view_count, channel.second_latest_view_count) %>
+        <%= print_diff_numbers(channel.latest_subscriber_count, channel.second_latest_subscriber_count) %>
       </span>
     </div>
   </td>
   <td class="d-none d-md-table-cell">
     <div class="vertical text-end text-nowrap">
       <span>
-        <%= print_number(channel.video_count) %>
+        <%= print_number(channel.latest_view_count) %>
       </span>
       <span>
-        <%= print_diff_numbers(channel.video_count, channel.second_latest_video_count) %>
+        <%= print_diff_numbers(channel.latest_view_count, channel.second_latest_view_count) %>
+      </span>
+    </div>
+  </td>
+  <td class="d-none d-md-table-cell">
+    <div class="vertical text-end text-nowrap">
+      <span>
+        <%= print_number(channel.latest_video_count) %>
+      </span>
+      <span>
+        <%= print_diff_numbers(channel.latest_video_count, channel.second_latest_video_count) %>
       </span>
     </div>
   </td>

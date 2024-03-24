@@ -19,14 +19,6 @@ class Channel < ApplicationRecord
   MAX_PER = 100
   PER_LIST = [5, 10, 20, DEFAULT_PER, 75, MAX_PER].freeze
 
-  def self.with_channel_statistics
-    cs = ChannelStatistic.select(:channel_id, :view_count, :subscriber_count, :video_count)
-                         .select('max(channel_statistics.created_at) as latest_acquired_at')
-                         .group(:channel_id)
-    Channel.joins("LEFT JOIN (#{cs.to_sql}) as cs ON channels.id = cs.channel_id")
-           .select('"channels".*, cs.subscriber_count, cs.view_count, cs.video_count, cs.latest_acquired_at')
-  end
-
   def save_and_set_job
     return false unless save
 

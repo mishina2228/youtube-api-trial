@@ -8,14 +8,13 @@ module Search
 
     def search
       ret = ::Channel.preload(:tags)
-      ret = ret.with_channel_statistics
       ret = ret.where(id: ids) if ids.present?
       ret = ret.where("title LIKE ? ESCAPE '\\'", "%#{::Channel.sanitize_sql_like(title)}%") if title.present?
       ret = ret.where(published_at: published_at) if published_at.present?
       ret = ret.where(disabled: disabled) unless disabled.nil?
-      ret = ret.where(cs: {subscriber_count: subscriber_count}) if subscriber_count.present?
-      ret = ret.where(cs: {video_count: video_count}) if video_count.present?
-      ret = ret.where(cs: {view_count: view_count}) if view_count.present?
+      ret = ret.where(latest_subscriber_count: subscriber_count) if subscriber_count.present?
+      ret = ret.where(latest_video_count: video_count) if video_count.present?
+      ret = ret.where(latest_view_count: view_count) if view_count.present?
       ret = ret.tagged_with("'#{tag}'") if tag.present?
       ret = ret.order(sort_column)
       ret = ret.reverse_order if direction == 'desc' || direction.nil?
@@ -103,9 +102,9 @@ module Search
       when 'title', 'published_at'
         order.to_sym
       when 'view_count', 'subscriber_count', 'video_count', 'latest_acquired_at'
-        "cs.#{order}"
+        "latest_#{order}"
       else
-        'cs.subscriber_count'
+        'latest_subscriber_count'
       end
     end
   end
