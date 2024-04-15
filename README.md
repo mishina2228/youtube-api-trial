@@ -24,15 +24,25 @@ YouTube channels info collector
 
 First, install the gems and javascript packages required by the application:
 
+#### development
+
 ```sh
-bundle
-yarn
+bundle install
+yarn install
+```
+
+#### production
+
+```sh
+bundle config set without development test
+bundle install
+yarn install --production
 ```
 
 Next, execute the database migrations/schema setup:
 
 ```sh
-bin/rails db:setup
+RAILS_ENV=[RAILS_ENV] bin/rails db:setup
 ```
 
 ### Resque settings
@@ -76,7 +86,7 @@ bin/dev
 #### production
 
 ```sh
-bin/rails assets:precompile RAILS_ENV=production
+RAILS_ENV=production bin/rails assets:precompile
 bin/rails s -e production
 ```
 
