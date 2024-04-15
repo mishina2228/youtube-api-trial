@@ -23,7 +23,7 @@ template '/etc/god/youtube_api_trial.god' do
   action :create
   source './cookbooks/god/templates/etc/god/youtube_api_trial.god.erb'
   variables(
-    rails_env: ENV['RAILS_ENV'].presence || raise('must specify RAILS_ENV'),
+    rails_env: ENV.fetch('RAILS_ENV') {raise('must specify RAILS_ENV')},
     rails_root: File.expand_path('../../', File.dirname(__FILE__)),
     app_name: 'youtube_api_trial'
   )
