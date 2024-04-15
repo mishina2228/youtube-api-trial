@@ -24,14 +24,14 @@ YouTube channels info collector
 
 First, install the gems and javascript packages required by the application:
 
-#### development
+- development
 
 ```sh
 bundle install
 yarn install
 ```
 
-#### production
+- production
 
 ```sh
 bundle config set without development test
@@ -77,13 +77,13 @@ god stop youtube_api_trial
 
 ### Start the app
 
-#### development
+- development
 
 ```sh
 bin/dev
 ```
 
-#### production
+- production
 
 ```sh
 RAILS_ENV=production bin/rails assets:precompile
