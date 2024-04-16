@@ -11,7 +11,7 @@ remote_file '/etc/god/master.conf' do
   user 'root'
   owner 'root'
   group 'root'
-  mode '755'
+  mode '644'
   source './cookbooks/god/templates/etc/god/master.conf'
 end
 
@@ -19,7 +19,7 @@ template '/etc/god/youtube_api_trial.god' do
   user 'root'
   owner 'root'
   group 'root'
-  mode '755'
+  mode '644'
   action :create
   source './cookbooks/god/templates/etc/god/youtube_api_trial.god.erb'
   variables(
