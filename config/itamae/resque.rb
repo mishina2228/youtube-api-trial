@@ -25,6 +25,7 @@ template '/etc/god/youtube_api_trial.god' do
   variables(
     rails_env: ENV.fetch('RAILS_ENV') {raise('must specify RAILS_ENV')},
     rails_root: File.expand_path('../../', File.dirname(__FILE__)),
-    app_name: 'youtube_api_trial'
+    app_name: 'youtube_api_trial',
+    user: ENV.fetch('USER', 'root')
   )
 end
