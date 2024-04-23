@@ -4,11 +4,11 @@
     w.name = "resque-<%= @app_name %>-#{num}"
     w.group = "resque-<%= @app_name %>"
     w.interval = 30.seconds
-    w.env = {'QUEUE' => 'normal', 'RAILS_ENV' => "<%= @rails_env %>"}
+    w.env = {"QUEUE" => "normal", "RAILS_ENV" => "<%= @rails_env %>"}
     w.start = "bundle exec rake -f <%= @rails_root %>/Rakefile environment resque:work"
     w.log = "#{w.dir}/log/#{w.name}.log"
     w.start_grace  = 10.seconds
-    w.stop_signal  = 'QUIT'
+    w.stop_signal  = "QUIT"
     w.stop_timeout = 300.seconds
 
     w.uid = "<%= @user %>"
@@ -59,11 +59,11 @@ end
     w.name = "resque-scheduler-<%= @app_name %>-#{num}"
     w.group = "resque-<%= @app_name %>"
     w.interval = 30.seconds
-    w.env = {'RAILS_ENV' => "<%= @rails_env %>", 'DYNAMIC_SCHEDULE' => true}
+    w.env = {"RAILS_ENV" => "<%= @rails_env %>", "DYNAMIC_SCHEDULE" => true}
     w.start = "bundle exec rake -f <%= @rails_root %>/Rakefile environment resque:scheduler"
     w.log = "#{w.dir}/log/#{w.name}.log"
     w.start_grace  = 10.seconds
-    w.stop_signal  = 'QUIT'
+    w.stop_signal  = "QUIT"
     w.stop_timeout = 300.seconds
 
     w.uid = "<%= @user %>"
