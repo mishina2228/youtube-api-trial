@@ -416,7 +416,7 @@ GEM
       net-ssh (>= 2.7)
       net-telnet
       sfl
-    sqlite3 (1.7.3)
+    sqlite3 (2.0.1)
       mini_portile2 (~> 2.8.0)
     stringio (3.1.0)
     strscan (3.1.0)
