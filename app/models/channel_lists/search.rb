@@ -6,7 +6,7 @@ module ChannelLists
 
     # @param response [ListSubscriptionResponse]
     def initialize(response)
-      super(response)
+      super
       self.channels = response.items.map do |subscription|
         channel_id = subscription.snippet.channel_id
         c = Channel.find_or_initialize_by(channel_id: channel_id)
