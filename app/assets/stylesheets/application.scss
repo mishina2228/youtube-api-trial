@@ -1,10 +1,4 @@
 // Entry point for your Sass build
-@use 'bootstrap/scss/bootstrap';
-@use 'flatpickr/dist/flatpickr';
-@use 'flatpickr/dist/themes/material_blue';
-@use 'three-dots/dist/three-dots.css';
-@use '@yaireo/tagify/dist/tagify';
-@use 'izitoast/dist/css/iziToast';
 @use './channel';
 @use './loader';
 @use './modal';
