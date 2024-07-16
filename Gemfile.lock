@@ -352,7 +352,7 @@ GEM
       drb (~> 2.0)
       syslog (~> 0.1)
     retriable (3.1.2)
-    rexml (3.3.1)
+    rexml (3.3.2)
       strscan
     rubocop (1.65.0)
       json (~> 2.3)
