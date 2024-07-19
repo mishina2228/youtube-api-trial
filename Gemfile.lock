@@ -387,7 +387,7 @@ GEM
       google-protobuf (>= 3.25, < 5.0)
       rake (>= 13.0.0)
     schash (0.1.2)
-    selenium-webdriver (4.22.0)
+    selenium-webdriver (4.23.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
