@@ -417,7 +417,7 @@ GEM
       rack-session (>= 2.0.0, < 3)
       tilt (~> 2.0)
     smart_properties (1.17.0)
-    specinfra (2.89.0)
+    specinfra (2.90.0)
       net-scp
       net-ssh (>= 2.7)
       net-telnet
