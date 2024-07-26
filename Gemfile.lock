@@ -126,7 +126,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.12.1)
       devise (>= 4.9.0)
-    docile (1.4.0)
+    docile (1.4.1)
     drb (2.2.1)
     enum_help (0.0.19)
       activesupport (>= 3.0.0)
