@@ -234,7 +234,7 @@ GEM
     mono_logger (1.1.2)
     msgpack (1.7.2)
     multi_json (1.15.0)
-    mustermann (3.0.0)
+    mustermann (3.0.1)
       ruby2_keywords (~> 0.0.1)
     mutex_m (0.2.0)
     net-http (0.4.1)
