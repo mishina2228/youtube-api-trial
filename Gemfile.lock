@@ -146,7 +146,7 @@ GEM
     faraday-net_http (3.1.1)
       net-http
     ffi (1.17.0)
-    fugit (1.11.0)
+    fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
     get_process_mem (1.0.0)
