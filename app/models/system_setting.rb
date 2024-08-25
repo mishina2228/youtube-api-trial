@@ -7,7 +7,7 @@ class SystemSetting < ApplicationRecord
 
   attr_accessor :client_secret
 
-  enum auth_method: {nothing: 0, api_key: 1, oauth2: 2}
+  enum :auth_method, {nothing: 0, api_key: 1, oauth2: 2}
 
   after_initialize :decrypt_client_secret
   before_save :encrypt_client_secret
