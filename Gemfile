@@ -34,7 +34,8 @@ gem 'acts-as-taggable-on', '~> 11.0'
 gem 'enum_help'
 gem 'google-apis-youtube_v3', '~> 0.43'
 gem 'i18n-js'
-gem 'kaminari', '~> 1.2.2'
+# Workaround until a new version is released that includes support for https://github.com/kaminari/kaminari/issues/1055
+gem 'kaminari', git: 'https://github.com/kaminari/kaminari', ref: 'c7a46f17b2bc1d842a3fe4d0132709bc27e02402'
 
 gem 'resque'
 gem 'resque-scheduler'
