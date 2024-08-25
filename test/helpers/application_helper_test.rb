@@ -35,7 +35,7 @@ class ApplicationHelperTest < ActionView::TestCase
     end
   end
 
-  def test_sortable
+  test 'sortable' do
     # TODO: refactor
   end
 
