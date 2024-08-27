@@ -32,7 +32,6 @@ module YoutubeApiTrial
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
 
-    config.active_record.sqlite3_production_warning = false
     config.active_record.encryption.hash_digest_class = OpenSSL::Digest::SHA256
 
     config.middleware.use I18n::JS::Middleware
