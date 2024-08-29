@@ -12,7 +12,9 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   #
   # See more info: https://stackoverflow.com/a/70948645
   Capybara.register_driver :headless_chrome do |app|
-    options = Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-dev-shm-usage no-sandbox])
+    options = Selenium::WebDriver::Chrome::Options.new(
+      args: %w[headless disable-dev-shm-usage no-sandbox window-size=1440,990]
+    )
     Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
   end
   driven_by(:headless_chrome)
