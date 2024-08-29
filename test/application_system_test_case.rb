@@ -19,6 +19,8 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   end
   driven_by(:headless_chrome)
 
+  I18n.default_locale = :en # for the system that cannot display Japanese (e.g. GitHub Actions)
+
   # Generate csrf token to make the JS code work
   setup do
     ActionController::Base.allow_forgery_protection = true
