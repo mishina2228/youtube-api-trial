@@ -19,6 +19,8 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   end
   driven_by(:headless_chrome)
 
+  Capybara.default_max_wait_time = 5
+  Capybara.default_retry_interval = 0.25
   I18n.default_locale = :en # for the system that cannot display Japanese (e.g. GitHub Actions)
 
   # Generate csrf token to make the JS code work
