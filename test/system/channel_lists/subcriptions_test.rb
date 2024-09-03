@@ -10,6 +10,7 @@ module ChannelLists
 
       sign_in admin
       visit channels_url
+      assert_no_selector('div.loader-bg') # wait until loaders are gone
       click_on I18n.t('helpers.link.create_from_subscription')
       assert_current_path(channel_lists_subscriptions_url)
 

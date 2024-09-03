@@ -7,6 +7,7 @@ module ChannelLists
     test 'search channels by query' do
       sign_in admin
       visit channels_url
+      assert_no_selector('div.loader-bg') # wait until loaders are gone
       click_on I18n.t('helpers.link.create_from_search')
       assert_current_path(channel_lists_search_index_url)
 

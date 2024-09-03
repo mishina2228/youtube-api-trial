@@ -207,6 +207,7 @@ class ChannelsTest < ApplicationSystemTestCase
   test 'update all snippets' do
     sign_in admin
     visit channels_url
+    assert_no_selector('div.loader-bg') # wait until loaders are gone
 
     job_utils_mock = Minitest::Mock.new.expect(:call, nil) do |klass|
       assert_equal Channels::UpdateAllSnippetsJob, klass
@@ -220,6 +221,7 @@ class ChannelsTest < ApplicationSystemTestCase
   test 'build all statistics' do
     sign_in admin
     visit channels_url
+    assert_no_selector('div.loader-bg') # wait until loaders are gone
 
     job_utils_mock = Minitest::Mock.new.expect(:call, nil) do |klass|
       assert_equal Channels::BuildAllStatisticsJob, klass
