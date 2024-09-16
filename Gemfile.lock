@@ -194,7 +194,7 @@ GEM
       signet (>= 0.16, < 2.a)
     hashie (5.0.0)
     httpclient (2.8.3)
-    i18n (1.14.5)
+    i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     i18n-js (3.9.2)
       i18n (>= 0.6.6)
@@ -212,7 +212,7 @@ GEM
       schash (~> 0.1.0)
       specinfra (>= 2.64.0, < 3.0.0)
       thor (>= 1.0.0)
-    jbuilder (2.12.0)
+    jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.7.2)
@@ -480,7 +480,7 @@ DEPENDENCIES
   i18n-js
   importmap-rails
   itamae
-  jbuilder (~> 2.12)
+  jbuilder (~> 2.13)
   kaminari!
   mail (~> 2.8.1)
   minitest-ci
