@@ -32,7 +32,7 @@ gem 'devise-i18n'
 
 gem 'acts-as-taggable-on', '~> 11.0'
 gem 'enum_help'
-gem 'google-apis-youtube_v3', '~> 0.44'
+gem 'google-apis-youtube_v3', '~> 0.45'
 gem 'i18n-js'
 # Workaround until a new version is released that includes support for https://github.com/kaminari/kaminari/issues/1055
 gem 'kaminari', git: 'https://github.com/kaminari/kaminari', ref: 'c7a46f17b2bc1d842a3fe4d0132709bc27e02402'
