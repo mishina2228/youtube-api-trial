@@ -30,7 +30,7 @@ jobs:
           cache-version: 1
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'yarn'
       - run: yarn install
       - name: Database setup
@@ -70,7 +70,7 @@ jobs:
         uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'yarn'
       - run: yarn install
       - name: Run Standard
@@ -108,7 +108,7 @@ jobs:
         uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'yarn'
       - run: yarn install
       - name: Run markdownlint
