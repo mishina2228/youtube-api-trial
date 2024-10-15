@@ -15,7 +15,6 @@ jobs:
         ruby_version:
           - '3.3'
           - '3.2'
-          - '3.1'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
