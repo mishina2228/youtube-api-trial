@@ -9,7 +9,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'vendor/bundle/**/*'
   NewCops: enable
-  TargetRubyVersion: 3.1
+  TargetRubyVersion: 3.2
 
 Layout/BeginEndAlignment:
   EnforcedStyleAlignWith: begin

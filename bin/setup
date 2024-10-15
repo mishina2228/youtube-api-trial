@@ -6,8 +6,8 @@ require 'fileutils'
 APP_ROOT = File.expand_path('..', __dir__)
 APP_NAME = 'youtube-api-trial'
 
-def system!(*args)
-  system(*args, exception: true)
+def system!(*)
+  system(*, exception: true)
 end
 
 FileUtils.chdir APP_ROOT do
