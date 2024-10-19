@@ -36,4 +36,9 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     # error_messages = filtered_javascript_errors
     # raise "Error with JavaScript: #{error_messages.join}" if error_messages.present?
   end
+
+  def visit(*)
+    super
+    wait_for_turbo_frame
+  end
 end

@@ -94,13 +94,16 @@ class ChannelsTest < ApplicationSystemTestCase
   end
 
   test 'enable a channel' do
-    assert @channel.update(disabled: true)
+    channel = channels(:disabled_channel)
+    assert channel.disabled?
 
     sign_in admin
     visit channels_url
-    scroll_to(:bottom)
-    assert_selector 'a', text: @channel.title
-    click_on @channel.title, match: :first
+    assert_selector 'a', text: channel.title
+    assert_no_selector('div.loader-bg') # wait until loaders are gone
+    click_on channel.title, match: :first
+    wait_for_turbo_frame
+    assert_current_path(channel_url(id: channel.id))
     accept_confirm do
       click_on I18n.t('helpers.link.enable')
     end
@@ -109,13 +112,15 @@ class ChannelsTest < ApplicationSystemTestCase
   end
 
   test 'disable a channel' do
-    assert @channel.update(disabled: false)
+    assert_not @channel.disabled?
 
     sign_in admin
     visit channels_url
-    scroll_to(:bottom)
     assert_selector 'a', text: @channel.title
+    assert_no_selector('div.loader-bg') # wait until loaders are gone
     click_on @channel.title, match: :first
+    wait_for_turbo_frame
+    assert_current_path(channel_url(id: @channel.id))
     accept_confirm do
       click_on I18n.t('helpers.link.disable')
     end
@@ -158,6 +163,7 @@ class ChannelsTest < ApplicationSystemTestCase
 
   test 'reset form fields' do
     visit channels_url
+    scroll_to(:top)
 
     fill_in ::Search::Channel.human_attribute_name(:title), with: 'FOO'
     select 20, from: ::Search::Channel.human_attribute_name(:per)
