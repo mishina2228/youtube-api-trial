@@ -94,7 +94,7 @@ jobs:
           bundler-cache: true
       - name: Run RuboCop
         run: bundle exec rubocop
-  erb-lint:
+  erb_lint:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -106,7 +106,7 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
       - name: Run ERB Lint
-        run: bundle exec erblint --lint-all
+        run: bundle exec erb_lint --lint-all
   markdownlint:
     runs-on: ubuntu-latest
     timeout-minutes: 5
