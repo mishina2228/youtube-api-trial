@@ -358,7 +358,7 @@ GEM
       drb (~> 2.0)
       syslog (~> 0.1)
     retriable (3.1.2)
-    rexml (3.3.8)
+    rexml (3.3.9)
     rubocop (1.67.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
