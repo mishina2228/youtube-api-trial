@@ -387,7 +387,7 @@ GEM
     rubyzip (2.3.2)
     rufus-scheduler (3.9.2)
       fugit (~> 1.1, >= 1.11.1)
-    sass-embedded (1.80.4)
+    sass-embedded (1.80.5)
       google-protobuf (~> 4.28)
       rake (>= 13)
     schash (0.1.2)
