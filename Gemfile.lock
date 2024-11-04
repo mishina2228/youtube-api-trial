@@ -180,7 +180,7 @@ GEM
       mutex_m
       representable (~> 3.0)
       retriable (>= 2.0, < 4.a)
-    google-apis-youtube_v3 (0.48.0)
+    google-apis-youtube_v3 (0.49.0)
       google-apis-core (>= 0.15.0, < 2.a)
     google-cloud-env (2.2.1)
       faraday (>= 1.0, < 3.a)
@@ -217,7 +217,7 @@ GEM
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    json (2.7.5)
+    json (2.7.6)
     jwt (2.9.3)
       base64
     language_server-protocol (3.17.0.3)
@@ -475,7 +475,7 @@ DEPENDENCIES
   devise-i18n
   enum_help
   erb_lint
-  google-apis-youtube_v3 (~> 0.48)
+  google-apis-youtube_v3 (~> 0.49)
   i18n-js
   importmap-rails
   itamae
