@@ -90,8 +90,8 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
-    acts-as-taggable-on (11.0.0)
-      activerecord (>= 7.0, < 8.0)
+    acts-as-taggable-on (12.0.0)
+      activerecord (>= 7.1, < 8.1)
       zeitwerk (>= 2.4, < 3.0)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
@@ -464,7 +464,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts-as-taggable-on (~> 11.0)
+  acts-as-taggable-on (~> 12.0)
   bootsnap (>= 1.1.0)
   brakeman
   bullet
