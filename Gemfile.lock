@@ -392,7 +392,7 @@ GEM
       google-protobuf (~> 4.28)
       rake (>= 13)
     schash (0.1.2)
-    securerandom (0.3.1)
+    securerandom (0.3.2)
     selenium-webdriver (4.26.0)
       base64 (~> 0.2)
       logger (~> 1.4)
