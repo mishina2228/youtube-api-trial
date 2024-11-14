@@ -42,7 +42,7 @@ jobs:
       - name: Run unit tests
         run: bin/rails test
       - name: Upload unit test coverage report
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Run system test
