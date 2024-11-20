@@ -39,7 +39,7 @@ gem 'kaminari', git: 'https://github.com/kaminari/kaminari', ref: 'c7a46f17b2bc1
 
 gem 'resque'
 gem 'resque-scheduler'
-gem 'sinatra', '~> 4.0.0' # Suppress Dependabot's PR
+gem 'sinatra', '~> 4.1.1' # Suppress Dependabot's PR
 
 gem 'mail', '~> 2.8.1'
 

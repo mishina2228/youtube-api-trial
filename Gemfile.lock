@@ -287,8 +287,9 @@ GEM
     rack (3.1.8)
     rack-mini-profiler (3.3.1)
       rack (>= 1.2.0)
-    rack-protection (4.0.0)
+    rack-protection (4.1.1)
       base64 (>= 0.1.0)
+      logger (>= 1.6.0)
       rack (>= 3.0.0, < 4)
     rack-session (2.0.0)
       rack (>= 3.0.0)
@@ -414,10 +415,11 @@ GEM
       simplecov (~> 0.19)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    sinatra (4.0.0)
+    sinatra (4.1.1)
+      logger (>= 1.6.0)
       mustermann (~> 3.0)
       rack (>= 3.0.0, < 4)
-      rack-protection (= 4.0.0)
+      rack-protection (= 4.1.1)
       rack-session (>= 2.0.0, < 3)
       tilt (~> 2.0)
     smart_properties (1.17.0)
@@ -499,7 +501,7 @@ DEPENDENCIES
   selenium-webdriver
   simplecov
   simplecov-cobertura
-  sinatra (~> 4.0.0)
+  sinatra (~> 4.1.1)
   sqlite3
   turbo-rails
   web-console (>= 3.3.0)
