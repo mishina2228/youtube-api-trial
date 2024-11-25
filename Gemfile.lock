@@ -276,7 +276,7 @@ GEM
     psych (5.2.0)
       stringio
     public_suffix (6.0.1)
-    puma (6.4.3)
+    puma (6.5.0)
       nio4r (~> 2.0)
     puma_worker_killer (1.0.0)
       bigdecimal (>= 2.0)
@@ -487,7 +487,7 @@ DEPENDENCIES
   minitest-ci
   net-scp (>= 3.0.0)
   propshaft
-  puma (~> 6.4)
+  puma (~> 6.5)
   puma_worker_killer
   rack-mini-profiler (~> 3.3)
   rails (~> 7.2.1)
