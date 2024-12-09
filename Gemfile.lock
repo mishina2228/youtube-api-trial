@@ -157,7 +157,7 @@ GEM
     erubi (1.13.0)
     et-orbi (1.2.11)
       tzinfo
-    faraday (2.12.1)
+    faraday (2.12.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -180,7 +180,7 @@ GEM
       mutex_m
       representable (~> 3.0)
       retriable (>= 2.0, < 4.a)
-    google-apis-youtube_v3 (0.51.0)
+    google-apis-youtube_v3 (0.52.0)
       google-apis-core (>= 0.15.0, < 2.a)
     google-cloud-env (2.2.1)
       faraday (>= 1.0, < 3.a)
@@ -480,7 +480,7 @@ DEPENDENCIES
   devise-i18n
   enum_help
   erb_lint
-  google-apis-youtube_v3 (~> 0.51)
+  google-apis-youtube_v3 (~> 0.52)
   i18n-js
   importmap-rails
   itamae
