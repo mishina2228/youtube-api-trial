@@ -3,7 +3,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.7.1",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
     "@popperjs/core": "^2.11.8",
     "@yaireo/tagify": "^4.32.2",
