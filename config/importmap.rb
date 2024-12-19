@@ -3,8 +3,8 @@
 # Pin npm packages by running ./bin/importmap
 
 pin "application", preload: true
-pin "@fortawesome/fontawesome-svg-core", to: "https://ga.jspm.io/npm:@fortawesome/fontawesome-svg-core@6.7.1/index.mjs"
-pin "@fortawesome/free-solid-svg-icons", to: "https://ga.jspm.io/npm:@fortawesome/free-solid-svg-icons@6.7.1/index.mjs"
+pin "@fortawesome/fontawesome-svg-core", to: "https://ga.jspm.io/npm:@fortawesome/fontawesome-svg-core@6.7.2/index.mjs"
+pin "@fortawesome/free-solid-svg-icons", to: "https://ga.jspm.io/npm:@fortawesome/free-solid-svg-icons@6.7.2/index.mjs"
 pin "@yaireo/tagify", to: "https://ga.jspm.io/npm:@yaireo/tagify@4.32.2/dist/tagify.js"
 pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.3.3/dist/js/bootstrap.esm.js"
 pin "flatpickr", to: "https://ga.jspm.io/npm:flatpickr@4.6.13/dist/flatpickr.js"
