@@ -3,6 +3,12 @@
 require 'test_helper'
 
 class ResqueControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    # For HostAuthorization in Sinatra 4.1
+    # https://github.com/sinatra/sinatra/pull/2053
+    host! 'localhost'
+  end
+
   test 'should get /resque' do
     sign_in admin
 
