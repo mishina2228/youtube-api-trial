@@ -52,7 +52,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: system test result screenshots
+          name: 'failed_system_test_screenshots_ruby_${{ matrix.ruby_version }}'
           path: tmp/screenshots/
   brakeman:
     runs-on: ubuntu-latest
