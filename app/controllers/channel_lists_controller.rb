@@ -26,6 +26,6 @@ class ChannelListsController < ApplicationController
   end
 
   def channel_params
-    params.require(:channel).permit(:channel_id, :thumbnail_url, :title, :description)
+    params.expect(channel: [:channel_id, :thumbnail_url, :title, :description])
   end
 end
