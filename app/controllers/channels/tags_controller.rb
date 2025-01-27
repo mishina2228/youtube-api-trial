@@ -22,10 +22,6 @@ module Channels
       @channel = Channel.find(params[:channel_id])
     end
 
-    def update_tags_params
-      params.require(:channel).permit(:tag_list)
-    end
-
     def set_tag_list(channel) # rubocop:disable Naming/AccessorMethodName
       tag_list_was = channel.tag_list
       channel.tag_list = [] # clear existing tags

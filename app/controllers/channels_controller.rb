@@ -96,10 +96,6 @@ class ChannelsController < ApplicationController
     @channel = Channel.find(params[:id])
   end
 
-  def channel_params
-    params.require(:channel).permit(:channel_id)
-  end
-
   def search_params
     search_channel = params.fetch(:search_channel, {})
     hash = {order: params[:order], direction: params[:direction]}
