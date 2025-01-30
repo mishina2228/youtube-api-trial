@@ -142,10 +142,10 @@
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.11.tgz#11af57b127e32487774841f7a4e54eab166d03c4"
   integrity sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==
 
-"@yaireo/tagify@^4.33.0":
-  version "4.33.0"
-  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-4.33.0.tgz#4167ba55d74921c92e226c3cf31360070643802e"
-  integrity sha512-8MQF26Q5NIJXXLETAMOSFv2d6Jj5DH0xwUM6kCelQ9CMG7oIA4HIdQ6sMy5dF95IBLqCJOF9MM4vfiyQIcrejA==
+"@yaireo/tagify@^4.33.2":
+  version "4.33.2"
+  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-4.33.2.tgz#496290622831d7700c8e3c9f730f9988eebb3364"
+  integrity sha512-0r6c9ky3Vguj4pOKGy/sGGcfbfR+5zmZ7u4+1DWTf6v9z71cDksDp7A7l9g9mxlSZ1cs9Wk4pp/GEWfr8muykw==
 
 acorn-jsx@^5.3.2:
   version "5.3.2"
