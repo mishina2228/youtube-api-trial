@@ -257,7 +257,7 @@ GEM
       timeout
     net-scp (4.1.0)
       net-ssh (>= 2.6.5, < 8.0.0)
-    net-smtp (0.5.0)
+    net-smtp (0.5.1)
       net-protocol
     net-ssh (7.3.0)
     net-telnet (0.2.0)
