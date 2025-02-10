@@ -114,7 +114,7 @@ GEM
     brakeman (7.0.0)
       racc
     builder (3.3.0)
-    bullet (8.0.0)
+    bullet (8.0.1)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     cancancan (3.6.1)
