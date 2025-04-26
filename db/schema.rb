@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_16_013426) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_26_002149) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_16_013426) do
 
   create_table "channel_statistics", force: :cascade do |t|
     t.integer "channel_id", null: false
-    t.integer "view_count", default: 0, null: false
+    t.integer "view_count"
     t.integer "subscriber_count", default: 0, null: false
     t.integer "video_count", default: 0, null: false
     t.datetime "created_at", precision: nil, null: false
