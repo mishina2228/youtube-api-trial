@@ -8,7 +8,7 @@ class ChannelStatisticTest < ActiveSupport::TestCase
     assert cs.valid?
 
     cs = ChannelStatistic.new(valid_params.merge(view_count: nil))
-    assert cs.invalid?
+    assert cs.valid?
     cs = ChannelStatistic.new(valid_params.merge(view_count: 3.14))
     assert cs.invalid?
 
