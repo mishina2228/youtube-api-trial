@@ -145,7 +145,7 @@ GEM
       devise (>= 4.9.0)
       rails-i18n
     docile (1.4.1)
-    drb (2.2.1)
+    drb (2.2.3)
     enum_help (0.0.19)
       activesupport (>= 3.0.0)
     erb (5.0.1)
