@@ -50,6 +50,9 @@ Minitest/EmptyLineBeforeAssertionMethods:
 Minitest/MultipleAssertions:
   Enabled: false
 
+Naming/PredicateMethod:
+  Enabled: false
+
 Rails/Output:
   Exclude:
     - 'lib/resque/failure/email_notification.rb'
