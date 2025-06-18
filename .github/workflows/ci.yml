@@ -14,7 +14,7 @@ permissions:
   contents: read
 
 jobs:
-  test:
+  unit_test:
     strategy:
       fail-fast: true
       matrix:
@@ -22,6 +22,29 @@ jobs:
           - '3.4'
           - '3.3'
           - '3.2'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      RAILS_ENV: test
+      TZ: 'Asia/Tokyo'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+          cache-version: 1
+      - name: Database setup
+        run: bin/rails db:schema:load --trace
+      - name: Run unit tests
+        run: bin/rails test
+      - name: Upload unit test coverage report
+        uses: codecov/codecov-action@v5
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+  system_test:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
@@ -34,7 +57,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.ruby_version }}
+          ruby-version: '3.4'
           bundler-cache: true
           cache-version: 1
       - uses: actions/setup-node@v4
@@ -46,19 +69,13 @@ jobs:
         run: bin/rails db:schema:load --trace
       - name: Build assets in advance
         run: bin/rails assets:precompile
-      - name: Run unit tests
-        run: bin/rails test
-      - name: Upload unit test coverage report
-        uses: codecov/codecov-action@v5
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Run system test
         run: bin/rails test:system
       - name: Archive system test result screenshots
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: 'failed_system_test_screenshots_ruby_${{ matrix.ruby_version }}'
+          name: 'failed_system_test_screenshots'
           path: tmp/screenshots/
   brakeman:
     runs-on: ubuntu-latest
