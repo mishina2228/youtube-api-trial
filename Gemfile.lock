@@ -159,7 +159,7 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
-    faraday (2.13.2)
+    faraday (2.13.3)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -182,7 +182,7 @@ GEM
       mutex_m
       representable (~> 3.0)
       retriable (>= 2.0, < 4.a)
-    google-apis-youtube_v3 (0.56.0)
+    google-apis-youtube_v3 (0.57.0)
       google-apis-core (>= 0.15.0, < 2.a)
     google-cloud-env (2.3.1)
       base64 (~> 0.2)
@@ -224,7 +224,7 @@ GEM
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    json (2.12.2)
+    json (2.13.0)
     jwt (2.10.2)
       base64
     language_server-protocol (3.17.0.5)
@@ -247,7 +247,7 @@ GEM
       minitest (>= 5.0.6)
     mono_logger (1.1.2)
     msgpack (1.8.0)
-    multi_json (1.16.0)
+    multi_json (1.17.0)
     mustermann (3.0.3)
       ruby2_keywords (~> 0.0.1)
     mutex_m (0.3.0)
@@ -504,7 +504,7 @@ DEPENDENCIES
   devise-i18n
   enum_help
   erb_lint
-  google-apis-youtube_v3 (~> 0.56)
+  google-apis-youtube_v3 (~> 0.57)
   i18n-js
   importmap-rails
   itamae
