@@ -6,7 +6,7 @@
     "@fortawesome/fontawesome-svg-core": "^7.0.0",
     "@fortawesome/free-solid-svg-icons": "^7.0.0",
     "@popperjs/core": "^2.11.8",
-    "@yaireo/tagify": "^4.35.1",
+    "@yaireo/tagify": "^4.35.3",
     "bootstrap": "^5.3.7",
     "flatpickr": "^4.6.13",
     "i18n-js": "^3.9.2",
