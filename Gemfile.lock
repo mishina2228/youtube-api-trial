@@ -221,9 +221,9 @@ GEM
       schash (~> 0.1.0)
       specinfra (>= 2.64.0, < 3.0.0)
       thor (>= 1.0.0)
-    jbuilder (2.13.0)
-      actionview (>= 5.0.0)
-      activesupport (>= 5.0.0)
+    jbuilder (2.14.0)
+      actionview (>= 7.0.0)
+      activesupport (>= 7.0.0)
     json (2.13.2)
     jwt (2.10.2)
       base64
@@ -507,7 +507,7 @@ DEPENDENCIES
   i18n-js
   importmap-rails
   itamae
-  jbuilder (~> 2.13)
+  jbuilder (~> 2.14)
   kaminari!
   mail (~> 2.8.1)
   minitest-ci
