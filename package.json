@@ -4,7 +4,7 @@
   "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.1",
-    "@fortawesome/free-solid-svg-icons": "^7.0.0",
+    "@fortawesome/free-solid-svg-icons": "^7.0.1",
     "@popperjs/core": "^2.11.8",
     "@yaireo/tagify": "^4.35.1",
     "bootstrap": "^5.3.7",
