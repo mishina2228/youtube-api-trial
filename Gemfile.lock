@@ -287,7 +287,7 @@ GEM
       date
       stringio
     public_suffix (6.0.2)
-    puma (6.6.1)
+    puma (7.0.2)
       nio4r (~> 2.0)
     puma_worker_killer (1.0.0)
       bigdecimal (>= 2.0)
@@ -512,7 +512,7 @@ DEPENDENCIES
   minitest-ci
   net-scp (>= 3.0.0)
   propshaft
-  puma (~> 6.6)
+  puma (~> 7.0)
   puma_worker_killer
   rack-mini-profiler (~> 4.0)
   rails (~> 8.0.2)
