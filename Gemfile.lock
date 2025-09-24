@@ -349,7 +349,7 @@ GEM
       psych (>= 4.0.0)
     redis (5.4.1)
       redis-client (>= 0.22.0)
-    redis-client (0.25.3)
+    redis-client (0.26.0)
       connection_pool
     redis-namespace (1.11.0)
       redis (>= 4)
