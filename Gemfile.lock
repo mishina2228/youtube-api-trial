@@ -295,7 +295,7 @@ GEM
       puma (>= 2.7)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.2.1)
+    rack (3.2.2)
     rack-mini-profiler (4.0.1)
       rack (>= 1.2.0)
     rack-protection (4.1.1)
