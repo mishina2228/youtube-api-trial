@@ -133,7 +133,7 @@ GEM
     dartsass-rails (0.5.1)
       railties (>= 6.0.0)
       sass-embedded (~> 1.63)
-    date (3.4.1)
+    date (3.5.0)
     declarative (0.0.20)
     devise (4.9.4)
       bcrypt (~> 3.0)
@@ -233,7 +233,8 @@ GEM
     loofah (2.24.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    mail (2.8.1)
+    mail (2.9.0)
+      logger
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -511,7 +512,7 @@ DEPENDENCIES
   itamae
   jbuilder (~> 2.14)
   kaminari!
-  mail (~> 2.8.1)
+  mail (~> 2.9.0)
   minitest-ci
   net-scp (>= 3.0.0)
   propshaft
