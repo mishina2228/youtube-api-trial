@@ -184,7 +184,7 @@ GEM
       mini_mime (~> 1.1)
       representable (~> 3.0)
       retriable (~> 3.1)
-    google-apis-youtube_v3 (0.57.0)
+    google-apis-youtube_v3 (0.58.0)
       google-apis-core (>= 0.15.0, < 2.a)
     google-cloud-env (2.3.1)
       base64 (~> 0.2)
@@ -247,7 +247,7 @@ GEM
       minitest (>= 5.0.6)
     mono_logger (1.1.2)
     msgpack (1.8.0)
-    multi_json (1.17.0)
+    multi_json (1.18.0)
     mustermann (3.0.4)
       ruby2_keywords (~> 0.0.1)
     net-http (0.8.0)
@@ -505,7 +505,7 @@ DEPENDENCIES
   devise-i18n
   enum_help
   erb_lint
-  google-apis-youtube_v3 (~> 0.57)
+  google-apis-youtube_v3 (~> 0.58)
   i18n-js
   importmap-rails
   itamae
