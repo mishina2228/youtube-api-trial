@@ -454,7 +454,7 @@ GEM
       sfl
     sqlite3 (2.8.1)
       mini_portile2 (~> 2.8.0)
-    stringio (3.1.8)
+    stringio (3.1.9)
     syslog (0.3.0)
       logger
     thor (1.4.0)
