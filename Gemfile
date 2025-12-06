@@ -40,7 +40,7 @@ gem 'kaminari', git: 'https://github.com/kaminari/kaminari', ref: 'c7a46f17b2bc1
 gem 'resque'
 gem 'resque-scheduler'
 
-gem 'mail', '~> 2.8.1'
+gem 'mail', '~> 2.9.0'
 
 group :development do
   gem 'brakeman'
