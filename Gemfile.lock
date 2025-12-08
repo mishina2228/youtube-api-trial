@@ -459,7 +459,7 @@ GEM
       logger
     thor (1.4.0)
     tilt (2.6.1)
-    timeout (0.4.4)
+    timeout (0.5.0)
     trailblazer-option (0.1.2)
     tsort (0.2.0)
     turbo-rails (2.0.20)
