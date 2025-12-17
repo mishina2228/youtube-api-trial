@@ -9,7 +9,7 @@ class ChannelListsController < ApplicationController
       render partial: 'channel_lists/partials/channel_row', locals: {channel: @channel}
     else
       @channel.errors.add(:base, I18n.t('helpers.link.channel_create_failed'))
-      render partial: 'channel_lists/partials/channel_row', locals: {channel: @channel}, status: :unprocessable_entity
+      render partial: 'channel_lists/partials/channel_row', locals: {channel: @channel}, status: :unprocessable_content
     end
   end
 
