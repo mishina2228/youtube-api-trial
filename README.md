@@ -36,7 +36,6 @@ yarn install
 ```sh
 bundle config set without development test
 bundle install
-yarn install --production
 ```
 
 Next, execute the database migrations/schema setup:
