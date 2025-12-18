@@ -233,7 +233,8 @@ GEM
     loofah (2.24.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    mail (2.8.1)
+    mail (2.9.0)
+      logger
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -252,7 +253,7 @@ GEM
       ruby2_keywords (~> 0.0.1)
     net-http (0.8.0)
       uri (>= 0.11.1)
-    net-imap (0.6.0)
+    net-imap (0.6.2)
       date
       net-protocol
     net-pop (0.1.2)
@@ -459,7 +460,7 @@ GEM
       logger
     thor (1.4.0)
     tilt (2.6.1)
-    timeout (0.5.0)
+    timeout (0.6.0)
     trailblazer-option (0.1.2)
     tsort (0.2.0)
     turbo-rails (2.0.20)
@@ -511,7 +512,7 @@ DEPENDENCIES
   itamae
   jbuilder (~> 2.14)
   kaminari!
-  mail (~> 2.8.1)
+  mail (~> 2.9.0)
   minitest-ci
   net-scp (>= 3.0.0)
   propshaft
