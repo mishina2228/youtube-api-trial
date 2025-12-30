@@ -167,7 +167,7 @@ GEM
       faraday (>= 1, < 3)
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
-    ffi (1.17.2)
+    ffi (1.17.3)
     fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
