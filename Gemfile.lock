@@ -249,7 +249,7 @@ GEM
       minitest (>= 5.0.6)
     mono_logger (1.1.2)
     msgpack (1.8.0)
-    multi_json (1.18.0)
+    multi_json (1.19.1)
     mustermann (3.0.4)
       ruby2_keywords (~> 0.0.1)
     net-http (0.9.1)
