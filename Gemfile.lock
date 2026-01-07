@@ -459,7 +459,7 @@ GEM
     stringio (3.2.0)
     syslog (0.3.0)
       logger
-    thor (1.4.0)
+    thor (1.5.0)
     tilt (2.6.1)
     timeout (0.6.0)
     trailblazer-option (0.1.2)
