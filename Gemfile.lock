@@ -460,7 +460,7 @@ GEM
     syslog (0.3.0)
       logger
     thor (1.5.0)
-    tilt (2.6.1)
+    tilt (2.7.0)
     timeout (0.6.0)
     trailblazer-option (0.1.2)
     tsort (0.2.0)
