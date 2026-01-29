@@ -462,7 +462,7 @@ GEM
     sqlite3 (2.9.0)
       mini_portile2 (~> 2.8.0)
     stringio (3.2.0)
-    syslog (0.3.0)
+    syslog (0.4.0)
       logger
     thor (1.5.0)
     tilt (2.7.0)
