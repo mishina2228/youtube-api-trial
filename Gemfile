@@ -41,7 +41,7 @@ gem 'resque'
 gem 'resque-scheduler'
 
 gem 'mail', '~> 2.9.0'
-gem 'pstore'  # https://github.com/googleapis/google-auth-library-ruby/issues/549
+gem 'pstore' # https://github.com/googleapis/google-auth-library-ruby/issues/549
 
 group :development do
   gem 'brakeman'
