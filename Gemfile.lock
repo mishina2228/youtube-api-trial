@@ -286,6 +286,7 @@ GEM
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
       rack
+    pstore (0.2.0)
     psych (5.3.1)
       date
       stringio
@@ -523,6 +524,7 @@ DEPENDENCIES
   minitest-ci
   net-scp (>= 3.0.0)
   propshaft
+  pstore
   puma (~> 7.2)
   puma_worker_killer
   rack-mini-profiler (~> 4.0)
