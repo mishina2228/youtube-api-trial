@@ -251,6 +251,7 @@ GEM
       prism (~> 1.5)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
+    minitest-mock (5.27.0)
     mono_logger (1.1.2)
     msgpack (1.8.0)
     multi_json (1.19.1)
@@ -525,6 +526,7 @@ DEPENDENCIES
   kaminari!
   mail (~> 2.9.0)
   minitest-ci
+  minitest-mock
   net-scp (>= 3.0.0)
   propshaft
   pstore
