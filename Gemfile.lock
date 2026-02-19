@@ -390,7 +390,7 @@ GEM
     resurrected_god (1.1.1)
       drb (~> 2.0)
       syslog (~> 0.1)
-    retriable (3.1.2)
+    retriable (3.2.1)
     rexml (3.4.4)
     rubocop (1.84.2)
       json (~> 2.3)
