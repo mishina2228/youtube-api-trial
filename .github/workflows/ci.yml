@@ -74,7 +74,7 @@ jobs:
         run: bin/rails test:system
       - name: Archive system test result screenshots
         if: failure()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: 'failed_system_test_screenshots'
           path: tmp/screenshots/
