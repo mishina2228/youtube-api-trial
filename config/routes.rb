@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get :oauth2callback, to: 'system_settings#oauth2_store_credential'
 
-  scope '(:locale)', locale: /#{I18n.available_locales.map(&:to_s).join('|')}/ do
+  scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
     root 'channels#index'
     devise_for :users
 

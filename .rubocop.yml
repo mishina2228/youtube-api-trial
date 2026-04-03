@@ -75,6 +75,9 @@ Style/EmptyMethod:
   EnforcedStyle: expanded
 Style/HashSyntax:
   EnforcedShorthandSyntax: never # TODO: Pending until I get used to 3.1 syntax
+Style/OneClassPerFile:
+  Exclude:
+    - 'test/test_helper.rb'
 Style/RedundantConstantBase:
   Enabled: false
 Style/RescueStandardError:
