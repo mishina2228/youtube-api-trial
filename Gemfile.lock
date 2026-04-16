@@ -464,7 +464,7 @@ GEM
       net-ssh (>= 2.7)
       net-telnet
       sfl
-    sqlite3 (2.9.2)
+    sqlite3 (2.9.3)
       mini_portile2 (~> 2.8.0)
     stringio (3.2.0)
     syslog (0.4.0)
