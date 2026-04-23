@@ -109,14 +109,14 @@ GEM
       erubi (~> 1.4)
       parser (>= 2.4)
       smart_properties
-    bigdecimal (4.1.1)
+    bigdecimal (4.1.2)
     bindex (0.8.1)
     bootsnap (1.23.0)
       msgpack (~> 1.2)
     brakeman (8.0.4)
       racc
     builder (3.3.0)
-    bullet (8.1.0)
+    bullet (8.1.1)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     cancancan (3.6.1)
@@ -228,7 +228,7 @@ GEM
     jbuilder (2.14.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
-    json (2.19.3)
+    json (2.19.4)
     jwt (3.1.2)
       base64
     language_server-protocol (3.17.0.5)
