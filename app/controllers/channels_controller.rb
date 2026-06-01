@@ -93,7 +93,7 @@ class ChannelsController < ApplicationController
   private
 
   def set_channel
-    @channel = Channel.find(params[:id])
+    @channel = Channel.find(params.expect(:id))
   end
 
   def search_params
