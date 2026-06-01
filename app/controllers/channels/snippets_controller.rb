@@ -16,7 +16,7 @@ module Channels
     private
 
     def set_channel
-      @channel = Channel.find(params[:channel_id])
+      @channel = Channel.find(params.expect(:channel_id))
     end
   end
 end
