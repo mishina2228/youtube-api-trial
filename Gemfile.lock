@@ -254,7 +254,7 @@ GEM
       minitest (>= 5.0.6)
     minitest-mock (5.27.0)
     mono_logger (1.1.2)
-    msgpack (1.8.1)
+    msgpack (1.8.3)
     multi_json (1.21.1)
     mustermann (3.1.1)
     net-http (0.9.1)
