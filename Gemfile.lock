@@ -292,9 +292,6 @@ GEM
       activesupport (>= 7.0.0)
       rack
     pstore (0.2.1)
-    psych (5.4.0)
-      date
-      stringio
     public_suffix (7.0.5)
     puma (8.0.2)
       nio4r (~> 2.0)
@@ -353,9 +350,14 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.4.2)
-    rdoc (7.2.0)
+    rbs (4.0.3)
+      logger
+      prism (>= 1.6.0)
+      tsort
+    rdoc (8.0.0)
       erb
-      psych (>= 4.0.0)
+      prism (>= 1.6.0)
+      rbs (>= 4.0.0)
       tsort
     redis (5.4.1)
       redis-client (>= 0.22.0)
@@ -466,7 +468,6 @@ GEM
       sfl
     sqlite3 (2.9.5)
       mini_portile2 (~> 2.8.0)
-    stringio (3.2.0)
     syslog (0.4.0)
       logger
     thor (1.5.0)
