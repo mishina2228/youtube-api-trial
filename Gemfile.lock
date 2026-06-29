@@ -187,7 +187,7 @@ GEM
       multi_json (~> 1.11)
       representable (~> 3.0)
       retriable (>= 3.1, < 5.0)
-    google-apis-youtube_v3 (0.65.0)
+    google-apis-youtube_v3 (0.66.0)
       google-apis-core (>= 0.15.0, < 2.a)
     google-cloud-env (2.3.1)
       base64 (~> 0.2)
@@ -517,7 +517,7 @@ DEPENDENCIES
   devise-i18n
   enum_help
   erb_lint
-  google-apis-youtube_v3 (~> 0.65)
+  google-apis-youtube_v3 (~> 0.66)
   i18n-js
   importmap-rails
   itamae
