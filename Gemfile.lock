@@ -238,7 +238,7 @@ GEM
     loofah (2.25.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    mail (2.9.0)
+    mail (2.9.1)
       logger
       mini_mime (>= 0.1.1)
       net-imap
@@ -523,7 +523,7 @@ DEPENDENCIES
   itamae
   jbuilder (~> 2.15)
   kaminari!
-  mail (~> 2.9.0)
+  mail (~> 2.9.1)
   minitest-ci
   minitest-mock
   net-scp (>= 3.0.0)
