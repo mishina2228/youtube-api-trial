@@ -40,7 +40,7 @@ gem 'kaminari', git: 'https://github.com/kaminari/kaminari', ref: 'c7a46f17b2bc1
 gem 'resque'
 gem 'resque-scheduler'
 
-gem 'mail', '~> 2.9.0'
+gem 'mail', '~> 2.9.1'
 gem 'pstore' # https://github.com/googleapis/google-auth-library-ruby/issues/549
 
 group :development do
