@@ -177,7 +177,7 @@ GEM
       ffi (~> 1.0)
     globalid (1.4.0)
       activesupport (>= 6.1)
-    google-apis-core (1.2.4)
+    google-apis-core (1.2.5)
       addressable (~> 2.9)
       faraday (~> 2.13)
       faraday-follow_redirects (~> 0.3)
