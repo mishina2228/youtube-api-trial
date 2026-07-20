@@ -177,7 +177,7 @@ GEM
       ffi (~> 1.0)
     globalid (1.4.0)
       activesupport (>= 6.1)
-    google-apis-core (1.2.4)
+    google-apis-core (1.2.5)
       addressable (~> 2.9)
       faraday (~> 2.13)
       faraday-follow_redirects (~> 0.3)
@@ -186,7 +186,7 @@ GEM
       multi_json (~> 1.11)
       representable (~> 3.0)
       retriable (>= 3.1, < 5.0)
-    google-apis-youtube_v3 (0.66.0)
+    google-apis-youtube_v3 (0.67.0)
       google-apis-core (>= 0.15.0, < 2.a)
     google-cloud-env (2.4.0)
       base64 (~> 0.2)
@@ -511,7 +511,7 @@ DEPENDENCIES
   devise-i18n
   enum_help
   erb_lint
-  google-apis-youtube_v3 (~> 0.66)
+  google-apis-youtube_v3 (~> 0.67)
   i18n-js
   importmap-rails
   itamae
