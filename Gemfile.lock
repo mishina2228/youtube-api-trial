@@ -374,7 +374,7 @@ GEM
     responders (3.2.0)
       actionpack (>= 7.0)
       railties (>= 7.0)
-    resque (3.0.0)
+    resque (3.0.1)
       base64 (~> 0.1)
       logger
       mono_logger (~> 1)
@@ -465,7 +465,7 @@ GEM
     syslog (0.4.0)
       logger
     thor (1.5.0)
-    tilt (2.8.0)
+    tilt (2.9.0)
     timeout (0.6.1)
     trailblazer-option (0.1.2)
     tsort (0.2.0)
