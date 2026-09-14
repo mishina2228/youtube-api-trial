@@ -255,7 +255,7 @@ GEM
     minitest-mock (5.27.0)
     mono_logger (1.1.2)
     msgpack (1.8.4)
-    multi_json (1.21.1)
+    multi_json (1.21.2)
     mustermann (3.1.1)
     net-http (0.9.1)
       uri (>= 0.11.1)
@@ -374,7 +374,7 @@ GEM
     responders (3.2.0)
       actionpack (>= 7.0)
       railties (>= 7.0)
-    resque (3.0.2)
+    resque (3.0.3)
       base64 (~> 0.1)
       logger
       mono_logger (~> 1)
