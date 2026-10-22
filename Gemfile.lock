@@ -460,7 +460,7 @@ GEM
       net-ssh (>= 2.7)
       net-telnet
       sfl
-    sqlite3 (2.9.6)
+    sqlite3 (2.10.1)
       mini_portile2 (~> 2.8.0)
     syslog (0.4.0)
       logger
