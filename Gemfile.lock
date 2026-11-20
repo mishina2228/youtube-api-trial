@@ -393,7 +393,7 @@ GEM
       redis (>= 4.0)
       resque (>= 3.0)
       rufus-scheduler (~> 3.9)
-    resurrected_god (1.1.1)
+    resurrected_god (1.1.2)
       drb (~> 2.0)
       syslog (~> 0.1)
     retriable (4.2.0)
